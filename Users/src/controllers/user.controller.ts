@@ -37,6 +37,8 @@ class userController {
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {
+      // get auth header value
+      console.log(req.headers.authorization?.split(' ')[1]);
       const service = new UserService();
       const { status, message, data } = await service.login(req.body);
       res.status(status).json({ message, data });

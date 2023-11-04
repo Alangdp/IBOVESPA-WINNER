@@ -1,6 +1,6 @@
 import { ModelStatic, Optional } from 'sequelize';
 import User from '../models/User.js';
-import { resp } from '../utils/resp.js';
+import { resp, tokenCreate } from '../utils/resp.js';
 
 class UserService {
   private model: ModelStatic<User>;
@@ -46,7 +46,8 @@ class UserService {
       if (!user) return resp(404, 'User not found', null);
       if (!(await user.login(data.password)))
         return resp(400, 'Invalid password', null);
-      return resp(200, 'User logged in', user);
+
+      return resp(200, 'User logged in', { user, token: tokenCreate(user) });
     } catch (error: any) {
       return resp(500, error.message, null, error);
     }

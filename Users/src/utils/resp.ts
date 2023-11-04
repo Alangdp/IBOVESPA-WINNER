@@ -1,3 +1,7 @@
+import jwt from 'jsonwebtoken';
+
+import User from '../models/User';
+
 // error is optional
 const resp = (s: number, m: string, d: any, err?: any) => {
   if (err) {
@@ -19,4 +23,9 @@ const resp = (s: number, m: string, d: any, err?: any) => {
   };
 };
 
-export { resp };
+function tokenCreate(user: User) {
+  const token = process.env.JWT_SECRET as string;
+  return jwt.sign({ id: user.id }, token, { expiresIn: '1d' });
+}
+
+export { resp, tokenCreate };
