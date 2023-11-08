@@ -13,6 +13,7 @@ class userController {
       next(error);
     }
   }
+
   async store(req: Request, res: Response, next: NextFunction) {
     const service = new UserService();
 
