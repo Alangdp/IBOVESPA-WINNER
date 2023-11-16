@@ -31,4 +31,16 @@ interface DividendInfoReturn {
   };
 }
 
-export { DataReport, Report, ReportObject, Dividend, DividendInfoReturn };
+interface priceInfo {
+  date: Date;
+  price: number;
+}
+
+export {
+  DataReport,
+  Report,
+  ReportObject,
+  Dividend,
+  DividendInfoReturn,
+  priceInfo,
+};

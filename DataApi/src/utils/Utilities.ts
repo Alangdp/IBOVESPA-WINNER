@@ -1,9 +1,11 @@
 import fs, { stat } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 // Alter import type
-import axios from '../../node_modules/axios/index';
 import cheerio from 'cheerio';
 
 class Utilities {
@@ -70,8 +72,8 @@ class Utilities {
     }
   }
 
-  static saveJSONToFile(jsonData: Array<any>, filename: string) {
-    const absolutePath = path.resolve(__dirname, '..', 'json', filename);
+  static saveJSONToFile(jsonData: Array<any> | any, filename: string) {
+    const absolutePath = path.resolve(__dirname, '..', '..', 'json', filename);
     if (fs.existsSync(absolutePath)) {
       fs.unlinkSync(absolutePath);
     }
@@ -87,6 +89,19 @@ class Utilities {
         }
       }
     );
+  }
+
+  static formatDate(date: Date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    if (new String(month).length === 1) {
+      return `${year}/0${month}/${day}`;
+    }
+
+    year = year % 100;
+    return `${day}/${month}/${year}`;
   }
 
   extractText(selector: string): string {

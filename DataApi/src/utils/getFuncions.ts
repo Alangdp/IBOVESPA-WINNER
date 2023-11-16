@@ -1,4 +1,4 @@
-import { Dividend, Report, ReportObject } from '../types/get.js';
+import { Dividend, Report, ReportObject, priceInfo } from '../types/get.js';
 
 /*eslint-disable  */
 import axios from 'axios';
@@ -22,6 +22,7 @@ export default class TickerFetcher {
   private url: String = 'https://statusinvest.com.br';
   public ticker: string;
   private Utility?: Utilities;
+  private type?: string;
 
   constructor(ticker: string) {
     this.ticker = ticker;
@@ -30,6 +31,10 @@ export default class TickerFetcher {
   async initialize(): Promise<void> {
     const htmlPage: string = await this.getHtmlPage();
     this.Utility = new Utilities(htmlPage);
+  }
+
+  getTicker() {
+    return this.ticker;
   }
 
   makeOptions(
@@ -279,17 +284,18 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const response = await axios.request(
-        this.makeOptions('POST', 'tickerprice', {
-          ticker,
-          type: 1,
-          'currences[]': '1',
-        })
-      );
+      const options = this.makeOptions('POST', 'tickerprice', {
+        ticker,
+        type: 4,
+        'currences[]': '1',
+      });
+
+      const response = await axios.request(options);
       if (response.data[0].prices.length === 0) return null;
 
       const data = {
         lastPrice: response.data[0].prices.pop(),
+        // any type is priceInfo
         priceVariation: response.data[0].prices,
         currency: response.data[0].currency,
       };
@@ -561,8 +567,8 @@ export default class TickerFetcher {
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');
   await tickerFetcher.initialize();
-  const stockData = await tickerFetcher.getBasicInfo();
-  console.log(stockData);
+  const stockData = await tickerFetcher.getPrice();
+  // console.log(stockData);
 }
 
 teste();

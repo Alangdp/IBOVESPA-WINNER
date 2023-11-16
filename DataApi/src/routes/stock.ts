@@ -6,4 +6,6 @@ dotenv.config();
 
 const router = express.Router();
 
+router.post('/stock', (req: Request, res: Response) => {});
+
 export default router;
