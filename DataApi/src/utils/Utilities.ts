@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 // Alter import type
 import cheerio from 'cheerio';
+import { chartDataType } from '../types/get';
 
 class Utilities {
   private $?: cheerio.Root;
@@ -102,6 +103,14 @@ class Utilities {
 
     year = year % 100;
     return `${day}/${month}/${year}`;
+  }
+
+  static existTickerInChart(charData: chartDataType, ticker: string) {
+    return charData.stocks.some((stock) => stock.ticker === ticker);
+  }
+
+  static makeRentabilyDaily(actualPrice: number, anteriroPrice: number) {
+    return ((actualPrice - anteriroPrice) / anteriroPrice) * 100;
   }
 
   extractText(selector: string): string {
