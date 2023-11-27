@@ -1,0 +1,47 @@
+body{
+    margin: 0%;
+    background-color: lightgray;
+    padding: 0%;
+    height: 200vh;
+}
+.topBar{
+    background-color: gray;
+    height: 9vh;
+    width: 100%;
+}
+.carteira, .conta, .login, .rank{
+    top: 1.4em;
+    position: absolute;
+    border: 0px solid black;
+    background-color: inherit;
+    color: white;
+}
+.carteira{
+    left: 1em;
+}
+.rank{
+    left: 6em;
+}
+.conta{
+    left: 11em;
+}
+.logo{
+    position: absolute;
+    height: 8%;
+    width: 8%;
+    left: 45vw;
+}
+.login{
+    right: 1em;
+}
+.fundo{
+    position: absolute;
+    top: 9vh;
+    left: 6vw;
+    height: 191vh;
+    width: 88vw;
+    background-color: white;
+}
+.noticias{
+    
+}
