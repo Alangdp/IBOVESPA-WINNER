@@ -10,6 +10,15 @@ class UserService {
     return this;
   }
 
+  async findById(id: number) {
+    try {
+      const user = this.model.findByPk(id);
+      return user;
+    } catch (error: any) {
+      return resp(500, error.message, null, error)
+    }
+  }
+
   async index() {
     try {
       const users = await this.model.findAll({});
@@ -40,12 +49,17 @@ class UserService {
     }
   }
 
+  validUserIsActive(user: User) {
+    if(user.active) return true
+    return false
+  }
+
   async login(data: any) {
     try {
       const user = await this.model.findOne({ where: { email: data.email } });
       if (!user) return resp(404, 'User not found', null);
-      if (!(await user.login(data.password)))
-        return resp(400, 'Invalid password', null);
+      if(!this.validUserIsActive(user)) return resp(403, 'User not active', null);
+      if (!(await user.login(data.password))) return resp(400, 'Invalid password', null);
 
       return resp(200, 'User logged in', { user, token: tokenCreate(user) });
     } catch (error: any) {

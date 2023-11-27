@@ -14,6 +14,19 @@ class userController {
     }
   }
 
+  async turnToAdmin(req: Request, res: Response, next: NextFunction) {
+    const service = new UserService();
+
+    try {
+      const user = service.findById()
+      user.set({admin: true});
+      user.save;
+      res.status(status).json({ message, data });
+    } catch (error) {
+      next(error)
+    }
+  }
+
   async store(req: Request, res: Response, next: NextFunction) {
     const service = new UserService();
 

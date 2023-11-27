@@ -10,6 +10,8 @@ class User extends Model {
   public declare email: string;
   public declare password: string;
   public declare cpf: String;
+  public declare active: Boolean;
+  public declare admin: Boolean;
   public declare readonly created_at: Date;
   public declare readonly updated_at: Date;
 
@@ -93,6 +95,18 @@ User.init(
           msg: 'Phone must have 11 characters',
         },
       },
+    },
+
+    active: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+
+    admin: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
 
     createdAt: {
