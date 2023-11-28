@@ -8,34 +8,96 @@
 </head>
 <body>
 
-    <div class="topBar">
-        <div>
-            <button type="button" class="carteira">Carteira</button>
-        </div>
-        <div>
-            <button type="button" class="rank">Ranking</button>
-        </div>
-        <div>
-            <button type="button" class="conta">Conta</button>
-        </div>
-        <div>
-            <img class="logo" src="assets/logo.png" alt="logo">
-        </div>
-        <div>
-            <button type="button" class="login">Login</button>
-        </div>
-    </div>
-    <div class="fundo">
-        <div class="noticias">
-            <img src="assets/noticiasPH.png" alt="noticias">
-        </div>
-        <div class="alertas">
+    <nav class="nav-desktop">
+       <div class="btn-esquerda nav-side">
+             <a href="index.html">Carteira</a>
+              <a href="index.html">Ranking</a>
+              <a href="index.html">Conta</a>
+       </div>
+
+       <div class="btn-centro">
+            <img src="./assets/logo.png" alt="Logo" class="logo">
+       </div>
+
+       <div class="btn-direita nav-side">
+            <a href="index.html">Login</a>
+            <a href="index.html">Registro</a>
+       </div>
+    </nav>
+
+    <div class="container">
+        <div class="propaganda">
 
         </div>
-        <div class="planos">
 
-        </div>
+        <main>
+            <h1 style="font-size: 50px; text-align: left; margin: 20px;">Carrosel de Noticias</h1>
+            <div class="noticias">
+                <div class="setas">
+                    <img src="assets/SVG/seta.svg" class="seta seta-left" id="seta-left"></img >
+                    <img src="assets/SVG/seta.svg" class="seta seta-right" id="seta-right" style="transform: rotate(180deg);"></img >
+                </div>
+
+                <div class="informacoes">
+                    <div class="titulo">
+                        <h1>Notícias</h1>
+                    </div>
+
+                    <div class="descricao">
+                        <p>Notícias sobre o mercado de ações</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="variacoes">
+                <div class="altas"></div>
+                <div class="baixas"></div>
+                <div class="comunicados"></div>
+                <div class="dividendos"></div>
+            </div>
+    
+            <div class="planos">
+    
+            </div>
+        </main>
     </div>
     
 </body>
+
+<script>
+
+    const setaDireita = document.getElementById('seta-right');
+    const setaEsquerda = document.getElementById('seta-left');
+    const noticias = document.querySelector('.noticias');
+
+
+    const ListaNoticias = [
+        {url: "https://picsum.photos/200/900", index:0},
+        {url: "https://picsum.photos/100/900", index:1},
+        {url: "https://picsum.photos/200/900", index:2},
+        {url: "https://picsum.photos/250/900", index:3},
+        {url: "https://picsum.photos/100/900", index:4},
+    ]
+
+    let imagemAtual = 0
+
+    setaDireita.addEventListener('click', () => {
+        if(imagemAtual === ListaNoticias.length - 1){
+            imagemAtual = 0;
+        }
+        imagemAtual += 1;
+        noticias.style.backgroundImage = `url(${ListaNoticias[imagemAtual].url})`;
+    });
+
+    setaEsquerda.addEventListener('click', () => {
+        if(imagemAtual === 0){
+            imagemAtual = ListaNoticias.length - 1;
+        }
+        imagemAtual -= 1;
+
+        noticias.style.backgroundImage = `url(${ListaNoticias[imagemAtual].url})`;
+    });
+
+</script>
+
 </html>
