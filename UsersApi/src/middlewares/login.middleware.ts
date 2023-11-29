@@ -18,8 +18,9 @@ const loginRequired = (req: RequestType, res: Response, next: NextFunction) => {
 
     if (!token) return res.status(401).json({ msg: 'Bearer Token is null' });
 
-    const secret = process.env.JWT_SECRET as string;
+    const secret = process.env.SECRET_TOKEN as string;
     jwt.verify(token, secret, (err: Error | null, decoded: any) => {
+      console.log(err);
       if (err) {
         return res.status(401).json({ msg: 'Invalid Bearer Token' });
       }

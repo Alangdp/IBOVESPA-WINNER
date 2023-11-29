@@ -10,12 +10,13 @@ class UserService {
     return this;
   }
 
-  async findById(id: number) {
+  async findById(id: number): Promise<User | Resp> {
     try {
-      const user = this.model.findByPk(id);
+      const user = await this.model.findByPk(id);
+      if (!user) return resp(404, 'User not found', null);
       return user;
     } catch (error: any) {
-      return resp(500, error.message, null, error)
+      return resp(500, error.message, null, error);
     }
   }
 
@@ -50,19 +51,22 @@ class UserService {
   }
 
   validUserIsActive(user: User) {
-    if(user.active) return true
-    return false
+    if (user.active) return true;
+    return false;
   }
 
   async login(data: any) {
     try {
       const user = await this.model.findOne({ where: { email: data.email } });
       if (!user) return resp(404, 'User not found', null);
-      if(!this.validUserIsActive(user)) return resp(403, 'User not active', null);
-      if (!(await user.login(data.password))) return resp(400, 'Invalid password', null);
+      if (!this.validUserIsActive(user))
+        return resp(403, 'User not active', null);
+      if (!(await user.login(data.password)))
+        return resp(400, 'Invalid password', null);
 
       return resp(200, 'User logged in', { user, token: tokenCreate(user) });
     } catch (error: any) {
+      console.log(error);
       return resp(500, error.message, null, error);
     }
   }

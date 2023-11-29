@@ -98,13 +98,13 @@ User.init(
     },
 
     active: {
-      type: Sequelize.BOOLEAN,
+      type: sequelize.BOOLEAN,
       allowNull: false,
       defaultValue: true,
     },
 
     admin: {
-      type: Sequelize.BOOLEAN,
+      type: sequelize.BOOLEAN,
       allowNull: false,
       defaultValue: false,
     },

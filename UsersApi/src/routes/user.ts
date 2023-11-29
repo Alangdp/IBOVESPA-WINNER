@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/', loginRequired, userController.index);
 router.post('/', userController.store);
-router.delete('/', userController.delete);
+router.delete('/', loginRequired, userController.delete);
 router.post('/login', userController.login);
 router.get('/admin/:id', userController.turnToAdmin);
 export default router;

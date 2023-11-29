@@ -1,4 +1,4 @@
-import { th } from '@faker-js/faker';
+import User from '../models/User.js';
 import UserService from '../services/user.service.js';
 import { NextFunction, Request, Response } from 'express';
 
@@ -9,7 +9,7 @@ class userController {
     try {
       const { status, message, data } = await service.index();
       res.status(status).json({ message, data });
-    } catch (error) {
+    } catch (error: any) {
       next(error);
     }
   }
@@ -18,12 +18,25 @@ class userController {
     const service = new UserService();
 
     try {
-      const user = service.findById()
-      user.set({admin: true});
-      user.save;
+      const userId = Number(req.params.userId);
+      const user = await service.findById(userId);
+
+      if (!user || !(user instanceof User)) {
+        const status = 404;
+        const message = 'Usuário não encontrado';
+        return res.status(status).json({ message });
+      }
+
+      user.admin = true;
+      await user.save();
+
+      const status = 200;
+      const message = 'Usuário promovido a administrador com sucesso';
+      const data = { user };
+
       res.status(status).json({ message, data });
-    } catch (error) {
-      next(error)
+    } catch (error: any) {
+      next(error);
     }
   }
 
@@ -33,7 +46,7 @@ class userController {
     try {
       const { status, message, data } = await service.store(req.body);
       res.status(status).json({ message, data });
-    } catch (error) {
+    } catch (error: any) {
       next(error);
     }
   }
@@ -44,19 +57,19 @@ class userController {
       const service = new UserService();
       const { status, message, data } = await service.delete(req.body.email);
       res.status(status).json({ message, data });
-    } catch (error) {
+    } catch (error: any) {
       next(error);
     }
   }
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {
-      // get auth header value
       console.log(req.headers.authorization?.split(' ')[1]);
       const service = new UserService();
       const { status, message, data } = await service.login(req.body);
       res.status(status).json({ message, data });
-    } catch (error) {
+    } catch (error: any) {
+      console.log(error, 1321312);
       next(error);
     }
   }

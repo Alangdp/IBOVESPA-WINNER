@@ -24,7 +24,7 @@ const resp = (s: number, m: string, d: any, err?: any) => {
 };
 
 function tokenCreate(user: User) {
-  const token = process.env.JWT_SECRET as string;
+  const token = process.env.SECRET_TOKEN as string;
   return jwt.sign({ id: user.id }, token, { expiresIn: '1d' });
 }
 
