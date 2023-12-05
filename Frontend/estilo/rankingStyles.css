@@ -1,0 +1,86 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+
+    transition: all 1s ease;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #fff;
+}
+a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+a:hover {
+    color: #000000;
+}
+.nav-desktop .logo{
+    height: 28%;
+    width: 25%;
+}
+body .nav-desktop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+
+    background-color: gray!important;
+    height: 10vh;
+    width: 100%;
+}
+body .nav-desktop .nav-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 50%;
+}
+body .nav-desktop .btn-centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+body .container .posicao{
+    display: grid;
+    height: 30vh;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 2vh;
+}
+body .container .posicao .rank{
+    position: absolute;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+body .container .posicao .nomeAcao{
+    position: absolute;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+}
+body .container .posicao .logo{
+    position: absolute;
+    height: 1em;
+    width: 1em;
+    align-self: center;
+}
+body .container .posicao .estatisticas{
+    position: absolute;
+    justify-self: right;
+    align-self: center;
+}
+body .container .posicao .meses{
+    position: absolute;
+    justify-self: center;
+    align-self: flex-end;
+}
