@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/loginRegistro.css" />
+    <title>LOGIN REGISTRO</title>
+  </head>
+
+  <style>
+    .btn {
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 300px !important;
+    }
+
+    .linha-continua {
+      margin: 10px 0px;
+      font-weight: bold;
+      color: rgb(255, 123, 0);
+      position: relative;
+      display: inline-block;
+    }
+
+    .linha-continua::before,
+    .linha-continua::after {
+      content: "";
+      position: absolute;
+      height: 0.1rem;
+      width: 100%;
+      background-color: #646464;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .linha-continua::before {
+      right: 100%;
+      margin-right: 10px;
+    }
+
+    .linha-continua::after {
+      left: 100%;
+      margin-left: 10px;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="modal active">
+        <div class="close">X</div>
+        <div class="top-bar"></div>
+        <div class="modal-content w-100 h-100">
+          <div class="inputs h-70 w-100">
+            <div class="input google-input" style="cursor: pointer">
+              <img
+                src="./assets/SVG/google-icon.svg"
+                alt="google"
+                style="height: 36px; width: 36px; margin-right: 10px"
+              />
+              <span>Entrar com o Google</span>
+            </div>
+
+            <div class="linha-continua">OU</div>
+
+            <div class="input">
+              <img
+                src="./assets/SVG/email.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="email@email.com"
+                  value=""
+                />
+
+                <div class="input-line"></div>
+              </div>
+            </div>
+            <div class="input">
+              <img
+                src="./assets/SVG/locked.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="********"
+                />
+                <div class="input-line"></div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <div class="row">
+            <div class="">
+              <button class="btn btn-primary">Esqueceu a senha</button>
+            </div>
+            <div class="">
+              <button class="btn btn-secondary">Entrar</button>
+            </div>
+          </div>
+          
+          <div class="linha-continua">Ainda não tem conta ?</div>
+          
+          <div class="row">
+            <div class="">
+              <button class="btn btn-primary">Faça seu cadastro</button>
+            </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal active">
+      <div class="close">X</div>
+      <div class="top-bar"></div>
+      <div class="modal-content w-100 h-100">
+        <div class="block h-70">
+          <div class="inputs h-70 w-100">
+
+            <div class="input">
+              <img
+                src="./assets/SVG/email.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="email@email.com"
+                  value=""
+                />
+  
+                <div class="input-line"></div>
+              </div>
+            </div>
+            <div class="input">
+              <img
+                src="./assets/SVG/locked.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="********"
+                />
+                <div class="input-line"></div>
+              </div>
+            </div>
+  
+            <div class="input">
+              <img
+                src="./assets/SVG/locked.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="********"
+                />
+                <div class="input-line"></div>
+              </div>
+            </div>
+  
+            <div class="input">
+              <img
+                src="./assets/SVG/locked.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="********"
+                />
+                <div class="input-line"></div>
+              </div>
+            </div>
+  
+            <div class="input">
+              <img
+                src="./assets/SVG/locked.svg"
+                alt="email-icon"
+                class="input-icon"
+              />
+              <div class="input-container">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="********"
+                />
+                <div class="input-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="row">
+          <div class="">
+            <button class="btn btn-secondary">Criar conta</button>
+          </div>
+        </div>
+        
+        <div class="linha-continua">Já tem uma conta?</div>
+        
+        <div class="row">
+          <div class="">
+            <button class="btn btn-primary">Faça seu Login</button>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
