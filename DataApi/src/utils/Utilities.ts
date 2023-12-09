@@ -3,11 +3,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 // Alter import type
 import cheerio from 'cheerio';
 import { chartDataType } from '../types/get';
+import { index } from 'cheerio/lib/api/traversing';
 
 class Utilities {
   private $?: cheerio.Root;
@@ -105,12 +104,75 @@ class Utilities {
     return `${day}/${month}/${year}`;
   }
 
-  static existTickerInChart(charData: chartDataType, ticker: string) {
-    return charData.stocks.some((stock) => stock.ticker === ticker);
+  static existTickerInChart(charData: chartDataType, ticker: string): boolean {
+    if (charData.stocks.some((stock) => stock.ticker === ticker)) return true;
+    return false;
+  }
+
+  static indexTickerInChart(charData: chartDataType, ticker: string): number {
+    return charData.stocks.findIndex((stock) => stock.ticker === ticker);
   }
 
   static makeRentabilyDaily(actualPrice: number, anteriroPrice: number) {
     return ((actualPrice - anteriroPrice) / anteriroPrice) * 100;
+  }
+
+  static formatDateToString(date: Date): string {
+    const day: number = date.getDate();
+    const month: number = date.getMonth() + 1;
+    const year: number = date.getFullYear() % 100;
+    const hours: number = date.getHours();
+    const minutes: number = date.getMinutes();
+
+    const FDay: string = day < 10 ? '0' + day : day.toString();
+    const FMonth: string = month < 10 ? '0' + month : month.toString();
+    const FYear: string = year < 10 ? '0' + year : year.toString();
+    const FHours: string = hours < 10 ? '0' + hours : hours.toString();
+    const FMinutes: string = minutes < 10 ? '0' + minutes : minutes.toString();
+
+    return `${FDay}/${FMonth}/${FYear} 00:00`;
+  }
+
+  static formatStringtoDate(dateEntry: string): Date {
+    const parts = dateEntry.split(/[\s/:]/);
+
+    const year = parseInt(parts[2]) + 2000;
+    const month = parseInt(parts[1]) - 1;
+    const day = parseInt(parts[0]);
+    const hours = parseInt(parts[3]);
+    const minutes = parseInt(parts[4]);
+    return new Date(year, month, day, hours, minutes);
+  }
+
+  static findClosestDateKey(
+    object: any,
+    targetDate: string
+  ): string | undefined {
+    let closestDateKey: string | undefined;
+    let smallestDifference: number | undefined;
+
+    for (const dateKey in object) {
+      const [dayA, monthA, yearA] = dateKey
+        .split('/')
+        .map((str) => parseInt(str, 10));
+      const dateA = new Date(yearA, monthA - 1, dayA);
+      dateA.setHours(0, 0, 0, 0);
+
+      const [dayB, monthB, yearB] = targetDate
+        .split('/')
+        .map((str) => parseInt(str, 10));
+      const dateB = new Date(yearB, monthB - 1, dayB);
+      dateB.setHours(0, 0, 0, 0);
+
+      const difference = Math.abs(dateA.getTime() - dateB.getTime());
+
+      if (smallestDifference === undefined || difference < smallestDifference) {
+        smallestDifference = difference;
+        closestDateKey = dateKey;
+      }
+    }
+
+    return closestDateKey;
   }
 
   extractText(selector: string): string {
