@@ -5,24 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="./css/homeStyle.css">
+    <link rel="stylesheet" href="./css/navbar.css">
 </head>
 <body>
 
-    <nav class="nav-desktop">
-       <div class="btn-esquerda nav-side">
-             <a href="./dashboard.html">Carteira</a>
-              <a href="./ranking.html">Ranking</a>
-              <a href="#">Conta</a>
-       </div>
-
-       <a class="btn-centro" href="./index.html">
-            <img src="./assets/logo.png" alt="Logo" class="logo">
-       </a>
-
-       <div class="btn-direita nav-side">
-            <a href="./loginRegistro.html">Login</a>
-       </div>
-    </nav>
+    <nav id="main-nav">
+        <a class="navbar-brand" href="./index.html" title="Página inicial">
+            <img width="80" height="40" src="./assets/logo.png" />
+        </a>
+    
+        <ul class="navbar-nav">
+            <li>
+                <a href="#" title="Esconder/apresentar os valores da carteira"
+                >Esconder Valores</a
+                >
+            </li>
+        
+            <li>
+                <a
+                href="#"
+                title="Busca por nome de empresas, FIIs, índices e muito mais"
+                >Busca</a
+                >
+            </li>
+        
+            <li>
+                <a href="#" title="Adicionar ativo">Adicionar</a>
+            </li>
+        </ul>
+      </nav>
 
     <div class="container">
         <div class="propaganda">
@@ -48,62 +59,331 @@
                 </div>
             </div>
     
-            <div class="row w-100">
-                <div class="variacoes w-100">
-                    <div class="w-100 column" id="Altas">
-                        <h1 class="titulocol">ALTAS</h1>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 1</h2>
-                            <p class="textoAlerta">texto exemplo 1</p>
+            <div class="row w-100 variacoes h-50">
+
+                    <div class="grid-item h-100">   
+                        <h2>Altas</h2>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-up"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
                         </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-up"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-up"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-up"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-up"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="w-100 column" id="Baixas">
-                        <h1 class="titulocol">BAIXAS</h1>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 1</h2>
-                            <p class="textoAlerta">texto exemplo 1</p>
+
+                    <div class="grid-item h-100">   
+                        <h2>BAIXAS</h2>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-down"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
                         </div>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 2</h2>
-                            <p class="textoAlerta">texto exemplo 2</p>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-down"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
                         </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-down"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-down"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon variation-icon-down"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="w-100 column" id="Dividendos">
-                        <h1 class="titulocol">DIVIDEBDOS</h1>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 1</h2>
-                            <p class="textoAlerta">texto exemplo 1</p>
+
+                    <div class="grid-item h-100">   
+                        <h2>Dividendos</h2>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
                         </div>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 2</h2>
-                            <p class="textoAlerta">texto exemplo 2</p>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
                         </div>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 3</h2>
-                            <p class="textoAlerta">texto exemplo 3</p>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
                         </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
+                        <div class="card h-100 w-100">
+                            <div class="card-header">
+                                <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t39.30808-6/366571143_667707292058176_3007138064656193450_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGbmBQK1L2tYPJHEAexTXPlJEOn6JjJZ9UkQ6fomMln1cq4EjF1VPv_Q4bOwvxZCMP2YQOb-_OqxJbkCFl3OOUi&_nc_ohc=RstJvMcu62YAX_2jBHQ&_nc_ht=scontent.fpoa11-1.fna&oh=00_AfBlMRQkgZBk-7vNaXXLJEUMZbhssJrQlbcqfQPPx3Pr7w&oe=657B2CA9" alt="Ticker Logo">
+                            </div>
+                            <div class="card-body">
+                                <div class="name">
+                                    <div class="ticker">BBAS3</div>
+                                    <div class="company-name">BANCO DO BRASIL</div>
+                                </div>
+
+                                <div class="variation">
+                                    <div class="variation-icon"><img src="./assets/SVG/arrow.svg" alt="Arrow"></div>
+                                    <div class="variation-value">+10%</div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p>R$ 100,00</p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="w-100 column" id="Comunicados">
-                        <h1 class="titulocol">COMUNICADOS</h1>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 1</h2>
-                            <p class="textoAlerta">texto exemplo 1</p>
-                        </div>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 2</h2>
-                            <p class="textoAlerta">texto exemplo 2</p>
-                        </div>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 3</h2>
-                            <p class="textoAlerta">texto exemplo 3</p>
-                        </div>
-                        <div class="alertaScroll">
-                            <h2 class="tituloAlerta">texto teste 4</h2>
-                            <p class="textoAlerta">texto exemplo 4</p>
-                        </div>
+
+                    <div class="grid-item h-100">   
+                        <h2>COMUNICADOS</h2>
+
+
                     </div>
+
                 </div>
-            </div>
+        </div>
     </main>
     </div>
     

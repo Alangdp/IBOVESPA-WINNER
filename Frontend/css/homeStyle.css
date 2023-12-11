@@ -22,39 +22,6 @@ a:hover {
     color: #000000;
 }
 
-.nav-desktop .logo{
-    height: 28%;
-    width: 25%;
-}
-
-body .nav-desktop{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-between;
-
-    background-color: gray!important;
-    height: 10vh;
-    width: 100%;
-}
-
-body .nav-desktop .nav-side {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-
-    height: 100%;
-    width: 50%;
-}
-
-body .nav-desktop .btn-centro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .container .propaganda {
     width: 100%;
     height: 40vh;
@@ -62,7 +29,7 @@ body .nav-desktop .btn-centro {
 }
 
 body .container main {
-    background-color: #f7f7f7;
+    background-color: #a0a0a0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,12 +45,13 @@ body .container {
 }
 
 body .container main .noticias{
+    border-radius: 12px;
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 10px;
-    width: 95%;
-    height: 50%;
+    width: 80%;
+    height: 30%;
     align-items: center;
     justify-content: center;
     padding: 5%;
@@ -127,6 +95,111 @@ body .container main .variacoes {
 
 }
 
+body .container main .variacoes .title {
+    text-align: left;
+}
+
+body .container main .variacoes .grid-item {
+    gap: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 5%;
+}
+
+body .container main .variacoes .grid-item .card {
+    padding: 1rem;
+    border-radius: 12px;
+    background: #a0a0a0;
+    display: grid;
+    grid-template-columns: 33% 36% 30%;
+}
+
+body .container main .variacoes .grid-item .card .card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body .container main .variacoes .grid-item .card .card-header img {
+    width: 70%;
+    border-radius: 12px;
+}
+
+body .container main .variacoes .grid-item .card .card-body {
+    gap: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body .container main .variacoes .grid-item .card .card-body .name {
+    gap: 0.5rem;
+    font-size: 18px;
+    display: flex;
+    font-weight: bold;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0 0 56px
+}
+
+body .container main .variacoes .grid-item .card .card-body .name .company-name {
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+body .container main .variacoes .grid-item .card .card-body .variation {
+    margin: 10px 0 0 0;
+    gap: 5%;
+    font-size: 10px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
+
+body .container main .variacoes .grid-item .card .card-body .variation .variation-value {
+    font-size: 12px;
+}
+
+body .container main .variacoes .grid-item .card .card-body .variation .variation-icon {
+    width: 25px;
+
+}
+
+body .container main .variacoes .grid-item .card .card-body .variation .variation-icon.variation-icon-down {
+    width: 25px;
+    filter: invert(22%) sepia(78%) saturate(6849%) hue-rotate(355deg) brightness(100%) contrast(118%);
+    transform: rotate(180deg);
+}
+
+body .container main .variacoes .grid-item .card .card-body .variation .variation-icon.variation-icon-up {
+    width: 25px;
+    filter: invert(23%) sepia(71%) saturate(2491%) hue-rotate(100deg) brightness(101%) contrast(105%);
+}
+
+body .container main .variacoes .grid-item .card .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+body .container main .variacoes .grid-item .card .card-info p {
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+
+
 .row {
     width: 100%;
     height: 40vh;
@@ -137,37 +210,20 @@ body .container main .variacoes {
 
 .w-100 {
     width: 100% !important;
-
-
 }
 
-body .container main .variacoes .column{
-    height: 40vh;
-    border: 1px solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 1%;
-    overflow: auto;
+.h-75 {
+    height: 75% !important;
 }
 
-body .container main .variacoes .column .titulocol{
-    font-size: 1em;
+.h-100 {
+    height: 100% !important;
 }
 
-body .container main .variacoes .column .alertaScroll{
-    overflow-y: auto;
-    height: 20vh;
-    border: 1px solid black;
-    width: 90%;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #fff;
+.h-50 {
+    height: 50% !important;
 }
+
 
 body .container main .variacoes .column .alertaScroll .tituloAlerta{
     font-size: 1em;
