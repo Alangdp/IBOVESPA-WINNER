@@ -60,8 +60,15 @@ interface History {
       chartData?: chartDataType;
       transactionsPeriod?: Transaction[];
       dividend?: number;
+      rentability?: number;
     };
   };
+}
+
+interface Rentability {
+  totalRentability: number;
+  totalValue: number;
+  rentability: number;
 }
 
 interface Stock {
@@ -89,7 +96,7 @@ interface StockRentability {
   price: number;
   totalValue: number;
   medianPrice: number;
-  rentability?: number;
+  rentability?: Rentability;
   date: string;
 }
 

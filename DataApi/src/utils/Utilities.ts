@@ -8,6 +8,7 @@ import cheerio from 'cheerio';
 import { chartDataType } from '../types/get';
 import { index } from 'cheerio/lib/api/traversing';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 class Utilities {
   private $?: cheerio.Root;
 
@@ -51,6 +52,9 @@ class Utilities {
   }
 
   static formateNumber(stringToFormat: string): number {
+    const stringToFormatArray = stringToFormat.split('.');
+    if (stringToFormatArray.length > 2)
+      return Number(stringToFormatArray.join(''));
     stringToFormat = stringToFormat.replace(/[^\d,.]/g, '');
     stringToFormat = stringToFormat.replace(',', '.');
 

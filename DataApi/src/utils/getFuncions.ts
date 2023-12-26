@@ -1,4 +1,80 @@
-import { Dividend, Report, ReportObject, priceInfo } from '../types/get.js';
+import { Report, ReportObject, priceInfo } from '../types/get.js';
+
+// INTERFACES
+
+interface AxiosOptions {
+  method: 'POST' | 'GET';
+  url: string;
+  data?: object | string;
+  params?: object;
+  headers: {
+    'Content-Type': string;
+    cookie: string;
+    'user-agent': string;
+  };
+}
+
+interface History {
+  [date: string]: {
+    date: string;
+    price: number;
+  };
+}
+
+interface DividendYield {
+  [date: string]: {
+    date: string;
+    value: number;
+  };
+}
+
+interface Indicators {
+  dy: {
+    actual: number;
+    average: number;
+    olds: DividendYield[];
+  };
+}
+
+interface priceReturn {
+  price: number;
+  priceVariation: History[];
+  currency: string;
+}
+
+interface Dividend {
+  type: string;
+  dataEx: string;
+  dataCom: string;
+  value: number;
+}
+
+interface Dividends {
+  lastDividends: Dividend[];
+  dividiendPorcentInDecimal: number;
+  dividendPorcent: number;
+}
+
+interface Series {
+  percentual: number[];
+  proventos: number[];
+  lucroLiquido: number[];
+}
+
+interface Chart {
+  categoryUnique: boolean;
+  category: string[];
+  series: Series;
+}
+
+interface PayoutReturn {
+  actual: number;
+  average: number;
+  minValue: number;
+  maxValue: number;
+  currency?: String;
+  chart: Chart;
+}
 
 /*eslint-disable  */
 import axios from 'axios';
@@ -37,22 +113,32 @@ export default class TickerFetcher {
     return this.ticker;
   }
 
-  makeOptions(
+  makeOptionsJson(
     method: 'POST' | 'GET',
     url: string,
     params: any,
-    final: string = 'acao'
+    final: string = 'acao',
+    contentType:
+      | 'application/x-www-form-urlencoded'
+      | 'application/json' = 'application/json'
   ) {
-    const options = {
+    const options: AxiosOptions = {
       method: method,
       url: `https://statusinvest.com.br/${final}/${url}`,
-      params: { ...params },
       headers: {
+        'Content-Type': contentType,
         cookie: '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296',
         'user-agent': 'CPI/V1',
-        'content-length': 0,
       },
     };
+
+    if (contentType === 'application/json') {
+      options.params = params;
+    }
+
+    if (contentType === 'application/x-www-form-urlencoded') {
+      options.data = params;
+    }
 
     return options;
   }
@@ -60,7 +146,9 @@ export default class TickerFetcher {
   async getHtmlPage() {
     try {
       return (
-        await axios.request(this.makeOptions('GET', this.ticker, {}, 'acoes'))
+        await axios.request(
+          this.makeOptionsJson('GET', this.ticker, {}, 'acoes')
+        )
       ).data;
     } catch (err: any) {
       console.log(err);
@@ -85,7 +173,7 @@ export default class TickerFetcher {
       marketValue:
         '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(7) > div > div > strong',
       price:
-        '#main-2 > div:nth-child(4) > div > div.pb-3.pb-md-5 > div > div:nth-child(2) > div > div:nth-child(1) > strong',
+        '#main-2 > div:nth-child(4) > div > div.pb-3.pb-md-5 > div > div.info.special.w-100.w-md-33.w-lg-20 > div > div:nth-child(1) > strong',
       porcentLast12Days:
         '#main-2 > div:nth-child(4) > div > div.pb-3.pb-md-5 > div > div:nth-child(5) > div > div:nth-child(1) > strong',
       dividendPorcent:
@@ -93,6 +181,12 @@ export default class TickerFetcher {
       name: 'title',
       LPA: '#indicators-section > div.indicator-today-container > div > div:nth-child(1) > div > div:nth-child(11) > div > div > strong',
       VPA: '#indicators-section > div.indicator-today-container > div > div:nth-child(1) > div > div:nth-child(9) > div > div > strong',
+      liquidPatrimony:
+        '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(1) > div > div > strong',
+      grossDebt:
+        '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(4) > div > div > strong',
+      shareQuantity:
+        '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(9) > div > div > strong',
     };
 
     const totalStocksInCirculation: string = this.Utility.extractText(
@@ -112,10 +206,17 @@ export default class TickerFetcher {
     const name: string = this.Utility.extractText(selectors.name);
     const LPA: number = this.Utility.extractNumber(selectors.LPA);
     const VPA: number = this.Utility.extractNumber(selectors.VPA);
+    const liquidPatrimony: number = this.Utility.extractNumber(
+      selectors.liquidPatrimony
+    );
+
+    const grossDebt = this.Utility.extractNumber(selectors.grossDebt);
+    const shareQuantity = this.Utility.extractNumber(selectors.shareQuantity);
     let image = this.Utility.extractImage(selectors.imageURL);
 
     const data = {
       // dividendInfo: getDividendInfoFromHTML($),
+      ticker: this.ticker,
       image,
       name,
       price,
@@ -128,6 +229,9 @@ export default class TickerFetcher {
       marketValue,
       LPA,
       VPA,
+      liquidPatrimony,
+      grossDebt,
+      shareQuantity,
     };
 
     return data;
@@ -224,7 +328,7 @@ export default class TickerFetcher {
     return rebuyInfo;
   }
 
-  async getDividendInfo() {
+  async getDividendInfo(): Promise<Dividends> {
     const selectors = {
       tableRows:
         '#earning-section > div.list > div > div:nth-child(2) > table > tbody',
@@ -241,7 +345,12 @@ export default class TickerFetcher {
     const tableRows = Cheerio(
       this.Utility?.extractElement(selectors.tableRows)
     );
-    if (!tableRows) return [];
+    if (!tableRows)
+      return {
+        lastDividends: [],
+        dividiendPorcentInDecimal: 0,
+        dividendPorcent: 0,
+      };
 
     tableRows.each((index: number, row: cheerio.Element) => {
       const values: Array<cheerio.Element> = Cheerio(row)
@@ -250,12 +359,14 @@ export default class TickerFetcher {
         .toArray();
 
       Utilities.breakArrayIntoGroups(values, 4).map((dividendInfo) => {
-        lastDividends.push({
-          type: dividendInfo[0],
-          dataEx: dividendInfo[1],
-          dataCom: dividendInfo[2],
-          value: dividendInfo[3],
-        });
+        const dividend: Dividend = {
+          type: dividendInfo[0].text(),
+          dataEx: dividendInfo[1].text(),
+          dataCom: dividendInfo[2].text(),
+          value: Number(dividendInfo[3].text().replace(',', '.')),
+        };
+
+        lastDividends.push(dividend);
       });
     });
 
@@ -267,24 +378,55 @@ export default class TickerFetcher {
     const dividiendPorcentInDecimal = dividendPorcent / 100;
 
     return {
-      dividends: {
-        lastDividends: lastDividends,
-        dividiendPorcentInDecimal,
-        dividendPorcent,
-      },
+      lastDividends: lastDividends,
+      dividiendPorcentInDecimal,
+      dividendPorcent,
+    };
+  }
 
-      bestPrice: {
-        bazin: Utilities.formateNumber(`${price / dividiendPorcentInDecimal}`),
-        granham: (15 * LPA * VPA) ** 0.5,
+  async getIndicatorsInfo() {
+    const ticker = this.ticker;
+    const url = 'https://statusinvest.com.br/acao/indicatorhistoricallist';
+    const indicators: Indicators = {
+      dy: {
+        actual: 0,
+        average: 0,
+        olds: [],
       },
     };
+
+    const options = this.makeOptionsJson(
+      'POST',
+      'indicatorhistoricallist',
+      'codes%5B%5D=bbas3&time=7&byQuarter=false&futureData=false',
+      'acao',
+      'application/x-www-form-urlencoded'
+    );
+
+    const response = await axios.request(options);
+    const data = response.data.data[ticker.toLowerCase()];
+
+    for (const info of data) {
+      if (info.key === 'dy') {
+        indicators.dy.actual = info.actual;
+        indicators.dy.average = info.avg;
+        info.ranks.forEach((item: any) => {
+          indicators.dy.olds.push({
+            date: item.rank,
+            value: item.value,
+          });
+        });
+      }
+    }
+
+    return indicators;
   }
 
   async getPrice() {
     const ticker = this.ticker;
 
     try {
-      const options = this.makeOptions('POST', 'tickerprice', {
+      const options = this.makeOptionsJson('POST', 'tickerprice', {
         ticker,
         type: 4,
         'currences[]': '1',
@@ -293,9 +435,8 @@ export default class TickerFetcher {
       const response = await axios.request(options);
       if (response.data[0].prices.length === 0) return null;
 
-      const data = {
-        lastPrice: response.data[0].prices.pop(),
-        // any type is priceInfo
+      const data: priceReturn = {
+        price: response.data[0].prices.pop(),
         priceVariation: response.data[0].prices,
         currency: response.data[0].currency,
       };
@@ -311,16 +452,16 @@ export default class TickerFetcher {
 
     try {
       const payout = await axios.request(
-        this.makeOptions('POST', 'payoutresult', {
+        this.makeOptionsJson('POST', 'payoutresult', {
           code: ticker,
           type: 1,
         })
       );
       if (!payout.data) return null;
 
-      const data = {
+      const data: PayoutReturn = {
         actual: payout.data.actual,
-        average: payout.data.average,
+        average: payout.data.average | payout.data.actual,
         minValue: payout.data.minValue,
         maxValue: payout.data.maxValue,
         currency: payout.data.currency,
@@ -338,7 +479,7 @@ export default class TickerFetcher {
 
     try {
       const response = await axios.request(
-        this.makeOptions('POST', 'getbsactivepassivechart', {
+        this.makeOptionsJson('POST', 'getbsactivepassivechart', {
           code: ticker,
           type: 1,
         })
@@ -369,14 +510,13 @@ export default class TickerFetcher {
 
     const lastFiveYears = Utilities.getLastYears(5);
     const data: any = {};
-    const variavelLEGAL = [];
 
     try {
       for (const year of lastFiveYears) {
         const tempData: Report[] = [];
 
         const response = await axios.request(
-          this.makeOptions('POST', 'getassetreports', {
+          this.makeOptionsJson('POST', 'getassetreports', {
             code: ticker,
             year: year,
           })
@@ -536,33 +676,6 @@ export default class TickerFetcher {
       'Participação dos Não Controladores',
     ];
 */
-
-// async function atualizaDb() {
-//   const tickers = await TickerFetcher.getAllTickers();
-//   const db = [];
-
-//   for (const ticker of tickers) {
-//     try {
-//       const tickerFetcher = new TickerFetcher(ticker);
-//       await tickerFetcher.initialize();
-//       const stockData = await tickerFetcher.getBasicInfo();
-
-//       console.log(stockData);
-
-//       const data = {
-//         imageURL: stockData.image,
-//         ticker: ticker,
-//         name: stockData.name,
-//         type: 'STOCK',
-//         price: stockData.price,
-//       };
-
-//       await axios.post('http://localhost:8080/api/stocks/', data);
-//     } catch (error) {
-//       continue;
-//     }
-//   }
-// }
 
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');

@@ -155,12 +155,10 @@ export class HistoryClass {
           transactionsPeriod === undefined ||
           transactionsPeriod?.length === 0
         ) {
-          console.log(chartData, 'CHARTDATA');
-
           chartData.stocks.forEach((stock) => {
             stock.totalValue =
               history[stock.ticker][date].price * stock.quantity;
-            stock.medianPrice = stock.totalCust / stock.quantity;
+            stock.medianPrice = stock.totalValue / stock.quantity;
           });
 
           history[ticker][date].chartData = chartData;
@@ -171,14 +169,19 @@ export class HistoryClass {
           const ticker: string = transaction.ticker;
           const transaction_date: Date = transaction.transaction_date;
 
+          console.log(
+            chartData.stocks.reduce((sum, stock) => sum + stock.quantity, 0)
+          );
+
+          console.log(transaction.total_value);
           let stockRentability: StockRentability = {
             ticker: transaction.ticker,
             quantity: transaction.quantity,
             price: transaction.price,
-            totalValue: transaction.total_value,
+            totalValue: 0,
             medianPrice: 0,
             date: Utilities.formatDateToString(transaction_date),
-            totalCust: 0,
+            totalCust: transaction.total_value,
           };
 
           if (transaction.type_code === 0) {
@@ -241,6 +244,35 @@ export class HistoryClass {
 
     this.history = history;
   }
+
+  public calculateRentability() {
+    const history = this.history || {};
+
+    for (const ticker in history) {
+      for (const date in history[ticker]) {
+        const stocks = history[ticker][date].chartData?.stocks;
+        if (stocks === undefined) continue;
+
+        stocks.forEach((stock) => {
+          let quantity = stock.quantity;
+          let actualValue = stock.price;
+          let medianPrice = stock.medianPrice;
+
+          let rentability = actualValue / medianPrice - 1 * 100;
+          stock.rentability = {
+            totalRentability:
+              ((actualValue * quantity - stock.totalValue) /
+                (actualValue * quantity)) *
+              100,
+            totalValue: quantity * medianPrice,
+            rentability: rentability - 1,
+          };
+        });
+      }
+    }
+
+    this.history = history;
+  }
 }
 
 async function teste() {
@@ -250,7 +282,8 @@ async function teste() {
   history.makeBaseHistory();
   history.makeRentability();
   history.makeRentabilityDaily();
-  console.log(history.history, 'HISTORY');
+  history.calculateRentability();
+  Utilities.saveJSONToFile(history.history, 'history.json');
 }
 
 teste();
