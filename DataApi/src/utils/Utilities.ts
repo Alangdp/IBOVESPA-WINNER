@@ -179,6 +179,11 @@ class Utilities {
     return closestDateKey;
   }
 
+  public static breakArray(array: any[], parts: number) {
+    const lastDividends = array.slice(0, parts);
+    return lastDividends;
+  }
+
   extractText(selector: string): string {
     if (!this.$) throw new Error('Invalid $');
     const element = this.$(selector) || null;
