@@ -1,5 +1,5 @@
 import { Stock } from './Stock';
-import { NetLiquid } from './types/stock.types';
+import { NetLiquid, Pontuation } from './types/stock.types';
 
 // Princípios utilizados:
 
@@ -14,8 +14,8 @@ import { NetLiquid } from './types/stock.types';
 // - [x] 9.  Crescimento em 5 anos => Quanto maior, melhor (ideal, > 5%) https://daxinvestimentos.com/analise-fundamentalista-mais-de-200-de-rentabilidade-em-2-anos/
 // - [x] 10. ROE (Return On Equity) => Quanto maior, melhor (ideal, superior a 20%) https://daxinvestimentos.com/analise-fundamentalista-mais-de-200-de-rentabilidade-em-2-anos/
 // - [x] 11. Dividend Yield (Rendimento de Dividendo) => Quanto maior, melhor (ideal, > Taxa Selic (4.5%)) https://foconomilhao.com/acoes-com-dividend-yield-maior-que-a-selic/
-// - [] 12. Liquidez Corrente => Quanto maior, melhor (ideal > 1.5) https://daxinvestimentos.com/analise-fundamentalista-mais-de-200-de-rentabilidade-em-2-anos/
-// - [] 13. Dívida Bruta/Patrimônio => Quanto menor, melhor (ideal < 50%) https://daxinvestimentos.com/analise-fundamentalista-mais-de-200-de-rentabilidade-em-2-anos/
+// - [x] 12. Liquidez Corrente => Quanto maior, melhor (ideal > 1.5) https://daxinvestimentos.com/analise-fundamentalista-mais-de-200-de-rentabilidade-em-2-anos/
+// - [x] 13. Dívida Bruta/Patrimônio => Quanto menor, melhor (ideal < 50%) https://daxinvestimentos.com/analise-fundamentalista-mais-de-200-de-rentabilidade-em-2-anos/
 // - [] 14. Patrimônio Líquido => Quanto maior, melhor (ideal > 2000000000)
 
 // ### Graham ###
@@ -38,11 +38,17 @@ export class GranhamMethod {
   private p_l: number = 0;
   private p_vp: number = 0;
   private roe: number = 0;
+  private currentRatio: number;
+  private grossDebt: number;
+  private patrimony: number;
+  private gb_p: number;
 
   private netLiquid: NetLiquid[] = [];
 
   constructor(private stock: Stock) {
-    const { indicators } = stock;
+    const { indicators, passiveChart } = stock;
+
+    const { currentLiabilities, currentAssets } = passiveChart[0];
 
     this.p_l = Number(indicators.p_l.actual);
     this.p_vp = Number(indicators.p_vp.actual);
@@ -57,33 +63,68 @@ export class GranhamMethod {
     });
 
     this.netLiquid = stock.netLiquid;
+    this.currentRatio = currentAssets / currentLiabilities;
 
-    this.makePoints();
+    this.grossDebt = stock.grossDebt;
+    this.patrimony = stock.patrimony;
+    if (this.patrimony === 0) this.patrimony = 1;
+    if (this.grossDebt === 0) this.grossDebt = 1;
+
+    this.gb_p = this.grossDebt / this.patrimony;
+
+    console.table(this.makePoints());
   }
 
-  makePoints() {
+  makePoints(): Pontuation {
+    const conditions: Record<string, boolean> = {};
+    const points: Pontuation = {};
+
     const stock = this.stock;
-    const { netLiquid } = stock;
-    const { vpa, lpa, p_l, p_vp, roe } = this;
+    const { netLiquid, vpa, lpa, p_l, p_vp, roe } = this;
 
     const lpaAverage = stock.makeAverage(lpa);
     const vpaAverage = stock.makeAverage(vpa);
 
     const netLiquidOn10Years = netLiquid.slice(0, 10);
 
-    if (netLiquidOn10Years.length > 10) this.points++;
-    if (netLiquidOn10Years.every((netLiquid) => netLiquid.value > 0))
-      this.points++;
-    if (this.crescentNetLiquid(netLiquidOn10Years)) this.points++;
-    if (this.crescentLpa() === true) this.points++;
-    if (this.constantDividend()) this.points++;
-    if (Math.sqrt(22.5 * vpaAverage * lpaAverage) > 1.5 * stock.actualPrice)
-      this.points++;
-    if (p_l > 0 && p_l < 15) this.points++;
-    if (p_vp > 0 && p_vp < 1.5) this.points++;
-    if (this.calculateYearGrowth(5)) this.points++;
-    if (roe > 0.2) this.points++;
-    if (stock.actualDividendYield > stock.CDI) this.points++;
+    conditions['A empresa tem dados de "Net Liquid" para os últimos 10 anos'] =
+      netLiquidOn10Years.length >= 10;
+    conditions[
+      'Valores de "Net Liquid" foram positivos em todos os últimos 10 anos'
+    ] = netLiquidOn10Years.every((netLiquid) => netLiquid.value > 0);
+    conditions['"Net Liquid" crescente nos últimos 10 anos'] =
+      this.crescentNetLiquid(netLiquidOn10Years);
+    conditions['LPA crescente'] = this.crescentLpa();
+    conditions['Pagamento constante de dividendos'] = this.constantDividend();
+    conditions[
+      'Fórmula de Benjamin Graham para Valor Intrínseco (Preço Justo)'
+    ] = Math.sqrt(22.5 * vpaAverage * lpaAverage) > 1.5 * stock.actualPrice;
+    conditions['P/L (Preço/Lucro) entre 0 e 15'] = p_l > 0 && p_l < 15;
+    conditions['P/VP (Preço/Valor Patrimonial) entre 0 e 1.5'] =
+      p_vp > 0 && p_vp < 1.5;
+    conditions['Crescimento médio em 5 anos é positivo'] =
+      this.calculateYearGrowth(5);
+    conditions['ROE (Return On Equity) maior que 0.2'] = roe > 0.2;
+    conditions['Dividend Yield atual maior que a taxa CDI'] =
+      stock.actualDividendYield > stock.CDI;
+    conditions['Índice de Liquidez Corrente maior que 1.5'] =
+      this.currentRatio > 1.5;
+    conditions['Dívida Bruta/Patrimônio inferior a 0.5'] = this.gb_p < 0.5;
+    conditions['Patrimônio Líquido maior que 2 bilhões'] =
+      this.patrimony > 2000000000;
+
+    for (const condition in conditions) {
+      if (conditions.hasOwnProperty(condition)) {
+        if (conditions[condition]) this.points++;
+      }
+    }
+
+    for (const condition in conditions) {
+      points[condition] = conditions[condition];
+    }
+
+    points['Pontuação'] = this.points;
+    return points;
   }
 
   crescentNetLiquid(netLiquidOn10Years: NetLiquid[]) {

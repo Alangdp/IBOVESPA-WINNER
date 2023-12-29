@@ -4,7 +4,11 @@ import {
   RootDividend,
   DividendReturn,
 } from '../rework/types/dividends.type.js';
-import { Header, Indicators } from '../rework/types/stock.types.js';
+import {
+  Header,
+  Indicators,
+  PassiveChartReturn,
+} from '../rework/types/stock.types.js';
 // INTERFACES
 
 interface AxiosOptions {
@@ -73,16 +77,15 @@ import Cheerio from 'cheerio';
 const Root = Cheerio.root;
 
 interface PassiveChartObject {
-  year: string;
-  ativoTotal: string;
-  passivoTotal: string;
-  ativoCirculante: string;
-  ativoNaoCirculante: string;
-  passivoCirculante: string;
-  passivoNaoCirculante: string;
-  patrimonioLiquido: string;
+  year: number;
+  ativoTotal: number;
+  passivoTotal: number;
+  ativoCirculante: number;
+  ativoNaoCirculante: number;
+  passivoCirculante: number;
+  passivoNaoCirculante: number;
+  patrimonioLiquido: number;
 }
-
 export default class TickerFetcher {
   private url: String = 'https://statusinvest.com.br';
   public ticker: string;
@@ -570,22 +573,24 @@ export default class TickerFetcher {
           type: 1,
         })
       );
-      if (response.data.length === 0) return null;
 
-      const data = response.data.map((item: PassiveChartObject) => {
-        return {
-          year: item.year || null,
-          totalAssets: item.ativoTotal || null,
-          totalLiabilities: item.passivoTotal || null,
-          currentAssets: item.ativoCirculante || null,
-          nonCurrentAssets: item.ativoNaoCirculante || null,
-          currentLiabilities: item.passivoCirculante || null,
-          nonCurrentLiabilities: item.passivoNaoCirculante || null,
-          shareholdersEquity: item.patrimonioLiquido || null,
-        };
-      });
+      const data: PassiveChartObject[] = response.data;
+      const dataFormated: PassiveChartReturn[] = [];
 
-      return data;
+      for (const passiveObject of data) {
+        dataFormated.push({
+          year: passiveObject.year,
+          totalAssets: passiveObject.ativoTotal,
+          totalLiabilities: passiveObject.passivoTotal,
+          currentAssets: passiveObject.ativoCirculante,
+          nonCurrentAssets: passiveObject.ativoNaoCirculante,
+          currentLiabilities: passiveObject.passivoCirculante,
+          nonCurrentLiabilities: passiveObject.passivoNaoCirculante,
+          shareholdersEquity: passiveObject.patrimonioLiquido,
+        });
+      }
+
+      return dataFormated;
     } catch (error) {
       return null;
     }
@@ -704,133 +709,6 @@ export default class TickerFetcher {
     }
   }
 }
-
-// const teste:TickerFetcher = new TickerFetcher("RANI3")
-// await teste.initialize()
-// console.log(await teste.getBasicInfo())
-// console.log(await teste.getReports())
-
-/* eslint-disable */
-// export async function getActives(ticker = null) {
-//   try {
-//     ticker = ticker ? ticker.toUpperCase() : null;
-//     if (!ticker) return null;
-
-//     const lastFiveYears = getLastFiveYears();
-
-//     const options = {
-//       method: 'POST',
-//       url: 'https://statusinvest.com.br/acao/getativos',
-//       params: {
-//         code: ticker,
-//         type: 1,
-//         range: { max: lastFiveYears[0], min: lastFiveYears.pop() },
-//       },
-//       headers: {
-//         cookie: '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296',
-//         'user-agent': 'CPI/V1',
-//         'content-length': 0,
-//       },
-//     };
-
-//     const actives = await axios.request(options);
-//     if (actives.data.length === 0) return null;
-
-//     const info = {};
-//     const titulos = [
-//       'Ativo Total - (R$)',
-//       'Ativo Circulante - (R$)',
-//       'Aplicações Financeiras - (R$)',
-//       'Caixa e Equivalentes de Caixa - (R$)',
-//       'Contas a Receber - (R$)',
-//       'Estoque - (R$)',
-//       'Ativo Não Circulante - (R$)',
-//       'Ativo Realizável a Longo Prazo - (R$)',
-//       'Investimentos - (R$)',
-//       'Imobilizado - (R$)',
-//       'Intangível - (R$)',
-//       'Passivo Total - (R$)',
-//       'Passivo Circulante - (R$)',
-//       'Passivo Não Circulante - (R$)',
-//       'Patrimônio Líquido Consolidado - (R$)',
-//       'Capital Social Realizado - (R$)',
-//       'Reserva Capital - (R$)',
-//       'Reserva Lucros - (R$)',
-//       'Participação dos Não Controladores',
-//     ];
-
-//     let lastTitle = null;
-//     let lastDate = null;
-
-//     let cabeçalhoList = [];
-
-//     const data = actives.data.data;
-
-//     for (let i = 0; i < data.grid[0].columns.length; i++) {
-//       cabeçalhoList.push(data.grid[0].columns[i].value);
-
-//       const dataFormated = {
-//         date: data.grid[0].columns[i].value,
-//         title: data.grid[1].columns[i].name || data.grid[1].columns[i].title,
-//         value: data.grid[1].columns[i].value,
-//       };
-
-//       if (titulos.includes(dataFormated.date)) {
-//         lastTitle = dataFormated.date;
-//         info[lastTitle] = {};
-//       }
-
-//       if (/^[1-4]T\d{4}$/.test(dataFormated.date)) {
-//         lastDate = dataFormated.date;
-//         info[lastTitle].lastDate = {
-//           AV: null,
-//           AH: null,
-//           value: null,
-//         };
-//         info[lastTitle].lastDate.value = dataFormated.value;
-//       }
-
-//       if (dataFormated.date === 'AH' || dataFormated.date === 'AV') {
-//         info[lastDate][dataFormated.date] = dataFormated.value;
-//       }
-//     }
-
-//     saveJSONToFile(info, 'TERSTE.json');
-//     return info;
-//   } catch (error) {
-//     return null;
-//   }
-// }
-
-// Funçao getActives
-// Parado desde 17/07/2023
-// Ultima coisa que foi feita
-// Objetivo e separar o retorno da tabela em trimestres com dados abaixo
-// Nome do titulo vem no indice 0 na variavel title geralmente
-
-/*
-    const titulos = [
-      'Ativo Total - (R$)',
-      'Ativo Circulante - (R$)',
-      'Aplicações Financeiras - (R$)',
-      'Caixa e Equivalentes de Caixa - (R$)',
-      'Contas a Receber - (R$)',
-      'Estoque - (R$)',
-      'Ativo Não Circulante - (R$)',
-      'Ativo Realizável a Longo Prazo - (R$)',
-      'Investimentos - (R$)',
-      'Imobilizado - (R$)',
-      'Intangível - (R$)',
-      'Passivo Total - (R$)',
-      'Passivo Circulante - (R$)',
-      'Passivo Não Circulante - (R$)',
-      'Patrimônio Líquido Consolidado - (R$)',
-      'Capital Social Realizado - (R$)',
-      'Reserva Capital - (R$)',
-      'Reserva Lucros - (R$)',
-      'Participação dos Não Controladores',
-    ];
-*/
 
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');

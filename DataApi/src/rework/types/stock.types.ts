@@ -1,5 +1,16 @@
 import { LastDividendPayment } from '../types/dividends.type';
 
+interface PassiveChartReturn {
+  year: number;
+  totalAssets: number;
+  totalLiabilities: number;
+  currentAssets: number;
+  nonCurrentAssets: number;
+  currentLiabilities: number;
+  nonCurrentLiabilities: number;
+  shareholdersEquity: number;
+}
+
 interface Indicators {
   dy: {
     actual: number;
@@ -76,6 +87,7 @@ interface StockRequirements {
   // Graham variables
 
   netLiquid: NetLiquid[];
+  passiveChart: PassiveChartReturn[];
 }
 
 interface History {
@@ -102,4 +114,5 @@ export {
   Header,
   NetLiquid,
   Indicators,
+  PassiveChartReturn,
 };

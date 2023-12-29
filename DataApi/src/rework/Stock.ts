@@ -1,4 +1,5 @@
 import { BazinMethod } from './Bazin.js';
+import { GranhamMethod } from './Graham.js';
 import { Variable } from './Variable.js';
 import { LastDividendPayment } from './types/dividends.type.js';
 import {
@@ -6,10 +7,13 @@ import {
   History,
   NetLiquid,
   Indicators,
+  PassiveChartReturn,
 } from './types/stock.types';
 
 export class Stock extends Variable {
   private _Bazin: BazinMethod;
+  private _Granham: GranhamMethod;
+
   private _lastDividendsAverage?: number;
   private _dividendYield: number;
   private _grossDebt: number;
@@ -22,6 +26,7 @@ export class Stock extends Variable {
   private _payout: number;
   private _actualDividendYield: number;
   private _netLiquid: NetLiquid[];
+  private _passiveChart: PassiveChartReturn[];
 
   private _indicators: Indicators;
 
@@ -49,7 +54,14 @@ export class Stock extends Variable {
     this._lastDividendsValue = stock.lastDividendsValue;
 
     this._netLiquid = stock.netLiquid;
+    this._passiveChart = stock.passiveChart;
+
     this._Bazin = new BazinMethod(this);
+    this._Granham = new GranhamMethod(this);
+  }
+
+  get passiveChart() {
+    return this._passiveChart;
   }
 
   get lastDividendsYieldYear() {

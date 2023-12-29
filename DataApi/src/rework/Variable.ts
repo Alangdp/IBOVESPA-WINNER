@@ -1,6 +1,6 @@
 import TickerFetcher from '../utils/getFuncions.js';
 import { History } from './types/stock.types.js';
-import { MacroInfo } from '../global/macroInfo.js';
+import { MacroInfo } from '../global/MacroInfo.js';
 
 export abstract class Variable {
   private _marketValue: number;

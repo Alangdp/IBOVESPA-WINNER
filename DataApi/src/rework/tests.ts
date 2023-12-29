@@ -18,10 +18,12 @@ async function instanceStock(ticker: string): Promise<Stock> {
   const lastDividendsYield: number[] = [];
   const lastDividendsValue: number[] = [];
   const cashFlow = await tickerFetcher.getCashFlow();
+  const passiveChart = await tickerFetcher.getPassiveChart();
 
   if (!priceHistory) throw new Error('Error getting price history');
   if (!payout) throw new Error('Error getting payout');
   if (!dividendInfo) throw new Error('Error getting dividend info');
+  if (!passiveChart) throw new Error('Error getting passive chart');
 
   // Dividendos
 
@@ -70,6 +72,7 @@ async function instanceStock(ticker: string): Promise<Stock> {
     payout: payout.actual / 100,
     actualDividendYield: lastDividendsYield[0] / 100,
     netLiquid: netLiquidArray,
+    passiveChart,
   };
 
   const stock = new Stock(stockData);
