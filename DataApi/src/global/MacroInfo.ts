@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Utilities from '../utils/Utilities';
+import TickerFetcher from '../utils/getFuncions';
 
 export interface RootCDI {
   '@odata.context': string;
@@ -22,6 +24,7 @@ export class MacroInfo {
   static readonly version: string = '1.0.0';
   static CDI: number;
   static IPCA: number;
+  static tickers: string[];
 
   static async getCDI() {
     const response = await axios.get(
@@ -50,6 +53,8 @@ export class MacroInfo {
       this.CDI = result;
       console.log(`IPCA: ${this.CDI}`);
     });
+
+    this.tickers = await TickerFetcher.getAllTickers();
   }
 }
 

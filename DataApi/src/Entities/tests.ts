@@ -1,7 +1,7 @@
-import { StockRequirements } from './types/stock.types';
+import { StockRequirements } from '../types/stock.types';
 import { Stock } from './Stock.js';
 import { BazinMethod } from './Bazin.js';
-import { Header, NetLiquid } from './types/stock.types';
+import { Header, NetLiquid } from '../types/stock.types';
 
 import TickerFetcher from '../utils/getFuncions.js';
 import { GranhamMethod } from './Graham.js';
@@ -56,7 +56,7 @@ async function instanceStock(ticker: string): Promise<Stock> {
     indicators,
 
     shareQuantity: basicInfo.shareQuantity,
-    ticker: tickerFetcher.getTicker(),
+    ticker: tickerFetcher.ticker,
     name: basicInfo.name,
     activeValue: basicInfo.VPA * basicInfo.shareQuantity,
     actualPrice: basicInfo.price,
@@ -77,7 +77,6 @@ async function instanceStock(ticker: string): Promise<Stock> {
 
   const stock = new Stock(stockData);
 
-  const graham = new GranhamMethod(stock);
   return stock;
 }
 

@@ -1,14 +1,14 @@
 import { BazinMethod } from './Bazin.js';
 import { GranhamMethod } from './Graham.js';
 import { Variable } from './Variable.js';
-import { LastDividendPayment } from './types/dividends.type.js';
+import { LastDividendPayment } from '../types/dividends.type.js';
 import {
   StockRequirements,
   History,
   NetLiquid,
   Indicators,
   PassiveChartReturn,
-} from './types/stock.types';
+} from '../types/stock.types.js';
 
 export class Stock extends Variable {
   private _Bazin: BazinMethod;
@@ -58,6 +58,14 @@ export class Stock extends Variable {
 
     this._Bazin = new BazinMethod(this);
     this._Granham = new GranhamMethod(this);
+  }
+
+  get bazin() {
+    return this._Bazin;
+  }
+
+  get granham() {
+    return this._Granham;
   }
 
   get passiveChart() {

@@ -1,21 +1,27 @@
-interface DataReport {
-  year: string;
+interface AxiosOptions {
+  method: 'POST' | 'GET';
+  url: string;
+  data?: object | string;
+  params?: object;
+  headers: {
+    'Content-Type': string;
+    cookie: string;
+    'user-agent': string;
+  };
 }
-interface Report {
-  yearReport: string;
-  date: string;
-  type: string;
-  subject: string;
-  linkPDF: string;
+
+interface History {
+  [date: string]: {
+    date: string;
+    price: number;
+  };
 }
-interface ReportObject {
-  reportType: string;
-  species: string;
-  year: string;
-  referenceDate: string;
-  subject: string;
-  linkPdf: string;
+interface priceReturn {
+  price: number;
+  priceVariation: History[];
+  currency: string;
 }
+
 interface Dividend {
   type: string;
   dataEx: string;
@@ -23,93 +29,50 @@ interface Dividend {
   value: number;
 }
 
-interface DividendInfoReturn {
-  dividends: Dividend[];
-  bestPrice: {
-    bazin: string;
-    granham: number;
-  };
+interface Dividends {
+  lastDividends: Dividend[];
+  dividiendPorcentInDecimal: number;
+  dividendPorcent: number;
 }
 
-interface priceInfo {
-  date: string;
-  price: number;
+interface Series {
+  percentual: number[];
+  proventos: number[];
+  lucroLiquido: number[];
 }
 
-interface Transaction {
-  ticker: string;
-  quantity: number;
-  price: number;
-  type: string;
-  total_value: number;
-  broker_code: number;
-  type_code: number;
-  transaction_date: Date;
-  user_id: number;
-  stock_id: number;
-  created_at?: Date;
-  updated_at?: Date;
+interface Chart {
+  categoryUnique: boolean;
+  category: string[];
+  series: Series;
 }
 
-interface History {
-  [key: string]: {
-    [key: string]: {
-      ticker: string;
-      date: Date;
-      price: number;
-      chartData?: chartDataType;
-      transactionsPeriod?: Transaction[];
-      dividend?: number;
-      rentability?: number;
-    };
-  };
+interface PayoutReturn {
+  actual: number;
+  average: number;
+  minValue: number;
+  maxValue: number;
+  currency?: String;
+  chart: Chart;
 }
 
-interface Rentability {
-  totalRentability: number;
-  totalValue: number;
-  rentability: number;
-}
-
-interface Stock {
-  id?: number;
-  ticker: string;
-  company_name: string;
-  type?: string;
-  price: number;
-  image_url: string;
-  created_at?: Date;
-  updated_at?: Date;
-  prices?: priceInfo[];
-}
-
-interface chartDataType {
-  stocks: StockRentability[];
-  uniqueTickers: string[];
-  totalValue: number;
-}
-
-interface StockRentability {
-  totalCust: number;
-  ticker: string;
-  quantity: number;
-  price: number;
-  totalValue: number;
-  medianPrice: number;
-  rentability?: Rentability;
-  date: string;
+interface PassiveChartObject {
+  year: number;
+  ativoTotal: number;
+  passivoTotal: number;
+  ativoCirculante: number;
+  ativoNaoCirculante: number;
+  passivoCirculante: number;
+  passivoNaoCirculante: number;
+  patrimonioLiquido: number;
 }
 
 export {
-  DataReport,
-  Report,
-  ReportObject,
-  Dividend,
-  DividendInfoReturn,
-  priceInfo,
-  Transaction,
+  AxiosOptions,
   History,
-  Stock,
-  chartDataType,
-  StockRentability,
+  priceReturn,
+  Dividends,
+  Dividend,
+  PayoutReturn,
+  PassiveChartObject,
 };

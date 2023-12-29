@@ -1,5 +1,5 @@
 import { Stock } from './Stock';
-import { NetLiquid, Pontuation } from './types/stock.types';
+import { NetLiquid, Pontuation } from '../types/stock.types';
 
 // Princípios utilizados:
 

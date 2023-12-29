@@ -5,7 +5,6 @@ import { dirname } from 'path';
 
 // Alter import type
 import cheerio from 'cheerio';
-import { chartDataType } from '../types/get';
 import { index } from 'cheerio/lib/api/traversing';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -106,15 +105,6 @@ class Utilities {
 
     year = year % 100;
     return `${day}/${month}/${year}`;
-  }
-
-  static existTickerInChart(charData: chartDataType, ticker: string): boolean {
-    if (charData.stocks.some((stock) => stock.ticker === ticker)) return true;
-    return false;
-  }
-
-  static indexTickerInChart(charData: chartDataType, ticker: string): number {
-    return charData.stocks.findIndex((stock) => stock.ticker === ticker);
   }
 
   static makeRentabilyDaily(actualPrice: number, anteriroPrice: number) {

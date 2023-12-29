@@ -1,11 +1,12 @@
 import TickerFetcher from '../utils/getFuncions.js';
-import { History } from './types/stock.types.js';
+import { History } from '../types/stock.types.js';
 import { MacroInfo } from '../global/MacroInfo.js';
 
 export abstract class Variable {
   private _marketValue: number;
   private _CDI: number = MacroInfo.CDI;
   private _IPCA: number = MacroInfo.IPCA;
+  private _tickers: string[] = MacroInfo.tickers;
 
   abstract calculateRentability(): number;
 
@@ -22,6 +23,10 @@ export abstract class Variable {
     this._history = _history;
     this._actualPrice = _actualPrice;
     this._marketValue = _actualPrice * _activeValue;
+  }
+
+  get tickers() {
+    return this._tickers;
   }
 
   get CDI() {

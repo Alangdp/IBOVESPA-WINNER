@@ -1,91 +1,25 @@
-import { Report, ReportObject, priceInfo } from '../types/get.js';
-import { RootCashFlow } from '../rework/types/cashFlow.type.js';
-import {
-  RootDividend,
-  DividendReturn,
-} from '../rework/types/dividends.type.js';
+import { RootCashFlow } from '../types/cashFlow.type.js';
+import { RootDividend, DividendReturn } from '../types/dividends.type.js';
+
 import {
   Header,
   Indicators,
   PassiveChartReturn,
-} from '../rework/types/stock.types.js';
-// INTERFACES
+  RootReport,
+  ReportReturn,
+} from '../types/stock.types.js';
 
-interface AxiosOptions {
-  method: 'POST' | 'GET';
-  url: string;
-  data?: object | string;
-  params?: object;
-  headers: {
-    'Content-Type': string;
-    cookie: string;
-    'user-agent': string;
-  };
-}
+import {
+  AxiosOptions,
+  priceReturn,
+  PayoutReturn,
+  PassiveChartObject,
+} from '../types/get.js';
 
-interface History {
-  [date: string]: {
-    date: string;
-    price: number;
-  };
-}
-interface priceReturn {
-  price: number;
-  priceVariation: History[];
-  currency: string;
-}
-
-interface Dividend {
-  type: string;
-  dataEx: string;
-  dataCom: string;
-  value: number;
-}
-
-interface Dividends {
-  lastDividends: Dividend[];
-  dividiendPorcentInDecimal: number;
-  dividendPorcent: number;
-}
-
-interface Series {
-  percentual: number[];
-  proventos: number[];
-  lucroLiquido: number[];
-}
-
-interface Chart {
-  categoryUnique: boolean;
-  category: string[];
-  series: Series;
-}
-
-interface PayoutReturn {
-  actual: number;
-  average: number;
-  minValue: number;
-  maxValue: number;
-  currency?: String;
-  chart: Chart;
-}
-
-/*eslint-disable  */
 import axios from 'axios';
 import Utilities from './Utilities.js';
 import Cheerio from 'cheerio';
 
-const Root = Cheerio.root;
-
-interface PassiveChartObject {
-  year: number;
-  ativoTotal: number;
-  passivoTotal: number;
-  ativoCirculante: number;
-  ativoNaoCirculante: number;
-  passivoCirculante: number;
-  passivoNaoCirculante: number;
-  patrimonioLiquido: number;
-}
 export default class TickerFetcher {
   private url: String = 'https://statusinvest.com.br';
   public ticker: string;
@@ -102,11 +36,7 @@ export default class TickerFetcher {
     this.Utility = new Utilities(htmlPage);
   }
 
-  getTicker() {
-    return this.ticker;
-  }
-
-  makeOptionsJson(
+  private makeOptionsJson(
     method: 'POST' | 'GET',
     url: string,
     params: any,
@@ -195,7 +125,7 @@ export default class TickerFetcher {
     const dividendPorcent: number = this.Utility.extractNumber(
       selectors.dividendPorcent
     );
-    const dividiendPorcentInDecimal: Number = dividendPorcent / 100;
+    const dividendDecimal: Number = dividendPorcent / 100;
     const name: string = this.Utility.extractText(selectors.name);
     const LPA: number = this.Utility.extractNumber(selectors.LPA);
     const VPA: number = this.Utility.extractNumber(selectors.VPA);
@@ -213,7 +143,7 @@ export default class TickerFetcher {
       name,
       price,
       dividendPorcent,
-      dividiendPorcentInDecimal,
+      dividendDecimal,
       porcentLast12Days,
       totalStocksInCirculation,
       freeFloat,
@@ -599,42 +529,31 @@ export default class TickerFetcher {
   async getReports() {
     const ticker = this.ticker;
 
-    const lastFiveYears = Utilities.getLastYears(5);
-    const data: any = {};
-
     try {
-      for (const year of lastFiveYears) {
-        const tempData: Report[] = [];
+      const returnData: ReportReturn[] = [];
 
-        const response = await axios.request(
-          this.makeOptionsJson('POST', 'getassetreports', {
-            code: ticker,
-            year: year,
-          })
-        );
+      const response = await axios.request(
+        this.makeOptionsJson('POST', 'getassetreports', {
+          code: ticker,
+          year: this.actualyear,
+        })
+      );
 
-        const responseInfo = response.data;
-        if (!responseInfo.data) data[year] = [];
+      const data: RootReport = response.data;
 
-        responseInfo.data.forEach((report: ReportObject) => {
-          if (report.reportType === undefined) report.reportType = ' ';
-          const type = (report.reportType = report.reportType.trim()
-            ? report.reportType
-            : report.species);
-
-          tempData.push({
-            yearReport: report.year,
-            date: report.referenceDate,
-            type: report.reportType,
-            subject: report.subject,
-            linkPDF: report.linkPdf,
-          });
+      for (const report of data.data) {
+        returnData.push({
+          year: report.year.toString(),
+          rank: 0,
+          referenceDate: report.dataReferencia_F,
+          type: report.tipo,
+          especie: report.especie,
+          assunt: report.assunto,
+          linkPdf: report.linkPdf,
         });
-
-        data[year] = tempData;
       }
 
-      return data;
+      return returnData;
     } catch (error) {
       return null;
     }
@@ -713,8 +632,6 @@ export default class TickerFetcher {
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');
   await tickerFetcher.initialize();
-  const stockData = await tickerFetcher.getPrice();
-  // console.log(stockData);
 }
 
 teste();

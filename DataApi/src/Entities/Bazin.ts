@@ -1,4 +1,4 @@
-import { Pontuation } from './types/stock.types';
+import { Pontuation } from '../types/stock.types';
 import { Stock } from './Stock';
 import Utilities from '../utils/Utilities.js';
 
