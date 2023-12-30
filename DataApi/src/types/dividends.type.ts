@@ -46,6 +46,7 @@ interface DividendReturn {
 }
 
 interface LastDividendPayment {
+  ticker: string;
   dataCom: string;
   dataEx: string;
   dividendType: string;
@@ -58,4 +59,21 @@ interface LastDividendPaymentYear {
   value: number;
 }
 
-export { RootDividend, DividendReturn, LastDividendPayment };
+type Dividends = {
+  [ticker: string]: Dividend[];
+};
+
+type Dividend = {
+  date: string;
+  ticker: string;
+  value: number;
+  type: string;
+};
+
+export {
+  Dividend,
+  Dividends,
+  RootDividend,
+  DividendReturn,
+  LastDividendPayment,
+};

@@ -10,18 +10,6 @@ interface AxiosOptions {
   };
 }
 
-interface History {
-  [date: string]: {
-    date: string;
-    price: number;
-  };
-}
-interface priceReturn {
-  price: number;
-  priceVariation: History[];
-  currency: string;
-}
-
 interface Dividend {
   type: string;
   dataEx: string;
@@ -67,12 +55,4 @@ interface PassiveChartObject {
   patrimonioLiquido: number;
 }
 
-export {
-  AxiosOptions,
-  History,
-  priceReturn,
-  Dividends,
-  Dividend,
-  PayoutReturn,
-  PassiveChartObject,
-};
+export { AxiosOptions, Dividends, Dividend, PayoutReturn, PassiveChartObject };

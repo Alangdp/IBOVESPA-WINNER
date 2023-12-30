@@ -1,6 +1,6 @@
 import axios from 'axios';
-import Utilities from '../utils/Utilities';
-import TickerFetcher from '../utils/getFuncions';
+import Utilities from '../utils/Utilities.js';
+import TickerFetcher from '../utils/getFuncions.js';
 
 export interface RootCDI {
   '@odata.context': string;

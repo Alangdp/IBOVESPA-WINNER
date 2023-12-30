@@ -4,7 +4,7 @@ import { Variable } from './Variable.js';
 import { LastDividendPayment } from '../types/dividends.type.js';
 import {
   StockRequirements,
-  History,
+  PriceHistory,
   NetLiquid,
   Indicators,
   PassiveChartReturn,
@@ -37,7 +37,7 @@ export class Stock extends Variable {
       stock.activeValue,
       stock.shareQuantity,
       stock.actualPrice,
-      stock.history
+      stock.priceHistory
     );
 
     const actualDividendYield = stock.actualDividendYield / 100;

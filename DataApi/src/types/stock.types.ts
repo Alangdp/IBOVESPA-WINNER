@@ -68,7 +68,7 @@ interface StockRequirements {
   name: string;
   activeValue: number;
   actualPrice: number;
-  history: History[];
+  priceHistory: PriceHistory[];
   shareQuantity: number;
 
   // Bazin variables
@@ -90,11 +90,9 @@ interface StockRequirements {
   passiveChart: PassiveChartReturn[];
 }
 
-interface History {
-  [date: string]: {
-    date: string;
-    price: number;
-  };
+interface PriceHistory {
+  date: string;
+  price: number;
 }
 
 type Pontuation = {
@@ -135,7 +133,7 @@ interface ReportReturn {
 
 export {
   StockRequirements,
-  History,
+  PriceHistory,
   Pontuation,
   Header,
   NetLiquid,

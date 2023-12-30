@@ -1,5 +1,11 @@
 import { RootCashFlow } from '../types/cashFlow.type.js';
 import { RootDividend, DividendReturn } from '../types/dividends.type.js';
+import {
+  RootPrices,
+  PriceObject,
+  PriceReturn,
+  MainPrices,
+} from '../types/prices.type.js';
 
 import {
   Header,
@@ -11,9 +17,8 @@ import {
 
 import {
   AxiosOptions,
-  priceReturn,
-  PayoutReturn,
   PassiveChartObject,
+  PayoutReturn,
 } from '../types/get.js';
 
 import axios from 'axios';
@@ -303,6 +308,7 @@ export default class TickerFetcher {
 
       for (const dividendPayment of data.assetEarningsModels) {
         dividendReturn.lastDividendPayments.push({
+          ticker,
           dataCom: dividendPayment.ed,
           dataEx: dividendPayment.pd,
           dividendType: dividendPayment.et,
@@ -362,13 +368,13 @@ export default class TickerFetcher {
     const options = this.makeOptionsJson(
       'POST',
       'indicatorhistoricallist',
-      'codes%5B%5D=bbas3&time=7&byQuarter=false&futureData=false',
+      `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
       'acao',
       'application/x-www-form-urlencoded'
     );
 
     const response = await axios.request(options);
-    const data = response.data.data[ticker.toLowerCase()];
+    const data = response.data.data[Object.keys(response.data.data)[0]];
 
     for (const info of data) {
       if (info.key === 'dy') {
@@ -452,16 +458,17 @@ export default class TickerFetcher {
       });
 
       const response = await axios.request(options);
-      if (response.data[0].prices.length === 0) return null;
+      const data: MainPrices = response.data[0];
 
-      const data: priceReturn = {
-        price: response.data[0].prices.pop(),
-        priceVariation: response.data[0].prices,
-        currency: response.data[0].currency,
+      const priceReturn: PriceReturn = {
+        price: data.prices[0].price,
+        priceVariation: data.prices,
+        currency: data.currency,
       };
 
-      return data;
+      return priceReturn;
     } catch (error) {
+      console.log(error);
       return null;
     }
   }
@@ -632,6 +639,7 @@ export default class TickerFetcher {
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');
   await tickerFetcher.initialize();
+  await tickerFetcher.getPrice();
 }
 
 teste();

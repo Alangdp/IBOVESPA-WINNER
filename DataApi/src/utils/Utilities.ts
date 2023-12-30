@@ -107,35 +107,27 @@ class Utilities {
     return `${day}/${month}/${year}`;
   }
 
-  static makeRentabilyDaily(actualPrice: number, anteriroPrice: number) {
-    return ((actualPrice - anteriroPrice) / anteriroPrice) * 100;
+  static formatDateToBR(date: Date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    if (new String(month).length === 1) {
+      return `${day}/0${month}/${year}`;
+    }
+
+    year = year % 100;
+    return `${day}/${month}/${year}`;
   }
 
-  static formatDateToString(date: Date): string {
-    const day: number = date.getDate();
-    const month: number = date.getMonth() + 1;
-    const year: number = date.getFullYear() % 100;
-    const hours: number = date.getHours();
-    const minutes: number = date.getMinutes();
-
-    const FDay: string = day < 10 ? '0' + day : day.toString();
-    const FMonth: string = month < 10 ? '0' + month : month.toString();
-    const FYear: string = year < 10 ? '0' + year : year.toString();
-    const FHours: string = hours < 10 ? '0' + hours : hours.toString();
-    const FMinutes: string = minutes < 10 ? '0' + minutes : minutes.toString();
-
-    return `${FDay}/${FMonth}/${FYear} 00:00`;
+  static formatStringToDate(stringDate: string) {
+    const [day, month, year] = stringDate.split('/');
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   }
 
-  static formatStringtoDate(dateEntry: string): Date {
-    const parts = dateEntry.split(/[\s/:]/);
-
-    const year = parseInt(parts[2]) + 2000;
-    const month = parseInt(parts[1]) - 1;
-    const day = parseInt(parts[0]);
-    const hours = parseInt(parts[3]);
-    const minutes = parseInt(parts[4]);
-    return new Date(year, month, day, hours, minutes);
+  static formatSimplifiedYear(stringDate: string) {
+    const [day, month, year] = stringDate.split('/');
+    return `${day}/${month}/${Number(year) + 2000}`;
   }
 
   static findClosestDateKey(

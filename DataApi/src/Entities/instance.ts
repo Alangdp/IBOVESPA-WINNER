@@ -60,7 +60,7 @@ async function instanceStock(ticker: string): Promise<Stock> {
     name: basicInfo.name,
     activeValue: basicInfo.VPA * basicInfo.shareQuantity,
     actualPrice: basicInfo.price,
-    history: priceHistory.priceVariation,
+    priceHistory: priceHistory.priceVariation,
     dividendYield: basicInfo.dividendPorcent,
     grossDebt: basicInfo.grossDebt,
     patrimony: basicInfo.liquidPatrimony,
@@ -80,4 +80,4 @@ async function instanceStock(ticker: string): Promise<Stock> {
   return stock;
 }
 
-instanceStock('BBAS3');
+export default instanceStock;

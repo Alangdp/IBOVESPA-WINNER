@@ -71,8 +71,6 @@ export class GranhamMethod {
     if (this.grossDebt === 0) this.grossDebt = 1;
 
     this.gb_p = this.grossDebt / this.patrimony;
-
-    console.table(this.makePoints());
   }
 
   makePoints(): Pontuation {
@@ -131,7 +129,6 @@ export class GranhamMethod {
     let crescent = true;
     for (let i = 0; i < netLiquidOn10Years.length; i++) {
       if (netLiquidOn10Years[i + 1] === undefined) break;
-      console.log(Number(netLiquidOn10Years[i].value) / 10000000000);
       if (!(netLiquidOn10Years[i].value < netLiquidOn10Years[i + 1].value))
         crescent = false;
     }
@@ -168,8 +165,6 @@ export class GranhamMethod {
       const actualYear = (new Date().getFullYear() - 1).toString();
       const lastYear = (Number(actualYear) - numberYears).toString();
 
-      console.log(actualYear, lastYear);
-
       const actualNetLiquid = netLiquid.find(
         (netLiquid) => netLiquid.year === actualYear
       );
@@ -180,7 +175,6 @@ export class GranhamMethod {
       if (!actualNetLiquid || !lastNetLiquid)
         throw new Error('Invalid NetLiquid');
 
-      console.log(actualNetLiquid, lastNetLiquid);
       const growth =
         (actualNetLiquid.value - lastNetLiquid.value) / lastNetLiquid.value;
 

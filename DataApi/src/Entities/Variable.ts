@@ -1,5 +1,5 @@
 import TickerFetcher from '../utils/getFuncions.js';
-import { History } from '../types/stock.types.js';
+import { PriceHistory } from '../types/stock.types.js';
 import { MacroInfo } from '../global/MacroInfo.js';
 
 export abstract class Variable {
@@ -16,11 +16,11 @@ export abstract class Variable {
     private _activeValue: number,
     private _shareQuantity: number,
     private _actualPrice: number,
-    private _history: History[]
+    private _priceHistory: PriceHistory[]
   ) {
     this._ticker = _ticker;
     this._name = _name;
-    this._history = _history;
+    this._priceHistory = _priceHistory;
     this._actualPrice = _actualPrice;
     this._marketValue = _actualPrice * _activeValue;
   }
@@ -55,6 +55,10 @@ export abstract class Variable {
 
   get marketValue() {
     return this._marketValue;
+  }
+
+  get priceHistory() {
+    return this._priceHistory;
   }
 
   set ticker(ticker: string) {
