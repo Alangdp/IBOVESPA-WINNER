@@ -1,0 +1,182 @@
+[
+  {
+    "_ticker": "BBAS3",
+    "_quantity": 100,
+    "_price": 39,
+    "_total_value": 3900,
+    "_transaction_date": "17/02/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "PETR4",
+    "_quantity": 100,
+    "_price": 43,
+    "_total_value": 4300,
+    "_transaction_date": "22/03/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 36,
+    "_total_value": 3600,
+    "_transaction_date": "19/04/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "PETR4",
+    "_quantity": 100,
+    "_price": 51,
+    "_total_value": 5100,
+    "_transaction_date": "22/05/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "BBAS3",
+    "_quantity": 100,
+    "_price": 46,
+    "_total_value": 4600,
+    "_transaction_date": "22/06/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "PETR4",
+    "_quantity": 100,
+    "_price": 56,
+    "_total_value": 5600,
+    "_transaction_date": "22/07/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "PETR4",
+    "_quantity": 100,
+    "_price": 43,
+    "_total_value": 4300,
+    "_transaction_date": "14/08/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "ITSA4",
+    "_quantity": 100,
+    "_price": 42,
+    "_total_value": 4200,
+    "_transaction_date": "08/09/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 52,
+    "_total_value": 5200,
+    "_transaction_date": "19/10/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 46,
+    "_total_value": 4600,
+    "_transaction_date": "18/11/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "PETR4",
+    "_quantity": 100,
+    "_price": 41,
+    "_total_value": 4100,
+    "_transaction_date": "26/12/2023",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "BBAS3",
+    "_quantity": 100,
+    "_price": 41,
+    "_total_value": 4100,
+    "_transaction_date": "27/01/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 42,
+    "_total_value": 4200,
+    "_transaction_date": "21/02/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "BBAS3",
+    "_quantity": 100,
+    "_price": 33,
+    "_total_value": 3300,
+    "_transaction_date": "12/03/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 35,
+    "_total_value": 3500,
+    "_transaction_date": "08/04/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "PETR4",
+    "_quantity": 100,
+    "_price": 37,
+    "_total_value": 3700,
+    "_transaction_date": "11/05/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 42,
+    "_total_value": 4200,
+    "_transaction_date": "27/06/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 42,
+    "_total_value": 4200,
+    "_transaction_date": "17/07/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "BBAS3",
+    "_quantity": 100,
+    "_price": 53,
+    "_total_value": 5300,
+    "_transaction_date": "16/08/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  },
+  {
+    "_ticker": "TAEE11",
+    "_quantity": 100,
+    "_price": 32,
+    "_total_value": 3200,
+    "_transaction_date": "18/09/2024",
+    "_user_id": 1,
+    "_type": "BUY"
+  }
+]

@@ -121,8 +121,7 @@ class Utilities {
   }
 
   static formatStringToDate(stringDate: string) {
-    const [day, month, year] = stringDate.split('/');
-    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    console.log(stringDate.split('/'));
   }
 
   static formatSimplifiedYear(stringDate: string) {
@@ -160,6 +159,26 @@ class Utilities {
 
     return closestDateKey;
   }
+
+  // static binarySearch(arr: any[], target: Date): number {
+  //   let left = 0;
+  //   let right = arr.length - 1;
+
+  //   while (left <= right) {
+  //     const mid = Math.floor((left + right) / 2);
+  //     const midDate = Utilities.formatStringToDate(arr[mid].dataCom);
+
+  //     if (midDate.getTime() === target.getTime()) {
+  //       return mid;
+  //     } else if (midDate.getTime() < target.getTime()) {
+  //       right = mid - 1;
+  //     } else {
+  //       left = mid + 1;
+  //     }
+  //   }
+
+  //   return -1;
+  // }
 
   public static breakArray(array: any[], parts: number) {
     const lastDividends = array.slice(0, parts);

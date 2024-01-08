@@ -1,131 +1,152 @@
-import {
-  LastDividendPayment,
-  Dividends,
-  Dividend,
-} from '../types/dividends.type';
+import { LastDividendPayment, Dividend } from '../types/dividends.type';
 import { PriceHistory } from '../types/stock.types';
+import { transactions, Transaction } from './Transaction.js';
 import { Stock } from './Stock.js';
 import instanceStock from './instance.js';
+import {
+  HistoryUtils,
+  IndexDividend,
+  IndexHistoryPrice,
+} from '../utils/HistoryUtils.js';
 
-import { transactions, Transaction } from './Transaction.js';
 import Utilities from '../utils/Utilities.js';
-import { MainPrices } from '../types/prices.type.js';
+import {
+  DividendOnDate,
+  HistoryData,
+  HistoryRequirements,
+  StockInfo,
+  StockPrice,
+} from '../utils/History.type';
 
 type DividendPayment = LastDividendPayment;
 
-interface HistoryRequirements {
-  priceHistory: PriceHistory[];
-  dividends: DividendPayment[];
-  transactions: Transaction[];
-}
-
-interface HistoryInfo {
-  [date: string]: {
-    date: string;
-    transactions: Transaction[];
-    dividends: Dividends;
-  };
-}
-
 class History {
-  private _historyInfo: HistoryInfo;
-  private _priceHistory: PriceHistory[];
-  private _dividends: DividendPayment[];
-  private _transactions: Transaction[];
+  stockInfo: StockInfo;
+  transactions: Transaction[];
+  historyData: HistoryData;
 
-  constructor(requirements: HistoryRequirements) {
-    const { priceHistory, dividends, transactions } = requirements;
+  _indexHistoryPrice: IndexHistoryPrice;
+  _indexDividend: IndexDividend;
 
-    this._priceHistory = priceHistory;
-    this._dividends = dividends;
-    this._transactions = transactions;
-    this._historyInfo = {};
+  constructor(
+    private requirements: HistoryRequirements,
+    private uniqueTickers: string[]
+  ) {
+    this.stockInfo = requirements.stockInfo;
+    this.transactions = requirements.transactions;
+    this.historyData = {};
 
-    this.makeBasicHistory();
-  }
-
-  public get priceHistory() {
-    return this._priceHistory;
-  }
-
-  public get historyInfo() {
-    return this._historyInfo;
-  }
-
-  public get dividends() {
-    return this._dividends;
-  }
-
-  public get transactions() {
-    return this._transactions;
-  }
-
-  formateDate(stringDate: string): string {
-    const [day, month, year] = stringDate.split('/');
-    return `${day}/${month}/${Number(year.split(' ')[0]) + 2000}`;
-  }
-
-  transactionsOnDate(date: string): Transaction[] {
-    const transactionsOnDate: Transaction[] = [];
-
-    for (const transaction of this.transactions) {
-      const { transaction_date: transactionDate } = transaction;
-
-      if (transactionDate === date) transactionsOnDate.push(transaction);
+    let indexHistoryPrice: IndexHistoryPrice = {};
+    for (const ticker of this.uniqueTickers) {
+      indexHistoryPrice = HistoryUtils.indexHistoryPrice(
+        this.stockInfo[ticker].historyPrice,
+        ticker,
+        indexHistoryPrice
+      );
     }
 
-    return transactionsOnDate;
+    let indexDividend: IndexDividend = {};
+    for (const ticker of this.uniqueTickers) {
+      console.log(this.stockInfo[ticker].dividend);
+      indexDividend = HistoryUtils.indexDividend(
+        this.stockInfo[ticker].dividend,
+        indexDividend
+      );
+    }
+
+    this._indexHistoryPrice = indexHistoryPrice;
+    this._indexDividend = indexDividend;
+
+    this.constructHistory();
   }
 
-  dividendsOnDate(date: string) {
-    const dividendsOnDate: Dividends = {};
+  constructHistory() {
+    const dates = Object.keys(this._indexHistoryPrice);
 
-    for (const dividend of this.dividends) {
-      const { dataCom, dataEx, dividendType, value, ticker } = dividend;
+    for (const date of dates) {
+      let dividendsPaymentOnDate: DividendOnDate = {};
+      const stockPrice = this._indexHistoryPrice[date];
+      if (this._indexDividend[date]) {
+        const dividends = this._indexDividend[date];
 
-      console.log(date, dataCom, date === dataCom, 'DATAS DO DIVIDENDO');
-      if (dataEx === date || dataCom === date) {
-        if (!dividendsOnDate[ticker]) dividendsOnDate[ticker] = [];
-        const dividend: Dividend = {
-          date: date,
-          ticker: ticker,
-          value: value,
-          type: dividendType,
+        Object.keys(dividends).map((ticker) => {
+          const dividend: Dividend = {
+            date: '',
+            ticker: '',
+            value: 0,
+            type: '',
+          };
+
+          dividend.date = date;
+          dividend.ticker = ticker;
+          dividend.value = dividends[ticker as keyof typeof dividends].value;
+          dividend.type = dividends[ticker as keyof typeof dividends].type;
+
+          dividendsPaymentOnDate[ticker] = dividend;
+        });
+      }
+
+      const transactions = this.transactions.filter(
+        (transaction) => transaction.transaction_date === date
+      );
+
+      const stocksPrice = Object.keys(stockPrice).map((ticker) => {
+        const stock: StockPrice = {};
+        stock[ticker] = {
+          price: stockPrice[ticker].price,
         };
 
-        dividendsOnDate[ticker].push(dividend);
-      }
-    }
+        return stock;
+      });
 
-    return dividendsOnDate;
-  }
-
-  makeBasicHistory() {
-    const { priceHistory } = this;
-
-    for (const priceInfo of priceHistory) {
-      const { price, date } = priceInfo;
-
-      const formatedDate = this.formateDate(date);
-      this._historyInfo[formatedDate] = {
-        date: formatedDate,
-        transactions: this.transactionsOnDate(formatedDate),
-        dividends: this.dividendsOnDate(formatedDate),
+      this.historyData[date] = {
+        date: date,
+        prices: stocksPrice,
+        dividends: dividendsPaymentOnDate,
+        transactions: transactions,
       };
     }
+
+    console.log(this.historyData, 'HISTORY DATA');
+  }
+
+  static async instanceHistory(transactions: Transaction[]) {
+    const uniqueTickers = Array.from(
+      new Set(transactions.map((transaction) => transaction.ticker))
+    );
+
+    const stockInfo: StockInfo = {};
+    for (const ticker of uniqueTickers) {
+      const dividends: Dividend[] = [];
+      const stock = await instanceStock(ticker);
+      for (const dividend of stock.lastDividendsValue) {
+        dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
+      }
+
+      console.log(dividends, 'TICKKKKKER: ' + ticker);
+
+      stockInfo[ticker] = {
+        stock: stock,
+        dividend: dividends,
+        historyPrice: stock.priceHistory,
+      };
+    }
+
+    const requirements: HistoryRequirements = {
+      stockInfo: stockInfo,
+      transactions: transactions,
+    };
+
+    return new History(requirements, uniqueTickers);
+  }
+
+  get indexHistoryPrice() {
+    return this._indexHistoryPrice;
+  }
+
+  get indexDividend() {
+    return this._indexDividend;
   }
 }
-async function instanceHistory(ticker: string): Promise<History> {
-  const stock = await instanceStock(ticker);
-  const history = new History({
-    priceHistory: stock.priceHistory,
-    dividends: stock.lastDividendsValue,
-    transactions,
-  });
 
-  console.log(history.historyInfo);
-
-  return history;
-}
-
-instanceHistory('TAEE11');
+History.instanceHistory(transactions);

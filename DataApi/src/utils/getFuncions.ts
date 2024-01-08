@@ -274,7 +274,7 @@ export default class TickerFetcher {
     try {
       const options = this.makeOptionsJson(
         'GET',
-        'companytickerprovents?ticker=BBAS3&chartProventsType=2',
+        `companytickerprovents?ticker=${ticker}&chartProventsType=2`,
         null
       );
 
@@ -641,5 +641,3 @@ async function teste() {
   await tickerFetcher.initialize();
   await tickerFetcher.getPrice();
 }
-
-teste();

@@ -43,6 +43,8 @@ export class MacroInfo {
   }
 
   static async initialize() {
+    if (MacroInfo.CDI && MacroInfo.IPCA) return;
+
     console.log('Version: ' + this.version + '\n');
     this.getCDI().then((result) => {
       this.CDI = result;

@@ -3,6 +3,7 @@ import {
   TransactionRequirements,
 } from '../types/transaction.type';
 import Utilities from '../utils/Utilities.js';
+import { HistoryUtils } from '../utils/HistoryUtils.js';
 
 class Transaction {
   public static codes: TransactionCodes = {
@@ -33,7 +34,7 @@ class Transaction {
     this._quantity = requirements.quantity;
     this._price = requirements.price;
     this._total_value = requirements.total_value;
-    this._transaction_date = Utilities.formatDateToBR(
+    this._transaction_date = HistoryUtils.dateToString(
       requirements.transaction_date
     );
     this._user_id = requirements.user_id;
@@ -91,7 +92,13 @@ const transactions: Transaction[] = [];
 const startMonth = 1;
 const startYear = 2023;
 
-for (let i = 0; i < 10; i++) {
+function random(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+const tickers = ['BBAS3', 'TAEE11', 'ITSA4', 'PETR4', 'ABEV3'];
+
+for (let i = 0; i < 20; i++) {
   const price = Math.floor(Math.random() * (56 - 32 + 1)) + 32;
   const transactionDate = new Date(
     startYear,
@@ -99,7 +106,7 @@ for (let i = 0; i < 10; i++) {
     Math.round(Math.random() * (30 - 5)) + 5
   );
   const transactionRequirements: TransactionRequirements = makeRequirements(
-    'BBAS3',
+    tickers[random(0, tickers.length - 1)],
     100,
     price,
     0,
