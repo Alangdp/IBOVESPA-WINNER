@@ -16,10 +16,8 @@ import {
   HistoryRequirements,
   StockInfo,
   StockPrice,
+  Chart,
 } from '../utils/History.type';
-
-type DividendPayment = LastDividendPayment;
-
 class History {
   stockInfo: StockInfo;
   transactions: Transaction[];
@@ -60,54 +58,114 @@ class History {
     this.constructHistory();
   }
 
+  getDividendsOnDate(date: string): DividendOnDate {
+    let dividendsPaymentOnDate: DividendOnDate = {};
+    if (this._indexDividend[date]) {
+      const dividends = this._indexDividend[date];
+
+      Object.keys(dividends).map((ticker) => {
+        const dividend: Dividend = {
+          date: '',
+          ticker: '',
+          value: 0,
+          type: '',
+        };
+
+        dividend.date = date;
+        dividend.ticker = ticker;
+        dividend.value = dividends[ticker].value;
+        dividend.type = dividends[ticker].type;
+
+        dividendsPaymentOnDate[ticker] = dividend;
+      });
+    }
+    return dividendsPaymentOnDate;
+  }
+
+  getTransactionsOnDate(date: string): Transaction[] {
+    return this.transactions.filter((transaction) => {
+      if (transaction.transaction_date === date)
+        return transaction.transaction_date;
+    });
+  }
+
+  getStocksPriceOnDate(date: string): StockPrice[] {
+    const stockPrice = this._indexHistoryPrice[date];
+    return Object.keys(stockPrice).map((ticker) => {
+      const stock: StockPrice = {};
+      stock[ticker] = {
+        price: stockPrice[ticker].price,
+        ticker: ticker,
+      };
+
+      return stock;
+    });
+  }
+
   constructHistory() {
     const dates = Object.keys(this._indexHistoryPrice);
 
+    const chart: Chart = {
+      globalRentabily: 0,
+      globalStockQuantity: 0,
+      globalStockValue: 0,
+      globalDividendValue: 0,
+      globalTotalValue: 0,
+      individualRentability: {},
+    };
+
     for (const date of dates) {
-      let dividendsPaymentOnDate: DividendOnDate = {};
-      const stockPrice = this._indexHistoryPrice[date];
-      if (this._indexDividend[date]) {
-        const dividends = this._indexDividend[date];
+      const dividendsPaymentOnDate = this.getDividendsOnDate(date);
+      const transactions = this.getTransactionsOnDate(date);
+      const stocksPrice = this.getStocksPriceOnDate(date);
 
-        Object.keys(dividends).map((ticker) => {
-          const dividend: Dividend = {
-            date: '',
-            ticker: '',
-            value: 0,
-            type: '',
-          };
+      console.log(transactions, 'TRANSACOES ANTES DO IF');
+      if (transactions.length !== 0) {
+        for (const transaction of transactions) {
+          const { ticker, quantity } = transaction;
+          const stock = this.stockInfo[ticker].stock;
+          const stockPrice = stocksPrice.find((stock) => stock[ticker])!;
+          const price = stockPrice[ticker].price;
+          console.log(stockPrice[ticker].price, 'PRICEeeeeeeeeeeeeeee');
 
-          dividend.date = date;
-          dividend.ticker = ticker;
-          dividend.value = dividends[ticker as keyof typeof dividends].value;
-          dividend.type = dividends[ticker as keyof typeof dividends].type;
+          if (transaction.type === 'BUY') {
+            if (!chart.individualRentability[ticker]) {
+              const medianPrice = price * quantity;
+              chart.individualRentability[ticker] = {
+                medianPrice: medianPrice,
+                rentability: ((price - medianPrice) / medianPrice) * 100,
+                quantity: quantity,
+                value: quantity * price,
+              };
+            }
 
-          dividendsPaymentOnDate[ticker] = dividend;
-        });
+            if (chart.individualRentability[ticker]) {
+              const medianPrice =
+                (price * quantity) /
+                  chart.individualRentability[ticker].quantity +
+                quantity;
+              chart.individualRentability[ticker] = {
+                medianPrice: medianPrice,
+                rentability: ((price - medianPrice) / medianPrice) * 100,
+                quantity:
+                  chart.individualRentability[ticker].quantity + quantity,
+                value: quantity * price,
+              };
+            }
+          }
+        }
       }
-
-      const transactions = this.transactions.filter(
-        (transaction) => transaction.transaction_date === date
-      );
-
-      const stocksPrice = Object.keys(stockPrice).map((ticker) => {
-        const stock: StockPrice = {};
-        stock[ticker] = {
-          price: stockPrice[ticker].price,
-        };
-
-        return stock;
-      });
 
       this.historyData[date] = {
         date: date,
         prices: stocksPrice,
         dividends: dividendsPaymentOnDate,
-        transactions: transactions,
+        transactions: [...transactions],
+        chart: chart,
       };
     }
 
-    console.log(this.historyData, 'HISTORY DATA');
+    Utilities.saveJSONToFile(this.historyData, 'history.json');
   }
 
   static async instanceHistory(transactions: Transaction[]) {
@@ -122,8 +180,6 @@ class History {
       for (const dividend of stock.lastDividendsValue) {
         dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
       }
-
-      console.log(dividends, 'TICKKKKKER: ' + ticker);
 
       stockInfo[ticker] = {
         stock: stock,

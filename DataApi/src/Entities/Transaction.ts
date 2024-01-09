@@ -23,7 +23,7 @@ class Transaction {
   private _user_id: number;
   private _type: string;
 
-  // CRIAR AINDA
+  // TODO: Implementar broker
   // _broker_code: string
 
   constructor(requirements: TransactionRequirements) {

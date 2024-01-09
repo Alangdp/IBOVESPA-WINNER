@@ -9,12 +9,31 @@ export interface HistoryData {
     prices: StockPrice[];
     dividends: DividendOnDate;
     transactions: Transaction[];
-    chart?: any;
+    chart?: Chart;
+  };
+}
+
+export interface Chart {
+  globalRentabily: number;
+  globalStockQuantity: number;
+  globalStockValue: number;
+  globalDividendValue: number;
+  globalTotalValue: number;
+  individualRentability: stockRentability;
+}
+
+export interface stockRentability {
+  [ticker: string]: {
+    medianPrice: number;
+    rentability: number;
+    quantity: number;
+    value: number;
   };
 }
 
 export interface StockPrice {
   [ticker: string]: {
+    ticker: string;
     price: number;
   };
 }
