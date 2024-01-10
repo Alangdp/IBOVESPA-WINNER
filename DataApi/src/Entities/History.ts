@@ -17,11 +17,21 @@ import {
   StockInfo,
   StockPrice,
   Chart,
+  chartUpdateInfo,
 } from '../utils/History.type';
 class History {
   stockInfo: StockInfo;
   transactions: Transaction[];
   historyData: HistoryData;
+  chart: Chart = {
+    passaram: [],
+    globalRentabily: 0,
+    globalStockQuantity: 0,
+    globalStockValue: 0,
+    globalDividendValue: 0,
+    globalTotalValue: 0,
+    individualRentability: {},
+  };
 
   _indexHistoryPrice: IndexHistoryPrice;
   _indexDividend: IndexDividend;
@@ -57,6 +67,11 @@ class History {
 
     this.constructHistory();
   }
+  /**
+   *
+   * @param date format: DD-MM-YYYY
+   * @returns DividendOnDate
+   */
 
   getDividendsOnDate(date: string): DividendOnDate {
     let dividendsPaymentOnDate: DividendOnDate = {};
@@ -82,6 +97,10 @@ class History {
     return dividendsPaymentOnDate;
   }
 
+  /**
+   * @param date format: DD-MM-YYYY
+   * @returns Transaction[]
+   */
   getTransactionsOnDate(date: string): Transaction[] {
     return this.transactions.filter((transaction) => {
       if (transaction.transaction_date === date)
@@ -89,70 +108,122 @@ class History {
     });
   }
 
-  getStocksPriceOnDate(date: string): StockPrice[] {
+  /**
+   *
+   * @param date format: DD-MM-YYYY
+   * @returns StockPrice[]
+   */
+  getStocksPriceOnDate(date: string): StockPrice {
     const stockPrice = this._indexHistoryPrice[date];
-    return Object.keys(stockPrice).map((ticker) => {
-      const stock: StockPrice = {};
-      stock[ticker] = {
+
+    const result: StockPrice = {};
+
+    Object.keys(stockPrice).forEach((ticker) => {
+      result[ticker] = {
         price: stockPrice[ticker].price,
         ticker: ticker,
       };
-
-      return stock;
     });
+
+    return result;
+  }
+
+  createTickerOnChart(ticker: string) {
+    this.chart.individualRentability[ticker] = {
+      medianPrice: 0,
+      rentability: 0,
+      quantity: 0,
+      valueTotal: 0,
+      valueInvested: 0,
+    };
+  }
+
+  updateChart(requirements: chartUpdateInfo) {
+    const { transaction, date, stocksPrice, dividendsPaymentOnDate } =
+      requirements;
+
+    const ticker = transaction.ticker;
+    if (transaction.type === 'BUY') {
+      const stock = this.stockInfo[transaction.ticker].stock;
+
+      // INFO STOCK
+
+      const priceOnDate = stocksPrice[ticker].price;
+
+      // INFO TRANSACTION
+
+      const quantity = transaction.quantity;
+      const price = transaction.price;
+
+      // INFO CHART
+
+      const selectedTicker = this.chart.individualRentability[ticker];
+
+      const medianPrice = selectedTicker.medianPrice;
+      const rentability = selectedTicker.rentability;
+      const quantityOnChart = selectedTicker.quantity;
+      const valueTotal = selectedTicker.valueTotal;
+      const valueInvested = selectedTicker.valueInvested;
+
+      // CALCULATIONS
+
+      const newQuantity = quantityOnChart + quantity;
+      const newValueTotal = newQuantity * priceOnDate;
+      const newValueInvested = valueInvested + quantity * price;
+      const newMedianPrice = newValueInvested / newQuantity;
+      const newRentability =
+        ((priceOnDate - newMedianPrice) / newMedianPrice) * 100;
+
+      // UPDATE CHART
+
+      this.chart.individualRentability[ticker] = {
+        medianPrice: newMedianPrice,
+        rentability: newRentability,
+        quantity: newQuantity,
+        valueTotal: newValueTotal,
+        valueInvested: newValueInvested,
+      };
+    }
+  }
+
+  createOrUpdateChart(requirements: chartUpdateInfo) {
+    const { transaction, date, stocksPrice, dividendsPaymentOnDate } =
+      requirements;
+
+    const ticker = transaction.ticker;
+    if (!this.chart.individualRentability[ticker])
+      this.createTickerOnChart(ticker);
+
+    if (transaction.type === 'BUY') {
+      this.updateChart(requirements);
+    }
   }
 
   constructHistory() {
     const dates = Object.keys(this._indexHistoryPrice);
 
-    const chart: Chart = {
-      globalRentabily: 0,
-      globalStockQuantity: 0,
-      globalStockValue: 0,
-      globalDividendValue: 0,
-      globalTotalValue: 0,
-      individualRentability: {},
-    };
+    let atualizoesNaCarteira = 0;
 
     for (const date of dates) {
       const dividendsPaymentOnDate = this.getDividendsOnDate(date);
-      const transactions = this.getTransactionsOnDate(date);
+      const transactionsOnDate = this.getTransactionsOnDate(date);
       const stocksPrice = this.getStocksPriceOnDate(date);
 
-      console.log(transactions, 'TRANSACOES ANTES DO IF');
-      if (transactions.length !== 0) {
-        for (const transaction of transactions) {
-          const { ticker, quantity } = transaction;
-          const stock = this.stockInfo[ticker].stock;
-          const stockPrice = stocksPrice.find((stock) => stock[ticker])!;
-          const price = stockPrice[ticker].price;
-          console.log(stockPrice[ticker].price, 'PRICEeeeeeeeeeeeeeee');
+      if (transactionsOnDate.length !== 0) {
+        for (const transactionDate of transactionsOnDate) {
+          this.chart.passaram.push(transactionDate.ticker);
+          this.createOrUpdateChart({
+            transaction: transactionDate,
+            date: date,
+            stocksPrice: stocksPrice,
+            dividendsPaymentOnDate: dividendsPaymentOnDate,
+          });
 
-          if (transaction.type === 'BUY') {
-            if (!chart.individualRentability[ticker]) {
-              const medianPrice = price * quantity;
-              chart.individualRentability[ticker] = {
-                medianPrice: medianPrice,
-                rentability: ((price - medianPrice) / medianPrice) * 100,
-                quantity: quantity,
-                value: quantity * price,
-              };
-            }
+          atualizoesNaCarteira++;
 
-            if (chart.individualRentability[ticker]) {
-              const medianPrice =
-                (price * quantity) /
-                  chart.individualRentability[ticker].quantity +
-                quantity;
-              chart.individualRentability[ticker] = {
-                medianPrice: medianPrice,
-                rentability: ((price - medianPrice) / medianPrice) * 100,
-                quantity:
-                  chart.individualRentability[ticker].quantity + quantity,
-                value: quantity * price,
-              };
-            }
-          }
+          console.log(this.uniqueTickers, 'UNIQUE TICKERS');
+          console.log(this.chart, 'CHART');
+          console.log(atualizoesNaCarteira, 'ATUALIZACOES');
         }
       }
 
@@ -160,8 +231,8 @@ class History {
         date: date,
         prices: stocksPrice,
         dividends: dividendsPaymentOnDate,
-        transactions: [...transactions],
-        chart: chart,
+        transactions: [...transactionsOnDate],
+        chart: this.chart,
       };
     }
 

@@ -6,7 +6,7 @@ import { PriceHistory } from '../types/stock.types.js';
 export interface HistoryData {
   [date: string]: {
     date: string;
-    prices: StockPrice[];
+    prices: StockPrice;
     dividends: DividendOnDate;
     transactions: Transaction[];
     chart?: Chart;
@@ -14,6 +14,7 @@ export interface HistoryData {
 }
 
 export interface Chart {
+  passaram: string[];
   globalRentabily: number;
   globalStockQuantity: number;
   globalStockValue: number;
@@ -27,7 +28,8 @@ export interface stockRentability {
     medianPrice: number;
     rentability: number;
     quantity: number;
-    value: number;
+    valueTotal: number;
+    valueInvested: number;
   };
 }
 
@@ -36,6 +38,13 @@ export interface StockPrice {
     ticker: string;
     price: number;
   };
+}
+
+export interface chartUpdateInfo {
+  transaction: Transaction;
+  date: string;
+  stocksPrice: StockPrice;
+  dividendsPaymentOnDate: DividendOnDate;
 }
 
 export interface DividendOnDate {
