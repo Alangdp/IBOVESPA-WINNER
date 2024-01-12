@@ -14,7 +14,6 @@ export interface HistoryData {
 }
 
 export interface Chart {
-  passaram: string[];
   globalRentabily: number;
   globalStockQuantity: number;
   globalStockValue: number;
@@ -41,10 +40,10 @@ export interface StockPrice {
 }
 
 export interface chartUpdateInfo {
-  transaction: Transaction;
   date: string;
   stocksPrice: StockPrice;
   dividendsPaymentOnDate: DividendOnDate;
+  previousDate: string | null;
 }
 
 export interface DividendOnDate {
