@@ -19,6 +19,17 @@ import {
   Chart,
   chartUpdateInfo,
 } from '../utils/History.type';
+
+// TODO: 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO
+// TODO: 2 - ATUALIZAR DADOS SECUNDARIOS DO CHART
+// globalRentabily: number;
+// globalStockQuantity: number;
+// globalStockValue: number;
+// globalDividendValue: number;
+// globalTotalValue: number;
+//
+// TODO: SISTEMA DE THREADS(OTIMIZAÇÃO) - https://stackoverflow.com/questions/25167590/one-thread-for-many-tasks-vs-many-threads-for-each-task-do-sleeping-threads-aft
+//
 class History {
   stockInfo: StockInfo;
   transactions: Transaction[];
@@ -46,7 +57,6 @@ class History {
 
     let indexDividend: IndexDividend = {};
     for (const ticker of this.uniqueTickers) {
-      console.log(this.stockInfo[ticker].dividend);
       indexDividend = HistoryUtils.indexDividend(
         this.stockInfo[ticker].dividend,
         indexDividend
@@ -58,11 +68,6 @@ class History {
 
     this.constructHistory();
   }
-  /**
-   *
-   * @param date format: DD-MM-YYYY
-   * @returns DividendOnDate
-   */
 
   getDividendsOnDate(date: string): DividendOnDate {
     let dividendsPaymentOnDate: DividendOnDate = {};
@@ -113,6 +118,8 @@ class History {
       quantity: 0,
       valueTotal: 0,
       valueInvested: 0,
+      dividendPayments: [],
+      dividendValue: 0,
     });
     return tempChart;
   }
@@ -134,10 +141,6 @@ class History {
     let previousDate = null;
 
     for (const date of dates) {
-      const previousChart = previousDate
-        ? this.historyData[previousDate].chart
-        : null;
-
       const dividendsPaymentOnDate = this.getDividendsOnDate(date);
       const transactionsOnDate = this.getTransactionsOnDate(date);
       const stocksPrice = this.getStocksPriceOnDate(date);
@@ -157,7 +160,7 @@ class History {
         previousDate: previousDate,
       };
 
-      this.historyData[date].chart = this.updateChart(requirements);
+      this.historyData[date].chart = this.updateOrCreateChart(requirements);
 
       previousDate = date;
     }
@@ -193,134 +196,119 @@ class History {
     return new History(requirements, uniqueTickers);
   }
 
-  firstIteration(
-    requirements: chartUpdateInfo,
-    chart: Chart,
-    previousChart: Chart | undefined
-  ): Chart {
+  updateChart(requirements: chartUpdateInfo, chart: Chart): Chart {
     const { date } = requirements;
     const transactions = this.historyData[date].transactions;
-    const dividends = this.historyData[date].dividends;
+    // TODO: - IMPLEMENTAR DIVIDENDOS
+    // const dividends = this.historyData[date].dividends;
     const prices = this.historyData[date].prices;
+
+    // OQUE PRECISA ATUALIZAR SEMPRE
+
+    // "medianPrice": 48.5,
+    // "rentability": -0.22515463917525777,
+    // "quantity": 200,
+    // "valueTotal": 7516,
+    // "valueInvested": 9700
+
+    // 1 - rentability
+    // 2 - valueTotal
 
     if (transactions.length > 0) {
       for (const transaction of transactions) {
         const ticker = transaction.ticker;
         const quantity = transaction.quantity;
-        const price = prices[ticker].price;
-        const value = quantity * price;
+        const price = transaction.price;
+        const valueInvested = quantity * price;
         const priceOnDate = prices[ticker].price;
         let individualChart = chart.individualRentability[ticker];
 
-        if (individualChart === undefined) {
+        if (!individualChart)
           individualChart = chart.individualRentability[ticker] =
             this.createTickerOnChart(chart, ticker);
-        }
 
-        // PREVIOUSCHART DOESN'T EXIST
-        if (transaction.type === 'BUY' && !previousChart) {
+        if (transaction.type === 'BUY') {
           individualChart.quantity += quantity;
-          individualChart.valueInvested += quantity * price;
-          individualChart.valueTotal += quantity * priceOnDate;
+          individualChart.valueInvested += valueInvested;
+
           individualChart.medianPrice =
             individualChart.valueInvested / individualChart.quantity;
 
-          individualChart.rentability =
-            (individualChart.quantity * priceOnDate) /
-            (individualChart.quantity * individualChart.medianPrice);
+          // FIXME: UPDATE FORMULAS
+
+          // individualChart.valueTotal = individualChart.quantity * priceOnDate;
+
+          // individualChart.rentability =
+          //   (priceOnDate - individualChart.medianPrice) /
+          //   individualChart.medianPrice;
 
           chart.individualRentability[ticker] = individualChart;
         }
 
-        // PREVIOUSCHART EXIST
-        else if (transaction.type === 'BUY' && previousChart) {
+        if (transaction.type === 'SELL') {
           const { quantity: oldQuantity } = individualChart;
-          individualChart.quantity += oldQuantity + quantity;
-          individualChart.valueInvested += individualChart.quantity * price;
-          individualChart.valueTotal += oldQuantity * priceOnDate;
-          individualChart.medianPrice =
-            individualChart.valueInvested / individualChart.quantity;
+          const newQuantity = oldQuantity - quantity;
+          if (newQuantity <= 0) {
+            delete chart.individualRentability[ticker];
+            continue;
+          }
 
-          individualChart.rentability =
-            (individualChart.quantity * priceOnDate) /
-            (individualChart.quantity * individualChart.medianPrice);
+          individualChart.valueInvested -= valueInvested;
+          individualChart.quantity = newQuantity;
 
           chart.individualRentability[ticker] = individualChart;
         }
       }
+    }
+
+    for (const ticker of Object.keys(chart.individualRentability)) {
+      if (!chart.individualRentability[ticker]) continue;
+      const priceOnDate = prices[ticker].price;
+      const individualChart = chart.individualRentability[ticker];
+
+      individualChart.valueTotal = individualChart.quantity * priceOnDate;
+
+      // FIXME: REMOVE CONSOLE LOG
+      console.log(
+        ` (${priceOnDate} - ${individualChart.medianPrice}) / ${individualChart.medianPrice}`,
+        ticker
+      );
+
+      individualChart.rentability =
+        (priceOnDate - individualChart.medianPrice) /
+        individualChart.medianPrice;
+
+      chart.individualRentability[ticker] = individualChart;
     }
 
     return chart;
   }
 
-  updateChart(requirements: chartUpdateInfo): Chart {
+  updateOrCreateChart(requirements: chartUpdateInfo): Chart {
     if (!requirements.previousDate)
-      return this.firstIteration(
-        requirements,
-        this.makeEmptyChart(),
-        undefined
-      );
+      return this.updateChart(requirements, this.makeEmptyChart());
 
     const { date, previousDate } = requirements;
-    const previousChart = this.historyData[previousDate].chart ?? null;
-    const transactions = this.historyData[date].transactions;
-    const dividends = this.historyData[date].dividends;
-    const prices = this.historyData[date].prices;
-
-    console.log(previousDate, 'PREVIOUS DATE');
-    console.log(this.historyData[previousDate].chart, 'PREVIOUS CHART');
+    const previousChart = this.historyData[previousDate].chart ?? undefined;
 
     const chart: Chart = {
-      globalRentabily: 0,
-      globalStockQuantity: 0,
-      globalStockValue: 0,
-      globalDividendValue: 0,
-      globalTotalValue: 0,
+      globalRentabily: previousChart?.globalRentabily ?? 0,
+      globalStockQuantity: previousChart?.globalStockQuantity ?? 0,
+      globalStockValue: previousChart?.globalStockValue ?? 0,
+      globalDividendValue: previousChart?.globalDividendValue ?? 0,
+      globalTotalValue: previousChart?.globalTotalValue ?? 0,
       individualRentability: { ...previousChart?.individualRentability },
     };
 
-    if (!previousChart)
-      return this.firstIteration(
-        requirements,
-        this.makeEmptyChart(),
-        undefined
-      );
+    const chartUpdated = this.updateChart(requirements, chart);
 
-    console.log(transactions.length, 'TRANSACTIONS LENGTH');
-    console.log(transactions, 'TRANSACTIONS');
+    const chartUpdatedDividends = HistoryUtils.updateDividendOnChart(
+      chartUpdated,
+      requirements.dividendsPaymentOnDate,
+      date
+    );
 
-    if (transactions.length > 0) {
-      for (const transaction of transactions) {
-        if (transaction.type === 'BUY') {
-          const ticker = transaction.ticker;
-          if (!chart.individualRentability[ticker])
-            return this.firstIteration(requirements, chart, previousChart);
-          const quantity = transaction.quantity;
-          const price = prices[ticker].price;
-          const value = quantity * price;
-
-          const priceOnDate = prices[ticker].price;
-
-          const individualChart = chart.individualRentability[ticker];
-
-          let previusIndividualChart =
-            previousChart.individualRentability[ticker];
-
-          const oldQuantity = previusIndividualChart.quantity;
-          const oldPrice = previusIndividualChart.medianPrice;
-          const oldTotalValue = previusIndividualChart.valueTotal;
-          const oldInvestedValue = previusIndividualChart.valueInvested;
-
-          individualChart.quantity += oldQuantity + quantity;
-          individualChart.valueInvested += oldInvestedValue + quantity * price;
-          individualChart.valueTotal += individualChart.quantity * priceOnDate;
-
-          chart.individualRentability[ticker] = individualChart;
-        }
-      }
-    }
-
-    return previousChart;
+    return chartUpdatedDividends;
   }
 
   get indexHistoryPrice() {

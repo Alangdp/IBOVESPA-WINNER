@@ -1,9 +1,8 @@
-import { index, last } from 'cheerio/lib/api/traversing';
 import { Dividend, LastDividendPayment } from '../types/dividends.type';
-import { val } from 'cheerio/lib/api/attributes';
-import { StockInfo } from './History.type';
+import { DividendOnDate, StockInfo } from './History.type';
 import { PriceHistory } from '../types/stock.types';
 import { Transaction } from '../Entities/Transaction.js';
+import { Chart } from './History.type';
 
 export class HistoryUtils {
   static convertLastDividendToDividend(
@@ -129,6 +128,27 @@ export class HistoryUtils {
     }
 
     return reusableObject;
+  }
+
+  static updateDividendOnChart(
+    chart: Chart,
+    dividendsOnDate: DividendOnDate,
+    date: string
+  ) {
+    for (const ticker of Object.keys(dividendsOnDate)) {
+      const individualChart = chart.individualRentability[ticker];
+      if (individualChart === undefined) continue;
+      const dividend = dividendsOnDate[ticker];
+      console.log(chart);
+
+      individualChart.dividendValue +=
+        individualChart.quantity * dividend.value;
+      individualChart.dividendPayments.push(date);
+
+      chart.individualRentability[ticker] = individualChart;
+    }
+
+    return chart;
   }
 }
 

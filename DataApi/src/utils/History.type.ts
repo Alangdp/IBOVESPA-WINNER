@@ -24,6 +24,8 @@ export interface Chart {
 
 export interface stockRentability {
   [ticker: string]: {
+    dividendValue: number;
+    dividendPayments: string[];
     medianPrice: number;
     rentability: number;
     quantity: number;
