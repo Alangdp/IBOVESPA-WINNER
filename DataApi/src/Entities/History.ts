@@ -18,6 +18,7 @@ import {
   StockPrice,
   Chart,
   chartUpdateInfo,
+  StocksPortfolio,
 } from '../utils/History.type';
 
 // TODO: 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO
@@ -279,7 +280,29 @@ class History {
         individualChart.medianPrice;
 
       chart.individualRentability[ticker] = individualChart;
+
+      chart.globalStockQuantity += individualChart.quantity;
+      chart.globalStockValue += individualChart.valueTotal;
+      chart.globalDividendValue += individualChart.dividendValue;
+      chart.globalTotalValue += individualChart.valueTotal;
     }
+
+    const stockPortfolio: StocksPortfolio = {};
+
+    let pesoTotal = 0;
+    let valorTotal = 0;
+
+    for (const ticker of Object.keys(chart.individualRentability)) {
+      const individualChart = chart.individualRentability[ticker];
+
+      const peso = chart.globalTotalValue / individualChart.valueTotal;
+      const valor = peso * individualChart.rentability;
+
+      pesoTotal += peso;
+      valorTotal += valor;
+    }
+
+    chart.globalRentabily = valorTotal * pesoTotal;
 
     return chart;
   }
@@ -292,11 +315,11 @@ class History {
     const previousChart = this.historyData[previousDate].chart ?? undefined;
 
     const chart: Chart = {
-      globalRentabily: previousChart?.globalRentabily ?? 0,
-      globalStockQuantity: previousChart?.globalStockQuantity ?? 0,
-      globalStockValue: previousChart?.globalStockValue ?? 0,
-      globalDividendValue: previousChart?.globalDividendValue ?? 0,
-      globalTotalValue: previousChart?.globalTotalValue ?? 0,
+      globalRentabily: 0,
+      globalStockQuantity: 0,
+      globalStockValue: 0,
+      globalDividendValue: 0,
+      globalTotalValue: 0,
       individualRentability: { ...previousChart?.individualRentability },
     };
 

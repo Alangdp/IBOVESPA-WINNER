@@ -60,6 +60,14 @@ export interface StockInfo {
   };
 }
 
+export interface StocksPortfolio {
+  [ticker: string]: {
+    quantity: number;
+    value: number;
+    porcentage: number;
+  };
+}
+
 export interface HistoryRequirements {
   stockInfo: StockInfo;
   transactions: Transaction[];
