@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Utilities from '../utils/Utilities.js';
 import TickerFetcher from '../utils/getFuncions.js';
+import { Stock } from '../Entities/Stock.js';
 
 export interface RootCDI {
   '@odata.context': string;
@@ -21,10 +22,12 @@ export interface Value {
 }
 
 export class MacroInfo {
+  static firstStart: boolean = true;
   static readonly version: string = '1.0.0';
   static CDI: number;
   static IPCA: number;
   static tickers: string[];
+  static stocks: Stock[] = [];
 
   static async getCDI() {
     const response = await axios.get(
@@ -43,7 +46,8 @@ export class MacroInfo {
   }
 
   static async initialize() {
-    if (MacroInfo.CDI && MacroInfo.IPCA) return;
+    if (!MacroInfo.firstStart) return;
+    MacroInfo.firstStart = false;
 
     console.log('Version: ' + this.version + '\n');
     this.getCDI().then((result) => {

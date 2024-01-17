@@ -50,6 +50,7 @@
     "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
     "plotly.js": "^2.27.1",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "threads": "^1.7.0"
   }
 }

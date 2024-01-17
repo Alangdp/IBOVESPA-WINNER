@@ -21,8 +21,8 @@ import {
   StocksPortfolio,
 } from '../utils/History.type';
 
-// TODO: 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO
-// TODO: 2 - ATUALIZAR DADOS SECUNDARIOS DO CHART
+// TODO: 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO - COMPLETO
+// TODO: 2 - ATUALIZAR DADOS SECUNDARIOS DO CHART - COMPLETO
 // globalRentabily: number;
 // globalStockQuantity: number;
 // globalStockValue: number;
