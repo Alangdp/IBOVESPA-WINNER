@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "cachorro",
+    "idade": 12,
+    "pata": 4
+  },
+  {
+    "nome": "cachorro",
+    "idade": 5,
+    "pata": 4
+  },
+  {
+    "nome": "cachorro",
+    "idade": 8,
+    "pata": 4
+  }
+]

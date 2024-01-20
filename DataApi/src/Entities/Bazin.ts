@@ -20,8 +20,8 @@ export class BazinMethod {
       lastDividendsValueYear,
       activeValue,
     } = this.stock;
-    const lastDividendsValue = Utilities.breakArray(lastDividendsValueYear, 5);
-    const lastDividendsYield = Utilities.breakArray(lastDividendsYieldYear, 5);
+    const lastDividendsValue = lastDividendsValueYear.splice(0, 5);
+    const lastDividendsYield = lastDividendsYieldYear.splice(0, 5);
 
     this.lastDividendsValue = lastDividendsValue;
     this.lastDividendsYield = lastDividendsYield;

@@ -12,9 +12,6 @@ import {
 import instanceStock from './instance.js';
 
 export class Stock extends Variable {
-  private _Bazin: BazinMethod;
-  private _Granham: GranhamMethod;
-
   private _lastDividendsAverage?: number;
   private _dividendYield: number;
   private _grossDebt: number;
@@ -56,17 +53,6 @@ export class Stock extends Variable {
 
     this._netLiquid = stock.netLiquid;
     this._passiveChart = stock.passiveChart;
-
-    this._Bazin = new BazinMethod(this);
-    this._Granham = new GranhamMethod(this);
-  }
-
-  get bazin() {
-    return this._Bazin;
-  }
-
-  get granham() {
-    return this._Granham;
   }
 
   get passiveChart() {
