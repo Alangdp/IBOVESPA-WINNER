@@ -1,10 +1,12 @@
 import { Dividend, LastDividendPayment } from '../types/dividends.type';
-import { DividendOnDate, StockInfo } from './History.type';
 import { PriceHistory } from '../types/stock.types';
-import { Transaction } from '../Entities/Transaction.js';
-import { Chart } from './History.type';
+import { DividendOnDate } from '../types/dividends.type';
 
-export class HistoryUtils {
+import { Chart } from '../types/Chart.type';
+import { IndexDividend } from '../types/Index.type';
+import { IndexHistoryPrice } from '../types/Index.type';
+
+export default class HistoryUtils {
   static convertLastDividendToDividend(
     lastDividendPayment: LastDividendPayment
   ): Dividend {
@@ -18,31 +20,6 @@ export class HistoryUtils {
       type: dividendType,
     };
     return dividend;
-  }
-
-  private static unifiedDates(stockInfo: StockInfo, uniqueTickers: string[]) {
-    const dates: string[] = [];
-
-    for (const ticker of uniqueTickers) {
-      const stock = stockInfo[ticker].stock;
-      for (const dividend of stock.lastDividendsValue) {
-        dates.push(dividend.dataEx);
-      }
-    }
-
-    const uniqueDates = Array.from(new Set(dates));
-    return uniqueDates;
-  }
-
-  static unifiedDividends(stockInfo: StockInfo, uniqueTickers: string[]) {
-    const dividendPayment: DividendPayment = {};
-    const uniqueDates = this.unifiedDates(stockInfo, uniqueTickers);
-
-    for (const date of uniqueDates) {
-      for (const ticker of uniqueTickers) {
-        console.log();
-      }
-    }
   }
 
   static dateToString(date: Date): string {
@@ -139,7 +116,6 @@ export class HistoryUtils {
       const individualChart = chart.individualRentability[ticker];
       if (individualChart === undefined) continue;
       const dividend = dividendsOnDate[ticker];
-      console.log(chart);
 
       individualChart.dividendValue +=
         individualChart.quantity * dividend.value;
@@ -151,23 +127,3 @@ export class HistoryUtils {
     return chart;
   }
 }
-
-interface DividendPayment {
-  [date: string]: {
-    [ticker: string]: Dividend;
-  };
-}
-
-export type IndexHistoryPrice = {
-  [date: string]: {
-    [ticker: string]: {
-      price: number;
-    };
-  };
-};
-
-export type IndexDividend = {
-  [date: string]: {
-    [ticker: string]: Dividend;
-  };
-};

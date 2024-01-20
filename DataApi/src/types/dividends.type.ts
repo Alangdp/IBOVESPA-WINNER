@@ -1,4 +1,4 @@
-interface RootDividend {
+export interface RootDividend {
   earningsThisYear: string;
   earningsLastYear: string;
   rendiment: string;
@@ -11,14 +11,14 @@ interface RootDividend {
   assetEarningsYearlyModels: AssetEarningsYearlyModel[];
 }
 
-interface Helpers {
+export interface Helpers {
   earningsThisYearHelper: string;
   earningsLastYearHelper: string;
   earningsProvisionedHelper: string;
   earningsMainTextHelper: string;
 }
 
-interface AssetEarningsModel {
+export interface AssetEarningsModel {
   y: number;
   m: number;
   d: number;
@@ -32,12 +32,12 @@ interface AssetEarningsModel {
   adj: boolean;
 }
 
-interface AssetEarningsYearlyModel {
+export interface AssetEarningsYearlyModel {
   rank: number;
   value: number;
 }
 
-interface DividendReturn {
+export interface DividendReturn {
   lastDividendPayments: LastDividendPayment[];
   lastDividendPaymentsYear: LastDividendPaymentYear[];
   helper: Helpers;
@@ -45,7 +45,7 @@ interface DividendReturn {
   dividendPaymentLastYear: number;
 }
 
-interface LastDividendPayment {
+export interface LastDividendPayment {
   ticker: string;
   dataCom: string;
   dataEx: string;
@@ -54,26 +54,22 @@ interface LastDividendPayment {
   value: number;
 }
 
-interface LastDividendPaymentYear {
+export interface LastDividendPaymentYear {
   year: number;
   value: number;
 }
 
-type Dividends = {
+export type Dividends = {
   [ticker: string]: Dividend[];
 };
 
-type Dividend = {
+export type Dividend = {
   date: string;
   ticker: string;
   value: number;
   type: string;
 };
 
-export {
-  Dividend,
-  Dividends,
-  RootDividend,
-  DividendReturn,
-  LastDividendPayment,
-};
+export interface DividendOnDate {
+  [ticker: string]: Dividend;
+}

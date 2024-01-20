@@ -9,6 +9,7 @@ import {
   Indicators,
   PassiveChartReturn,
 } from '../types/stock.types.js';
+import instanceStock from './instance.js';
 
 export class Stock extends Variable {
   private _Bazin: BazinMethod;

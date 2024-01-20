@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Utilities from '../utils/Utilities.js';
-import TickerFetcher from '../utils/getFuncions.js';
+import TickerFetcher from '../utils/Fetcher.js';
 import { Stock } from '../Entities/Stock.js';
 
 export interface RootCDI {

@@ -1,18 +1,6 @@
 // DEFAULT DATE FORMAT "11/12/2023"
-interface CodesNumber {
-  0: 'BUY';
-  1: 'SELL';
-  2: 'DIVIDEND';
-}
 
-interface CodesString {
-  BUY: 0;
-  SELL: 1;
-  DIVIDEND: 2;
-}
-
-type TransactionCodes = CodesNumber & CodesString;
-
+import { CodesNumber, CodesString } from './codes.type';
 interface TransactionRequirements {
   ticker: string;
   quantity: number;
@@ -23,5 +11,7 @@ interface TransactionRequirements {
   transaction_date: Date;
   user_id: number;
 }
+
+type TransactionCodes = CodesNumber & CodesString;
 
 export { TransactionCodes, TransactionRequirements };

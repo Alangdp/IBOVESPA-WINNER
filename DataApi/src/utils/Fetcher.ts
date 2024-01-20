@@ -19,11 +19,11 @@ import {
   AxiosOptions,
   PassiveChartObject,
   PayoutReturn,
-} from '../types/get.js';
+} from '../types/get.type.js';
 
 import axios from 'axios';
-import Utilities from './Utilities.js';
 import Cheerio from 'cheerio';
+import Utilities from './Utilities.js';
 
 export default class TickerFetcher {
   private url: String = 'https://statusinvest.com.br';
@@ -639,5 +639,5 @@ export default class TickerFetcher {
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');
   await tickerFetcher.initialize();
-  await tickerFetcher.getPrice();
+  console.log(await tickerFetcher.getPrice());
 }

@@ -1,53 +1,16 @@
-import fs, { stat } from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
 // Alter import type
 import cheerio from 'cheerio';
 import { index } from 'cheerio/lib/api/traversing';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-class Utilities {
+export default class Utilities {
   private $?: cheerio.Root;
 
   constructor(html?: string) {
     if (html) this.$ = cheerio.load(html);
   }
 
-  static getLastYears(x = 0) {
-    const actualYear = new Date();
-    const lastYears = [];
-
-    for (let index of Utilities.range(x)) {
-      lastYears.push(actualYear.getFullYear() - index);
-    }
-
-    return lastYears;
-  }
-
   static range(n: Number): Array<number> {
     return [...Array(n).keys()];
-  }
-
-  static breakArrayIntoGroups(arr: any[], groupSize: number): Array<any> {
-    const result = [];
-    for (let i = 0; i < arr.length; i += groupSize) {
-      const group = arr.slice(i, i + groupSize);
-      result.push(group);
-    }
-    return result;
-  }
-
-  static getLastFiveYears() {
-    const actualYear = new Date();
-    const lastFiveYears = [];
-
-    for (let index of Utilities.range(5)) {
-      lastFiveYears.push(actualYear.getFullYear() - index);
-    }
-
-    return lastFiveYears;
   }
 
   static formateNumber(stringToFormat: string): number {
@@ -62,127 +25,6 @@ class Utilities {
     } catch (err: any) {
       throw new Error('Invalid String');
     }
-  }
-
-  static readJSONFromFile(filename: string) {
-    const absolutePath = path.resolve(__dirname, '..', 'json', filename);
-    try {
-      const jsonData = fs.readFileSync(absolutePath, 'utf8');
-      return JSON.parse(jsonData);
-    } catch (err) {
-      console.error('Erro ao ler o arquivo JSON:', err);
-      return null;
-    }
-  }
-
-  static saveJSONToFile(jsonData: Array<any> | any, filename: string) {
-    const absolutePath = path.resolve(__dirname, '..', '..', 'json', filename);
-    if (fs.existsSync(absolutePath)) {
-      fs.unlinkSync(absolutePath);
-    }
-
-    fs.writeFile(
-      absolutePath,
-      JSON.stringify(jsonData, null, 2),
-      'utf8',
-      (err) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      }
-    );
-  }
-
-  static formatDate(date: Date) {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    let year = date.getFullYear();
-
-    if (new String(month).length === 1) {
-      return `${year}/0${month}/${day}`;
-    }
-
-    year = year % 100;
-    return `${day}/${month}/${year}`;
-  }
-
-  static formatDateToBR(date: Date) {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    let year = date.getFullYear();
-
-    if (new String(month).length === 1) {
-      return `${day}/0${month}/${year}`;
-    }
-
-    year = year % 100;
-    return `${day}/${month}/${year}`;
-  }
-
-  static formatStringToDate(stringDate: string) {
-    console.log(stringDate.split('/'));
-  }
-
-  static formatSimplifiedYear(stringDate: string) {
-    const [day, month, year] = stringDate.split('/');
-    return `${day}/${month}/${Number(year) + 2000}`;
-  }
-
-  static findClosestDateKey(
-    object: any,
-    targetDate: string
-  ): string | undefined {
-    let closestDateKey: string | undefined;
-    let smallestDifference: number | undefined;
-
-    for (const dateKey in object) {
-      const [dayA, monthA, yearA] = dateKey
-        .split('/')
-        .map((str) => parseInt(str, 10));
-      const dateA = new Date(yearA, monthA - 1, dayA);
-      dateA.setHours(0, 0, 0, 0);
-
-      const [dayB, monthB, yearB] = targetDate
-        .split('/')
-        .map((str) => parseInt(str, 10));
-      const dateB = new Date(yearB, monthB - 1, dayB);
-      dateB.setHours(0, 0, 0, 0);
-
-      const difference = Math.abs(dateA.getTime() - dateB.getTime());
-
-      if (smallestDifference === undefined || difference < smallestDifference) {
-        smallestDifference = difference;
-        closestDateKey = dateKey;
-      }
-    }
-
-    return closestDateKey;
-  }
-
-  // static binarySearch(arr: any[], target: Date): number {
-  //   let left = 0;
-  //   let right = arr.length - 1;
-
-  //   while (left <= right) {
-  //     const mid = Math.floor((left + right) / 2);
-  //     const midDate = Utilities.formatStringToDate(arr[mid].dataCom);
-
-  //     if (midDate.getTime() === target.getTime()) {
-  //       return mid;
-  //     } else if (midDate.getTime() < target.getTime()) {
-  //       right = mid - 1;
-  //     } else {
-  //       left = mid + 1;
-  //     }
-  //   }
-
-  //   return -1;
-  // }
-
-  public static breakArray(array: any[], parts: number) {
-    const lastDividends = array.slice(0, parts);
-    return lastDividends;
   }
 
   extractText(selector: string): string {
@@ -219,5 +61,3 @@ class Utilities {
     return Utilities.formateNumber(this.extractText(selector));
   }
 }
-
-export default Utilities;

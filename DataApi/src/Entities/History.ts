@@ -1,28 +1,24 @@
-import { LastDividendPayment, Dividend } from '../types/dividends.type';
-import { PriceHistory } from '../types/stock.types';
-import { transactions, Transaction } from './Transaction.js';
-import { Stock } from './Stock.js';
 import instanceStock from './instance.js';
-import {
-  HistoryUtils,
-  IndexDividend,
-  IndexHistoryPrice,
-} from '../utils/HistoryUtils.js';
 
-import Utilities from '../utils/Utilities.js';
+import { Dividend, DividendOnDate } from '../types/dividends.type';
+import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
+import { Chart } from '../types/Chart.type.js';
+import { StockInfo } from '../types/stock.types.js';
+import { chartUpdateInfo } from '../types/Chart.type.js';
+
 import {
-  DividendOnDate,
   HistoryData,
   HistoryRequirements,
-  StockInfo,
   StockPrice,
-  Chart,
-  chartUpdateInfo,
-  StocksPortfolio,
-} from '../utils/History.type';
+} from '../types/History.type.js';
 
-// TODO: 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO - COMPLETO
-// TODO: 2 - ATUALIZAR DADOS SECUNDARIOS DO CHART - COMPLETO
+import HistoryUtils from '../utils/HistoryUtils.js';
+import { transactions, Transaction } from './Transaction.js';
+import Utilities from '../utils/Utilities.js';
+
+// METAS:
+// 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO - COMPLETO
+// 2 - ATUALIZAR DADOS SECUNDARIOS DO CHART - COMPLETO
 // globalRentabily: number;
 // globalStockQuantity: number;
 // globalStockValue: number;
@@ -30,7 +26,7 @@ import {
 // globalTotalValue: number;
 //
 // TODO: SISTEMA DE THREADS(OTIMIZAÇÃO) - https://stackoverflow.com/questions/25167590/one-thread-for-many-tasks-vs-many-threads-for-each-task-do-sleeping-threads-aft
-//
+
 class History {
   stockInfo: StockInfo;
   transactions: Transaction[];
@@ -165,8 +161,6 @@ class History {
 
       previousDate = date;
     }
-
-    Utilities.saveJSONToFile(this.historyData, 'history.json');
   }
 
   static async instanceHistory(transactions: Transaction[]) {
@@ -200,20 +194,8 @@ class History {
   updateChart(requirements: chartUpdateInfo, chart: Chart): Chart {
     const { date } = requirements;
     const transactions = this.historyData[date].transactions;
-    // TODO: - IMPLEMENTAR DIVIDENDOS
-    // const dividends = this.historyData[date].dividends;
+
     const prices = this.historyData[date].prices;
-
-    // OQUE PRECISA ATUALIZAR SEMPRE
-
-    // "medianPrice": 48.5,
-    // "rentability": -0.22515463917525777,
-    // "quantity": 200,
-    // "valueTotal": 7516,
-    // "valueInvested": 9700
-
-    // 1 - rentability
-    // 2 - valueTotal
 
     if (transactions.length > 0) {
       for (const transaction of transactions) {
@@ -234,15 +216,6 @@ class History {
 
           individualChart.medianPrice =
             individualChart.valueInvested / individualChart.quantity;
-
-          // FIXME: UPDATE FORMULAS
-
-          // individualChart.valueTotal = individualChart.quantity * priceOnDate;
-
-          // individualChart.rentability =
-          //   (priceOnDate - individualChart.medianPrice) /
-          //   individualChart.medianPrice;
-
           chart.individualRentability[ticker] = individualChart;
         }
 
@@ -268,13 +241,6 @@ class History {
       const individualChart = chart.individualRentability[ticker];
 
       individualChart.valueTotal = individualChart.quantity * priceOnDate;
-
-      // FIXME: REMOVE CONSOLE LOG
-      console.log(
-        ` (${priceOnDate} - ${individualChart.medianPrice}) / ${individualChart.medianPrice}`,
-        ticker
-      );
-
       individualChart.rentability =
         (priceOnDate - individualChart.medianPrice) /
         individualChart.medianPrice;
@@ -286,8 +252,6 @@ class History {
       chart.globalDividendValue += individualChart.dividendValue;
       chart.globalTotalValue += individualChart.valueTotal;
     }
-
-    const stockPortfolio: StocksPortfolio = {};
 
     let pesoTotal = 0;
     let valorTotal = 0;

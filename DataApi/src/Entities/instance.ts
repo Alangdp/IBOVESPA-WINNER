@@ -3,7 +3,7 @@ import { Stock } from './Stock.js';
 import { BazinMethod } from './Bazin.js';
 import { Header, NetLiquid } from '../types/stock.types';
 
-import TickerFetcher from '../utils/getFuncions.js';
+import TickerFetcher from '../utils/Fetcher.js';
 import { GranhamMethod } from './Graham.js';
 
 async function instanceStock(ticker: string): Promise<Stock> {

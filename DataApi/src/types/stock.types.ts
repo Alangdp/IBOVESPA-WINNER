@@ -1,6 +1,8 @@
 import { LastDividendPayment } from './dividends.type';
+import { Stock } from '../Entities/Stock';
+import { Dividend } from './dividends.type';
 
-interface PassiveChartReturn {
+export interface PassiveChartReturn {
   year: number;
   totalAssets: number;
   totalLiabilities: number;
@@ -11,7 +13,7 @@ interface PassiveChartReturn {
   shareholdersEquity: number;
 }
 
-interface Indicators {
+export interface Indicators {
   dy: {
     actual: number;
     average: number;
@@ -49,19 +51,19 @@ interface Indicators {
   };
 }
 
-interface IndicatorData {
+export interface IndicatorData {
   [date: string]: {
     date: string;
     value: number;
   };
 }
 
-type NetLiquid = {
+export type NetLiquid = {
   year: string;
   value: number;
 };
 
-interface StockRequirements {
+export interface StockRequirements {
   // Variables from Stock
 
   ticker: string;
@@ -90,27 +92,27 @@ interface StockRequirements {
   passiveChart: PassiveChartReturn[];
 }
 
-interface PriceHistory {
+export interface PriceHistory {
   date: string;
   price: number;
 }
 
-type Pontuation = {
+export type Pontuation = {
   [condition: string]: boolean | number;
 };
 
-type Header = {
+export type Header = {
   name: string;
   index: number;
   value: { [key: string]: number };
 };
 
-interface RootReport {
+export interface RootReport {
   data: Report[];
   success: boolean;
 }
 
-interface Report {
+export interface Report {
   year: number;
   rank: number;
   dataReferencia: string;
@@ -121,7 +123,7 @@ interface Report {
   dataReferencia_F: string;
 }
 
-interface ReportReturn {
+export interface ReportReturn {
   year: string;
   rank: number;
   referenceDate: string;
@@ -131,14 +133,10 @@ interface ReportReturn {
   linkPdf: string;
 }
 
-export {
-  StockRequirements,
-  PriceHistory,
-  Pontuation,
-  Header,
-  NetLiquid,
-  Indicators,
-  PassiveChartReturn,
-  RootReport,
-  ReportReturn,
-};
+export interface StockInfo {
+  [ticker: string]: {
+    stock: Stock;
+    dividend: Dividend[];
+    historyPrice: PriceHistory[];
+  };
+}

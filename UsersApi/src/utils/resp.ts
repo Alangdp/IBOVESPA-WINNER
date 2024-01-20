@@ -3,11 +3,18 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 // error is optional
+
+/**
+ *
+ * @param status
+ * @param message
+ * @param data
+ * @param error
+ * @example resp(200, 'User found', user);
+ */
 const resp = (s: number, m: string, d: any, err?: any) => {
   if (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
-      console.log(err.errors.length);
-
       return {
         status: 400,
         message: 'Unique constraint error',

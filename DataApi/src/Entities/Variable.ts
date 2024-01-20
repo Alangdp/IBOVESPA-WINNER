@@ -1,4 +1,4 @@
-import TickerFetcher from '../utils/getFuncions.js';
+import TickerFetcher from '../utils/Fetcher.js';
 import { PriceHistory } from '../types/stock.types.js';
 import { MacroInfo } from '../global/MacroInfo.js';
 

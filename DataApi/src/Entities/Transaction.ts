@@ -2,10 +2,12 @@ import {
   TransactionCodes,
   TransactionRequirements,
 } from '../types/transaction.type';
-import Utilities from '../utils/Utilities.js';
-import { HistoryUtils } from '../utils/HistoryUtils.js';
 
-class Transaction {
+import { CodesString, CodesNumber } from '../types/codes.type';
+
+import HistoryUtils from '../utils/HistoryUtils.js';
+
+export default class Transaction {
   public static codes: TransactionCodes = {
     0: 'BUY',
     1: 'SELL',
