@@ -12,21 +12,25 @@ import {
 import instanceStock from './instance.js';
 
 export class Stock extends Variable {
-  private _lastDividendsAverage?: number;
-  private _dividendYield: number;
-  private _grossDebt: number;
-  private _patrimony: number;
+  calculateRentability(): number {
+    throw new Error('Method not implemented.');
+  }
 
-  private _lastDividendsYieldYear: number[];
-  private _lastDividendsValueYear: number[];
-  private _lastDividendsValue: LastDividendPayment[];
+  public lastDividendsAverage?: number;
+  public dividendYield: number;
+  public grossDebt: number;
+  public patrimony: number;
 
-  private _payout: number;
-  private _actualDividendYield: number;
-  private _netLiquid: NetLiquid[];
-  private _passiveChart: PassiveChartReturn[];
+  public lastDividendsYieldYear: number[];
+  public lastDividendsValueYear: number[];
+  public lastDividendsValue: LastDividendPayment[];
 
-  private _indicators: Indicators;
+  public payout: number;
+  public actualDividendYield: number;
+  public netLiquid: NetLiquid[];
+  public passiveChart: PassiveChartReturn[];
+
+  public indicators: Indicators;
 
   constructor(stock: StockRequirements) {
     super(
@@ -40,70 +44,18 @@ export class Stock extends Variable {
 
     const actualDividendYield = stock.actualDividendYield / 100;
 
-    this._indicators = stock.indicators;
-    this._dividendYield = stock.dividendYield;
-    this._grossDebt = stock.grossDebt;
-    this._patrimony = stock.patrimony;
-    this._payout = stock.payout;
-    this._actualDividendYield = actualDividendYield;
+    this.indicators = stock.indicators;
+    this.dividendYield = stock.dividendYield;
+    this.grossDebt = stock.grossDebt;
+    this.patrimony = stock.patrimony;
+    this.payout = stock.payout;
+    this.actualDividendYield = actualDividendYield;
 
-    this._lastDividendsYieldYear = stock.lastDividendsYieldYear;
-    this._lastDividendsValueYear = stock.lastDividendsValueYear;
-    this._lastDividendsValue = stock.lastDividendsValue;
+    this.lastDividendsYieldYear = stock.lastDividendsYieldYear;
+    this.lastDividendsValueYear = stock.lastDividendsValueYear;
+    this.lastDividendsValue = stock.lastDividendsValue;
 
-    this._netLiquid = stock.netLiquid;
-    this._passiveChart = stock.passiveChart;
-  }
-
-  get passiveChart() {
-    return this._passiveChart;
-  }
-
-  get lastDividendsYieldYear() {
-    return this._lastDividendsYieldYear;
-  }
-
-  get lastDividendsValueYear() {
-    return this._lastDividendsValueYear;
-  }
-
-  get lastDividendsValue() {
-    return this._lastDividendsValue;
-  }
-
-  calculateRentability() {
-    return 0;
-  }
-
-  get netLiquid() {
-    return this._netLiquid;
-  }
-
-  get actualDividendYield() {
-    return this._dividendYield;
-  }
-
-  get dividendYield() {
-    return this._dividendYield;
-  }
-
-  get grossDebt() {
-    return this._grossDebt;
-  }
-
-  get patrimony() {
-    return this._patrimony;
-  }
-
-  get payout() {
-    return this._payout;
-  }
-
-  get lastDividendsAverage() {
-    return this._lastDividendsAverage;
-  }
-
-  get indicators() {
-    return this._indicators;
+    this.netLiquid = stock.netLiquid;
+    this.passiveChart = stock.passiveChart;
   }
 }

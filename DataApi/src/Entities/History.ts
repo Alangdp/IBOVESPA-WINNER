@@ -15,6 +15,9 @@ import {
 import HistoryUtils from '../utils/HistoryUtils.js';
 import { transactions, Transaction } from './Transaction.js';
 import Utilities from '../utils/Utilities.js';
+import Database from '../utils/Stockdatabase.js';
+import { Stock } from './Stock.js';
+import Json from '../utils/Json.js';
 
 // METAS:
 // 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO - COMPLETO
@@ -161,9 +164,12 @@ class History {
 
       previousDate = date;
     }
+
+    Json.saveJSONToFile(this.historyData, 'history.json');
   }
 
   static async instanceHistory(transactions: Transaction[]) {
+    const db = new Database<Stock>('json/stocks.json');
     const uniqueTickers = Array.from(
       new Set(transactions.map((transaction) => transaction.ticker))
     );
@@ -171,22 +177,44 @@ class History {
     const stockInfo: StockInfo = {};
     for (const ticker of uniqueTickers) {
       const dividends: Dividend[] = [];
-      const stock = await instanceStock(ticker);
-      for (const dividend of stock.lastDividendsValue) {
-        dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
-      }
 
-      stockInfo[ticker] = {
-        stock: stock,
-        dividend: dividends,
-        historyPrice: stock.priceHistory,
-      };
+      const stock = db.find((stock) => stock.ticker === ticker);
+      console.log(stock);
+      if (stock) {
+        for (const dividend of stock.lastDividendsValue) {
+          dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
+        }
+
+        stockInfo[ticker] = {
+          stock: stock,
+          dividend: dividends,
+          historyPrice: stock.priceHistory,
+        };
+
+        continue;
+      } else {
+        const newStock = await instanceStock(ticker);
+
+        for (const dividend of newStock.lastDividendsValue) {
+          dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
+        }
+
+        stockInfo[ticker] = {
+          stock: newStock,
+          dividend: dividends,
+          historyPrice: newStock.priceHistory,
+        };
+
+        db.add(newStock);
+      }
     }
 
     const requirements: HistoryRequirements = {
       stockInfo: stockInfo,
       transactions: transactions,
     };
+
+    db.commit();
 
     return new History(requirements, uniqueTickers);
   }

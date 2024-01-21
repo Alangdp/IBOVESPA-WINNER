@@ -1,16 +1,15 @@
 import { Low, LowSync } from 'lowdb';
 import { JSONFile, JSONFileSyncPreset } from 'lowdb/node';
-import { Stock } from '../Entities/Stock';
-import instanceStock from '../Entities/instance.js';
-import { data } from 'cheerio/lib/api/attributes';
 
+import instanceStock from '../Entities/instance.js';
+import { Stock } from '../Entities/Stock.js';
 export default class Database<T> {
   private db: LowSync<T[]>;
   private toUpdate: T[] = [];
 
   constructor(path: string) {
-    this.db = JSONFileSyncPreset<T[]>(path, {});
-    this.toUpdate = this.db.data;
+    this.db = JSONFileSyncPreset<T[]>(path, []);
+    this.toUpdate = this.db.data ?? [];
   }
 
   add(instance: T) {
@@ -26,7 +25,7 @@ export default class Database<T> {
     this.toUpdate = [];
   }
 
-  filter(callback: (instance: T) => boolean) {
+  findAll(callback: (instance: T) => boolean) {
     const data = this.db.data;
     const dataFiltred: T[] = [];
 
@@ -34,6 +33,7 @@ export default class Database<T> {
       if (callback(instance)) dataFiltred.push(instance);
     }
 
+    if (dataFiltred.length === 0) return null;
     return dataFiltred;
   }
 
@@ -45,5 +45,9 @@ export default class Database<T> {
     }
 
     return null;
+  }
+
+  get() {
+    return this.db.data;
   }
 }
