@@ -12,6 +12,10 @@ import {
 import instanceStock from './instance.js';
 
 export class Stock extends Variable {
+  // FIXME - Soluções temporárias
+
+  public instaceTime: number;
+
   calculateRentability(): number {
     throw new Error('Method not implemented.');
   }
@@ -57,5 +61,6 @@ export class Stock extends Variable {
 
     this.netLiquid = stock.netLiquid;
     this.passiveChart = stock.passiveChart;
+    this.instaceTime = new Date().getTime();
   }
 }

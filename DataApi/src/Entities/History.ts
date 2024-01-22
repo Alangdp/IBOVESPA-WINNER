@@ -179,8 +179,10 @@ class History {
       const dividends: Dividend[] = [];
 
       const stock = db.find((stock) => stock.ticker === ticker);
-      console.log(stock);
-      if (stock) {
+
+      const ms = new Date().getTime() - (stock?.instaceTime ?? 0);
+
+      if (stock && Utilities.msToHours(ms) < 1) {
         for (const dividend of stock.lastDividendsValue) {
           dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
         }
@@ -193,6 +195,9 @@ class History {
 
         continue;
       } else {
+        db.deleteBy((stock) => stock.ticker === ticker);
+        db.commit();
+
         const newStock = await instanceStock(ticker);
 
         for (const dividend of newStock.lastDividendsValue) {

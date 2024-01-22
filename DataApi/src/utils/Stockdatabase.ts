@@ -1,8 +1,6 @@
 import { Low, LowSync } from 'lowdb';
 import { JSONFile, JSONFileSyncPreset } from 'lowdb/node';
 
-import instanceStock from '../Entities/instance.js';
-import { Stock } from '../Entities/Stock.js';
 export default class Database<T> {
   private db: LowSync<T[]>;
   private toUpdate: T[] = [];
@@ -49,5 +47,19 @@ export default class Database<T> {
 
   get() {
     return this.db.data;
+  }
+
+  deleteBy(callback: (instance: T) => boolean) {
+    const data = this.db.data;
+    const dataFiltred: T[] = [];
+
+    for (const instance of data) {
+      if (!callback(instance)) dataFiltred.push(instance);
+    }
+
+    this.toUpdate = dataFiltred;
+
+    if (dataFiltred.length === 0) return null;
+    return dataFiltred;
   }
 }

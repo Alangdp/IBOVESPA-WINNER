@@ -58,6 +58,11 @@ export default class Utilities {
   }
 
   extractNumber(selector: string): number {
+    if (!this.$) throw new Error('Invalid $');
     return Utilities.formateNumber(this.extractText(selector));
+  }
+
+  static msToHours(ms: number): number {
+    return ms / (1000 * 60 * 60);
   }
 }
