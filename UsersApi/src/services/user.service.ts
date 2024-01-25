@@ -1,6 +1,12 @@
 import { ModelStatic, Optional } from 'sequelize';
 import User from '../models/User.js';
-import { resp, tokenCreate } from '../utils/resp.js';
+import { resp } from '../utils/resp.js';
+import axios from 'axios';
+
+import dotenv from 'dotenv';
+import { TokenResponse } from '../types/token.js';
+
+dotenv.config();
 
 class UserService {
   private model: ModelStatic<User>;
@@ -64,7 +70,13 @@ class UserService {
       if (!(await user.login(data.password)))
         return resp(400, 'Invalid password', null);
 
-      return resp(200, 'User logged in', { user, token: tokenCreate(user) });
+      const response = await axios.post(process.env.TOKEN_URL as string, {
+        secretToken: process.env.SECRET_TOKEN as string,
+        userId: user.id,
+      });
+
+      const tokenResponse: TokenResponse = response.data;
+      return resp(200, 'User logged in', { user, token: tokenResponse });
     } catch (error: any) {
       console.log(error);
       return resp(500, error.message, null, error);

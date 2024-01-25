@@ -1,5 +1,3 @@
-import jwt from 'jsonwebtoken';
-
 import User from '../models/User';
 
 // error is optional
@@ -30,9 +28,4 @@ const resp = (s: number, m: string, d: any, err?: any) => {
   };
 };
 
-function tokenCreate(user: User) {
-  const token = process.env.SECRET_TOKEN as string;
-  return jwt.sign({ id: user.id }, token, { expiresIn: '1d' });
-}
-
-export { resp, tokenCreate };
+export { resp };
