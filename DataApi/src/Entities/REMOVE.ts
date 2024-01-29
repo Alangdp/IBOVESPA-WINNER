@@ -2,10 +2,10 @@ import instanceStock from './instance.js';
 
 import { Dividend, DividendOnDate } from '../types/dividends.type.js';
 import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
-import { Chart as ChartType } from '../types/Chart.type.js';
+import { Chart } from '../types/Chart.type.js';
 import { StockInfo, StockPrice } from '../types/stock.types.js';
 import { chartUpdateInfo } from '../types/Chart.type.js';
-import Chart from './Chart.js';
+import ChartTeste from './Chart.js';
 
 import { HistoryData, HistoryRequirements } from '../types/History.type.js';
 
@@ -31,7 +31,7 @@ class History {
   stockInfo: StockInfo;
   transactions: Transaction[];
   historyData: HistoryData;
-  chart: Chart = new Chart(null);
+  chart: ChartTeste = new ChartTeste(null);
 
   indexHistoryPrice: IndexHistoryPrice;
   indexDividend: IndexDividend;
@@ -117,22 +117,13 @@ class History {
       const transactions = this.getTransactionsOnDate(date);
       const prices = this.getStocksPriceOnDate(date);
 
-      const chart = this.chart.updateChart(
-        transactions,
-        prices,
-        dividends,
-        date
-      );
-
       this.historyData[date] = {
         date,
         prices,
         dividends,
         transactions,
-        chart: chart,
+        chart: this.chart.updateChart(prices, transactions).returnChart(),
       };
-
-      console.log(chart);
     }
   }
 
@@ -181,6 +172,15 @@ class History {
     db.commit();
 
     return new History({ stockInfo, transactions }, uniqueTickers);
+  }
+
+  updateChart(requirements: chartUpdateInfo): Chart {
+    const { date } = requirements;
+    const transactions = this.historyData[date].transactions;
+    const prices = this.historyData[date].prices;
+
+    const ChartT = new ChartTeste(null);
+    return ChartT.updateChart(prices, transactions);
   }
 }
 

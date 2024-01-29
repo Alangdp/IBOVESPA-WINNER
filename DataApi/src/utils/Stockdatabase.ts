@@ -49,7 +49,7 @@ export default class Database<T> {
     return this.db.data;
   }
 
-  deleteBy(callback: (instance: T) => boolean) {
+  deleteBy(callback: (instance: T) => boolean, autocommit = false) {
     const data = this.db.data;
     const dataFiltred: T[] = [];
 
@@ -60,6 +60,8 @@ export default class Database<T> {
     this.toUpdate = dataFiltred;
 
     if (dataFiltred.length === 0) return null;
+
+    if (autocommit) this.commit();
     return dataFiltred;
   }
 }

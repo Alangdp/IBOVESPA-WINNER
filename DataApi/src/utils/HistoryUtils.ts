@@ -106,24 +106,4 @@ export default class HistoryUtils {
 
     return reusableObject;
   }
-
-  static updateDividendOnChart(
-    chart: Chart,
-    dividendsOnDate: DividendOnDate,
-    date: string
-  ) {
-    for (const ticker of Object.keys(dividendsOnDate)) {
-      const individualChart = chart.individualRentability[ticker];
-      if (individualChart === undefined) continue;
-      const dividend = dividendsOnDate[ticker];
-
-      individualChart.dividendValue +=
-        individualChart.quantity * dividend.value;
-      individualChart.dividendPayments.push(date);
-
-      chart.individualRentability[ticker] = individualChart;
-    }
-
-    return chart;
-  }
 }

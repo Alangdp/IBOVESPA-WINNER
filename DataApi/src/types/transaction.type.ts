@@ -6,7 +6,6 @@ interface TransactionRequirements {
   quantity: number;
   price: number;
   typeCode: 0 | 1 | 2;
-  total_value: number;
   broker_code?: number;
   transaction_date: Date;
   user_id: number;

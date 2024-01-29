@@ -12,13 +12,12 @@ import {
 import instanceStock from './instance.js';
 
 export class Stock extends Variable {
+  calculateRentability(actualPrice: number, referencePrice: number): number {
+    return ((actualPrice - referencePrice) / referencePrice) * 100;
+  }
   // FIXME - Soluções temporárias
 
   public instaceTime: number;
-
-  calculateRentability(): number {
-    throw new Error('Method not implemented.');
-  }
 
   public lastDividendsAverage?: number;
   public dividendYield: number;

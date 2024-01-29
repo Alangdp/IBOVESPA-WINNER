@@ -28,6 +28,22 @@ export default class Transaction {
   // TODO: IMPLEMENTAR BROKER
   // _broker_code: string
 
+  isBuy() {
+    return this._type === Transaction.codes[0];
+  }
+
+  isSell() {
+    return this._type === Transaction.codes[1];
+  }
+
+  isDividend() {
+    return this._type === Transaction.codes[2];
+  }
+
+  calculeteTransactionValue() {
+    return this._quantity * this._price;
+  }
+
   constructor(requirements: TransactionRequirements) {
     const { typeCode } = requirements;
 
@@ -35,7 +51,7 @@ export default class Transaction {
     this._type = Transaction.codes[typeCode];
     this._quantity = requirements.quantity;
     this._price = requirements.price;
-    this._total_value = requirements.total_value;
+    this._total_value = this.calculeteTransactionValue();
     this._transaction_date = HistoryUtils.dateToString(
       requirements.transaction_date
     );
@@ -84,7 +100,6 @@ function makeRequirements(
     quantity: quantity,
     price: price,
     typeCode: typeCode,
-    total_value: quantity * price,
     transaction_date: transaction_date,
     user_id: user_id,
   };

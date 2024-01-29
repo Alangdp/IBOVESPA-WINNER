@@ -8,7 +8,10 @@ export abstract class Variable {
   public IPCA: number = MacroInfo.IPCA;
   public tickers: string[] = MacroInfo.tickers;
 
-  abstract calculateRentability(): number;
+  abstract calculateRentability(
+    actualPrice: number,
+    referencePrice: number
+  ): number;
 
   constructor(
     public ticker: string,
@@ -25,7 +28,7 @@ export abstract class Variable {
     this.marketValue = actualPrice * activeValue;
   }
 
-  public makeMedian(array: any[]) {
+  public makeMedian(array: number[]) {
     const sortedArray = array.sort();
     const middleIndex = sortedArray.length / 2;
 
@@ -36,7 +39,7 @@ export abstract class Variable {
     return sortedArray[Math.floor(middleIndex)];
   }
 
-  public makeAverage(array: any[]) {
+  public makeAverage(array: number[]) {
     return array.reduce((acc, curr) => acc + curr, 0) / array.length;
   }
 }

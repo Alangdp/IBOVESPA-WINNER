@@ -140,3 +140,10 @@ export interface StockInfo {
     historyPrice: PriceHistory[];
   };
 }
+
+export interface StockPrice {
+  [ticker: string]: {
+    ticker: string;
+    price: number;
+  };
+}
