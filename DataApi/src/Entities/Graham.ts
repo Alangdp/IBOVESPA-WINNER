@@ -31,6 +31,8 @@ import { NetLiquid, Pontuation } from '../types/stock.types';
 // Lucros para fazer o Gráfico ;)
 // https://api-analitica.sunoresearch.com.br/api/Statement/GetStatementResultsReportByTicker?type=y&ticker=WEGE3&period=10
 
+// TODO - REFAZER TUDO
+
 export class GranhamMethod {
   private points: number = 0;
   private lpa: number[] = [];

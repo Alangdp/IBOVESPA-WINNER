@@ -1,18 +1,9 @@
-import { Chart as ChartType } from '../types/Chart.type';
+import { Chart as ChartType, ChartConstructor } from '../types/Chart.type';
 import { StockData, StockRentability } from '../types/Chart.type';
 import { Stock } from './Stock';
 import Transaction, { transactions } from './Transaction';
 import { StockPrice } from '../types/stock.types';
 import { DividendOnDate } from '../types/dividends.type';
-
-interface ChartConstructor {
-  globalRentabily: number;
-  globalStockQuantity: number;
-  globalStockValue: number;
-  globalDividendValue: number;
-  globalTotalValue: number;
-  individualRentability: StockRentability;
-}
 
 export default class Chart {
   public globalRentabily!: number;
@@ -80,7 +71,10 @@ export default class Chart {
     valueInvested: number
   ) {
     const lastQuantity = individualChart.quantity;
-    if (lastQuantity - quantity <= 0) delete this.individualRentability[ticker];
+    if (lastQuantity - quantity <= 0) {
+      delete this.individualRentability[ticker];
+      return;
+    }
 
     individualChart.valueInvested -= valueInvested;
     individualChart.quantity = lastQuantity - quantity;
@@ -125,15 +119,15 @@ export default class Chart {
   }
 
   updateDividends(dividends: DividendOnDate, date: string) {
-    console.log('DIVIDENDS');
     for (const ticker of Object.keys(dividends)) {
-      console.log(ticker, dividends[ticker], dividends);
       const individualChart = this.individualRentability[ticker];
       if (individualChart === undefined) continue;
       const dividend = dividends[ticker];
 
-      individualChart.dividendValue +=
-        individualChart.quantity * dividend.value;
+      const dividendValue = individualChart.quantity * dividend.value;
+      this.globalDividendValue += dividendValue;
+
+      individualChart.dividendValue += dividendValue;
       individualChart.dividendPayments.push(date);
 
       this.individualRentability[ticker] = individualChart;
@@ -171,8 +165,9 @@ export default class Chart {
     this.updateTickers(prices, date);
     this.updateGlobals();
     this.updateDividends(dividends, date);
-    this.makePortfolioChart();
-    this.globalRentabily = this.globalTotalValue / this.globalStockValue;
+
+    // FIXME - REFAZER ESSA PARTE
+    // this.globalRentabily = this.globalTotalValue / this.globalStockValue;
 
     return this;
   }

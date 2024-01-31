@@ -1,6 +1,15 @@
 import { DividendOnDate } from './dividends.type';
 import { StockPrice } from './stock.types';
 
+export interface ChartConstructor {
+  globalRentabily: number;
+  globalStockQuantity: number;
+  globalStockValue: number;
+  globalDividendValue: number;
+  globalTotalValue: number;
+  individualRentability: StockRentability;
+}
+
 export interface Chart {
   globalRentabily: number;
   globalStockQuantity: number;

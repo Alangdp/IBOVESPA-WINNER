@@ -10,8 +10,9 @@ export default class Database<T> {
     this.toUpdate = this.db.data ?? [];
   }
 
-  add(instance: T) {
+  add(instance: T, autocommit = false) {
     this.toUpdate.push(instance);
+    if (autocommit) this.commit();
   }
 
   commit() {

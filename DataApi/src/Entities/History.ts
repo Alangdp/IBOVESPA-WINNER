@@ -134,6 +134,8 @@ class History {
 
       console.log(chart);
     }
+
+    Json.saveJSONToFile(this.historyData, 'history.json');
   }
 
   static async instanceHistory(transactions: Transaction[]) {

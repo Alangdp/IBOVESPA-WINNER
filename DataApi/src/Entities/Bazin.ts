@@ -2,6 +2,8 @@ import { Pontuation } from '../types/stock.types';
 import { Stock } from './Stock';
 import Utilities from '../utils/Utilities.js';
 
+// TODO - REFAZER TUDO
+
 export class BazinMethod {
   private actualDividends: number;
   private points = 0;
