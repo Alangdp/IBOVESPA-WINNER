@@ -9,7 +9,7 @@ import {
   Indicators,
   PassiveChartReturn,
 } from '../types/stock.types.js';
-import instanceStock from './instance.js';
+import instanceStock from './instanceStock.js';
 
 export class Stock extends Variable {
   calculateRentability(actualPrice: number, referencePrice: number): number {

@@ -1,4 +1,4 @@
-import instanceStock from './instance.js';
+import instanceStock from './instanceStock.js';
 
 import { Dividend, DividendOnDate } from '../types/dividends.type.js';
 import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
@@ -10,7 +10,7 @@ import Chart from './Chart.js';
 import { HistoryData, HistoryRequirements } from '../types/History.type.js';
 
 import HistoryUtils from '../utils/HistoryUtils.js';
-import { transactions, Transaction } from './Transaction.js';
+import { Transaction } from './Transaction.js';
 import Utilities from '../utils/Utilities.js';
 import Database from '../utils/Stockdatabase.js';
 import { Stock } from './Stock.js';
@@ -142,9 +142,8 @@ class History {
     const db = new Database<Stock>('json/stocks.json');
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
-    const uniqueTickers = Array.from(
-      new Set(transactions.map((transaction) => transaction.ticker))
-    );
+    const allTickers = transactions.map((transaction) => transaction.ticker);
+    const uniqueTickers = Utilities.uniqueElements(allTickers);
 
     for (const ticker of uniqueTickers) {
       let stock = db.find((stock) => stock.ticker === ticker);
@@ -185,5 +184,3 @@ class History {
     return new History({ stockInfo, transactions }, uniqueTickers);
   }
 }
-
-History.instanceHistory(transactions);

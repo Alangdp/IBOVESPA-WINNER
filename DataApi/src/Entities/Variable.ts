@@ -6,7 +6,6 @@ export abstract class Variable {
   public marketValue: number;
   public CDI: number = MacroInfo.CDI;
   public IPCA: number = MacroInfo.IPCA;
-  public tickers: string[] = MacroInfo.tickers;
 
   abstract calculateRentability(
     actualPrice: number,

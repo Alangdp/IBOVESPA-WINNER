@@ -1,10 +1,8 @@
 import { StockRequirements } from '../types/stock.types';
 import { Stock } from './Stock.js';
-import { BazinMethod } from './Bazin.js';
-import { Header, NetLiquid } from '../types/stock.types';
+import { CashFlowHeader, NetLiquid } from '../types/stock.types';
 
 import TickerFetcher from '../utils/Fetcher.js';
-import { GranhamMethod } from './Graham.js';
 
 async function instanceStock(ticker: string): Promise<Stock> {
   const tickerFetcher = new TickerFetcher(ticker);
@@ -16,7 +14,6 @@ async function instanceStock(ticker: string): Promise<Stock> {
   const payout = await tickerFetcher.getPayout();
   const indicators = await tickerFetcher.getIndicatorsInfo();
   const lastDividendsYield: number[] = [];
-  const lastDividendsValue: number[] = [];
   const cashFlow = await tickerFetcher.getCashFlow();
   const passiveChart = await tickerFetcher.getPassiveChart();
 
@@ -39,8 +36,10 @@ async function instanceStock(ticker: string): Promise<Stock> {
     lastDividendsPerYear.push(dividend.value);
   }
 
+  // Lucro Líquido
+
   const netLiquid: NetLiquid[] = [];
-  cashFlow?.forEach((cashFlow: Header) => {
+  cashFlow?.forEach((cashFlow: CashFlowHeader) => {
     netLiquid.push({
       year: cashFlow.name,
       value: cashFlow.value['LucroLiquidoExercicioConsolidado'],
@@ -52,32 +51,26 @@ async function instanceStock(ticker: string): Promise<Stock> {
     if (netLiquid.value === 0) netLiquidArray.splice(index, 1);
   });
 
+  // Requirements
+
   const stockData: StockRequirements = {
     indicators,
-
-    shareQuantity: basicInfo.shareQuantity,
-    ticker: tickerFetcher.ticker,
-    name: basicInfo.name,
+    ...basicInfo,
     activeValue: basicInfo.VPA * basicInfo.shareQuantity,
     actualPrice: basicInfo.price,
     priceHistory: priceHistory.priceVariation,
     dividendYield: basicInfo.dividendPorcent,
-    grossDebt: basicInfo.grossDebt,
     patrimony: basicInfo.liquidPatrimony,
-
+    payout: payout.actual / 100,
+    actualDividendYield: lastDividendsYield[0] / 100,
     lastDividendsYieldYear: lastDividendsYield,
     lastDividendsValueYear: lastDividendsPerYear,
     lastDividendsValue: dividendInfo.lastDividendPayments,
-
-    payout: payout.actual / 100,
-    actualDividendYield: lastDividendsYield[0] / 100,
     netLiquid: netLiquidArray,
-    passiveChart,
+    passiveChart: passiveChart,
   };
 
-  const stock = new Stock(stockData);
-
-  return stock;
+  return new Stock(stockData);
 }
 
 export default instanceStock;

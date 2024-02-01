@@ -105,38 +105,4 @@ function makeRequirements(
   };
 }
 
-const transactions: Transaction[] = [];
-const startMonth = 1;
-const startYear = 2023;
-
-function randomInteger(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const tickers = ['BBAS3', 'TAEE11', 'ITSA4', 'PETR4', 'ABEV3'];
-
-for (let i = 0; i < 20; i++) {
-  const typeCode = randomInteger(0, 1) as 0 | 1;
-
-  console.log(typeCode, 'TypeCode');
-  const price = Math.floor(Math.random() * (56 - 32 + 1)) + 32;
-  const transactionDate = new Date(
-    startYear,
-    startMonth + i,
-    Math.round(Math.random() * (30 - 5)) + 5
-  );
-  const transactionRequirements: TransactionRequirements = makeRequirements(
-    tickers[randomInteger(0, tickers.length - 1)],
-    100,
-    price,
-    typeCode,
-    transactionDate,
-    1
-  );
-  const transaction = new Transaction(transactionRequirements);
-  transactions.push(transaction);
-}
-
-console.log(transactions);
-
-export { transactions, Transaction };
+export { Transaction };

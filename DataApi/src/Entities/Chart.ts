@@ -1,7 +1,7 @@
 import { Chart as ChartType, ChartConstructor } from '../types/Chart.type';
 import { StockData, StockRentability } from '../types/Chart.type';
 import { Stock } from './Stock';
-import Transaction, { transactions } from './Transaction';
+import Transaction from './Transaction';
 import { StockPrice } from '../types/stock.types';
 import { DividendOnDate } from '../types/dividends.type';
 

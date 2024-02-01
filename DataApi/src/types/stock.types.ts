@@ -101,7 +101,7 @@ export type Pontuation = {
   [condition: string]: boolean | number;
 };
 
-export type Header = {
+export type CashFlowHeader = {
   name: string;
   index: number;
   value: { [key: string]: number };
