@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@types/lowdb": "^1.0.15",
-    "lowdb": "^7.0.1"
-  }
-}

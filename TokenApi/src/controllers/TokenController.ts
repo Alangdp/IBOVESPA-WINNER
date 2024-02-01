@@ -39,6 +39,7 @@ class TokenController {
       if (userStatus !== 200) return res.status(userStatus).json({ userData });
       return res.status(userStatus).json({ userData, userMessage });
     } catch (error) {
+      console.log(error)
       next(error);
     }
   }

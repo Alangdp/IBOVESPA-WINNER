@@ -5,7 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "if exist dist (rmdir /Q /S dist)",
+    "build": "tsc",
+    "start": "npm run prebuild && npm run build && node dist/server.js"
   },
   "keywords": [],
   "author": "",

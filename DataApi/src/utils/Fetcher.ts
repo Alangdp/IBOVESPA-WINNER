@@ -8,7 +8,6 @@ import {
 } from '../types/prices.type.js';
 
 import {
-  Header,
   Indicators,
   PassiveChartReturn,
   RootReport,
@@ -19,7 +18,11 @@ import {
   AxiosOptions,
   PassiveChartObject,
   PayoutReturn,
+  Header
 } from '../types/get.type.js';
+
+import Scrapper from './Fetcher.utils.js'
+
 
 import axios from 'axios';
 import Cheerio from 'cheerio';
@@ -28,7 +31,7 @@ import Utilities from './Utilities.js';
 export default class TickerFetcher {
   private url: String = 'https://statusinvest.com.br';
   public ticker: string;
-  private Utility?: Utilities;
+  private Utility?: Scrapper;
   private type?: string;
   private actualyear: number = new Date().getFullYear();
 
@@ -38,7 +41,7 @@ export default class TickerFetcher {
 
   async initialize(): Promise<void> {
     const htmlPage: string = await this.getHtmlPage();
-    this.Utility = new Utilities(htmlPage);
+    this.Utility = new Scrapper(htmlPage);
   }
 
   private makeOptionsJson(

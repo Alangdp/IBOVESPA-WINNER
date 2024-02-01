@@ -46,9 +46,9 @@ class UserService {
     }
   }
 
-  async delete(email: string) {
+  async delete(id: number) {
     try {
-      const user = await this.model.destroy({ where: { email } });
+      const user = await this.model.destroy({ where: { id } });
       if (user === 0) return resp(404, 'User not found', null);
       return resp(200, 'User deleted', user);
     } catch (error: any) {
@@ -71,7 +71,7 @@ class UserService {
         return resp(400, 'Invalid password', null);
 
       const response = await axios.post(process.env.TOKEN_URL as string, {
-        secretToken: process.env.SECRET_TOKEN as string,
+        authorization: process.env.SECRET_TOKEN as string,
         userId: user.id,
       });
 

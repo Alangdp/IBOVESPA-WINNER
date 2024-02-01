@@ -21,16 +21,12 @@
     "@types/sequelize": "^4.28.16",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
-    "chart.js": "^4.4.0",
-    "cpf": "^2.0.1",
     "eslint": "^8.44.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "mariadb": "^3.2.0",
     "mysql2": "^3.6.1",
-    "nodeplotlib": "^1.1.2",
-    "plotly": "^1.0.6",
     "prettier": "^3.0.0",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
@@ -49,9 +45,6 @@
     "express": "^4.18.2",
     "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.0",
-    "plotly.js": "^2.27.1",
-    "querystring": "^0.2.1",
-    "threads": "^1.7.0"
+    "querystring": "^0.2.1"
   }
 }

@@ -54,8 +54,9 @@ class userController {
 
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
+      const { id } = req.body 
       const service = new UserService();
-      const { status, message, data } = await service.delete(req.body.email);
+      const { status, message, data } = await service.delete(id);
       res.status(status).json({ message, data });
     } catch (error: any) {
       next(error);
@@ -64,7 +65,6 @@ class userController {
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log(req.headers.authorization?.split(' ')[1]);
       const service = new UserService();
       const { status, message, data } = await service.login(req.body);
       res.status(status).json({ message, data });

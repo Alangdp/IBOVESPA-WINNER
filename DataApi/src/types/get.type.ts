@@ -10,6 +10,12 @@ interface AxiosOptions {
   };
 }
 
+type Header = {
+  name: string;
+  index: number;
+  value: { [key: string]: number };
+};
+
 interface Dividend {
   type: string;
   dataEx: string;
@@ -55,4 +61,4 @@ interface PassiveChartObject {
   patrimonioLiquido: number;
 }
 
-export { AxiosOptions, Dividends, Dividend, PayoutReturn, PassiveChartObject };
+export { AxiosOptions, Dividends, Dividend, PayoutReturn, PassiveChartObject,Header };

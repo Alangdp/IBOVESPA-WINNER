@@ -1,36 +1,31 @@
 import type { RequestType } from '../../types/global.js';
-import jwt, { VerifyErrors } from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { JwtPayload } from 'jsonwebtoken';
 
 dotenv.config();
 
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
+import { resp } from '../utils/resp.js';
+import axios from 'axios';
 
-interface JwtDecoded extends JwtPayload {
-  sub: string;
-  userid?: number;
-}
+const loginRequired = async (req: RequestType, res: Response, next: NextFunction) => {
+  const TOKEN_URL = process.env.TOKEN_URL as string
+  
+  try {
+    const { token } = req.body;
+    if(!token) throw new Error("Invalid Token");
+    console.log(`${TOKEN_URL}user`)
+    const response = await axios.post(`${TOKEN_URL}user`, {
+      authorization: process.env.SECRET_TOKEN,
+      token: token
+    })
 
-const loginRequired = (req: RequestType, res: Response, next: NextFunction) => {
-  if (req.headers.authorization) {
-    const [_, token] = req.headers.authorization.split(' ');
+    req.body.id = response.data.userData.id    
 
-    if (!token) return res.status(401).json({ msg: 'Bearer Token is null' });
-
-    const secret = process.env.SECRET_TOKEN as string;
-    jwt.verify(token, secret, (err: Error | null, decoded: any) => {
-      console.log(err);
-      if (err) {
-        return res.status(401).json({ msg: 'Invalid Bearer Token' });
-      }
-      const decodedJwt = decoded as JwtDecoded;
-      req.userId = Number(decodedJwt?.sub);
-
-      next();
-    });
-  } else {
-    return res.status(401).json({ msg: 'Invalid Bearer Token' });
+    next()
+  } catch (error: any) {
+    console.log(error)
+    resp(403, error.message, null, error)
+    return res.status(403).json("DEU ERRO")
   }
 };
 
