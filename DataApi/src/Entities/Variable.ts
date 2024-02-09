@@ -1,6 +1,5 @@
-import TickerFetcher from '../utils/Fetcher.js';
-import { PriceHistory } from '../types/stock.types.js';
 import { MacroInfo } from '../global/MacroInfo.js';
+import { PriceHistory } from '../types/stock.types.js';
 
 export abstract class Variable {
   public marketValue: number;

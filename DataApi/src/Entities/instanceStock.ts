@@ -1,8 +1,14 @@
-import { StockRequirements } from '../types/stock.types';
+import {
+  CashFlowHeader,
+  NetLiquid,
+  StockRequirements,
+} from '../types/stock.types';
 import { Stock } from './Stock.js';
-import { CashFlowHeader, NetLiquid } from '../types/stock.types';
 
 import TickerFetcher from '../utils/Fetcher.js';
+import { BazinMethod } from './Bazin.js';
+
+// FIXME TRANFOMAR EM UMA CLASSE
 
 async function instanceStock(ticker: string): Promise<Stock> {
   const tickerFetcher = new TickerFetcher(ticker);
@@ -13,7 +19,6 @@ async function instanceStock(ticker: string): Promise<Stock> {
   const dividendInfo = await tickerFetcher.getDividendInfo();
   const payout = await tickerFetcher.getPayout();
   const indicators = await tickerFetcher.getIndicatorsInfo();
-  const lastDividendsYield: number[] = [];
   const cashFlow = await tickerFetcher.getCashFlow();
   const passiveChart = await tickerFetcher.getPassiveChart();
 
@@ -24,8 +29,11 @@ async function instanceStock(ticker: string): Promise<Stock> {
 
   // Dividendos
 
+  const lastDividendsYield: number[] = [];
+
   for (const dividend of indicators.dy.olds) {
     if (lastDividendsYield.length === 10) break;
+    // console.log(dividend.date);
     const dyValue = Number(dividend.value);
     lastDividendsYield.push(dyValue);
   }
@@ -74,3 +82,13 @@ async function instanceStock(ticker: string): Promise<Stock> {
 }
 
 export default instanceStock;
+
+async function teste(ticker: string) {
+  const stock = await instanceStock(ticker);
+  const Bazin = new BazinMethod(stock);
+
+  // console.log(stock.dividendYield);
+  // console.log(Bazin.makePoints());
+}
+
+// teste('TAEE11');

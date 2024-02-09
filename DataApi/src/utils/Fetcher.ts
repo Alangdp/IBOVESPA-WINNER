@@ -1,32 +1,28 @@
 import { RootCashFlow } from '../types/cashFlow.type.js';
-import { RootDividend, DividendReturn } from '../types/dividends.type.js';
-import {
-  RootPrices,
-  PriceObject,
-  PriceReturn,
-  MainPrices,
-} from '../types/prices.type.js';
+import { DividendReturn, RootDividend } from '../types/dividends.type.js';
+import { MainPrices, PriceReturn } from '../types/prices.type.js';
 
 import {
   Indicators,
   PassiveChartReturn,
-  RootReport,
   ReportReturn,
+  RootReport,
 } from '../types/stock.types.js';
 
 import {
   AxiosOptions,
+  Header,
   PassiveChartObject,
   PayoutReturn,
-  Header
 } from '../types/get.type.js';
 
-import Scrapper from './Fetcher.utils.js'
-
+import Scrapper from './Fetcher.utils.js';
 
 import axios from 'axios';
 import Cheerio from 'cheerio';
 import Utilities from './Utilities.js';
+
+// FIXME REFAZER TUDO AQUI
 
 export default class TickerFetcher {
   private url: String = 'https://statusinvest.com.br';
@@ -82,8 +78,12 @@ export default class TickerFetcher {
         )
       ).data;
     } catch (err: any) {
-      console.log(err);
-      throw new Error('Error: ' + err.message);
+      const status = err.response.status;
+
+      console.log(status);
+      if (status === 403) throw new Error('BLOCKED REQUEST CODE 403');
+      if (status === 404) throw new Error('INVALID TICKER CODE 404');
+      throw new Error(err.message);
     }
   }
 
@@ -329,7 +329,6 @@ export default class TickerFetcher {
 
   async getIndicatorsInfo() {
     const ticker = this.ticker;
-    const url = 'https://statusinvest.com.br/acao/indicatorhistoricallist';
     const indicators: Indicators = {
       dy: {
         actual: 0,
@@ -446,6 +445,8 @@ export default class TickerFetcher {
         });
       }
     }
+
+    // console.log(indicators.dy, 'INDICADORES DE DIVIDENDO');
 
     return indicators;
   }

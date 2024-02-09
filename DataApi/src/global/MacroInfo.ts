@@ -1,7 +1,6 @@
 import axios from 'axios';
-import Utilities from '../utils/Utilities.js';
-import TickerFetcher from '../utils/Fetcher.js';
 import { Stock } from '../Entities/Stock.js';
+import TickerFetcher from '../utils/Fetcher.js';
 
 export interface RootCDI {
   '@odata.context': string;
@@ -12,6 +11,8 @@ export interface RootIPCA {
   '@odata.context': string;
   value: Value[];
 }
+
+// FIXME CONCERTAR SOLID AQUI, PENSAR COMO
 
 export interface Value {
   SERCODIGO: string;
@@ -61,7 +62,7 @@ export class MacroInfo {
     });
 
     this.tickers = await TickerFetcher.getAllTickers();
+
+    return await TickerFetcher.getAllTickers();
   }
 }
-
-MacroInfo.initialize();

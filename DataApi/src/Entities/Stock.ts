@@ -1,17 +1,14 @@
-import { BazinMethod } from './Bazin.js';
-import { GranhamMethod } from './Graham.js';
-import { Variable } from './Variable.js';
+import { StockProtocol } from '../interfaces/StockProtocol.type.js';
 import { LastDividendPayment } from '../types/dividends.type.js';
 import {
-  StockRequirements,
-  PriceHistory,
-  NetLiquid,
   Indicators,
+  NetLiquid,
   PassiveChartReturn,
+  StockRequirements,
 } from '../types/stock.types.js';
-import instanceStock from './instanceStock.js';
+import { Variable } from './Variable.js';
 
-export class Stock extends Variable {
+export class Stock extends Variable implements StockProtocol {
   calculateRentability(actualPrice: number, referencePrice: number): number {
     return ((actualPrice - referencePrice) / referencePrice) * 100;
   }
@@ -45,7 +42,7 @@ export class Stock extends Variable {
       stock.priceHistory
     );
 
-    const actualDividendYield = stock.actualDividendYield / 100;
+    const actualDividendYield = stock.actualDividendYield;
 
     this.indicators = stock.indicators;
     this.dividendYield = stock.dividendYield;

@@ -1,6 +1,5 @@
-import { LastDividendPayment } from './dividends.type';
 import { Stock } from '../Entities/Stock';
-import { Dividend } from './dividends.type';
+import { Dividend, LastDividendPayment } from './dividends.type';
 
 export interface PassiveChartReturn {
   year: number;
@@ -96,10 +95,6 @@ export interface PriceHistory {
   date: string;
   price: number;
 }
-
-export type Pontuation = {
-  [condition: string]: boolean | number;
-};
 
 export type CashFlowHeader = {
   name: string;

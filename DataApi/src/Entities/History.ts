@@ -2,19 +2,19 @@ import instanceStock from './instanceStock.js';
 
 import { Dividend, DividendOnDate } from '../types/dividends.type.js';
 import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
-import { Chart as ChartType } from '../types/Chart.type.js';
 import { StockInfo, StockPrice } from '../types/stock.types.js';
-import { chartUpdateInfo } from '../types/Chart.type.js';
 import Chart from './Chart.js';
 
 import { HistoryData, HistoryRequirements } from '../types/History.type.js';
 
 import HistoryUtils from '../utils/HistoryUtils.js';
-import { Transaction } from './Transaction.js';
-import Utilities from '../utils/Utilities.js';
-import Database from '../utils/Stockdatabase.js';
-import { Stock } from './Stock.js';
 import Json from '../utils/Json.js';
+import Database from '../utils/Stockdatabase.js';
+import Utilities from '../utils/Utilities.js';
+import { Stock } from './Stock.js';
+import { Transaction } from './Transaction.js';
+
+// FIXME ARRUMAR SOLID AQUI
 
 // METAS:
 // 1 - IMPLEMENTAR DIVIDENDOS - COMPLETO - COMPLETO
@@ -93,8 +93,8 @@ class History {
 
   getTransactionsOnDate(date: string): Transaction[] {
     return this.transactions.filter((transaction) => {
-      if (transaction.transaction_date === date)
-        return transaction.transaction_date;
+      if (transaction.getTransactionDate() === date)
+        return transaction.getTransactionDate();
     });
   }
 
@@ -142,7 +142,9 @@ class History {
     const db = new Database<Stock>('json/stocks.json');
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
-    const allTickers = transactions.map((transaction) => transaction.ticker);
+    const allTickers = transactions.map((transaction) =>
+      transaction.getTicker()
+    );
     const uniqueTickers = Utilities.uniqueElements(allTickers);
 
     for (const ticker of uniqueTickers) {

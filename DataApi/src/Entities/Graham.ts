@@ -1,5 +1,6 @@
-import { Stock } from './Stock';
-import { NetLiquid, Pontuation } from '../types/stock.types';
+import { StockProtocol } from '../interfaces/StockProtocol.type';
+import { Pontuation } from '../types/Pontuation.type';
+import { NetLiquid } from '../types/stock.types';
 
 // Princípios utilizados:
 
@@ -44,10 +45,13 @@ export class GranhamMethod {
   private grossDebt: number;
   private patrimony: number;
   private gb_p: number;
-
   private netLiquid: NetLiquid[] = [];
 
-  constructor(private stock: Stock) {
+  // DEPENDENCIES
+  private stock: StockProtocol;
+
+  constructor(stock: StockProtocol) {
+    this.stock = stock;
     const { indicators, passiveChart } = stock;
 
     const { currentLiabilities, currentAssets } = passiveChart[0];

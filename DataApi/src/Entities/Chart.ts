@@ -1,9 +1,14 @@
-import { Chart as ChartType, ChartConstructor } from '../types/Chart.type';
-import { StockData, StockRentability } from '../types/Chart.type';
-import { Stock } from './Stock';
-import Transaction from './Transaction';
-import { StockPrice } from '../types/stock.types';
+import {
+  ChartConstructor,
+  Chart as ChartType,
+  StockData,
+  StockRentability,
+} from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
+import { StockPrice } from '../types/stock.types';
+import Transaction from './Transaction';
+
+// FIXME ARRUMAR SOLID AQUI
 
 export default class Chart {
   public globalRentabily!: number;
@@ -143,9 +148,9 @@ export default class Chart {
     const transactionsLength = transactions.length;
     if (transactionsLength > 0) {
       for (const transaction of transactions) {
-        const ticker = transaction.ticker;
-        const quantity = transaction.quantity;
-        const price = transaction.price;
+        const ticker = transaction.getTicker();
+        const quantity = transaction.getQuantity();
+        const price = transaction.getPrice();
         const valueInvested = quantity * price;
         let individualChart: StockData = this.individualRentability[ticker];
 

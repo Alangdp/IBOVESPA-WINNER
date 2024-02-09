@@ -1,10 +1,6 @@
+import { IndexDividend, IndexHistoryPrice } from '../types/Index.type';
 import { Dividend, LastDividendPayment } from '../types/dividends.type';
 import { PriceHistory } from '../types/stock.types';
-import { DividendOnDate } from '../types/dividends.type';
-
-import { Chart } from '../types/Chart.type';
-import { IndexDividend } from '../types/Index.type';
-import { IndexHistoryPrice } from '../types/Index.type';
 
 export default class HistoryUtils {
   static convertLastDividendToDividend(
@@ -20,18 +16,6 @@ export default class HistoryUtils {
       type: dividendType,
     };
     return dividend;
-  }
-
-  static dateToString(date: Date): string {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-
-    const addZero = (value: number) => {
-      return value < 10 ? '0' + value : value;
-    };
-
-    return `${addZero(day)}/${addZero(month + 1)}/${year}`;
   }
 
   static stringToDate(dataString: string): Date | null {
