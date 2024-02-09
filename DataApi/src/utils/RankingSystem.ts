@@ -12,7 +12,6 @@ type RankingSystyemProps = {
 
 interface Ranking {
   [ticker: string]: {
-    bazin: BazinMethod;
     points: Pontuation;
   };
 }
@@ -27,7 +26,7 @@ class RankingSystyem {
         const stock = await instanceStock(ticker);
         const bazin = new BazinMethod(stock);
 
-        this.ranking[ticker] = { bazin, points: bazin.makePoints() };
+        this.ranking[ticker] = { points: bazin.makePoints(stock) };
       } catch (error) {
         continue;
       }
@@ -45,7 +44,6 @@ class RankingSystyem {
 async function t() {
   const tickers = (await MacroInfo.initialize()) as string[];
 
-  // console.log(MacroInfo.tickers);
   const tes = new RankingSystyem({ tickers });
   await tes.execute();
 }
