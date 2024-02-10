@@ -5,6 +5,7 @@ import { Pontuation } from '../types/Pontuation.type.js';
 import Json from './Json.js';
 
 // FIXME ARRUMAR SOLID AQUI
+// FIXME FUNÇÃO TEMPORARIA
 
 type RankingSystyemProps = {
   tickers: string[];

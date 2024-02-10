@@ -2,6 +2,9 @@ import { IndexDividend, IndexHistoryPrice } from '../types/Index.type';
 import { Dividend, LastDividendPayment } from '../types/dividends.type';
 import { PriceHistory } from '../types/stock.types';
 
+// Não existe funções ou váriavies em interfaces Typescript
+// Logo torna inviável a criação de um Protocol para a classe de Utilidades voltadas para o Historico.
+// FIXME Revisar SOLID mais tarde
 export default class HistoryUtils {
   static convertLastDividendToDividend(
     lastDividendPayment: LastDividendPayment

@@ -4,6 +4,9 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Não existe funções ou váriavies em interfaces Typescript
+// Logo torna inviável a criação de um Protocol para a classe de Jsons
+// FIXME Revisar SOLID mais tarde
 export default class Json {
   static readJSONFromFile(filename: string) {
     const absolutePath = path.resolve(__dirname, '..', 'json', filename);

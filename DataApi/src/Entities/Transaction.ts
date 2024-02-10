@@ -1,4 +1,4 @@
-import TransactionProtocol from '../interfaces/TransactionProtoca.type';
+import { TransactionProtocol } from '../interfaces/TransactionProtocol.type';
 import {
   TransactionCodes,
   TransactionRequirements,

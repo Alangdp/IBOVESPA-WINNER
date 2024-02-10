@@ -1,16 +1,18 @@
+import { ChartProtocol } from '../interfaces/ChartProtocol.type';
+import { TransactionProtocol } from '../interfaces/TransactionProtocol.type';
 import {
   ChartConstructor,
-  Chart as ChartType,
+  Chart as ChartModel,
+  ChartPortifolio,
   StockData,
   StockRentability,
 } from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
 import { StockPrice } from '../types/stock.types';
-import Transaction from './Transaction';
 
 // FIXME ARRUMAR SOLID AQUI
 
-export default class Chart {
+export default class Chart implements ChartProtocol {
   public globalRentabily!: number;
   public globalStockQuantity!: number;
   public globalStockValue!: number;
@@ -140,11 +142,11 @@ export default class Chart {
   }
 
   updateChart(
-    transactions: Transaction[],
+    transactions: TransactionProtocol[],
     prices: StockPrice,
     dividends: DividendOnDate,
     date: string
-  ): Chart {
+  ): this {
     const transactionsLength = transactions.length;
     if (transactionsLength > 0) {
       for (const transaction of transactions) {
@@ -181,9 +183,7 @@ export default class Chart {
     let totalWeigth = 0;
     let totalValue = 0;
 
-    const portifolioChart: {
-      [ticker: string]: number;
-    } = {};
+    const portifolioChart: ChartPortifolio = {};
 
     for (const ticker of Object.keys(this.individualRentability)) {
       const individualChart = this.individualRentability[ticker];
@@ -202,7 +202,7 @@ export default class Chart {
     return portifolioChart;
   }
 
-  returnChart(): ChartType {
+  returnChart(): ChartModel {
     return {
       globalRentabily: this.globalRentabily,
       globalStockQuantity: this.globalStockQuantity,

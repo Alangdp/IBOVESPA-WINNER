@@ -1,10 +1,6 @@
-import {
-  GranhamMethods,
-  GranhamProtocol,
-} from '../interfaces/GranamProtocal.type';
-import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Pontuation } from '../types/Pontuation.type';
 import { NetLiquid } from '../types/stock.types';
+import { StockProtocol } from './StockProtocol.type';
 
 // Princípios utilizados:
 
@@ -38,98 +34,38 @@ import { NetLiquid } from '../types/stock.types';
 
 // TODO - REFAZER TUDO
 
-// @ts-ignore
-export class Granham extends GranhamProtocol implements GranhamMethods {
-  constructor(stock: StockProtocol) {
-    super();
-    const { indicators, passiveChart } = stock;
+export interface GranhamMethods {
+  makePoints(stock: StockProtocol): Pontuation;
+  crescentNetLiquid(netLiquidOn10Years: NetLiquid[]): boolean;
+  crescentLpa(): boolean;
+  constantDividend(stock: StockProtocol): boolean;
+  calculateYearGrowth(stock: StockProtocol, numberYears: number): boolean;
+}
 
-    const { currentLiabilities, currentAssets } = passiveChart[0];
+export abstract class GranhamProtocol {
+  protected points: number;
+  protected lpa: number[];
+  protected vpa: number[];
+  protected p_l: number;
+  protected p_vp: number;
+  protected roe: number;
+  protected currentRatio: number;
+  protected grossDebt: number;
+  protected patrimony: number;
+  protected gb_p: number;
+  protected netLiquid: NetLiquid[];
 
-    this.p_l = Number(indicators.p_l.actual);
-    this.p_vp = Number(indicators.p_vp.actual);
-    this.roe = Number(indicators.roe.actual) / 100;
-
-    indicators.lpa.olds.map((indicator) => {
-      this.lpa.push(Number(indicator.value));
-    });
-
-    indicators.vpa.olds.map((indicator) => {
-      this.vpa.push(Number(indicator.value));
-    });
-
-    this.netLiquid = stock.netLiquid;
-    this.currentRatio = currentAssets / currentLiabilities;
-
-    this.grossDebt = stock.grossDebt;
-    this.patrimony = stock.patrimony;
-    if (this.patrimony === 0) this.patrimony = 1;
-    if (this.grossDebt === 0) this.grossDebt = 1;
-
-    this.gb_p = this.grossDebt / this.patrimony;
-  }
-  makePoints(stock: StockProtocol): Pontuation {
-    throw new Error('Method not implemented.');
-  }
-
-  crescentNetLiquid(netLiquidOn10Years: NetLiquid[]): boolean {
-    let crescent = true;
-    for (let i = 0; i < netLiquidOn10Years.length; i++) {
-      if (netLiquidOn10Years[i + 1] === undefined) break;
-      if (!(netLiquidOn10Years[i].value < netLiquidOn10Years[i + 1].value))
-        crescent = false;
-    }
-    return crescent;
-  }
-
-  crescentLpa(): boolean {
-    const { lpa } = this;
-
-    const lpaInitial = (lpa[0] + lpa[1] + lpa[2]) / 3;
-    const lpaFinal =
-      (lpa[lpa.length - 3] + lpa[lpa.length - 2] + lpa[lpa.length - 1]) / 3;
-
-    const crescent = lpa[lpa.length - 1] > 1.33 * lpaInitial;
-
-    return crescent;
-  }
-
-  constantDividend(stock: StockProtocol): boolean {
-    const { lastDividendsValue } = stock;
-    let crescent = true;
-
-    lastDividendsValue.map((dividend) => {
-      if (dividend.value <= 0) crescent = false;
-    });
-
-    return crescent;
-  }
-
-  calculateYearGrowth(stock: StockProtocol, numberYears: number): boolean {
-    try {
-      const { netLiquid } = stock;
-
-      const actualYear = (new Date().getFullYear() - 1).toString();
-      const lastYear = (Number(actualYear) - numberYears).toString();
-
-      const actualNetLiquid = netLiquid.find(
-        (netLiquid) => netLiquid.year === actualYear
-      );
-      const lastNetLiquid = netLiquid.find(
-        (netLiquid) => netLiquid.year === lastYear
-      );
-
-      if (!actualNetLiquid || !lastNetLiquid)
-        throw new Error('Invalid NetLiquid');
-
-      const growth =
-        (actualNetLiquid.value - lastNetLiquid.value) / lastNetLiquid.value;
-
-      if (growth > 0.05) return true;
-      return false;
-    } catch (error) {
-      console.error(error);
-      return false;
-    }
+  constructor() {
+    this.points = 0;
+    this.lpa = [];
+    this.vpa = [];
+    this.p_l = 0;
+    this.p_vp = 0;
+    this.roe = 0;
+    this.currentRatio = 0;
+    this.grossDebt = 0;
+    this.patrimony = 0;
+    this.gb_p = 0;
+    this.netLiquid = [];
   }
 }

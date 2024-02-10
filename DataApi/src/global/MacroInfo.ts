@@ -22,6 +22,9 @@ export interface Value {
   TERCODIGO: string;
 }
 
+// Não existe funções ou váriavies em interfaces Typescript
+// Logo torna inviável a criação de um Protocol para de váriaveis sobre Macro
+// FIXME Revisar SOLID mais tarde
 export class MacroInfo {
   static firstStart: boolean = true;
   static readonly version: string = '1.0.0';

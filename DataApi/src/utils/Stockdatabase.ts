@@ -1,5 +1,5 @@
-import { Low, LowSync } from 'lowdb';
-import { JSONFile, JSONFileSyncPreset } from 'lowdb/node';
+import { LowSync } from 'lowdb';
+import { JSONFileSyncPreset } from 'lowdb/node';
 
 export default class Database<T> {
   private db: LowSync<T[]>;
@@ -36,7 +36,7 @@ export default class Database<T> {
     return dataFiltred;
   }
 
-  find(callback: (instance: T) => boolean) {
+  find(callback: (instance: T) => boolean): T | null {
     const data = this.db.data;
 
     for (const instance of data) {

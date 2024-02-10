@@ -2,7 +2,7 @@ import { TransactionCodes } from '../types/transaction.type';
 
 // TODO ALTERAR O SITEMA DE CODIGOS USAR SOMENTE OS NUMEROS
 
-export default interface TransactionProtocol {
+export interface TransactionProtocol {
   codes: TransactionCodes;
 
   getTicker(): string;
@@ -20,5 +20,3 @@ export default interface TransactionProtocol {
   isDividend(): boolean;
   totalValue(): number;
 }
-
-export { TransactionProtocol };

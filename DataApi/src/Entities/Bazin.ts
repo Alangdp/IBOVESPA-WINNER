@@ -1,20 +1,12 @@
+import { BazinMethods, BazinProtocol } from '../interfaces/BazinProtocol.type';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Pontuation } from '../types/Pontuation.type';
 
 // TODO - REFAZER TUDO
 
-export class BazinMethod {
-  private actualDividends: number;
-  private points = 0;
-  private maxPrice?: number;
-  private dividendYieldMedian: number;
-  private dividendYieldAverage: number;
-  private lastDividendYieldBrute: number[];
-
-  private lastDividendsValue: number[] = [];
-  private lastDividendsYield: number[] = [];
-
+export class Bazin extends BazinProtocol implements BazinMethods {
   constructor(stock: StockProtocol) {
+    super();
     const {
       dividendYield,
       actualPrice,
@@ -35,7 +27,7 @@ export class BazinMethod {
     this.validate(stock);
   }
 
-  private validate(stock: StockProtocol) {
+  validate(stock: StockProtocol) {
     const { grossDebt, patrimony } = stock;
 
     if (grossDebt === null || grossDebt === undefined)

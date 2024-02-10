@@ -1,18 +1,21 @@
-import instanceStock from './instanceStock.js';
-
-import { Dividend, DividendOnDate } from '../types/dividends.type.js';
-import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
-import { StockInfo, StockPrice } from '../types/stock.types.js';
-import Chart from './Chart.js';
-
 import { HistoryData, HistoryRequirements } from '../types/History.type.js';
+import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
+import { Dividend, DividendOnDate } from '../types/dividends.type.js';
+import { StockInfo, StockPrice } from '../types/stock.types.js';
+
+import instanceStock from './instanceStock.js'; // TRANFORMAR EM UMA CLASSE
 
 import HistoryUtils from '../utils/HistoryUtils.js';
-import Json from '../utils/Json.js';
 import Database from '../utils/Stockdatabase.js';
 import Utilities from '../utils/Utilities.js';
-import { Stock } from './Stock.js';
+
+import Json from '../utils/Json.js';
+import Chart from './Chart.js';
 import { Transaction } from './Transaction.js';
+
+import { StockProtocol } from '../interfaces/StockProtocol.type.js';
+import { TransactionProtocol } from '../interfaces/TransactionProtocol.type.js';
+import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -29,9 +32,9 @@ import { Transaction } from './Transaction.js';
 
 class History {
   stockInfo: StockInfo;
-  transactions: Transaction[];
+  transactions: TransactionProtocol[];
   historyData: HistoryData;
-  chart: Chart = new Chart(null);
+  chart: ChartProtocol = new Chart(null);
 
   indexHistoryPrice: IndexHistoryPrice;
   indexDividend: IndexDividend;
@@ -91,7 +94,7 @@ class History {
     return dividendsPaymentOnDate;
   }
 
-  getTransactionsOnDate(date: string): Transaction[] {
+  getTransactionsOnDate(date: string): TransactionProtocol[] {
     return this.transactions.filter((transaction) => {
       if (transaction.getTransactionDate() === date)
         return transaction.getTransactionDate();
@@ -139,7 +142,7 @@ class History {
   }
 
   static async instanceHistory(transactions: Transaction[]) {
-    const db = new Database<Stock>('json/stocks.json');
+    const db = new Database<StockProtocol>('json/stocks.json');
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
     const allTickers = transactions.map((transaction) =>

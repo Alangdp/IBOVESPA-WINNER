@@ -1,11 +1,20 @@
+import { Response } from '../types/Reponse.type';
+
+// Monta um objeto de Resposta para padronizar as requisições
+// EXEMPLO DE RETORNO
+// interface Response {
+//   status: number;
+//   message: string;
+//   data: any;
+// }
 
 /**
  *
- * @param status
- * @param message
- * @param data
- * @param error
- * @example resp(200, 'User found', user);
+ * @param s StatusCode
+ * @param m Message
+ * @param d Data
+ * @param err Error
+ * @example {status: s, msg: m, data: data | error, }
  */
 const resp = (s: number, m: string, d: any, err?: any): Response => {
   if (err) {
@@ -25,10 +34,4 @@ const resp = (s: number, m: string, d: any, err?: any): Response => {
   };
 };
 
-interface Response {
-  status: number;
-  message: string;
-  data: any;
-}
-
-export { resp, Response };
+export { resp };

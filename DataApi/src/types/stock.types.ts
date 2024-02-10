@@ -1,4 +1,4 @@
-import { Stock } from '../Entities/Stock';
+import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
 
 export interface PassiveChartReturn {
@@ -130,7 +130,7 @@ export interface ReportReturn {
 
 export interface StockInfo {
   [ticker: string]: {
-    stock: Stock;
+    stock: StockProtocol;
     dividend: Dividend[];
     historyPrice: PriceHistory[];
   };

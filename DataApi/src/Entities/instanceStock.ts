@@ -5,12 +5,13 @@ import {
 } from '../types/stock.types';
 import { Stock } from './Stock.js';
 
+import { StockProtocol } from '../interfaces/StockProtocol.type';
 import TickerFetcher from '../utils/Fetcher.js';
 import { BazinMethod } from './Bazin.js';
 
 // FIXME TRANFOMAR EM UMA CLASSE
 
-async function instanceStock(ticker: string): Promise<Stock> {
+async function instanceStock(ticker: string): Promise<StockProtocol> {
   const tickerFetcher = new TickerFetcher(ticker);
   await tickerFetcher.initialize();
 

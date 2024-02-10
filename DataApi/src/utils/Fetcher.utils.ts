@@ -1,8 +1,12 @@
 import cheerio from 'cheerio';
+import { FetcherUtilsProtocol } from './../interfaces/FetcherUtils.type';
 
 import Utilities from './Utilities.js';
 
-export default class Utils {
+type CherioElement = cheerio.Cheerio;
+
+export default class FetcherUtils implements FetcherUtilsProtocol {
+  // COMENTADO FetcherUtilsProtocol MOTIVO NAO SEI USAR ISSO COM PRIVATE NO INTERFACE
   private $?: cheerio.Root;
 
   constructor(html?: string) {
@@ -16,7 +20,7 @@ export default class Utils {
     return element.text() || '';
   }
 
-  extractElement(selector: string) {
+  extractElement(selector: string): CherioElement | undefined {
     if (!this.$) throw new Error('Invalid $');
     const element = this.$(selector);
     if (element === null) {

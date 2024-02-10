@@ -1,4 +1,9 @@
 // Alter import type
+
+// Não existe funções ou váriavies em interfaces Typescript
+// Logo torna inviável a criação de um Protocol para a classe de utilidades.
+// FIXME Revisar SOLID mais tarde
+
 export default class Utilities {
   static formateNumber(stringToFormat: string): number {
     const stringToFormatArray = stringToFormat.split('.');
