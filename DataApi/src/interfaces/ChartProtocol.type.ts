@@ -1,4 +1,5 @@
 // import { TransactionProtocol } from 'sequelize';
+import { TransactionHistory } from '../Entities/Transaction';
 import {
   ChartConstructor,
   Chart as ChartModel,
@@ -7,7 +8,6 @@ import {
 } from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
 import { StockPrice } from '../types/stock.types';
-import { TransactionProtocol } from './TransactionProtocol.type';
 // import TransactionProtocol from './TransactionProtocol';
 
 // FIXME ARRUMAR SOLID AQUI
@@ -33,7 +33,7 @@ export interface ChartProtocol extends ChartConstructor {
   updateTickers(pricesOnDate: StockPrice, date: string): void;
   updateDividends(dividends: DividendOnDate, date: string): void;
   updateChart(
-    transactions: TransactionProtocol[],
+    transactions: TransactionHistory[],
     prices: StockPrice,
     dividends: DividendOnDate,
     date: string

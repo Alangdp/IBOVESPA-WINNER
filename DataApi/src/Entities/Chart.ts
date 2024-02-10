@@ -1,5 +1,4 @@
 import { ChartProtocol } from '../interfaces/ChartProtocol.type';
-import { TransactionProtocol } from '../interfaces/TransactionProtocol.type';
 import {
   ChartConstructor,
   Chart as ChartModel,
@@ -9,6 +8,7 @@ import {
 } from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
 import { StockPrice } from '../types/stock.types';
+import { TransactionHistory } from './Transaction';
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -142,7 +142,7 @@ export default class Chart implements ChartProtocol {
   }
 
   updateChart(
-    transactions: TransactionProtocol[],
+    transactions: TransactionHistory[],
     prices: StockPrice,
     dividends: DividendOnDate,
     date: string
@@ -159,11 +159,11 @@ export default class Chart implements ChartProtocol {
         if (!individualChart)
           individualChart = this.createTickerOnChart(ticker);
 
-        if (transaction.isBuy()) {
+        if (transaction.getType() === 'BUY') {
           this.buyUpdate(individualChart, ticker, quantity, valueInvested);
         }
 
-        if (transaction.isSell()) {
+        if (transaction.getType() === 'SELL') {
           this.sellUpdate(individualChart, ticker, quantity, valueInvested);
         }
       }

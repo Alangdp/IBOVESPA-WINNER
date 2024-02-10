@@ -1,4 +1,4 @@
-import { BazinMethod } from '../Entities/Bazin.js';
+import { Bazin } from '../Entities/Bazin.js';
 import instanceStock from '../Entities/instanceStock.js';
 import { MacroInfo } from '../global/MacroInfo.js';
 import { Pontuation } from '../types/Pontuation.type.js';
@@ -25,7 +25,7 @@ class RankingSystyem {
     for (const ticker of this.tickers) {
       try {
         const stock = await instanceStock(ticker);
-        const bazin = new BazinMethod(stock);
+        const bazin = new Bazin(stock);
 
         this.ranking[ticker] = { points: bazin.makePoints(stock) };
       } catch (error) {

@@ -1,4 +1,4 @@
-import { LowSync } from 'lowdb';
+import { LowSync } from 'lowdb/lib';
 import { JSONFileSyncPreset } from 'lowdb/node';
 
 export default class Database<T> {

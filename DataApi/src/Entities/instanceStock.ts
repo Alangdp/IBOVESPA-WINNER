@@ -1,13 +1,13 @@
+import { StockProtocol } from '../interfaces/StockProtocol.type';
 import {
   CashFlowHeader,
   NetLiquid,
   StockRequirements,
 } from '../types/stock.types';
-import { Stock } from './Stock.js';
 
-import { StockProtocol } from '../interfaces/StockProtocol.type';
 import TickerFetcher from '../utils/Fetcher.js';
-import { Bazin } from './Bazin';
+import { Bazin } from './Bazin.js';
+import { Stock } from './Stock.js';
 
 // FIXME TRANFOMAR EM UMA CLASSE
 
@@ -34,7 +34,6 @@ async function instanceStock(ticker: string): Promise<StockProtocol> {
 
   for (const dividend of indicators.dy.olds) {
     if (lastDividendsYield.length === 10) break;
-    // console.log(dividend.date);
     const dyValue = Number(dividend.value);
     lastDividendsYield.push(dyValue);
   }

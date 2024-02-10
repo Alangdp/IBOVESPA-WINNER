@@ -1,5 +1,5 @@
 import { ChartProtocol } from '../interfaces/ChartProtocol.type.js';
-import { TransactionProtocol } from '../interfaces/TransactionProtocol.type.js';
+import { TransactionProtocol } from '../interfaces/TransactionBuyProtocol.type.js';
 import { DividendOnDate } from './dividends.type.js';
 import { StockInfo, StockPrice } from './stock.types.js';
 

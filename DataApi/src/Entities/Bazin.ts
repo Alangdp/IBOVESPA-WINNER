@@ -1,4 +1,7 @@
-import { BazinMethods, BazinProtocol } from '../interfaces/BazinProtocol.type';
+import {
+  BazinMethods,
+  BazinProtocol,
+} from '../interfaces/BazinProtocol.type.js';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Pontuation } from '../types/Pontuation.type';
 
