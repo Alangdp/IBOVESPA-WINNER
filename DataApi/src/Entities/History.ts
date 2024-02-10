@@ -5,7 +5,7 @@ import { StockInfo, StockPrice } from '../types/stock.types.js';
 
 import instanceStock from './instanceStock.js'; // TRANFORMAR EM UMA CLASSE
 
-import HistoryUtils from '../utils/HistoryUtils.js';
+import HistoryUtils from '../utils/History.Utils.js';
 import Database from '../utils/Stockdatabase.js';
 import Utilities from '../utils/Utilities.js';
 

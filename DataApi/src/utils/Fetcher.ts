@@ -1,7 +1,7 @@
 import { RootCashFlow } from '../types/cashFlow.type.js';
 import { DividendReturn, RootDividend } from '../types/dividends.type.js';
+import { Header, PassiveChartObject, PayoutReturn } from '../types/get.type.js';
 import { MainPrices, PriceReturn } from '../types/prices.type.js';
-
 import {
   Indicators,
   PassiveChartReturn,
@@ -9,23 +9,16 @@ import {
   RootReport,
 } from '../types/stock.types.js';
 
-import {
-  AxiosOptions,
-  Header,
-  PassiveChartObject,
-  PayoutReturn,
-} from '../types/get.type.js';
-
-import Scrapper from './Fetcher.utils.js';
-
 import axios from 'axios';
 import Cheerio from 'cheerio';
+
+import { AxiosUtils } from './Axios.Utils.js';
+import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
 
 // FIXME REFAZER TUDO AQUI
 
 export default class TickerFetcher {
-  private url: String = 'https://statusinvest.com.br';
   public ticker: string;
   private Utility?: Scrapper;
   private type?: string;
@@ -40,41 +33,11 @@ export default class TickerFetcher {
     this.Utility = new Scrapper(htmlPage);
   }
 
-  private makeOptionsJson(
-    method: 'POST' | 'GET',
-    url: string,
-    params: any,
-    final: string = 'acao',
-    contentType:
-      | 'application/x-www-form-urlencoded'
-      | 'application/json' = 'application/json'
-  ) {
-    const options: AxiosOptions = {
-      method: method,
-      url: `https://statusinvest.com.br/${final}/${url}`,
-      headers: {
-        'Content-Type': contentType,
-        cookie: '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296',
-        'user-agent': 'CPI/V1',
-      },
-    };
-
-    if (contentType === 'application/json') {
-      options.params = params;
-    }
-
-    if (contentType === 'application/x-www-form-urlencoded') {
-      options.data = params;
-    }
-
-    return options;
-  }
-
   async getHtmlPage() {
     try {
       return (
         await axios.request(
-          this.makeOptionsJson('GET', this.ticker, {}, 'acoes')
+          AxiosUtils.makeOptionsJson('GET', this.ticker, {}, 'acoes')
         )
       ).data;
     } catch (err: any) {
@@ -275,7 +238,7 @@ export default class TickerFetcher {
     };
 
     try {
-      const options = this.makeOptionsJson(
+      const options = AxiosUtils.makeOptionsJson(
         'GET',
         `companytickerprovents?ticker=${ticker}&chartProventsType=2`,
         null
@@ -367,7 +330,7 @@ export default class TickerFetcher {
       },
     };
 
-    const options = this.makeOptionsJson(
+    const options = AxiosUtils.makeOptionsJson(
       'POST',
       'indicatorhistoricallist',
       `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
@@ -455,7 +418,7 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const options = this.makeOptionsJson('POST', 'tickerprice', {
+      const options = AxiosUtils.makeOptionsJson('POST', 'tickerprice', {
         ticker,
         type: 4,
         'currences[]': '1',
@@ -482,7 +445,7 @@ export default class TickerFetcher {
 
     try {
       const payout = await axios.request(
-        this.makeOptionsJson('POST', 'payoutresult', {
+        AxiosUtils.makeOptionsJson('POST', 'payoutresult', {
           code: ticker,
           type: 1,
         })
@@ -509,7 +472,7 @@ export default class TickerFetcher {
 
     try {
       const response = await axios.request(
-        this.makeOptionsJson('POST', 'getbsactivepassivechart', {
+        AxiosUtils.makeOptionsJson('POST', 'getbsactivepassivechart', {
           code: ticker,
           type: 1,
         })
@@ -544,7 +507,7 @@ export default class TickerFetcher {
       const returnData: ReportReturn[] = [];
 
       const response = await axios.request(
-        this.makeOptionsJson('POST', 'getassetreports', {
+        AxiosUtils.makeOptionsJson('POST', 'getassetreports', {
           code: ticker,
           year: this.actualyear,
         })
@@ -573,7 +536,7 @@ export default class TickerFetcher {
   async getCashFlow() {
     const ticker = this.ticker;
     try {
-      const options = this.makeOptionsJson(
+      const options = AxiosUtils.makeOptionsJson(
         'GET',
         `getfluxocaixa?code=${ticker}&range.min=${2000}&range.max=${
           this.actualyear - 1

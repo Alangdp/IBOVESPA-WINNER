@@ -1,0 +1,261 @@
+{
+  "Saúde": {
+    "Serv.Méd.Hospit..Análises e Diagnósticos": [
+      "Serv.Méd.Hospit..Análises e Diagnósticos"
+    ],
+    "Equipamentos": [
+      "Equipamentos"
+    ],
+    "Comércio e Distribuição": [
+      "Medicamentos e Outros Produtos"
+    ],
+    "Medicamentos e Outros Produtos": [
+      "Medicamentos e Outros Produtos"
+    ]
+  },
+  "Financeiro e Outros": {
+    "Intermediários Financeiros": [
+      "Bancos",
+      "Soc. Crédito e Financiamento"
+    ],
+    "Exploração de Imóveis": [
+      "Exploração de Imóveis",
+      "Intermediação Imobiliária"
+    ],
+    "Previdência e Seguros": [
+      "Corretoras de Seguros",
+      "Seguradoras"
+    ],
+    "Outros": [
+      "Outros"
+    ],
+    "Serviços Financeiros Diversos": [
+      "Serviços Financeiros Diversos",
+      "Gestão de Recursos e Investimentos"
+    ],
+    "Holdings Diversificadas": [
+      "Holdings Diversificadas"
+    ]
+  },
+  "Consumo não Cíclico": {
+    "Bebidas": [
+      "Cervejas e Refrigerantes",
+      "Bebida Alcoólicas"
+    ],
+    "Agropecuária": [
+      "Agricultura"
+    ],
+    "Comércio e Distribuição": [
+      "Alimentos",
+      "Tabaco"
+    ],
+    "Alimentos Processados": [
+      "Carnes e Derivados",
+      "Açucar e Alcool",
+      "Alimentos Diversos"
+    ],
+    "Produtos de Uso Pessoal e de Limpeza": [
+      "Produtos de Limpeza",
+      "Produtos de Uso Pessoal"
+    ],
+    "Diversos": [
+      "Produtos Diversos"
+    ]
+  },
+  "Bens Industriais": {
+    "Máquinas e Equipamentos": [
+      "Máq. e Equip. Industriais",
+      "Máq. e Equip. Construção e Agrícolas",
+      "Motores . Compressores e Outros",
+      "Armas e Munições"
+    ],
+    "Serviços": [
+      "Serviços Diversos"
+    ],
+    "Construção e Engenharia": [
+      "Construção Pesada",
+      "Produtos para Construção",
+      "Engenharia Consultiva",
+      "Serviços Diversos"
+    ],
+    "Transporte": [
+      "Transporte Aéreo",
+      "Exploração de Rodovias",
+      "Logística",
+      "Transporte Hidroviário",
+      "Transporte Rodoviário",
+      "Transporte Ferroviário",
+      "Serviços de Apoio e Armazenagem"
+    ],
+    "Material de Transporte": [
+      "Material Aeronáutico e de Defesa",
+      "Material Rodoviário"
+    ],
+    "Comércio": [
+      "Material de Transporte"
+    ]
+  },
+  "Utilidade Pública": {
+    "Energia Elétrica": [
+      "Energia Elétrica"
+    ],
+    "Água e Saneamento": [
+      "Água e Saneamento"
+    ],
+    "Gás": [
+      "Gás"
+    ]
+  },
+  "Consumo Cíclico": {
+    "Viagens e Lazer": [
+      "Produção de Eventos e Shows",
+      "Bicicletas",
+      "Viagens e Turismo",
+      "Brinquedos e Jogos",
+      "Atividades Esportivas",
+      "Cinema e Entretenimento"
+    ],
+    "Comércio": [
+      "Eletrodomésticos",
+      "Tecidos. Vestuário e Calçados",
+      "Produtos Diversos"
+    ],
+    "Tecidos. Vestuário e Calçados": [
+      "Calçados",
+      "Fios e Tecidos",
+      "Vestuário",
+      "Acessórios"
+    ],
+    "Diversos": [
+      "Serviços Educacionais",
+      "Aluguel de carros",
+      "Programas de Fidelização"
+    ],
+    "Construção Civil": [
+      "Incorporações"
+    ],
+    "Mídia": [
+      "Produção e Difusão de Filmes e Programas",
+      "Jornais. Livros e Revistas"
+    ],
+    "Utilidades Domésticas": [
+      "Utensílios Domésticos",
+      "Móveis",
+      "Eletrodomésticos"
+    ],
+    "Hoteis e Restaurantes": [
+      "Hotelaria",
+      "Restaurante e Similares"
+    ],
+    "Automóveis e Motocicletas": [
+      "Automóveis e Motocicletas"
+    ]
+  },
+  "undefined": {
+    "undefined": [
+      null
+    ]
+  },
+  "Materiais Básicos": {
+    "Mineração": [
+      "Minerais Metálicos",
+      "Minerais Não Metálicos"
+    ],
+    "Químicos": [
+      "Petroquímicos",
+      "Químicos Diversos",
+      "Fertilizantes e Defensivos"
+    ],
+    "Siderurgia e Metalurgia": [
+      "Siderurgia",
+      "Artefatos de Ferro e Aço",
+      "Artefatos de Cobre"
+    ],
+    "Madeira e Papel": [
+      "Madeira",
+      "Papel e Celulose"
+    ],
+    "Embalagens": [
+      "Embalagens"
+    ],
+    "Materiais Diversos": [
+      "Materiais Diversos"
+    ]
+  },
+  "Tecnologia da Informação": {
+    "Programas e Serviços": [
+      "Programas e Serviços"
+    ],
+    "Computadores e Equipamentos": [
+      "Computadores e Equipamentos"
+    ],
+    "Biotecnologia": [
+      "Biotecnologia"
+    ]
+  },
+  "Comunicações": {
+    "Telecomunicações": [
+      "Telecomunicações"
+    ],
+    "Mídia": [
+      "Publicidade",
+      "Produção e Difusão de Filmes e Programas"
+    ]
+  },
+  "Petróleo. Gás e Biocombustíveis": {
+    "Petróleo. Gás e Biocombustíveis": [
+      "Exploração. Refino e Distribuição",
+      "Equipamentos e Serviços"
+    ]
+  },
+  "Fundo de Tijolo": {
+    "Shoppings": [
+      "Shoppings"
+    ],
+    "Imóveis Comerciais": [
+      "Lajes Corporativas",
+      "Imóveis Comerciais - Outros",
+      "Agências de Bancos",
+      "Varejo"
+    ],
+    "Imóveis Residenciais": [
+      "Imóveis Residenciais"
+    ],
+    "Imóveis Industriais e Logísticos": [
+      "Imóveis Industriais e Logísticos"
+    ],
+    "Hotéis": [
+      "Hotéis"
+    ],
+    "Educacional": [
+      "Educacional"
+    ],
+    "Hospitalar": [
+      "Hospitalar"
+    ]
+  },
+  "Fundo de Papel": {
+    "Papéis": [
+      "Papéis"
+    ],
+    "Fundo de Fundos": [
+      "Fundo de Fundos"
+    ]
+  },
+  "Fundo Misto": {
+    "Misto": [
+      "Misto"
+    ],
+    "Indefinido": [
+      "Indefinido"
+    ],
+    "Fundo de Desenvolvimento": [
+      "Fundo de Desenvolvimento"
+    ]
+  },
+  "Exchange Traded Funds": {
+    "Exchange Traded Funds": [
+      "Exchange Traded Funds"
+    ]
+  }
+}
