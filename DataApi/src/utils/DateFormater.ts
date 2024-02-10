@@ -1,7 +1,7 @@
 // Não existe funções ou váriavies em interfaces Typescript
 // Logo torna inviável a criação de um Protocol para a classe de formatos de data.
 // FIXME Revisar SOLID mais tarde
-class DateFormatter {
+export class DateFormatter {
   static dateToString(date: Date): string {
     const year = date.getFullYear();
     const month = date.getMonth();
