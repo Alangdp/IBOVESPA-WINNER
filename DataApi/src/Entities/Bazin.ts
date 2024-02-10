@@ -52,18 +52,16 @@ export class Bazin extends BazinProtocol implements BazinMethods {
   // FIXME LOOP ESTA AO CONTRARIO
   public crescentDividend() {
     const { lastDividendYieldBrute } = this;
-    // console.log(this.lastDividendYieldBrute, 'PADRAO DO LOOP');
-    // 2020 / 2023 / 2024 / 2022 / 2021
+    const tolerance = 1;
 
-    // console.log(this.lastDividendsYield, 'DEPOIS DO REVERSE');
-
-    let crescent = true;
-    for (let i = 0; i < lastDividendYieldBrute.length; i++) {
-      if (lastDividendYieldBrute[i + 1] === undefined) break;
-      if (!(lastDividendYieldBrute[i] < lastDividendYieldBrute[i + 1]))
-        crescent = false;
+    let previousDividend = Math.abs(lastDividendYieldBrute[0]);
+    for (let i = 1; i < lastDividendYieldBrute.length; i++) {
+      if (Math.abs(lastDividendYieldBrute[i]) < previousDividend - tolerance) {
+        return false;
+      }
+      previousDividend = Math.abs(lastDividendYieldBrute[i]);
     }
-    return crescent;
+    return true;
   }
 
   public makePoints(stock: StockProtocol): Pontuation {

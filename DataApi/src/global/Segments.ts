@@ -1,14 +1,8 @@
-// TODO MONTAR LISTA DE SEGMENTOS UTILIZE COMO BASE
-// URL : https://statusinvest.com.br/sector/getcompanies?categoryType=4
-
 import axios from 'axios';
 import { SegmentProtocol } from '../interfaces/SegmentProtocol.js';
 import { DataToUse, Root, segmentBreaks } from '../types/Segment.type.js';
 import { AxiosUtils } from '../utils/Axios.Utils.js';
 import Json from '../utils/Json.js';
-
-// Montar em classe cerca de 30 minutos
-// USAR SOLID
 
 // @ts-ignore
 export class Segment extends SegmentProtocol {

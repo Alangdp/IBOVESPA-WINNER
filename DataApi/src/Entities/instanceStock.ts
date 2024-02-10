@@ -7,7 +7,7 @@ import { Stock } from './Stock.js';
 
 import { StockProtocol } from '../interfaces/StockProtocol.type';
 import TickerFetcher from '../utils/Fetcher.js';
-import { BazinMethod } from './Bazin.js';
+import { Bazin } from './Bazin';
 
 // FIXME TRANFOMAR EM UMA CLASSE
 
@@ -86,10 +86,5 @@ export default instanceStock;
 
 async function teste(ticker: string) {
   const stock = await instanceStock(ticker);
-  const Bazin = new BazinMethod(stock);
-
-  // console.log(stock.dividendYield);
-  // console.log(Bazin.makePoints());
+  const bazin = new Bazin(stock);
 }
-
-// teste('TAEE11');
