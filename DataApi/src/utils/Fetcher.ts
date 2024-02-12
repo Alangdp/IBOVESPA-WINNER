@@ -3,7 +3,6 @@ import { DividendReturn, RootDividend } from '../types/dividends.type.js';
 import { Header, PassiveChartObject, PayoutReturn } from '../types/get.type.js';
 import { MainPrices, PriceReturn } from '../types/prices.type.js';
 import {
-  Indicators,
   PassiveChartReturn,
   ReportReturn,
   RootReport,
@@ -15,6 +14,7 @@ import Cheerio from 'cheerio';
 import { AxiosUtils } from './Axios.Utils.js';
 import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
+import { IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
 
 // FIXME REFAZER TUDO AQUI
 
@@ -292,43 +292,6 @@ export default class TickerFetcher {
 
   async getIndicatorsInfo() {
     const ticker = this.ticker;
-    const indicators: Indicators = {
-      dy: {
-        actual: 0,
-        average: 0,
-        olds: [],
-      },
-
-      lpa: {
-        actual: 0,
-        average: 0,
-        olds: [],
-      },
-
-      vpa: {
-        actual: 0,
-        average: 0,
-        olds: [],
-      },
-
-      p_l: {
-        actual: 0,
-        average: 0,
-        olds: [],
-      },
-
-      p_vp: {
-        actual: 0,
-        average: 0,
-        olds: [],
-      },
-
-      roe: {
-        actual: 0,
-        average: 0,
-        olds: [],
-      },
-    };
 
     const options = AxiosUtils.makeOptionsJson(
       'POST',
@@ -336,82 +299,25 @@ export default class TickerFetcher {
       `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
       'acao',
       'application/x-www-form-urlencoded'
-    );
+    ); 
 
-    const response = await axios.request(options);
-    const data = response.data.data[Object.keys(response.data.data)[0]];
-
-    for (const info of data) {
-      if (info.key === 'dy') {
-        indicators.dy.actual = info.actual;
-        indicators.dy.average = info.avg;
-        info.ranks.forEach((item: any) => {
-          indicators.dy.olds.push({
-            date: item.rank,
-            value: item.value,
-          });
-        });
-      }
-
-      if (info.key === 'lpa') {
-        indicators.lpa.actual = info.actual;
-        indicators.lpa.average = info.avg;
-        info.ranks.forEach((item: any) => {
-          indicators.lpa.olds.push({
-            date: item.rank,
-            value: item.value,
-          });
-        });
-      }
-
-      if (info.key === 'vpa') {
-        indicators.vpa.actual = info.actual;
-        indicators.vpa.average = info.avg;
-        info.ranks.forEach((item: any) => {
-          indicators.vpa.olds.push({
-            date: item.rank,
-            value: item.value,
-          });
-        });
-      }
-
-      if (info.key === 'p_l') {
-        indicators.p_l.actual = info.actual;
-        indicators.p_l.average = info.avg;
-        info.ranks.forEach((item: any) => {
-          indicators.p_l.olds.push({
-            date: item.rank,
-            value: item.value,
-          });
-        });
-      }
-
-      if (info.key === 'p_vp') {
-        indicators.p_vp.actual = info.actual;
-        indicators.p_vp.average = info.avg;
-        info.ranks.forEach((item: any) => {
-          indicators.p_vp.olds.push({
-            date: item.rank,
-            value: item.value,
-          });
-        });
-      }
-
-      if (info.key === 'roe') {
-        indicators.roe.actual = info.actual;
-        indicators.roe.average = info.avg;
-        info.ranks.forEach((item: any) => {
-          indicators.roe.olds.push({
-            date: item.rank,
-            value: item.value,
-          });
-        });
+    const indicatorsData: IndicatorsData = {}
+    const responseData: IndicatorRoot = (await axios.request(options)).data;
+    const tickerReference = Object.keys(responseData.data)[0]
+    for(const item of responseData.data[tickerReference]) {
+      indicatorsData[item.key] = {
+        actual: item.actual,
+        avg: item.avg,
+        olds: item.ranks.map( data => {
+          return {
+            date: data.rank,
+            value: data.value
+          }
+        }),
       }
     }
 
-    // console.log(indicators.dy, 'INDICADORES DE DIVIDENDO');
-
-    return indicators;
+    return indicatorsData;
   }
 
   async getPrice() {
@@ -467,7 +373,7 @@ export default class TickerFetcher {
     }
   }
 
-  async getPassiveChart() {
+  async getPassiveChart(): Promise<PassiveChartReturn[] | null> {
     const ticker = this.ticker;
 
     try {
@@ -500,7 +406,7 @@ export default class TickerFetcher {
     }
   }
 
-  async getReports() {
+  async getReports(): Promise<ReportReturn[] | null> {
     const ticker = this.ticker;
 
     try {
@@ -533,7 +439,7 @@ export default class TickerFetcher {
     }
   }
 
-  async getCashFlow() {
+  async getCashFlow(): Promise<Header[] | null> {
     const ticker = this.ticker;
     try {
       const options = AxiosUtils.makeOptionsJson(
@@ -605,6 +511,8 @@ export default class TickerFetcher {
 
 async function teste() {
   const tickerFetcher = new TickerFetcher('BBAS3');
-  await tickerFetcher.initialize();
-  console.log(await tickerFetcher.getPrice());
+  await tickerFetcher.initialize(); 
+  console.log(await tickerFetcher.getIndicatorsInfo())
 }
+
+teste()

@@ -1,5 +1,6 @@
 import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
+import { IndicatorsData } from './indicators.type';
 
 export interface PassiveChartReturn {
   year: number;
@@ -12,57 +13,12 @@ export interface PassiveChartReturn {
   shareholdersEquity: number;
 }
 
-export interface Indicators {
-  dy: {
-    actual: number;
-    average: number;
-    olds: IndicatorData[];
-  };
-
-  lpa: {
-    actual: number;
-    average: number;
-    olds: IndicatorData[];
-  };
-
-  vpa: {
-    actual: number;
-    average: number;
-    olds: IndicatorData[];
-  };
-
-  p_l: {
-    actual: number;
-    average: number;
-    olds: IndicatorData[];
-  };
-
-  p_vp: {
-    actual: number;
-    average: number;
-    olds: IndicatorData[];
-  };
-
-  roe: {
-    actual: number;
-    average: number;
-    olds: IndicatorData[];
-  };
-}
-
-export interface IndicatorData {
-  [date: string]: {
-    date: string;
-    value: number;
-  };
-}
-
 export type NetLiquid = {
   year: string;
   value: number;
 };
 
-export interface StockRequirements {
+export interface StockProps {
   // Variables from Stock
 
   ticker: string;
@@ -83,12 +39,15 @@ export interface StockRequirements {
   lastDividendsYieldYear: number[];
   lastDividendsValueYear: number[];
   lastDividendsValue: LastDividendPayment[];
-  indicators: Indicators;
+  indicators: IndicatorsData;
 
   // Graham variables
 
   netLiquid: NetLiquid[];
   passiveChart: PassiveChartReturn[];
+
+  // Others
+
 }
 
 export interface PriceHistory {

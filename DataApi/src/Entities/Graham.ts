@@ -4,6 +4,7 @@ import {
 } from '../interfaces/GranamProtocal.type';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Pontuation } from '../types/Pontuation.type';
+import { oldIndicator } from '../types/indicators.type';
 import { NetLiquid } from '../types/stock.types';
 
 // Princípios utilizados:
@@ -50,11 +51,11 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     this.p_vp = Number(indicators.p_vp.actual);
     this.roe = Number(indicators.roe.actual) / 100;
 
-    indicators.lpa.olds.map((indicator) => {
+    indicators.lpa.olds.map((indicator: oldIndicator) => {
       this.lpa.push(Number(indicator.value));
     });
 
-    indicators.vpa.olds.map((indicator) => {
+    indicators.vpa.olds.map((indicator: oldIndicator) => {
       this.vpa.push(Number(indicator.value));
     });
 

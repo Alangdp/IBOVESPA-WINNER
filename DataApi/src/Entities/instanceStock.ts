@@ -2,7 +2,7 @@ import { StockProtocol } from '../interfaces/StockProtocol.type';
 import {
   CashFlowHeader,
   NetLiquid,
-  StockRequirements,
+  StockProps,
 } from '../types/stock.types';
 
 import TickerFetcher from '../utils/Fetcher.js';
@@ -61,7 +61,7 @@ async function instanceStock(ticker: string): Promise<StockProtocol> {
 
   // Requirements
 
-  const stockData: StockRequirements = {
+  const stockData: StockProps = {
     indicators,
     ...basicInfo,
     activeValue: basicInfo.VPA * basicInfo.shareQuantity,
@@ -87,3 +87,5 @@ async function teste(ticker: string) {
   const stock = await instanceStock(ticker);
   const bazin = new Bazin(stock);
 }
+
+teste('bbas3')

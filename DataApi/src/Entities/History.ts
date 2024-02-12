@@ -152,7 +152,7 @@ class History {
 
     for (const ticker of uniqueTickers) {
       let stock = db.find((stock) => stock.ticker === ticker);
-      const milliseconds = new Date().getTime() - (stock?.instaceTime ?? 0);
+      const milliseconds = new Date().getTime() - (stock?.instanceTime.getTime() ?? 0);
 
       if (stock && Utilities.msToHours(milliseconds) < 1) {
         for (const dividend of stock.lastDividendsValue) {

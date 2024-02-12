@@ -1,10 +1,10 @@
 import { StockProtocol } from '../interfaces/StockProtocol.type.js';
 import { LastDividendPayment } from '../types/dividends.type.js';
+import { IndicatorsData } from '../types/indicators.type.js';
 import {
-  Indicators,
   NetLiquid,
   PassiveChartReturn,
-  StockRequirements,
+  StockProps,
 } from '../types/stock.types.js';
 import { Variable } from './Variable.js';
 
@@ -30,9 +30,9 @@ export class Stock extends Variable implements StockProtocol {
   public netLiquid: NetLiquid[];
   public passiveChart: PassiveChartReturn[];
 
-  public indicators: Indicators;
+  public indicators: IndicatorsData;
 
-  constructor(stock: StockRequirements) {
+  constructor(stock: StockProps) {
     super(
       stock.ticker,
       stock.name,
@@ -42,14 +42,13 @@ export class Stock extends Variable implements StockProtocol {
       stock.priceHistory
     );
 
-    const actualDividendYield = stock.actualDividendYield;
 
     this.indicators = stock.indicators;
     this.dividendYield = stock.dividendYield;
     this.grossDebt = stock.grossDebt;
     this.patrimony = stock.patrimony;
     this.payout = stock.payout;
-    this.actualDividendYield = actualDividendYield;
+    this.actualDividendYield = stock.actualDividendYield;
 
     this.lastDividendsYieldYear = stock.lastDividendsYieldYear;
     this.lastDividendsValueYear = stock.lastDividendsValueYear;

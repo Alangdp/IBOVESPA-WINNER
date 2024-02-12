@@ -2,6 +2,8 @@ import { MacroInfo } from '../global/MacroInfo.js';
 import { PriceHistory } from '../types/stock.types.js';
 
 export abstract class Variable {
+  instanceTime: Date = new Date();
+
   public marketValue: number;
   public CDI: number = MacroInfo.CDI;
   public IPCA: number = MacroInfo.IPCA;
