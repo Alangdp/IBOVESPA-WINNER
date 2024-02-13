@@ -1,15 +1,3 @@
-interface AxiosOptions {
-  method: 'POST' | 'GET';
-  url: string;
-  data?: object | string;
-  params?: object;
-  headers: {
-    'Content-Type': string;
-    cookie: string;
-    'user-agent': string;
-  };
-}
-
 type Header = {
   name: string;
   index: number;
@@ -61,4 +49,4 @@ interface PassiveChartObject {
   patrimonioLiquido: number;
 }
 
-export { AxiosOptions, Dividends, Dividend, PayoutReturn, PassiveChartObject,Header };
+export { Dividends, Dividend, PayoutReturn, PassiveChartObject,Header };

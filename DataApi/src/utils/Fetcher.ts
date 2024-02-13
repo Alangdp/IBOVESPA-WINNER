@@ -15,6 +15,7 @@ import { AxiosUtils } from './Axios.Utils.js';
 import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
 import { IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
+import apiGetter from './ApiGetter.js';
 
 // FIXME REFAZER TUDO AQUI
 
@@ -240,9 +241,14 @@ export default class TickerFetcher {
     try {
       const options = AxiosUtils.makeOptionsJson(
         'GET',
-        `companytickerprovents?ticker=${ticker}&chartProventsType=2`,
+        ,
         null
       );
+
+      const responseData  = apiGetter<RootDividend>(RootDividend, {
+        method: 'GET',
+
+      }, `companytickerprovents?ticker=${ticker}&chartProventsType=2`)
 
       const formatNumber = Utilities.formateNumber;
 
