@@ -1,17 +1,8 @@
 import { StockProtocol } from '../interfaces/StockProtocol.type';
+import { PassiveChartReturn } from './PassiveChart.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
 import { IndicatorsData } from './indicators.type';
 
-export interface PassiveChartReturn {
-  year: number;
-  totalAssets: number;
-  totalLiabilities: number;
-  currentAssets: number;
-  nonCurrentAssets: number;
-  currentLiabilities: number;
-  nonCurrentLiabilities: number;
-  shareholdersEquity: number;
-}
 
 export type NetLiquid = {
   year: string;
@@ -45,9 +36,6 @@ export interface StockProps {
 
   netLiquid: NetLiquid[];
   passiveChart: PassiveChartReturn[];
-
-  // Others
-
 }
 
 export interface PriceHistory {
@@ -60,32 +48,6 @@ export type CashFlowHeader = {
   index: number;
   value: { [key: string]: number };
 };
-
-export interface RootReport {
-  data: Report[];
-  success: boolean;
-}
-
-export interface Report {
-  year: number;
-  rank: number;
-  dataReferencia: string;
-  tipo: string;
-  especie: string;
-  assunto: string;
-  linkPdf: string;
-  dataReferencia_F: string;
-}
-
-export interface ReportReturn {
-  year: string;
-  rank: number;
-  referenceDate: string;
-  type: string;
-  especie: string;
-  assunt: string;
-  linkPdf: string;
-}
 
 export interface StockInfo {
   [ticker: string]: {

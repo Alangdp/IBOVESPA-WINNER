@@ -13,7 +13,6 @@ const loginRequired = async (req: RequestType, res: Response, next: NextFunction
   try {
     const { token } = req.body;
     if(!token) throw new Error("Invalid Token");
-    console.log(`${TOKEN_URL}user`)
     const response = await axios.post(`${TOKEN_URL}user`, {
       authorization: process.env.SECRET_TOKEN,
       token: token

@@ -203,8 +203,8 @@ const transactions: TransactionHistory[] = [
   ),
 ];
 
-async function t() {
-  console.log(await History.instanceHistory(transactions))
-}
+// async function t() {
+//   console.log(await History.instanceHistory(transactions))
+// }
 
-t()
+// t()

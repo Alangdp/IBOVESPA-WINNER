@@ -23,6 +23,8 @@ async function instanceStock(ticker: string): Promise<StockProtocol> {
   const cashFlow = await tickerFetcher.getCashFlow();
   const passiveChart = await tickerFetcher.getPassiveChart();
 
+  console.log(priceHistory, "PRICE HISTORY")
+
   if (!priceHistory) throw new Error('Error getting price history');
   if (!payout) throw new Error('Error getting payout');
   if (!dividendInfo) throw new Error('Error getting dividend info');
@@ -86,6 +88,8 @@ export default instanceStock;
 async function teste(ticker: string) {
   const stock = await instanceStock(ticker);
   const bazin = new Bazin(stock);
+
+  console.log(stock)
 }
 
 teste('bbas3')

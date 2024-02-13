@@ -1,9 +1,9 @@
 import { StockProtocol } from '../interfaces/StockProtocol.type.js';
+import { PassiveChartReturn } from '../types/PassiveChart.type.js';
 import { LastDividendPayment } from '../types/dividends.type.js';
 import { IndicatorsData } from '../types/indicators.type.js';
 import {
   NetLiquid,
-  PassiveChartReturn,
   StockProps,
 } from '../types/stock.types.js';
 import { Variable } from './Variable.js';

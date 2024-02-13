@@ -1,10 +1,10 @@
 export interface AxiosOptions {
   method: 'POST' | 'GET';
-  url: string;
+  url?: string;
   data?: object | string;
-  params?: object;
+  params?: object | string;
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded' | 'application/json';
+    'Content-Type'?: 'application/x-www-form-urlencoded' | 'application/json';
     cookie?: string;
     'user-agent'?: string;
   };

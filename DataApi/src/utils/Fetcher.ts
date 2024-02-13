@@ -1,12 +1,7 @@
 import { RootCashFlow } from '../types/cashFlow.type.js';
 import { DividendReturn, RootDividend } from '../types/dividends.type.js';
-import { Header, PassiveChartObject, PayoutReturn } from '../types/get.type.js';
+import { Header } from '../types/get.type.js';
 import { MainPrices, PriceReturn } from '../types/prices.type.js';
-import {
-  PassiveChartReturn,
-  ReportReturn,
-  RootReport,
-} from '../types/stock.types.js';
 
 import axios from 'axios';
 import Cheerio from 'cheerio';
@@ -16,6 +11,9 @@ import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
 import { IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
 import apiGetter from './ApiGetter.js';
+import { PayoutReturn, RootPayout } from '../types/Payout.type.js';
+import { PassiveChart, PassiveChartReturn } from '../types/PassiveChart.type.js';
+import { ReportReturn, RootReport } from '../types/report.type.js';
 
 // FIXME REFAZER TUDO AQUI
 
@@ -37,14 +35,16 @@ export default class TickerFetcher {
   async getHtmlPage() {
     try {
       return (
-        await axios.request(
-          AxiosUtils.makeOptionsJson('GET', this.ticker, {}, 'acoes')
-        )
-      ).data;
+        (await axios.get(`https://statusinvest.com.br/acoes/${this.ticker}`, {
+          headers: {
+            "User-Agent": 'CPI/V1'
+          }
+        })).data 
+      );
     } catch (err: any) {
+      console.log(err)
       const status = err.response.status;
 
-      console.log(status);
       if (status === 403) throw new Error('BLOCKED REQUEST CODE 403');
       if (status === 404) throw new Error('INVALID TICKER CODE 404');
       throw new Error(err.message);
@@ -239,21 +239,16 @@ export default class TickerFetcher {
     };
 
     try {
-      const options = AxiosUtils.makeOptionsJson(
-        'GET',
-        ,
-        null
+      const data = await apiGetter<RootDividend>(
+        {
+          method: 'GET',
+          headers: {}
+        },
+        `companytickerprovents?ticker=${ticker}&chartProventsType=2`
       );
-
-      const responseData  = apiGetter<RootDividend>(RootDividend, {
-        method: 'GET',
-
-      }, `companytickerprovents?ticker=${ticker}&chartProventsType=2`)
+      if(!data) throw new Error('Error Getting Dividends Data')
 
       const formatNumber = Utilities.formateNumber;
-
-      const response = await axios.request(options);
-      const data: RootDividend = response.data;
 
       dividendReturn.helper.earningsLastYearHelper =
         data.helpers.earningsLastYearHelper;
@@ -299,18 +294,19 @@ export default class TickerFetcher {
   async getIndicatorsInfo() {
     const ticker = this.ticker;
 
-    const options = AxiosUtils.makeOptionsJson(
-      'POST',
-      'indicatorhistoricallist',
-      `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
-      'acao',
-      'application/x-www-form-urlencoded'
-    ); 
+    const data = await apiGetter<IndicatorRoot>({
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/x-www-form-urlencoded'
+      },
+      params: `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
+      
+    }, 'indicatorhistoricallist')
+    if(!data) throw new Error('Error Getting Indicators Data')
 
     const indicatorsData: IndicatorsData = {}
-    const responseData: IndicatorRoot = (await axios.request(options)).data;
-    const tickerReference = Object.keys(responseData.data)[0]
-    for(const item of responseData.data[tickerReference]) {
+    const tickerReference = Object.keys(data.data)[0]
+    for(const item of data.data[tickerReference]) {
       indicatorsData[item.key] = {
         actual: item.actual,
         avg: item.avg,
@@ -330,24 +326,33 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const options = AxiosUtils.makeOptionsJson('POST', 'tickerprice', {
-        ticker,
-        type: 4,
-        'currences[]': '1',
-      });
+      const data = await apiGetter<MainPrices[]>({
+        method: "POST",
+        params: {
+          'ticker': ticker,
+          'type': 4,
+          'currences[]': '1',
+        },
+        headers: {
+          "Content-Type": 'application/json',
+          "user-agent": 'CPI/V1'
+        },
+      },
+      'tickerprice'
+      )
 
-      const response = await axios.request(options);
-      const data: MainPrices = response.data[0];
+      console.log(data, "PRICE DATA")
+      if(!data) throw new Error('Error Getting Prices Data')
 
       const priceReturn: PriceReturn = {
-        price: data.prices[0].price,
-        priceVariation: data.prices,
-        currency: data.currency,
+        price: data[0].prices[0].price,
+        priceVariation: data[0].prices,
+        currency: data[0].currency,
       };
 
       return priceReturn;
     } catch (error) {
-      console.log(error);
+      console.log(error, "ERRRRROOOOOO");
       return null;
     }
   }
@@ -356,24 +361,25 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const payout = await axios.request(
-        AxiosUtils.makeOptionsJson('POST', 'payoutresult', {
+      const data = await apiGetter<RootPayout>({
+        method: 'POST',
+        headers: {},
+        params: {
           code: ticker,
-          type: 1,
-        })
-      );
-      if (!payout.data) return null;
+          type: 1
+        },
+      }, 'payoutresult')
+      if (!data) throw new Error('Error Getting Payout Data');
 
-      const data: PayoutReturn = {
-        actual: payout.data.actual,
-        average: payout.data.average | payout.data.actual,
-        minValue: payout.data.minValue,
-        maxValue: payout.data.maxValue,
-        currency: payout.data.currency,
-        chart: payout.data.chart,
+      const payoutReturn: PayoutReturn = {
+        actual: data.actual,
+        average: data.avg | data.actual,
+        minValue: data.minValue,
+        maxValue: data.maxValue,
+        chart: data.chart,
       };
 
-      return data;
+      return payoutReturn;
     } catch (error) {
       return null;
     }
@@ -383,14 +389,16 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const response = await axios.request(
-        AxiosUtils.makeOptionsJson('POST', 'getbsactivepassivechart', {
+      const data = await apiGetter<PassiveChart[]>({
+        method: 'POST',
+        params: {
           code: ticker,
-          type: 1,
-        })
-      );
-
-      const data: PassiveChartObject[] = response.data;
+          type: 1
+        },
+        headers:{}
+      
+      }, 'getbsactivepassivechart')
+      if(!data) throw new Error('Error Getting Payout Data');
       const dataFormated: PassiveChartReturn[] = [];
 
       for (const passiveObject of data) {
@@ -418,14 +426,15 @@ export default class TickerFetcher {
     try {
       const returnData: ReportReturn[] = [];
 
-      const response = await axios.request(
-        AxiosUtils.makeOptionsJson('POST', 'getassetreports', {
+      const data = await apiGetter<RootReport>({
+        method: 'POST',
+        params: {
           code: ticker,
           year: this.actualyear,
-        })
-      );
-
-      const data: RootReport = response.data;
+        },
+        headers: {}
+      }, 'getassetreports') 
+      if(!data) throw new Error('Error Getting Report Data');
 
       for (const report of data.data) {
         returnData.push({
@@ -445,21 +454,19 @@ export default class TickerFetcher {
     }
   }
 
+  // TODO REFAZER ESSA FUNCAO TODA
   async getCashFlow(): Promise<Header[] | null> {
     const ticker = this.ticker;
     try {
-      const options = AxiosUtils.makeOptionsJson(
-        'GET',
-        `getfluxocaixa?code=${ticker}&range.min=${2000}&range.max=${
-          this.actualyear - 1
-        }`,
-        null
-      );
-
-      const response = await axios.request(options);
-      const data: RootCashFlow = response.data;
+      const data = await apiGetter<RootCashFlow>({
+        method: 'GET',
+        headers: {},
+      }, `getfluxocaixa?code=${ticker}&range.min=${2000}&range.max=${
+        this.actualyear - 1
+      }`)
+      if(!data) throw new Error('Error Getting CashFlow Data');
+      
       const grid = data.data.grid;
-
       const header: Header[] = [];
       const yearsOrdened: string[] = grid[0].columns
         .map((item: any) => {
