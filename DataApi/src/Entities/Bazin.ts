@@ -67,6 +67,16 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     return true;
   }
 
+  addPoints(validation: boolean, toAdd: number, toRemove: number) {
+    if (validation) {
+      this.points += toAdd;
+      return validation;
+    } else {
+      this.points - +toRemove;
+      return validation;
+    }
+  }
+
   public makePoints(stock: StockProtocol): Pontuation {
     const { dividendYieldMedian } = this;
     const { grossDebt, patrimony, actualDividendYield, payout, actualPrice } =
@@ -77,25 +87,36 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     const maxPrice = (this.dividendYieldAverage * stock.actualPrice) / 0.06;
 
     conditions['Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)'] =
-      this.dividendYieldAverage >= 0.06;
+      this.addPoints(this.dividendYieldAverage >= 0.06, 1, 2);
     conditions['Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)'] =
-      dividendYieldMedian >= 0.06;
-    conditions['Dividend Yield Atual > 0.06 (6%)'] =
-      actualDividendYield >= 0.06;
-    conditions['Dívida Bruta/Patrimônio < 0.5 (50%)'] =
-      grossDebt / patrimony <= 0.5;
+      this.addPoints(dividendYieldMedian >= 0.06, 1, 2);
+    conditions['Dividend Yield Atual > 0.06 (6%)'] = this.addPoints(
+      actualDividendYield >= 0.06,
+      1,
+      2
+    );
+    conditions['Dívida Bruta/Patrimônio < 0.5 (50%)'] = this.addPoints(
+      grossDebt / patrimony <= 0.5,
+      1,
+      2
+    );
     conditions['Pagamento constante de dividendos nos últimos 5 anos'] =
-      this.constistentDividend();
-    conditions['Dividendos crescentes nos últimos 5 anos'] =
-      this.crescentDividend();
-    conditions['0 < Payout < 1'] = payout > 0 && payout < 1;
-    conditions['Preço Atual < Preço Máximo'] = actualPrice < maxPrice;
-
-    for (const condition in conditions) {
-      if (conditions.hasOwnProperty(condition)) {
-        if (conditions[condition]) this.points++;
-      }
-    }
+      this.addPoints(this.constistentDividend(), 1, 1);
+    conditions['Dividendos crescentes nos últimos 5 anos'] = this.addPoints(
+      this.crescentDividend(),
+      1,
+      1
+    );
+    conditions['0 < Payout < 1'] = this.addPoints(
+      payout > 0 && payout < 1,
+      1,
+      1
+    );
+    conditions['Preço Atual < Preço Máximo'] = this.addPoints(
+      actualPrice < maxPrice,
+      1,
+      1
+    );
 
     const points: Pontuation = {};
     for (const condition in conditions) {

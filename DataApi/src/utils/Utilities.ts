@@ -26,4 +26,16 @@ export default class Utilities {
   static uniqueElements<T>(array: T[]): T[] {
     return array.filter((value, index, self) => self.indexOf(value) === index);
   }
+
+  static findIndexOfGreatest(array: number[]) {
+    var greatest;
+    var indexOfGreatest;
+    for (var i = 0; i < array.length; i++) {
+      if (!greatest || array[i] > greatest) {
+        greatest = array[i];
+        indexOfGreatest = i;
+      }
+    }
+    return indexOfGreatest;
+  }
 }

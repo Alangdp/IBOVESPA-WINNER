@@ -42,7 +42,6 @@ export default class TickerFetcher {
         })).data 
       );
     } catch (err: any) {
-      console.log(err)
       const status = err.response.status;
 
       if (status === 403) throw new Error('BLOCKED REQUEST CODE 403');
@@ -286,7 +285,6 @@ export default class TickerFetcher {
 
       return dividendReturn;
     } catch (error) {
-      console.log(error);
       return null;
     }
   }
@@ -341,7 +339,6 @@ export default class TickerFetcher {
       'tickerprice'
       )
 
-      console.log(data, "PRICE DATA")
       if(!data) throw new Error('Error Getting Prices Data')
 
       const priceReturn: PriceReturn = {
@@ -352,7 +349,6 @@ export default class TickerFetcher {
 
       return priceReturn;
     } catch (error) {
-      console.log(error, "ERRRRROOOOOO");
       return null;
     }
   }
@@ -362,13 +358,13 @@ export default class TickerFetcher {
 
     try {
       const data = await apiGetter<RootPayout>({
-        method: 'POST',
+        method: 'GET',
         headers: {},
         params: {
           code: ticker,
           type: 1
         },
-      }, 'payoutresult')
+      }, `payoutresult?code=${ticker}`)
       if (!data) throw new Error('Error Getting Payout Data');
 
       const payoutReturn: PayoutReturn = {
@@ -516,16 +512,7 @@ export default class TickerFetcher {
 
       return header;
     } catch (error) {
-      console.log(error);
       return null;
     }
   }
 }
-
-async function teste() {
-  const tickerFetcher = new TickerFetcher('BBAS3');
-  await tickerFetcher.initialize(); 
-  console.log(await tickerFetcher.getIndicatorsInfo())
-}
-
-teste()

@@ -135,7 +135,6 @@ class History {
         chart: chart,
       };
 
-      console.log(chart);
     }
 
     Json.saveJSONToFile(this.historyData, 'history.json');

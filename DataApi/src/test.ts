@@ -16,7 +16,4 @@ async function name() {
   'tickerprice'
   )
 
-  console.log(data)
 }
-
-name()

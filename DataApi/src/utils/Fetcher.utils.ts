@@ -10,9 +10,6 @@ export default class FetcherUtils implements FetcherUtilsProtocol {
   private $?: cheerio.Root;
 
   constructor(html?: string) {
-
-    console.log(html)
-
     if (html) this.$ = cheerio.load(html);
   }
 
