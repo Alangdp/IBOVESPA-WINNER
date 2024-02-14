@@ -61,8 +61,6 @@ async function instanceStock(ticker: string): Promise<StockProtocol> {
 
   // Requirements
 
-  console.log(payout, ticker, 'PATYO AQUI')
-
   const stockData: StockProps = {
     indicators,
     ...basicInfo,

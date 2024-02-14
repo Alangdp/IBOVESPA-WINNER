@@ -27,9 +27,9 @@ export default class Utilities {
     return array.filter((value, index, self) => self.indexOf(value) === index);
   }
 
-  static findIndexOfGreatest(array: number[]) {
+  static findIndexOfGreatest(array: number[]): number {
     var greatest;
-    var indexOfGreatest;
+    var indexOfGreatest = -1;
     for (var i = 0; i < array.length; i++) {
       if (!greatest || array[i] > greatest) {
         greatest = array[i];
