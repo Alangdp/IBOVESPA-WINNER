@@ -1,14 +1,6 @@
-import { StockProps } from '../types/stock.types';
+import { ComparatorProps, ArrayWithKeyValue } from '../types/Comparator.type.js';
 import Utilities from '../utils/Utilities.js';
-import instanceStock from './instanceStock.js';
 
-interface ComparatorProps {
-  arrayToCompare: StockProps[]
-} 
-
-type ArrayWithKeyValue = {
-  [key: string]: Array<number | string>
-}
 
 class Comparator {
 
@@ -16,14 +8,13 @@ class Comparator {
     const valuesOrdered: ArrayWithKeyValue = {}
     const biggerValues: ArrayWithKeyValue = {}
 
-    for(const stock of arrayToCompare) {
-      if(!valuesOrdered['ticker']) valuesOrdered['ticker'] = [stock.ticker]
-      else valuesOrdered['ticker'].push(stock.ticker)
+    for(const item of arrayToCompare) {
+      if(!valuesOrdered['ticker']) valuesOrdered['ticker'] = [item.ticker]
+      else valuesOrdered['ticker'].push(item.ticker)
     }
 
-    for(let i = 0; i < arrayToCompare.length; i++) {
-      const stock = arrayToCompare[i]
-      const { indicators: indicators } = stock
+    for(const item of arrayToCompare) {
+      const { indicators } = item
       const keys = Object.keys(indicators);
       for(const key of keys) {
         if(!valuesOrdered[key]) valuesOrdered[key] = [ indicators[key].actual ?? 0];
@@ -31,9 +22,8 @@ class Comparator {
       }
     }
 
-    for(let i = 0; i < arrayToCompare.length; i++) {
-      const stock = arrayToCompare[i]
-      const { indicators: indicators } = stock
+    for(const item of arrayToCompare) {
+      const { indicators } = item
       const keys = Object.keys(indicators);
       for(const key of keys) {
         if(key === 'ticker') continue;

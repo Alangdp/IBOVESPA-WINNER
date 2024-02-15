@@ -9,7 +9,7 @@ Executa a comparação entre o array fornecido de ações com base em seus indic
 #### Parâmetros
 
 - `opções` (`Object`): As opções para a comparação.
-  - `opções.arrayToCompare` (`Array` de `StockProps`): O array de ações para comparar.
+  - `opções.arrayToCompare` (`Array` de `Data`): O array de ações para comparar.
 
 #### Retorna
 
