@@ -3,8 +3,6 @@ import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
 import { Dividend, DividendOnDate } from '../types/dividends.type.js';
 import { StockInfo, StockPrice } from '../types/stock.types.js';
 
-import instanceStock from './instanceStock.js'; // TRANFORMAR EM UMA CLASSE
-
 import HistoryUtils from '../utils/History.Utils.js';
 import Database from '../utils/Stockdatabase.js';
 import Utilities from '../utils/Utilities.js';
@@ -16,6 +14,7 @@ import { StockProtocol } from '../interfaces/StockProtocol.type.js';
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
 import { TransactionHistory } from './Transaction.js';
+import { InstanceStock } from '../useCases/instanceStock.js';
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -27,7 +26,7 @@ import { TransactionHistory } from './Transaction.js';
 // globalStockValue: number;
 // globalDividendValue: number;
 // globalTotalValue: number;
-//
+
 // TODO: SISTEMA DE THREADS(OTIMIZAÇÃO) - https://stackoverflow.com/questions/25167590/one-thread-for-many-tasks-vs-many-threads-for-each-task-do-sleeping-threads-aft
 
 class History {
@@ -141,7 +140,6 @@ class History {
   }
 
   static async instanceHistory(transactions: TransactionHistory[]) {
-    const db = new Database<StockProtocol>('json/stocks.json');
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
     const allTickers = transactions.map((transaction) =>
@@ -151,7 +149,7 @@ class History {
 
     for (const ticker of uniqueTickers) {
       let stock = db.find((stock) => stock.ticker === ticker);
-      const milliseconds = new Date().getTime() - (stock?.instanceTime.getTime() ?? 0);
+      const milliseconds = new Date().getTime() - (stock?.instanceTime ?? 0);
 
       if (stock && Utilities.msToHours(milliseconds) < 1) {
         for (const dividend of stock.lastDividendsValue) {
@@ -169,7 +167,7 @@ class History {
 
       db.deleteBy((stock) => stock.ticker === ticker, true);
 
-      stock = await instanceStock(ticker);
+      stock = await InstanceStock.execute(ticker);
       stock.lastDividendsValue.forEach((dividend) =>
         dividends.push(HistoryUtils.convertLastDividendToDividend(dividend))
       );
@@ -201,9 +199,3 @@ const transactions: TransactionHistory[] = [
     { ticker: 'BBAS3' }
   ),
 ];
-
-// async function t() {
-//   console.log(await History.instanceHistory(transactions))
-// }
-
-// t()

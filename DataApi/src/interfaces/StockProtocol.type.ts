@@ -1,5 +1,4 @@
 import { Variable } from '../Entities/Variable';
-import { LastDividendPayment } from '../types/dividends.type';
 import {
   StockProps,
 } from '../types/stock.types';

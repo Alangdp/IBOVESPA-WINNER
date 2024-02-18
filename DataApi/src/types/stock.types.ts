@@ -36,6 +36,8 @@ export interface StockProps {
 
   netLiquid: NetLiquid[];
   passiveChart: PassiveChartReturn[];
+
+  // Other
 }
 
 export interface PriceHistory {

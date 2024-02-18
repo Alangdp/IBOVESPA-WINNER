@@ -14,6 +14,7 @@ import apiGetter from './ApiGetter.js';
 import { PayoutReturn, RootPayout } from '../types/Payout.type.js';
 import { PassiveChart, PassiveChartReturn } from '../types/PassiveChart.type.js';
 import { ReportReturn, RootReport } from '../types/report.type.js';
+import { BasicInfoReturn } from '../types/BasicInfo.type.js';
 
 // FIXME REFAZER TUDO AQUI
 
@@ -27,9 +28,11 @@ export default class TickerFetcher {
     this.ticker = ticker;
   }
 
-  async initialize(): Promise<void> {
+  async initialize(): Promise<this> {
     const htmlPage: string = await this.getHtmlPage();
     this.Utility = new Scrapper(htmlPage);
+    
+    return this
   }
 
   async getHtmlPage() {
@@ -90,13 +93,13 @@ export default class TickerFetcher {
     const netEquity: string = this.Utility.extractText(selectors.netEquity);
     const marketValue: string = this.Utility.extractText(selectors.marketValue);
     const price: number = this.Utility.extractNumber(selectors.price);
-    const porcentLast12Days: Number = this.Utility.extractNumber(
+    const porcentLast12Days: number = this.Utility.extractNumber(
       selectors.porcentLast12Days
     );
     const dividendPorcent: number = this.Utility.extractNumber(
       selectors.dividendPorcent
     );
-    const dividendDecimal: Number = dividendPorcent / 100;
+    const dividendDecimal: number = dividendPorcent / 100;
     const name: string = this.Utility.extractText(selectors.name);
     const LPA: number = this.Utility.extractNumber(selectors.LPA);
     const VPA: number = this.Utility.extractNumber(selectors.VPA);
@@ -108,7 +111,7 @@ export default class TickerFetcher {
     const shareQuantity = this.Utility.extractNumber(selectors.shareQuantity);
     let image = this.Utility.extractImage(selectors.imageURL);
 
-    const data = {
+    const data: BasicInfoReturn = {
       ticker: this.ticker,
       image,
       name,

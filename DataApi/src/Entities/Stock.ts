@@ -14,8 +14,6 @@ export class Stock extends Variable implements StockProtocol {
   }
   // FIXME - Soluções temporárias
 
-  public instaceTime: number;
-
   public lastDividendsAverage?: number;
   public dividendYield: number;
   public grossDebt: number;
@@ -56,6 +54,5 @@ export class Stock extends Variable implements StockProtocol {
 
     this.netLiquid = stock.netLiquid;
     this.passiveChart = stock.passiveChart;
-    this.instaceTime = new Date().getTime();
   }
 }

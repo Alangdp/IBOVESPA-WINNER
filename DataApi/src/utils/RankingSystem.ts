@@ -1,7 +1,7 @@
 import { Bazin } from '../Entities/Bazin.js';
-import instanceStock from '../Entities/instanceStock.js';
 import { MacroInfo } from '../global/MacroInfo.js';
 import { Pontuation } from '../types/Pontuation.type.js';
+import { InstanceStock } from '../useCases/instanceStock.js';
 import Json from './Json.js';
 
 // FIXME ARRUMAR SOLID AQUI
@@ -24,7 +24,7 @@ class RankingSystyem {
   async execute() {
     for (const ticker of this.tickers) {
       try {
-        const stock = await instanceStock(ticker);
+        const stock = await InstanceStock.execute(ticker);
         const bazin = new Bazin(stock);
 
         this.ranking[ticker] = { points: bazin.makePoints(stock) };
