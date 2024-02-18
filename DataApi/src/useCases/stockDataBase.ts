@@ -21,6 +21,7 @@ export class StockDataBase {
     })
 
     if(finded) {
+      console.log('Stock exists on database', this.validTime(finded))
       if(this.validTime(finded)) return finded;
       
       this.deleteOnDatabase(ticker);
@@ -33,8 +34,9 @@ export class StockDataBase {
   validTime(stock: StockProtocol): boolean {
     if(!stock) return false;
     
+    console.log(new Date().getTime() - (stock.instanceTime ?? 0), 'instanceTime')
     const milliseconds = new Date().getTime() - (stock.instanceTime ?? 0);
-    return (milliseconds < 1);
+    return ((milliseconds / 3600000)< 1);
   }
   
   async createOnDatabase(ticker: string) {
