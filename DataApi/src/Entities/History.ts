@@ -4,17 +4,15 @@ import { Dividend, DividendOnDate } from '../types/dividends.type.js';
 import { StockInfo, StockPrice } from '../types/stock.types.js';
 
 import HistoryUtils from '../utils/History.Utils.js';
-import Database from '../utils/Stockdatabase.js';
 import Utilities from '../utils/Utilities.js';
 
 import Json from '../utils/Json.js';
 import Chart from './Chart.js';
 
-import { StockProtocol } from '../interfaces/StockProtocol.type.js';
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
 import { TransactionHistory } from './Transaction.js';
-import { InstanceStock } from '../useCases/instanceStock.js';
+import { StockDataBase } from '../useCases/stockDataBase.js';
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -140,6 +138,7 @@ class History {
   }
 
   static async instanceHistory(transactions: TransactionHistory[]) {
+    const stockDatabase = new StockDataBase()
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
     const allTickers = transactions.map((transaction) =>
@@ -148,40 +147,18 @@ class History {
     const uniqueTickers = Utilities.uniqueElements(allTickers);
 
     for (const ticker of uniqueTickers) {
-      let stock = db.find((stock) => stock.ticker === ticker);
-      const milliseconds = new Date().getTime() - (stock?.instanceTime ?? 0);
+      const stock = await stockDatabase.getStock(ticker);
 
-      if (stock && Utilities.msToHours(milliseconds) < 1) {
-        for (const dividend of stock.lastDividendsValue) {
-          dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
-        }
-
-        stockInfo[ticker] = {
-          stock: stock,
-          dividend: dividends,
-          historyPrice: stock.priceHistory,
-        };
-
-        continue;
+      for (const dividend of stock.lastDividendsValue) {
+        dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
       }
-
-      db.deleteBy((stock) => stock.ticker === ticker, true);
-
-      stock = await InstanceStock.execute(ticker);
-      stock.lastDividendsValue.forEach((dividend) =>
-        dividends.push(HistoryUtils.convertLastDividendToDividend(dividend))
-      );
 
       stockInfo[ticker] = {
         stock: stock,
         dividend: dividends,
         historyPrice: stock.priceHistory,
       };
-
-      db.add(stock);
     }
-
-    db.commit();
 
     return new History({ stockInfo, transactions }, uniqueTickers);
   }
@@ -199,3 +176,10 @@ const transactions: TransactionHistory[] = [
     { ticker: 'BBAS3' }
   ),
 ];
+
+async function teste() {
+  const history = await History.instanceHistory(transactions);
+  console.log(history);
+}
+
+teste()

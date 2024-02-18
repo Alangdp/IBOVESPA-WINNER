@@ -161,13 +161,3 @@ export class InstanceStock {
     if (!props.passiveChart) throw new Error('Error getting passive chart');
   }
 }
-
-
-// TESTAR 
-
-async function teste() {
-  const stock = await InstanceStock.execute('PETR4');
-  console.log(stock)
-} 
-
-teste()

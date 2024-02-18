@@ -2,10 +2,12 @@ import { LowSync } from 'lowdb/lib';
 import { JSONFileSyncPreset } from 'lowdb/node';
 
 export default class Database<T> {
+  private path: string;
   private db: LowSync<T[]>;
   private toUpdate: T[] = [];
 
   constructor(path: string) {
+    this.path = path
     this.db = JSONFileSyncPreset<T[]>(path, []);
     this.toUpdate = this.db.data ?? [];
   }
@@ -18,6 +20,8 @@ export default class Database<T> {
   commit() {
     this.db.data = this.toUpdate;
     this.db.write();
+
+    return new Database<T>(this.path);
   }
 
   clear() {
