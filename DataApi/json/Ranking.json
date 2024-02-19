@@ -155,19 +155,6 @@
       "Pontuacao": 3
     }
   },
-  "MAPT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "CSAN3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -179,6 +166,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 4
+    }
+  },
+  "MAPT3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "MOVI3": {
@@ -194,19 +194,6 @@
       "Pontuacao": 5
     }
   },
-  "MAPT4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "DOHL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -220,17 +207,17 @@
       "Pontuacao": 3
     }
   },
-  "OFSA3": {
+  "MAPT4": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "MTIG4": {
@@ -257,6 +244,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
+    }
+  },
+  "OFSA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
   "TOYB3": {
@@ -298,19 +298,6 @@
       "Pontuacao": 4
     }
   },
-  "MGLU3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "MNPR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -335,6 +322,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
+    }
+  },
+  "MGLU3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "OMGE3": {
@@ -363,19 +363,6 @@
       "Pontuacao": 6
     }
   },
-  "BALM4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
   "CSNA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -389,7 +376,20 @@
       "Pontuacao": 5
     }
   },
-  "HAPV3": {
+  "BALM4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "CLSA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -402,7 +402,7 @@
       "Pontuacao": 3
     }
   },
-  "CLSA3": {
+  "HAPV3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -454,19 +454,6 @@
       "Pontuacao": 3
     }
   },
-  "MODL4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "PTBL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -478,6 +465,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 4
+    }
+  },
+  "MODL4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "CESP3": {
@@ -532,32 +532,6 @@
       "Pontuacao": 3
     }
   },
-  "AMBP3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "ORVR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "ANIM3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -571,25 +545,12 @@
       "Pontuacao": 1
     }
   },
-  "SYNE3": {
+  "AMBP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "RCSL3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
@@ -610,6 +571,19 @@
       "Pontuacao": 4
     }
   },
+  "ORVR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
   "ESPA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -618,6 +592,19 @@
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "SYNE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
@@ -647,6 +634,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "RCSL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "CASH3": {
@@ -688,19 +688,6 @@
       "Pontuacao": 1
     }
   },
-  "GBIO33": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "QUAL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -712,6 +699,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 4
+    }
+  },
+  "GBIO33": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "TELB4": {
@@ -766,17 +766,17 @@
       "Pontuacao": 3
     }
   },
-  "ZAMP3": {
+  "NORD3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "Pontuacao": 3
     }
   },
   "ECPR4": {
@@ -805,20 +805,7 @@
       "Pontuacao": 3
     }
   },
-  "NORD3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "AERI3": {
+  "ZAMP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -832,6 +819,19 @@
     }
   },
   "ALPK3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "AERI3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -870,19 +870,6 @@
       "Pontuacao": 3
     }
   },
-  "RCSL4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "TCNO3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -894,6 +881,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "RCSL4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "BRFS3": {
@@ -922,7 +922,7 @@
       "Pontuacao": 4
     }
   },
-  "PCAR4": {
+  "DASA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -935,7 +935,7 @@
       "Pontuacao": 1
     }
   },
-  "DASA3": {
+  "PCAR4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1078,7 +1078,7 @@
       "Pontuacao": 3
     }
   },
-  "MRFG3": {
+  "AALR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1091,7 +1091,7 @@
       "Pontuacao": 2
     }
   },
-  "AALR3": {
+  "MRFG3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1117,30 +1117,17 @@
       "Pontuacao": 3
     }
   },
-  "CVCB3": {
+  "ALPA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "IFCM3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "Pontuacao": 3
     }
   },
   "AZUL4": {
@@ -1156,7 +1143,7 @@
       "Pontuacao": 3
     }
   },
-  "KRSA3": {
+  "CVCB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1167,19 +1154,6 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
-    }
-  },
-  "ALPA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
     }
   },
   "ALPA4": {
@@ -1206,6 +1180,32 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 1
+    }
+  },
+  "IFCM3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "KRSA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "BRKM5": {
@@ -1286,32 +1286,6 @@
       "Pontuacao": 2
     }
   },
-  "MLAS3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "MMXM3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "WEST3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1325,7 +1299,33 @@
       "Pontuacao": 3
     }
   },
+  "MLAS3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
   "AVLL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "MMXM3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1429,19 +1429,6 @@
       "Pontuacao": 3
     }
   },
-  "AGXY3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "TXRX3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1474,6 +1461,19 @@
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "AGXY3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
@@ -1559,6 +1559,19 @@
       "Pontuacao": 3
     }
   },
+  "GPIV33": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
   "FHER3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1611,7 +1624,7 @@
       "Pontuacao": 3
     }
   },
-  "INEP3": {
+  "CCXC3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1624,7 +1637,7 @@
       "Pontuacao": 3
     }
   },
-  "CCXC3": {
+  "INEP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1650,32 +1663,6 @@
       "Pontuacao": 3
     }
   },
-  "TXRX4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "GPIV33": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "BHIA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1687,6 +1674,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "TXRX4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "INEP4": {
@@ -1715,19 +1715,6 @@
       "Pontuacao": 2
     }
   },
-  "PCAR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "SEQL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1739,6 +1726,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "PCAR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "AMAR3": {
@@ -1793,7 +1793,7 @@
       "Pontuacao": 3
     }
   },
-  "NEXP3": {
+  "TEKA4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -1806,7 +1806,7 @@
       "Pontuacao": 3
     }
   },
-  "TEKA4": {
+  "NEXP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2092,19 +2092,6 @@
       "Pontuacao": 2
     }
   },
-  "RNEW11": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "RNEW4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2119,6 +2106,19 @@
     }
   },
   "RNEW3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "RNEW11": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2222,6 +2222,19 @@
       "Pontuacao": 3
     }
   },
+  "CTKA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
   "LUPA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2236,19 +2249,6 @@
     }
   },
   "FIGE3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "CTKA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2287,19 +2287,6 @@
       "Pontuacao": 3
     }
   },
-  "HBTS5": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
-    }
-  },
   "RANI4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2311,6 +2298,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
+    }
+  },
+  "HBTS5": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
     }
   },
   "CAMB4": {
@@ -2352,19 +2352,6 @@
       "Pontuacao": 7
     }
   },
-  "GOAU3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
   "CEDO3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2378,56 +2365,17 @@
       "Pontuacao": 2
     }
   },
-  "PETR4": {
+  "GOAU3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": false,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "SUZB3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "BRAP4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
-    }
-  },
-  "PETR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "Pontuacao": 6
     }
   },
   "HAGA3": {
@@ -2456,20 +2404,33 @@
       "Pontuacao": 2
     }
   },
-  "BAZA3": {
+  "SUZB3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "PETR4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": false,
+      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
     }
   },
-  "GGBR3": {
+  "BRAP4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -2477,6 +2438,32 @@
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "BAZA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "PETR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 7
@@ -2495,7 +2482,20 @@
       "Pontuacao": 4
     }
   },
-  "CLSC4": {
+  "GGBR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "CLSC3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -2508,17 +2508,17 @@
       "Pontuacao": 5
     }
   },
-  "EPAR3": {
+  "CLSC4": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
   "BNBR3": {
@@ -2534,11 +2534,37 @@
       "Pontuacao": 5
     }
   },
+  "MEAL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
   "TECN3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "EPAR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
@@ -2560,19 +2586,6 @@
       "Pontuacao": 7
     }
   },
-  "MEAL3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "CALI3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2584,32 +2597,6 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
-    }
-  },
-  "CLSC3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "CMIG4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
     }
   },
   "NTCO3": {
@@ -2625,6 +2612,32 @@
       "Pontuacao": 3
     }
   },
+  "MTSA4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "CMIG4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
   "BBAS3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -2638,17 +2651,17 @@
       "Pontuacao": 8
     }
   },
-  "MTSA4": {
+  "EEEL4": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "PINE4": {
@@ -2664,7 +2677,20 @@
       "Pontuacao": 5
     }
   },
-  "EEEL4": {
+  "SAPR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "EEEL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -2690,17 +2716,17 @@
       "Pontuacao": 5
     }
   },
-  "EEEL3": {
+  "CEEB5": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
+      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "Pontuacao": 4
     }
   },
   "RANI3": {
@@ -2716,19 +2742,6 @@
       "Pontuacao": 7
     }
   },
-  "CEEB5": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
   "POSI3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -2738,84 +2751,6 @@
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "SAPR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "EUCA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "EUCA4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "JALL3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "MOAR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "NEOE3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
     }
@@ -2833,7 +2768,46 @@
       "Pontuacao": 5
     }
   },
-  "CEEB3": {
+  "SAPR4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "EUCA4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "EUCA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "MOAR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -2859,20 +2833,7 @@
       "Pontuacao": 3
     }
   },
-  "SAPR4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "COCE5": {
+  "CEEB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -2880,46 +2841,20 @@
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 4
-    }
-  },
-  "MTRE3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
+      "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
     }
   },
-  "ELPL3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "CGRA4": {
+  "NEOE3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
+      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
     }
@@ -2937,17 +2872,82 @@
       "Pontuacao": 6
     }
   },
+  "ELPL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "MTRE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
+    }
+  },
   "BMEB3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "CGRA4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
+    }
+  },
+  "COCE5": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 4
+    }
+  },
+  "PLAS3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "TIET11": {
@@ -2989,6 +2989,19 @@
       "Pontuacao": 1
     }
   },
+  "CAMB3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
+    }
+  },
   "EALT3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3000,6 +3013,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
+    }
+  },
+  "RDNI3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
   "CMIG3": {
@@ -3015,20 +3041,7 @@
       "Pontuacao": 8
     }
   },
-  "CAMB3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
-  "VALE3": {
+  "BMEB4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3080,7 +3093,7 @@
       "Pontuacao": 6
     }
   },
-  "BMEB4": {
+  "VALE3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3091,58 +3104,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 7
-    }
-  },
-  "ABCB4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 8
-    }
-  },
-  "RDNI3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "PLAS3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "ROMI3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
     }
   },
   "EALT4": {
@@ -3156,6 +3117,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
+    }
+  },
+  "ROMI3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
     }
   },
   "MRSA5B": {
@@ -3184,19 +3158,6 @@
       "Pontuacao": 3
     }
   },
-  "BLAU3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
   "MRSA3B": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -3208,6 +3169,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
+    }
+  },
+  "CEBR5": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 8
     }
   },
   "CIEL3": {
@@ -3223,6 +3197,32 @@
       "Pontuacao": 5
     }
   },
+  "ABCB4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 8
+    }
+  },
+  "BLAU3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
+    }
+  },
   "BRSR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3234,19 +3234,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 7
-    }
-  },
-  "RECV3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
     }
   },
   "FESA4": {
@@ -3275,19 +3262,6 @@
       "Pontuacao": 7
     }
   },
-  "DEXP4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
   "MDNE3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -3301,30 +3275,17 @@
       "Pontuacao": 3
     }
   },
-  "COCE3": {
+  "DEXP4": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "CSRN6": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
     }
   },
   "GEPA4": {
@@ -3353,17 +3314,30 @@
       "Pontuacao": 6
     }
   },
-  "ETER3": {
+  "COCE3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "CSRN6": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
+      "Pontuacao": 4
     }
   },
   "TRPL4": {
@@ -3379,15 +3353,41 @@
       "Pontuacao": 6
     }
   },
-  "SLCE3": {
+  "RECV3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
+    }
+  },
+  "BGIP4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "SHUL4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
     }
@@ -3405,15 +3405,41 @@
       "Pontuacao": 6
     }
   },
-  "SHUL4": {
+  "DXCO3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "BMKS3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "SLCE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
     }
@@ -3444,7 +3470,7 @@
       "Pontuacao": 8
     }
   },
-  "GETT3": {
+  "GETT4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -3457,7 +3483,7 @@
       "Pontuacao": 3
     }
   },
-  "GETT4": {
+  "GETT3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -3483,19 +3509,6 @@
       "Pontuacao": 3
     }
   },
-  "BGIP4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
   "EKTR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3506,6 +3519,19 @@
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
+  "ETER3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
       "Pontuacao": 5
     }
   },
@@ -3522,19 +3548,6 @@
       "Pontuacao": 5
     }
   },
-  "BMKS3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
   "POMO3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3548,17 +3561,17 @@
       "Pontuacao": 5
     }
   },
-  "DXCO3": {
+  "TTEN3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
+      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "Pontuacao": 3
     }
   },
   "TKNO4": {
@@ -3587,46 +3600,20 @@
       "Pontuacao": 7
     }
   },
-  "TTEN3": {
+  "BGIP3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "TASA4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
+      "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
     }
   },
-  "TASA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 6
-    }
-  },
-  "ITSA4": {
+  "PSSA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3637,19 +3624,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
-    }
-  },
-  "EKTR4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
     }
   },
   "MSPA4": {
@@ -3665,59 +3639,20 @@
       "Pontuacao": 3
     }
   },
+  "EKTR4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
   "ITSA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "BGIP3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "EQPA5": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "EQPA7": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "PSSA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3743,6 +3678,84 @@
       "Pontuacao": 4
     }
   },
+  "VSTE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "ITSA4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "TASA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 6
+    }
+  },
+  "TASA4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 6
+    }
+  },
+  "EQPA7": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
+  "EQPA5": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
   "VLID3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -3754,19 +3767,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
-    }
-  },
-  "USIM3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
     }
   },
   "CSRN5": {
@@ -3782,45 +3782,6 @@
       "Pontuacao": 6
     }
   },
-  "JSLG3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "CSRN3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "VSTE3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "JHSF3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3834,15 +3795,15 @@
       "Pontuacao": 7
     }
   },
-  "EQPA3": {
+  "CSRN3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
     }
@@ -3860,33 +3821,20 @@
       "Pontuacao": 7
     }
   },
-  "PRIO3": {
+  "JSLG3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "RAPT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
-  "USIM5": {
+  "WLMM3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -3912,15 +3860,28 @@
       "Pontuacao": 3
     }
   },
-  "WLMM3": {
+  "ALLD3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
+    }
+  },
+  "RAPT3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
     }
@@ -3938,30 +3899,30 @@
       "Pontuacao": 6
     }
   },
-  "ALLD3": {
+  "EQPA3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
+  "CEBR6": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
-  "UNIP3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
+      "Pontuacao": 8
     }
   },
   "AURA33": {
@@ -3977,32 +3938,6 @@
       "Pontuacao": 5
     }
   },
-  "VULC3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
-  "ITUB3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
   "BEES3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -4014,6 +3949,32 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
+    }
+  },
+  "UNIP3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "BBDC3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
     }
   },
   "BRSR5": {
@@ -4042,30 +4003,56 @@
       "Pontuacao": 2
     }
   },
-  "CEBR6": {
+  "HBOR3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 8
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
-  "BBDC3": {
+  "ITUB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "Pontuacao": 6
+    }
+  },
+  "VULC3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
+    }
+  },
+  "TRPL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
     }
   },
   "LAVV3": {
@@ -4081,6 +4068,19 @@
       "Pontuacao": 6
     }
   },
+  "PRIO3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
   "TUPY3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -4092,45 +4092,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 4
-    }
-  },
-  "KLBN3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "KLBN11": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "HBOR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
     }
   },
   "CSUD3": {
@@ -4146,17 +4107,30 @@
       "Pontuacao": 6
     }
   },
-  "UNIP6": {
+  "USIM3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
+    }
+  },
+  "BEES4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
     }
   },
   "MSPA3": {
@@ -4185,43 +4159,30 @@
       "Pontuacao": 5
     }
   },
-  "BEES4": {
+  "KLBN11": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "Pontuacao": 5
     }
   },
-  "EVEN3": {
+  "KLBN3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
-    }
-  },
-  "SOND3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Pontuacao": 5
     }
   },
   "TGMA3": {
@@ -4237,12 +4198,38 @@
       "Pontuacao": 6
     }
   },
-  "TRPL3": {
+  "SOND3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "USIM5": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "UNIP6": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": true,
@@ -4250,20 +4237,20 @@
       "Pontuacao": 6
     }
   },
-  "GOLL4": {
+  "SMTO3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
-  "HBRE3": {
+  "PTNT4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -4302,17 +4289,17 @@
       "Pontuacao": 2
     }
   },
-  "SMTO3": {
+  "HBRE3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "SOJA3": {
@@ -4341,17 +4328,17 @@
       "Pontuacao": 7
     }
   },
-  "PTNT4": {
+  "EVEN3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
     }
   },
   "UNIP5": {
@@ -4365,175 +4352,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
-    }
-  },
-  "EGIE3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "WLMM4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "PLPL3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "SOND6": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
-  "POMO4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "REDE3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
-    }
-  },
-  "LOGN3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "RAIZ4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
-  "ITUB4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "LAND3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
-  "BMIN4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "WIZC3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "VITT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
     }
   },
   "CYRE3": {
@@ -4562,7 +4380,46 @@
       "Pontuacao": 2
     }
   },
-  "BRBI11": {
+  "WLMM4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "POMO4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
+  "EGIE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "SOND6": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -4570,17 +4427,30 @@
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
+      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 6
+      "Pontuacao": 5
     }
   },
-  "FIQE3": {
+  "REDE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "RAIZ4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
@@ -4588,30 +4458,56 @@
       "Pontuacao": 5
     }
   },
-  "PDTC3": {
+  "GOLL4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "ITUB4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "PLPL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "Pontuacao": 3
     }
   },
-  "SOND5": {
+  "WIZC3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "Pontuacao": 5
     }
   },
   "BPAC5": {
@@ -4627,17 +4523,82 @@
       "Pontuacao": 6
     }
   },
-  "SMLS3": {
+  "PDTC3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "LAND3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
+      "Pontuacao": 5
+    }
+  },
+  "LOGN3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "BMIN4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "BRBI11": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 6
+    }
+  },
+  "SOND5": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
     }
   },
   "TAEE3": {
@@ -4666,17 +4627,30 @@
       "Pontuacao": 6
     }
   },
-  "BEEF3": {
+  "VITT3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "SMLS3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "TAEE4": {
@@ -4692,17 +4666,56 @@
       "Pontuacao": 6
     }
   },
-  "GRND3": {
+  "BEEF3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "LOGG3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "BMGB4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
+      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "Pontuacao": 8
+    }
+  },
+  "FIQE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
     }
   },
   "ECOR3": {
@@ -4718,12 +4731,25 @@
       "Pontuacao": 3
     }
   },
-  "ENGI4": {
+  "GRND3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
+    }
+  },
+  "FESA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
@@ -4744,56 +4770,17 @@
       "Pontuacao": 6
     }
   },
-  "SANB3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "LOGG3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "HYPE3": {
+  "ENGI4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
-  "FESA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
+      "Pontuacao": 6
     }
   },
   "CMIN3": {
@@ -4807,6 +4794,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 5
+    }
+  },
+  "SANB3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
     }
   },
   "CXSE3": {
@@ -4861,6 +4861,19 @@
       "Pontuacao": 6
     }
   },
+  "HYPE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
   "ALUP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -4887,14 +4900,27 @@
       "Pontuacao": 6
     }
   },
-  "PFRM3": {
+  "MILS3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "MPLU3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
@@ -4913,32 +4939,6 @@
       "Pontuacao": 6
     }
   },
-  "BMGB4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 8
-    }
-  },
-  "MPLU3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "INTB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -4952,43 +4952,17 @@
       "Pontuacao": 5
     }
   },
-  "MILS3": {
+  "LPSB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "FRAS3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "BRML3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
+      "Pontuacao": 4
     }
   },
   "MELK3": {
@@ -5004,17 +4978,30 @@
       "Pontuacao": 6
     }
   },
-  "SANB4": {
+  "CURY3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "BRML3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "UCAS3": {
@@ -5030,30 +5017,56 @@
       "Pontuacao": 4
     }
   },
-  "CURY3": {
+  "PFRM3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
+      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Pontuacao": 2
     }
   },
-  "LPSB3": {
+  "BMIN3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Pontuacao": 5
+    }
+  },
+  "FRAS3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "SANB4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
     }
   },
   "CALI4": {
@@ -5082,17 +5095,17 @@
       "Pontuacao": 3
     }
   },
-  "ENMT4": {
+  "TCSA3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "ABEV3": {
@@ -5108,30 +5121,17 @@
       "Pontuacao": 5
     }
   },
-  "CPLE3": {
+  "ENMT4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
+      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 4
-    }
-  },
-  "VAMO3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Pontuacao": 5
     }
   },
   "ENGI11": {
@@ -5147,6 +5147,19 @@
       "Pontuacao": 6
     }
   },
+  "CPLE3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 4
+    }
+  },
   "VBBR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -5160,30 +5173,43 @@
       "Pontuacao": 6
     }
   },
-  "BMIN3": {
+  "GMAT3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Pontuacao": 3
     }
   },
-  "TCSA3": {
+  "BPAC11": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "VAMO3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
+      "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
+      "Pontuacao": 4
     }
   },
   "ENMT3": {
@@ -5212,17 +5238,17 @@
       "Pontuacao": 3
     }
   },
-  "BPAC11": {
+  "PTNT3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "USIM6": {
@@ -5236,19 +5262,6 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
-    }
-  },
-  "GMAT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
     }
   },
   "BSLI4": {
@@ -5277,69 +5290,17 @@
       "Pontuacao": 7
     }
   },
-  "CPLE11": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "PTNT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "CPLE6": {
+  "TIMS3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 4
-    }
-  },
-  "BOAS3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "UGPA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
+      "Pontuacao": 7
     }
   },
   "LREN3": {
@@ -5355,6 +5316,45 @@
       "Pontuacao": 6
     }
   },
+  "CPLE11": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "BOAS3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
+  "CPLE6": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 4
+    }
+  },
   "MULT3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -5368,54 +5368,15 @@
       "Pontuacao": 6
     }
   },
-  "TIMS3": {
+  "UGPA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
-    }
-  },
-  "BMOB3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "CRPG5": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 6
-    }
-  },
-  "CRPG6": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
     }
@@ -5446,6 +5407,58 @@
       "Pontuacao": 5
     }
   },
+  "CRPG5": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "VVEO3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "CRPG6": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 6
+    }
+  },
+  "BMOB3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
   "BSLI3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -5459,14 +5472,14 @@
       "Pontuacao": 6
     }
   },
-  "BPAN4": {
+  "CRPG3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 4
@@ -5485,6 +5498,19 @@
       "Pontuacao": 2
     }
   },
+  "BPAN4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
   "DESK3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -5496,19 +5522,6 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 3
-    }
-  },
-  "VVEO3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
     }
   },
   "ARZZ3": {
@@ -5550,17 +5563,17 @@
       "Pontuacao": 6
     }
   },
-  "CRPG3": {
+  "NUTR3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
+      "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
+      "Pontuacao": 3
     }
   },
   "WHRL3": {
@@ -5589,30 +5602,17 @@
       "Pontuacao": 6
     }
   },
-  "CSED3": {
+  "SOMA3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "SBSP3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
+      "Pontuacao": 4
     }
   },
   "PORT3": {
@@ -5628,28 +5628,15 @@
       "Pontuacao": 5
     }
   },
-  "SOMA3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "PNVL3": {
+  "SBSP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
     }
@@ -5667,6 +5654,19 @@
       "Pontuacao": 5
     }
   },
+  "DMVF3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
   "WHRL4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -5678,6 +5678,32 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 4
+    }
+  },
+  "CSED3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "PNVL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
   "VIVA3": {
@@ -5693,19 +5719,6 @@
       "Pontuacao": 6
     }
   },
-  "NUTR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "TFCO4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -5717,45 +5730,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 5
-    }
-  },
-  "DMVF3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
-  "LAME4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": false,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "LUXM4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
     }
   },
   "GGPS3": {
@@ -5771,6 +5745,19 @@
       "Pontuacao": 3
     }
   },
+  "LUXM4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
+    }
+  },
   "EQTL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -5782,6 +5769,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
+    }
+  },
+  "LAME4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": false,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "LAME3": {
@@ -5810,19 +5810,6 @@
       "Pontuacao": 6
     }
   },
-  "ASAI3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
-    }
-  },
   "IGTI3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -5834,6 +5821,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
+    }
+  },
+  "ASAI3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "ENGI3": {
@@ -5849,7 +5849,7 @@
       "Pontuacao": 6
     }
   },
-  "MDIA3": {
+  "STBP3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -5860,19 +5860,6 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 7
-    }
-  },
-  "EMAE4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
     }
   },
   "FLRY3": {
@@ -5886,6 +5873,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
+    }
+  },
+  "MDIA3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 7
     }
   },
   "MATD3": {
@@ -5914,30 +5914,17 @@
       "Pontuacao": 3
     }
   },
-  "STBP3": {
+  "EMAE4": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 7
-    }
-  },
-  "PGMN3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": true,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
   "ELEK3": {
@@ -5951,6 +5938,32 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "ONCO3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "PGMN3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": true,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "IGTI11": {
@@ -5979,19 +5992,6 @@
       "Pontuacao": 7
     }
   },
-  "ONCO3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "WEGE3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6003,6 +6003,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 7
+    }
+  },
+  "NGRD3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
     }
   },
   "ARML3": {
@@ -6018,7 +6031,7 @@
       "Pontuacao": 4
     }
   },
-  "NGRD3": {
+  "BRGE8": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6057,32 +6070,6 @@
       "Pontuacao": 3
     }
   },
-  "BRGE11": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
-  "BRGE8": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
   "BRGE3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -6094,6 +6081,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "BRGE11": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
     }
   },
   "BRGE12": {
@@ -6135,6 +6135,19 @@
       "Pontuacao": 4
     }
   },
+  "ELET3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
   "YDUQ3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6148,17 +6161,17 @@
       "Pontuacao": 4
     }
   },
-  "ELET3": {
+  "SMFT3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
     }
   },
   "PNVL4": {
@@ -6185,19 +6198,6 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
-    }
-  },
-  "SMFT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 3
     }
   },
   "CPLE5": {
@@ -6239,6 +6239,19 @@
       "Pontuacao": 2
     }
   },
+  "ELET6": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
+    }
+  },
   "CRIV3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -6278,19 +6291,6 @@
       "Pontuacao": 4
     }
   },
-  "ELET6": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
   "PEAB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6315,6 +6315,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 5
+    }
+  },
+  "RDOR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
     }
   },
   "PARD3": {
@@ -6343,16 +6356,16 @@
       "Pontuacao": 6
     }
   },
-  "RDOR3": {
+  "CGAS3": {
     "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
       "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
       "Pontuacao": 4
     }
   },
@@ -6382,19 +6395,6 @@
       "Pontuacao": 2
     }
   },
-  "SCAR3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
   "RADL3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6406,6 +6406,19 @@
       "0 < Payout < 1": true,
       "Preço Atual < Preço Máximo": true,
       "Pontuacao": 6
+    }
+  },
+  "ELMD3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
     }
   },
   "RPAD6": {
@@ -6434,7 +6447,20 @@
       "Pontuacao": 4
     }
   },
-  "CGAS3": {
+  "SCAR3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": false,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 2
+    }
+  },
+  "CGAS5": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6444,19 +6470,6 @@
       "Dividendos crescentes nos últimos 5 anos": false,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 4
-    }
-  },
-  "RPAD5": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
       "Pontuacao": 4
     }
   },
@@ -6473,29 +6486,16 @@
       "Pontuacao": 2
     }
   },
-  "ELMD3": {
+  "RPAD5": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
       "Pagamento constante de dividendos nos últimos 5 anos": true,
       "Dividendos crescentes nos últimos 5 anos": true,
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 2
-    }
-  },
-  "CGAS5": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": false,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
       "Pontuacao": 4
     }
   },
@@ -6577,19 +6577,6 @@
       "Pontuacao": 4
     }
   },
-  "SULA4": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": true,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 5
-    }
-  },
   "CEAB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -6601,6 +6588,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "SULA4": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": true,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 5
     }
   },
   "BSEV3": {
@@ -6642,19 +6642,6 @@
       "Pontuacao": 3
     }
   },
-  "APER3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": false,
-      "Pontuacao": 4
-    }
-  },
   "ENEV3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -6666,6 +6653,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "APER3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": true,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 4
     }
   },
   "BRIV4": {
@@ -6733,19 +6733,6 @@
       "Pontuacao": 5
     }
   },
-  "ENAT3": {
-    "points": {
-      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
-      "Dividend Yield Atual > 0.06 (6%)": false,
-      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
-      "Pagamento constante de dividendos nos últimos 5 anos": true,
-      "Dividendos crescentes nos últimos 5 anos": true,
-      "0 < Payout < 1": false,
-      "Preço Atual < Preço Máximo": true,
-      "Pontuacao": 5
-    }
-  },
   "DTCY3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
@@ -6770,6 +6757,19 @@
       "0 < Payout < 1": false,
       "Preço Atual < Preço Máximo": false,
       "Pontuacao": 2
+    }
+  },
+  "ENAT3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": true,
+      "Pontuacao": 5
     }
   },
   "NINJ3": {
@@ -6837,7 +6837,20 @@
       "Pontuacao": 3
     }
   },
-  "SIMH3": {
+  "JALL3": {
+    "points": {
+      "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": false,
+      "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
+      "Dividend Yield Atual > 0.06 (6%)": false,
+      "Dívida Bruta/Patrimônio < 0.5 (50%)": false,
+      "Pagamento constante de dividendos nos últimos 5 anos": true,
+      "Dividendos crescentes nos últimos 5 anos": true,
+      "0 < Payout < 1": false,
+      "Preço Atual < Preço Máximo": false,
+      "Pontuacao": 3
+    }
+  },
+  "CRFB3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
@@ -6876,7 +6889,7 @@
       "Pontuacao": 2
     }
   },
-  "CRFB3": {
+  "SIMH3": {
     "points": {
       "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,
       "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)": true,

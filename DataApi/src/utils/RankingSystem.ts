@@ -41,12 +41,3 @@ class RankingSystyem {
     this.ranking = {};
   }
 }
-
-async function t() {
-  const tickers = (await MacroInfo.initialize()) as string[];
-
-  const tes = new RankingSystyem({ tickers });
-  await tes.execute();
-}
-
-t();

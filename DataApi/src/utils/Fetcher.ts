@@ -15,6 +15,7 @@ import { PayoutReturn, RootPayout } from '../types/Payout.type.js';
 import { PassiveChart, PassiveChartReturn } from '../types/PassiveChart.type.js';
 import { ReportReturn, RootReport } from '../types/report.type.js';
 import { BasicInfoReturn } from '../types/BasicInfo.type.js';
+import { StockQuery } from '../types/QueryStock.type.js';
 
 // FIXME REFAZER TUDO AQUI
 
@@ -514,6 +515,22 @@ export default class TickerFetcher {
       }
 
       return header;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async getImage() {
+    const ticker = this.ticker;
+
+    try {
+      const data = await apiGetter<StockQuery[]>({
+        method: 'GET',
+        headers: {},
+        url: 'home'
+      }, `mainsearchquery?q=${ticker}`)
+      if(!data) throw new Error('Error Getting Image Data');
+      return data;
     } catch (error) {
       return null;
     }
