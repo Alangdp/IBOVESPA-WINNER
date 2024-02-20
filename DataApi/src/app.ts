@@ -1,26 +1,29 @@
-import express, { Application } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
-
-import stockRoutes from './routes/stock.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from 'path';
 
 import './database/index.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 dotenv.config();
+
 class App {
-  app: Application;
-
-  constructor() {
-    this.app = express();
-    this.middlewares();
-    this.routes();
-  }
-
-  private routes(): void {}
-
-  private middlewares(): void {
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
-  }
+    app;
+    constructor() {
+        this.app = express();
+        this.middlewares();
+        this.routes();
+    }
+    routes() { }
+    middlewares() {
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
+        console.log(path.join(__dirname, '..', 'assets'));
+        this.app.use('/static', express.static(path.join(__dirname, '..', 'assets')));  
+    }
 }
-
 export default new App().app;
