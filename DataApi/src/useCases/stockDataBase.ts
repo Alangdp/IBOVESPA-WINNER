@@ -1,8 +1,13 @@
 import { StockProtocol } from "../interfaces/StockProtocol.type";
 import Database from "../utils/Stockdatabase.js";
 import { InstanceStock } from "./instanceStock.js";
+import { configDotenv } from "dotenv";
+
+configDotenv();
+
 
 export class StockDataBase {
+  private toleranceTime: number = process.env.TOLERANCE_TIME_HOURS as unknown as number;
   private db = new Database<StockProtocol>('json/stocks.json');
 
   constructor() {
@@ -15,7 +20,7 @@ export class StockDataBase {
     return stock;
   }
 
-  exists(ticker: string): StockProtocol | null {
+  private exists(ticker: string): StockProtocol | null {
     const finded = this.db.find( ( stock ) => {
       return stock.ticker === ticker;
     })
@@ -30,10 +35,10 @@ export class StockDataBase {
     return null; 
   }
   
-  validTime(stock: StockProtocol): boolean {
+  private validTime(stock: StockProtocol): boolean {
     if(!stock) return false;
     const milliseconds = new Date().getTime() - (stock.instanceTime ?? 0);
-    return ((milliseconds / 3600000)< 1);
+    return ((milliseconds / 3600000) < this.toleranceTime);
   }
   
   async createOnDatabase(ticker: string) {
@@ -44,7 +49,7 @@ export class StockDataBase {
     return stock;
   }
 
-  deleteOnDatabase(ticker: string) {
+  private deleteOnDatabase(ticker: string) {
     this.db.deleteBy( (stock) => stock.ticker === ticker);
     this.db = this.db.commit();
   }

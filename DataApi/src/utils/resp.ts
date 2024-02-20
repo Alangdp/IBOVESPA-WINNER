@@ -16,7 +16,7 @@ import { Response } from '../types/Reponse.type';
  * @param err Error
  * @example {status: s, msg: m, data: data | error, }
  */
-const resp = (s: number, m: string, d: any, err?: any): Response => {
+export const resp = (s: number, m: string, d: any, err?: any): Response => {
   if (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
       return {
@@ -34,4 +34,3 @@ const resp = (s: number, m: string, d: any, err?: any): Response => {
   };
 };
 
-export { resp };
