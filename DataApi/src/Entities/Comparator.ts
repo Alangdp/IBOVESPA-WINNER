@@ -1,10 +1,42 @@
 import { ComparatorProps, ArrayWithKeyValue } from '../types/Comparator.type.js';
+import { StockDataBase } from '../useCases/stockDataBase.js';
 import Utilities from '../utils/Utilities.js';
 
 
-class Comparator {
+const teste: ComparatorProps = {
+  arrayToCompare: [
+    {
+      ticker: 'exampleTicker',
+      indicators: {}
+    },
 
-  static execute({ arrayToCompare }: ComparatorProps): { keys: string[], valuesOrdered: ArrayWithKeyValue, biggerValues: ArrayWithKeyValue } {
+    {
+      ticker: 'exampleTicker',
+      indicators: {}
+    }
+  ]
+}
+
+export class Comparator {
+
+  static async makeData(tickers: string[]) {
+    const toCompare: ComparatorProps = {
+      arrayToCompare: []
+    }
+
+    for(const ticker of tickers) {
+      const stock = await new StockDataBase().getStock(ticker);
+      toCompare.arrayToCompare.push({
+        ticker: stock.ticker,
+        indicators: stock.indicators
+      })
+    }
+
+    return toCompare.arrayToCompare;
+  }
+
+  static async execute(tickers: string[]) {
+    const arrayToCompare = await Comparator.makeData(tickers);
     const valuesOrdered: ArrayWithKeyValue = {}
     const biggerValues: ArrayWithKeyValue = {}
 

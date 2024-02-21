@@ -14,6 +14,11 @@ export class StockDataBase {
     return this
   }
 
+  async remakeStock(ticker: string) {
+    this.deleteOnDatabase(ticker);
+    return await this.createOnDatabase(ticker);
+  }
+
   async getStock(ticker: string) {
     const stock = this.exists(ticker)
     if(!stock) return await this.createOnDatabase(ticker);  
