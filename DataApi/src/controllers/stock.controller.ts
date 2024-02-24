@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { StockDataBase } from "../useCases/stockDataBase.js";
+import { StockDataBase } from "../useCases/StockDataBase.js";
 import { resp } from "../utils/resp.js";
 
 

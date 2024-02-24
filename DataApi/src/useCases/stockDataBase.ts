@@ -1,5 +1,5 @@
 import { StockProtocol } from "../interfaces/StockProtocol.type";
-import Database from "../utils/Stockdatabase.js";
+import Database from "../utils/JsonDatabase.js";
 import { InstanceStock } from "./instanceStock.js";
 import { configDotenv } from "dotenv";
 

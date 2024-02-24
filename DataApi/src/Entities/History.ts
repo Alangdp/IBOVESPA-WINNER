@@ -12,7 +12,7 @@ import Chart from './Chart.js';
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
 import { TransactionHistory } from './Transaction.js';
-import { StockDataBase } from '../useCases/stockDataBase.js';
+import { StockDataBase } from '../useCases/StockDataBase.js';
 
 // FIXME ARRUMAR SOLID AQUI
 

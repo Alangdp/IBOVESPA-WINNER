@@ -1,4 +1,5 @@
 import { StockProtocol } from '../interfaces/StockProtocol.type';
+import { VariableProps } from '../interfaces/Variable.type';
 import { PassiveChartReturn } from './PassiveChart.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
 import { IndicatorsData } from './indicators.type';
@@ -9,7 +10,7 @@ export type NetLiquid = {
   value: number;
 };
 
-export interface StockProps {
+export interface StockProps extends VariableProps {
   // Variables from Stock
 
   ticker: string;

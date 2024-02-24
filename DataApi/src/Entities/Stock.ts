@@ -32,12 +32,14 @@ export class Stock extends Variable implements StockProtocol {
 
   constructor(stock: StockProps) {
     super(
-      stock.ticker,
-      stock.name,
-      stock.activeValue,
-      stock.shareQuantity,
-      stock.actualPrice,
-      stock.priceHistory
+      {
+        ticker: stock.ticker,
+        name: stock.name,
+        activeValue: stock.activeValue,
+        shareQuantity: stock.shareQuantity,
+        actualPrice: stock.actualPrice,
+        priceHistory: stock.priceHistory
+      }
     );
 
 

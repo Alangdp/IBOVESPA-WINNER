@@ -1,5 +1,5 @@
 import { ComparatorProps, ArrayWithKeyValue } from '../types/Comparator.type.js';
-import { StockDataBase } from '../useCases/stockDataBase.js';
+import { StockDataBase } from '../useCases/StockDataBase.js';
 import Utilities from '../utils/Utilities.js';
 
 

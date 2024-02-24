@@ -26,6 +26,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "mariadb": "^3.2.0",
+    "mongoose": "^8.2.0",
     "mysql2": "^3.6.1",
     "prettier": "^3.0.0",
     "sequelize": "^6.32.1",
