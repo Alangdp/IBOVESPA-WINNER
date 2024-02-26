@@ -1,27 +1,22 @@
-import { Schema, InferSchemaType, Mongoose }  from 'mongoose'
+import { Schema } from 'mongoose';
 import { NetLiquid, PriceHistory, StockProps } from '../../../types/stock.types'
 import { LastDividendPayment } from '../../../types/dividends.type';
-import { IndicatorsData, oldIndicator } from '../../../types/indicators.type';
+import { IndicatorsData } from '../../../types/indicators.type';
 import { PassiveChartReturn } from '../../../types/PassiveChart.type';
-import { configDotenv } from 'dotenv';
-import { InstanceStock } from '../../../useCases/instanceStock.js';
-
-configDotenv()
-
-const mongoose = new Mongoose()
+import { MongooConnection } from '../../index.js'
 
 const priceHistorySchema = new Schema<PriceHistory>({
-  date: { type: String, required: true },
-  price: { type: Number, required: true }
+  date: { type: String, required: false },
+  price: { type: Number, default: 0, required: false }
 });
 
 const lastDividendsValueSchema = new Schema<LastDividendPayment>({
-  ticker: { type: String, required: true },
-  dataCom: { type: String, required: true },  
-  dataEx: { type: String, required: true },
-  dividendType: { type: String, required: true },
-  dividendTypeName: { type: String, required: true },
-  value: { type: Number, required: true }
+  ticker: { type: String, required: false },
+  dataCom: { type: String, required: false },  
+  dataEx: { type: String, required: false },
+  dividendType: { type: String, required: false },
+  dividendTypeName: { type: String, required: false },
+  value: { type: Number, default: 0, required: false }
 })
 
 const indicatorsDataSchema = new Schema<IndicatorsData>({
@@ -29,124 +24,121 @@ const indicatorsDataSchema = new Schema<IndicatorsData>({
   avg: { type: Number},
   // ? OLD INDICATORS
   olds: [{
-    date: { type: Number, required: true},
-    value: { type: Number }
+    date: { type: Number, default: 0, required: false},
+    value: { type: Number, default: 0 }
   }]
 })
 
 const netLiquidSchema = new Schema<NetLiquid>({
-  year: { type: String, required: true },
-  value: { type: Number, required: true }
+  year: { type: String, required: false },
+  value: { type: Number, default: 0, required: false }
 })
 
 const passiveChartSchema = new Schema<PassiveChartReturn>({
-  year: { type: Number, required: true },
-  totalAssets: { type: Number, required: true },
-  totalLiabilities: { type: Number, required: true },
-  currentAssets: { type: Number, required: true },
-  nonCurrentAssets: { type: Number, required: true },
-  currentLiabilities: { type: Number, required: true },
-  nonCurrentLiabilities: { type: Number, required: true },
-  shareholdersEquity: { type: Number, required: true }
+  year: { type: Number, default: 0, required: false },
+  totalAssets: { type: Number, default: 0, required: false },
+  totalLiabilities: { type: Number, default: 0, required: false },
+  currentAssets: { type: Number, default: 0, required: false },
+  nonCurrentAssets: { type: Number, default: 0, required: false },
+  currentLiabilities: { type: Number, default: 0, required: false },
+  nonCurrentLiabilities: { type: Number, default: 0, required: false },
+  shareholdersEquity: { type: Number, default: 0, required: false }
 })
 
 const stockSchema = new Schema<StockProps>({
   ticker: {
     unique: true,
-    required: true,
+    required: false,
     type: String
   },
 
   name: {
-    required: true,
+    required: false,
     type: String
   },
 
   activeValue: {
-    required: true,
+    required: false,
     type: Number
   },
 
   shareQuantity: {
-    required: true,
+    required: false,
     type: Number
   },
 
   actualPrice: {
-    required: true,
+    required: false,
     type: Number
   },
 
   priceHistory: {
-    required: true,
+    required: false,
     type: [priceHistorySchema]
   },
   
   dividendYield: {
-    required: true,
+    required: false,
     type: Number
   },
 
   grossDebt: {
-    required: true,
+    required: false,
     type: Number
   },
 
   patrimony: {
-    required: true,
+    required: false,
     type: Number
   },
 
   payout: {
-    required: true,
+    required: false,
     type: Number
   },
 
   actualDividendYield: {
-    required: true,
+    required: false,
     type: Number
   },
 
   lastDividendsYieldYear: {
-    required: true,
+    required: false,
     type: [Number]
   },
 
   lastDividendsValueYear: {
-    required: true,
+    required: false,
     type: [Number]
   },
 
   lastDividendsValue: {
-    required: true,
+    required: false,
     type: [lastDividendsValueSchema]
   },
 
   indicators: {
-    required: true,
+    required: false,
     type: indicatorsDataSchema
   },
 
   netLiquid: {
-    required: true,
+    required: false,
     type: [netLiquidSchema]
   },
 
   passiveChart: {
-    required: true,
+    required: false,
     type: [passiveChartSchema]
   }
-})
+}, { timestamps: true })
 
-async function makeConnection() {
-  await mongoose.connect("mongodb+srv://ditocanino:Akvj7Kb0vJq7kpnX@cluster0.5sur0cu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
-  const mainModel = mongoose.model('Stock', stockSchema)
-  const stock = await InstanceStock.execute('BBAS3');
-  console.log(mongoose.connection)
-
-  mainModel.create(stock)
-  return stock
+async function makeModel() {
+  const mongoose = await MongooConnection.makeConnection()
+  return mongoose.model<StockProps>('Stock', stockSchema)
 }
 
-makeConnection()
+const stockModel = makeModel()
+
+export default stockModel

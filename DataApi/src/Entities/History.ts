@@ -1,7 +1,7 @@
 import { HistoryData, HistoryRequirements } from '../types/History.type.js';
 import { IndexDividend, IndexHistoryPrice } from '../types/Index.type.js';
 import { Dividend, DividendOnDate } from '../types/dividends.type.js';
-import { StockInfo, StockPrice } from '../types/stock.types.js';
+import { StockInfo, StockPrice, StockProps } from '../types/stock.types.js';
 
 import HistoryUtils from '../utils/History.Utils.js';
 import Utilities from '../utils/Utilities.js';
@@ -138,7 +138,6 @@ class History {
   }
 
   static async instanceHistory(transactions: TransactionHistory[]) {
-    const stockDatabase = new StockDataBase()
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
     const allTickers = transactions.map((transaction) =>
@@ -147,14 +146,14 @@ class History {
     const uniqueTickers = Utilities.uniqueElements(allTickers);
 
     for (const ticker of uniqueTickers) {
-      const stock = await stockDatabase.getStock(ticker);
+      const stock = await StockDataBase.getStock(ticker);
 
       for (const dividend of stock.lastDividendsValue) {
         dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));
       }
 
       stockInfo[ticker] = {
-        stock: stock,
+        stock: stock as StockProps,
         dividend: dividends,
         historyPrice: stock.priceHistory,
       };

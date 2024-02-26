@@ -30,10 +30,10 @@ class DatabaseSeed {
 
   async getData (ticker: string) {
     try {
-      const stockDataBase = new StockDataBase();   
-      await stockDataBase.getStock(ticker);
+      await StockDataBase.getStock(ticker);
       return true
     } catch (error) {
+        console.log(error)
       throw new Error(ticker)
     }
     

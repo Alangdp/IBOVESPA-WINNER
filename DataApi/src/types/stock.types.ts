@@ -1,4 +1,3 @@
-import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { VariableProps } from '../interfaces/Variable.type';
 import { PassiveChartReturn } from './PassiveChart.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
@@ -54,7 +53,7 @@ export type CashFlowHeader = {
 
 export interface StockInfo {
   [ticker: string]: {
-    stock: StockProtocol;
+    stock: StockProps;
     dividend: Dividend[];
     historyPrice: PriceHistory[];
   };

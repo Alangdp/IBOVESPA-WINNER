@@ -315,7 +315,7 @@ export default class TickerFetcher {
         olds: item.ranks.map( data => {
           return {
             date: data.rank,
-            value: data.value
+            value: data.value ?? 0
           }
         }),
       }

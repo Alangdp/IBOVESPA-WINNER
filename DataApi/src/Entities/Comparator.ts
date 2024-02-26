@@ -25,7 +25,7 @@ export class Comparator {
     }
 
     for(const ticker of tickers) {
-      const stock = await new StockDataBase().getStock(ticker);
+      const stock = await StockDataBase.getStock(ticker);
       toCompare.arrayToCompare.push({
         ticker: stock.ticker,
         indicators: stock.indicators
