@@ -10,7 +10,7 @@ interface SelectedProviderProps {
 }
 
 const SelectedContext = createContext<SelectedContextType>({
-  selected: "",
+  selected: "Overview",
   setSelected: () => {}
 });
 
