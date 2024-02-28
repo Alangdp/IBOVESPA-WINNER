@@ -1,4 +1,5 @@
-import { StockDataBase } from "../useCases/StockDataBase.js";
+import { StockDataBase } from "../useCases/stockDataBase.js";
+import { GetStockImage } from "../useCases/getStockImage.js";
 import JSON from '../utils/Json.js'
 import TickerFetcher from "./Fetcher.js";
 
@@ -30,7 +31,8 @@ class DatabaseSeed {
 
   async getData (ticker: string) {
     try {
-      await StockDataBase.getStock(ticker);
+      const imgFetcher = new GetStockImage(ticker);
+      await imgFetcher.downloadImage();
       return true
     } catch (error) {
         console.log(error)

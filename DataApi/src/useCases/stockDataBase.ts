@@ -9,7 +9,7 @@ const HOUR_IN_MILISECONDS = 3600000;
 
 export class StockDataBase {
   private static toleranceTime: number = process.env.TOLERANCE_TIME_HOURS as unknown as number;
-
+  
   static async createStock(ticker: string) {
     const stock = await InstanceStock.execute(ticker);
     return (await stockModel).create(stock);
