@@ -9,57 +9,54 @@ import { useState } from "react";
 export function App() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [showResults, setShowResults] = useState<boolean>(false);
+
   const mockData: string[] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const term: string = event.target.value.toLowerCase();
-    setSearchTerm(term);
-
-    // Filtrar os resultados com base no termo de pesquisa
-    const filteredResults: string[] = mockData.filter((item) =>
-      item.toLowerCase().includes(term)
-    );
-    setSearchResults(filteredResults);
+    const value = event.target.value;
+    setSearchTerm(value);
+    if (value.length > 0) {
+      const results = mockData.filter((item) =>
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+      setSearchResults(results);
+      setShowResults(true);
+    } else {
+      setShowResults(false);
+    }
   };
-
-  // const handleItemClick = (item: string) => {
-  //   setSearchTerm(item);
-  //   setSearchResults([]);
-  // };
 
   return (
     <div className="content bg-zinc-900 flex">
       <SideBar />
       {/* Header */}
       <main className="w-full">
-        <nav className="Header flex items-center justify-around p-2 mt-2">
-          <h2 className="font-semibold text-[32px] text-white">Dashboard</h2>
+        <nav className="Header flex items-center justify-around mt-2">
+          <h2 className="font-semibold text-3xl text-white">Dashboard</h2>
           <div className="search p-2 bg-[#1B2028] text-[#9E9E9E] rounded-df w-1/4 flex items-center justify-between">
-            <div className="mr-1">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Digite para buscar..."
-                  value={searchTerm}
-                  onChange={handleChange}
-                  className=""
-                />
-                {searchResults.length > 0 && (
-                  <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg">
-                    {searchResults.map((result, index) => (
-                      <div
-                        key={index}
-                        className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                        onClick={() => {}}
-                      >
-                        {result}
-                      </div>
-                    ))}
-                  </div>
-                )}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Digite para buscar..."
+                value={searchTerm}
+                onChange={handleChange}
+                onBlur={() => setShowResults(false)}
+                className=" bg-[#1B2028] outline-none"
+              />
+              <div className="grid grid-cols-1 divide-y absolute top-10 overflow-hidden rounded w-fit">
+                {showResults &&
+                  searchResults.map((item, index) => (
+                    <div
+                      key={index}
+                      className="p-2 bg-[#1B2028] hover:bg-[#2C313C] cursor-pointer text-zinc-400"
+                    >
+                      {item}
+                    </div>
+                  ))}
               </div>
-              <MagnifyingGlassIcon className="w-6 h-6" />{" "}
             </div>
+            <MagnifyingGlassIcon className="w-6 h-6" />{" "}
           </div>
 
           <div className="notify-user flex justify-between items-center gap-12">
