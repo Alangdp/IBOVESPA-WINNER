@@ -53,11 +53,21 @@ module.exports = {
         },
 
       },
+      backgroundColor: {
+        df: "#1B2028",
+        bl: "#3A6FF8",
+      },
+
+      textColor: {
+        df: "#1B2028",
+        bl: "#3A6FF8", 
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        df: "8px"
+        df: "0.5rem", // 8px
+        et: "12px" // 12px
       },
       keyframes: {
         "accordion-down": {
