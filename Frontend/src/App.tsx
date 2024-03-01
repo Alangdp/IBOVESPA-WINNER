@@ -9,9 +9,9 @@ import { Header } from "./components/Header";
 
 export function App() {
   return (
-    <div className="content bg-zinc-900 flex">
+    <div className="content bg-[#1e1e1e] flex">
       <SideBar />
-      <Header title="DashBoard"/>
+      <Header title="Dashboard"/>
     </div>
       
   );
