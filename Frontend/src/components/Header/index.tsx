@@ -1,9 +1,11 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import {
   MagnifyingGlassIcon,
   BellIcon,
   ArrowDownIcon,
 } from "@radix-ui/react-icons";
-import { useState } from "react";
 
 interface headerProps {
   title: string
@@ -14,13 +16,30 @@ export function Header({ title }: headerProps) {
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [showResults, setShowResults] = useState<boolean>(false);
 
-  const mockData: string[] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+  let mockData: string[] = []
   
-
+  function getTickers() {
+    let executed = false;
+  
+    return async function() {
+      if (!executed) {
+        const response = await axios.get("http://localhost:3002/stock/tickers");
+        const data: string[] = response.data.tickers;
+        mockData = data;
+        executed = true;
+      }
+    };
+  }
+  
+  const getTickersFn = getTickers();
+  
+  useEffect(() => {
+    getTickersFn();
+  });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchTerm(value);
-    if (value.length > 0) {
+    if (value.length > 2) {
       const results = mockData.filter((item) =>
         item.toLowerCase().includes(value.toLowerCase())
       );
@@ -46,16 +65,19 @@ export function Header({ title }: headerProps) {
                 onBlur={() => setShowResults(false)}
                 className=" bg-[#1B2028] outline-none"
               />
+              {mockData}
               <div className="grid grid-cols-1 divide-y absolute top-10 overflow-hidden rounded w-fit">
                 {showResults &&
                   searchResults.map((item, index) => (
                     <div
                       key={index}
-                      className="p-2 bg-[#1B2028] hover:bg-[#2C313C] cursor-pointer text-zinc-400"
+                      className={"p-2 bg-[#1B2028] hover:bg-[#2C313C] cursor-pointer text-zinc-400 w-fit flex"}
                     >
+                      <img src={`http://localhost:3002/static/imgs/logos/${item}-logo.jpg`} alt="" />
                       {item}
                     </div>
-                  ))}
+                  ))
+                }
               </div>
             </div>
             <MagnifyingGlassIcon className="w-6 h-6" />{" "}

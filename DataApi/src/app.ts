@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
+import cors, { CorsOptions } from 'cors';
 
 import './database/index.js';
 
@@ -10,6 +11,13 @@ import stockRoutes from './routes/stockRoutes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const corsOptions = {
+    origin: 'http://localhost:5173', 
+    methods: 'GET, POST', 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: false 
+  };
 
 dotenv.config();
 
@@ -29,6 +37,8 @@ class App {
         this.app.use(express.urlencoded({ extended: true }));
         console.log(path.join(__dirname, '..', 'assets'));
         this.app.use('/static', express.static(path.join(__dirname, '..', 'assets')));  
+        this.app.use(cors(corsOptions))
     }
 }
 export default new App().app;
+
