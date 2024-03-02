@@ -57,7 +57,9 @@ module.exports = {
         df: "#1B2028",
         bl: "#3A6FF8",
       },
-
+      width: {
+        "80": "80%"
+      },
       textColor: {
         df: "#1B2028",
         bl: "#3A6FF8", 
