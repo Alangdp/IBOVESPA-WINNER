@@ -32,7 +32,7 @@ class DatabaseSeed {
   async getData (ticker: string) {
     try {
       const imgFetcher = new GetStockImage(ticker);
-      await imgFetcher.downloadImage();
+      await imgFetcher.downloadImage("avatar");
       return true
     } catch (error) {
         console.log(error)

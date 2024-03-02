@@ -16,25 +16,34 @@ export class GetStockImage {
     this.tickerFetcher = new TickerFetcher(ticker);
   }
 
-  async execute(): Promise<string | null> {
+  async execute(toDownload: 'logo' | 'avatar'): Promise<string | null> {
     await this.tickerFetcher.initialize();
     const stockQuery: StockQuery[] | null = await this.tickerFetcher.getImage();
 
     if (!stockQuery) return null;
     const stockId = stockQuery[0].parentId;
 
-    return `https://statusinvest.com.br/img/company/avatar/${stockId}.jpg`;
+    if (toDownload === 'logo') {
+      return `https://statusinvest.com.br/img/company/cover/${stockId}.jpg`;
+    }
+
+    if (toDownload === 'avatar') {
+      return `https://statusinvest.com.br/img/company/avatar/${stockId}.jpg`;
+    }
+
+    return "https://statusinvest.com.br"
   }
 
-  async downloadImage() {
-    const url = await this.execute();
+  async downloadImage(toDownload: 'logo' | 'avatar') {
+    const url = await this.execute(toDownload);
     if (!url) return null;
 
     const response = await fetch(url);
     const blob = await response.blob();
     const arrayBuffer = await blob.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    fs.writeFileSync(`./assets/imgs/logos/${this.ticker}-logo.jpg`, buffer);
+    if(toDownload === 'logo') fs.writeFileSync(`./assets/imgs/logos/${this.ticker}-logo.jpg`, buffer);
+    if(toDownload === 'avatar') fs.writeFileSync(`./assets/imgs/avatar/${this.ticker}-logo.jpg`, buffer);
   }
 
   async readImage(ticker: string) {
