@@ -7,6 +7,9 @@ import {
 } from "@radix-ui/react-icons";
 import { DividendItem } from "./Stocks/Dividend";
 
+import newImage from "../../assets/imgs/news.png"
+import OficialLogo from "../../assets/OficialLog.svg"
+
 export default function Home() {
   const mockUrlImage = "https://investidor10.com.br/storage/companies/5f19c3e7e124c.jpeg"
 
@@ -14,8 +17,8 @@ export default function Home() {
     <div className="bg-[#3F3F3F] w-screen h-screen text-white">
       {/* nav */}
       <div className="nav h-14 bg-df flex justify-around items-center p-4">
-        <div className="company flex items-center justify-between w-fit">
-          <img src="12" alt="Logo" className=" " />
+        <div className="company flex items-center justify-between w-fit gap-4">
+          <a href=""><img src={OficialLogo} alt="Logo" className=" " /></a>
           <div className="text-lg">CPI</div>
         </div>
 
@@ -38,7 +41,7 @@ export default function Home() {
       {/* main */}
 
       <main className="bg-[#3F3F3F]">
-        <div className="news h-[360px] relative w-100 h-">
+        <div className="news h-[360px] relative w-100 bg-cover bg-no-repeat"  style={{ backgroundImage: "url(" + newImage +")"}}>
           <div className="home-buttons w-fit bg-df bottom-6 rounded-df p-2 absolute left-1/2 transform -translate-x-1/2 ">
             <div className="buttons flex items-center gap-4 w-fit">
               <a href="" className="p-1 bg-bl rounded w-max">
