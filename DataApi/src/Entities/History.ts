@@ -12,7 +12,7 @@ import Chart from './Chart.js';
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
 import { TransactionHistory } from './Transaction.js';
-import { StockDataBase } from '../useCases/StockDataBase.js';
+import { StockDataBase } from '../useCases/stockDataBase.js';
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -168,7 +168,7 @@ const transactions: TransactionHistory[] = [
     {
       price: 10,
       quantity: 10,
-      transactionDate: new Date(),
+      transactionDate: new Date('02/01/2024'),
       type: 'BUY',
       userId: 1,
     },

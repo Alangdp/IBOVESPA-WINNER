@@ -8,7 +8,11 @@ dotenv.config();
 export class MongooConnection {
   static mongoose = new Mongoose();
 
-  private static verifyConnection() {
+  static verifyConnection() {
+    MongooConnection.mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+    MongooConnection.mongoose.connection.once('open', () => {
+        console.log('Database connected');
+    });
     return MongooConnection.mongoose.connection.readyState;
   }
 

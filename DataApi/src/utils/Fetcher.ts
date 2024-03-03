@@ -85,6 +85,7 @@ export default class TickerFetcher {
         '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(4) > div > div > strong',
       shareQuantity:
         '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(9) > div > div > strong',
+        segment: "#company-section > div:nth-child(1) > div > div.card.bg-main-gd-h.white-text.rounded.ov-hidden.pt-0.pb-0 > div > div:nth-child(3) > div > div > div > a > strong"
     };
 
     const totalStocksInCirculation: string = this.Utility.extractText(
@@ -110,6 +111,7 @@ export default class TickerFetcher {
 
     const grossDebt = this.Utility.extractNumber(selectors.grossDebt);
     const shareQuantity = this.Utility.extractNumber(selectors.shareQuantity);
+    const segment = this.Utility.extractText(selectors.segment);
     let image = this.Utility.extractImage(selectors.imageURL);
 
     const data: BasicInfoReturn = {
@@ -129,6 +131,7 @@ export default class TickerFetcher {
       liquidPatrimony,
       grossDebt,
       shareQuantity,
+      segment
     };
 
     return data;

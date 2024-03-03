@@ -1,4 +1,4 @@
-import { Pontuation } from '../types/Pontuation.type';
+import { Pontuation } from '../Entities/Pontuation';
 import { NetLiquid } from '../types/stock.types';
 import { StockProtocol } from './StockProtocol.type';
 

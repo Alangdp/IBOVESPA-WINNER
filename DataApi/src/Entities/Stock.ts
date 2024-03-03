@@ -28,33 +28,35 @@ export class Stock extends Variable implements StockProtocol {
   public netLiquid: NetLiquid[];
   public passiveChart: PassiveChartReturn[];
 
+  public segment: string
+
   public indicators: IndicatorsData;
 
-  constructor(stock: StockProps) {
+  constructor(props: StockProps) {
     super(
       {
-        ticker: stock.ticker,
-        name: stock.name,
-        activeValue: stock.activeValue,
-        shareQuantity: stock.shareQuantity,
-        actualPrice: stock.actualPrice,
-        priceHistory: stock.priceHistory
+        ticker: props.ticker,
+        name: props.name,
+        activeValue: props.activeValue,
+        shareQuantity: props.shareQuantity,
+        actualPrice: props.actualPrice,
+        priceHistory: props.priceHistory
       }
     );
 
+    this.segment = props.segment;
+    this.indicators = props.indicators;
+    this.dividendYield = props.dividendYield;
+    this.grossDebt = props.grossDebt;
+    this.patrimony = props.patrimony;
+    this.payout = props.payout;
+    this.actualDividendYield = props.actualDividendYield;
 
-    this.indicators = stock.indicators;
-    this.dividendYield = stock.dividendYield;
-    this.grossDebt = stock.grossDebt;
-    this.patrimony = stock.patrimony;
-    this.payout = stock.payout;
-    this.actualDividendYield = stock.actualDividendYield;
+    this.lastDividendsYieldYear = props.lastDividendsYieldYear;
+    this.lastDividendsValueYear = props.lastDividendsValueYear;
+    this.lastDividendsValue = props.lastDividendsValue;
 
-    this.lastDividendsYieldYear = stock.lastDividendsYieldYear;
-    this.lastDividendsValueYear = stock.lastDividendsValueYear;
-    this.lastDividendsValue = stock.lastDividendsValue;
-
-    this.netLiquid = stock.netLiquid;
-    this.passiveChart = stock.passiveChart;
+    this.netLiquid = props.netLiquid;
+    this.passiveChart = props.passiveChart;
   }
 }

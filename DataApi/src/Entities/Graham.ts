@@ -3,7 +3,7 @@ import {
   GranhamProtocol,
 } from '../interfaces/GranamProtocal.type';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
-import { Pontuation } from '../types/Pontuation.type';
+import { Pontuation } from './Pontuation';
 import { oldIndicator } from '../types/indicators.type';
 import { NetLiquid } from '../types/stock.types';
 

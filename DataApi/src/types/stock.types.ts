@@ -10,6 +10,10 @@ export type NetLiquid = {
 };
 
 export interface StockProps extends VariableProps {
+  // Abrangent Data
+
+  segment: string;
+
   // Variables from Stock
 
   ticker: string;

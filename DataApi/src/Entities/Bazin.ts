@@ -3,12 +3,14 @@ import {
   BazinProtocol,
 } from '../interfaces/BazinProtocol.type.js';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
-import { Pontuation } from '../types/Pontuation.type';
+import { Pontuation } from './Pontuation.js';
+import { StockProps } from '../types/stock.types.js';
+import MathUtils from '../utils/MathUtils.js';
 
 // TODO - REFAZER TUDO
 
 export class Bazin extends BazinProtocol implements BazinMethods {
-  constructor(stock: StockProtocol) {
+  constructor(stock: StockProps) {
     super();
     const {
       dividendYield,
@@ -22,15 +24,15 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     this.lastDividendYieldBrute = lastDividendsYieldYear.splice(0, 5);
     this.lastDividendYieldBrute.shift();
 
-    this.dividendYieldAverage = stock.makeAverage(this.lastDividendsYield);
-    this.dividendYieldMedian = stock.makeMedian(this.lastDividendsYield);
+    this.dividendYieldAverage = MathUtils.makeAverage(this.lastDividendsYield);
+    this.dividendYieldMedian = MathUtils.makeMedian(this.lastDividendsYield);
 
     this.actualDividends = actualPrice * dividendYield;
     this.maxPrice = (this.dividendYieldAverage * stock.actualPrice) / 0.06;
     this.validate(stock);
   }
 
-  validate(stock: StockProtocol) {
+  validate(stock: StockProps) {
     const { grossDebt, patrimony } = stock;
 
     if (grossDebt === null || grossDebt === undefined)
@@ -77,7 +79,7 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     }
   }
 
-  public makePoints(stock: StockProtocol): Pontuation {
+  public makePoints(stock: StockProps): Pontuation {
     const { dividendYieldMedian } = this;
     const { grossDebt, patrimony, actualDividendYield, payout, actualPrice } =
       stock;

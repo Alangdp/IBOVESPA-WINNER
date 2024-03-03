@@ -15,4 +15,5 @@ export type BasicInfoReturn = {
   liquidPatrimony: number;
   grossDebt: number;
   shareQuantity: number;
+  segment: string;
 };
