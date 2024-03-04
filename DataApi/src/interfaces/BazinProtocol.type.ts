@@ -8,7 +8,7 @@ export interface BazinMethods {
   // validate(stock: StockProtocol): void;
   constistentDividend(): boolean;
   crescentDividend(): boolean;
-  makePoints(stock: StockProtocol): Pontuation;
+  makePoints(stock: StockProtocol): Promise<Pontuation>;
 }
 
 export abstract class BazinProtocol {

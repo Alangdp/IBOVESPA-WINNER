@@ -3,7 +3,7 @@
 import { BuyTransactionProcol } from '../interfaces/TransactionBuyProtocol.type';
 import { Transaction } from '../interfaces/TransactionProtocol.js';
 import { TransactionProps } from '../types/transaction.type';
-import { TransactionHistory } from './Transaction';
+import { TransactionHistory } from '../interfaces/Transaction';
 
 export default class BuyTransaction
   extends Transaction

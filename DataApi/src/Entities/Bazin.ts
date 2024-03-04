@@ -3,11 +3,14 @@ import {
   BazinProtocol,
 } from '../interfaces/BazinProtocol.type.js';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
-import { Pontuation } from './Pontuation.js';
+import { PontuationRule } from '../types/Pontuation.type.js';
 import { StockProps } from '../types/stock.types.js';
 import MathUtils from '../utils/MathUtils.js';
+import { Pontuation } from './Pontuation.js';
+import { pontuationModel } from '../database/mongodb/models/Pontuation.model.js';
 
 // TODO - REFAZER TUDO
+
 
 export class Bazin extends BazinProtocol implements BazinMethods {
   constructor(stock: StockProps) {
@@ -79,53 +82,41 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     }
   }
 
-  public makePoints(stock: StockProps): Pontuation {
+  public async makePoints(stock: StockProps) {
     const { dividendYieldMedian } = this;
-    const { grossDebt, patrimony, actualDividendYield, payout, actualPrice } =
+    const { grossDebt, patrimony, actualDividendYield, payout, actualPrice, ticker } =
       stock;
-
-    const conditions: Record<string, boolean> = {};
 
     const maxPrice = (this.dividendYieldAverage * stock.actualPrice) / 0.06;
 
-    conditions['Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)'] =
-      this.addPoints(this.dividendYieldAverage >= 0.06, 1, 2);
-    conditions['Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)'] =
-      this.addPoints(dividendYieldMedian >= 0.06, 1, 2);
-    conditions['Dividend Yield Atual > 0.06 (6%)'] = this.addPoints(
-      actualDividendYield >= 0.06,
-      1,
-      2
-    );
-    conditions['Dívida Bruta/Patrimônio < 0.5 (50%)'] = this.addPoints(
-      grossDebt / patrimony <= 0.5,
-      1,
-      2
-    );
-    conditions['Pagamento constante de dividendos nos últimos 5 anos'] =
-      this.addPoints(this.constistentDividend(), 1, 1);
-    conditions['Dividendos crescentes nos últimos 5 anos'] = this.addPoints(
-      this.crescentDividend(),
-      1,
-      1
-    );
-    conditions['0 < Payout < 1'] = this.addPoints(
-      payout > 0 && payout < 1,
-      1,
-      1
-    );
-    conditions['Preço Atual < Preço Máximo'] = this.addPoints(
-      actualPrice < maxPrice,
-      1,
-      1
-    );
+    const rules: PontuationRule[] = [
+      { ifFalse: 1, ifTrue: 2, rule: this.dividendYieldAverage >= 0.06, ruleName: "Média do Dividend Yield nos últimos 5 anos > 0.06 (5%)" },
+      { ifFalse: 1, ifTrue: 2, rule: dividendYieldMedian >= 0.06, ruleName: "Mediana do Dividend Yield nos últimos 5 anos > 0.06 (5%)" },
+      { ifFalse: 1, ifTrue: 2, rule: actualDividendYield >= 0.06, ruleName: "Dividend Yield Atual > 0.06 (6%)" },
+      { ifFalse: 1, ifTrue: 2, rule: grossDebt / patrimony <= 0.5, ruleName: "Dívida Bruta/Patrimônio < 0.5 (50%)" },
+      { ifFalse: 1, ifTrue: 1, rule: this.constistentDividend(), ruleName: "Pagamento constante de dividendos nos últimos 5 anos" },
+      { ifFalse: 1, ifTrue: 1, rule: this.crescentDividend(), ruleName: "Dividendos crescentes nos últimos 5 anos" },
+      { ifFalse: 1, ifTrue: 1, rule: payout > 0 && payout < 1, ruleName: "0 < Payout < 1" },
+      { ifFalse: 1, ifTrue: 1, rule: actualPrice < maxPrice, ruleName: "Preço Atual < Preço Máximo" }
+    ];
 
-    const points: Pontuation = {};
-    for (const condition in conditions) {
-      points[condition] = conditions[condition];
-    }
+    const pontuation = new Pontuation({
+      defaultIfFalse: 1,
+      defaultIfTrue: 1,
+      id: ticker,
+      subId: "BAZIN",
+      totalPoints: 0
+    })
 
-    points['Pontuacao'] = this.points;
-    return points;
+    rules.forEach( rule => {
+      pontuation.addRule(rule);
+    })
+
+    pontuation.calculate();
+
+    const model = await pontuationModel;
+    await model.create(pontuation);
+
+    return pontuation
   }
 }

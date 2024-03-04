@@ -1,4 +1,4 @@
-import { TransactionHistory } from '../Entities/Transaction.js';
+import { TransactionHistory } from '../interfaces/Transaction.js';
 import { ChartProtocol } from '../interfaces/ChartProtocol.type.js';
 import { DividendOnDate } from './dividends.type.js';
 import { StockInfo, StockPrice } from './stock.types.js';

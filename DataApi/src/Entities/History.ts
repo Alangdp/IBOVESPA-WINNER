@@ -11,7 +11,7 @@ import Chart from './Chart.js';
 
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
-import { TransactionHistory } from './Transaction.js';
+import { TransactionHistory } from '../interfaces/Transaction.js';
 import { StockDataBase } from '../useCases/stockDataBase.js';
 
 // FIXME ARRUMAR SOLID AQUI

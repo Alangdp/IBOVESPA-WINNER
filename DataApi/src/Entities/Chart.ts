@@ -8,7 +8,7 @@ import {
 } from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
 import { StockPrice } from '../types/stock.types';
-import { TransactionHistory } from './Transaction';
+import { TransactionHistory } from '../interfaces/Transaction';
 
 // FIXME ARRUMAR SOLID AQUI
 

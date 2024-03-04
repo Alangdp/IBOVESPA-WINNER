@@ -1,6 +1,6 @@
 import { PontuationProps } from '../types/Pontuation.type';
 import { PontuationRule } from '../types/Pontuation.type';
-export default class Pontuation implements PontuationProps {
+class Pontuation implements PontuationProps {
   // Identifier
   public id: string;
   public subId?: string;
@@ -43,3 +43,5 @@ export default class Pontuation implements PontuationProps {
     }
   }
 }
+
+export { Pontuation }

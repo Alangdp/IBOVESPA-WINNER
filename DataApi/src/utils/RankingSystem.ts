@@ -1,12 +1,9 @@
-import { contains } from 'cheerio';
 import { Bazin } from '../Entities/Bazin.js';
-import { MacroInfo } from '../global/MacroInfo.js';
-import { Pontuation } from '../Entities/Pontuation.js';
 import { StockProps } from '../types/stock.types.js';
-import { InstanceStock } from '../useCases/instanceStock.js';
 import { StockDataBase } from '../useCases/stockDataBase.js';
 import Json from './Json.js';
 import TickerFetcher from './Fetcher.js';
+import { Pontuation } from '../Entities/Pontuation.js';
 
 // FIXME ARRUMAR SOLID AQUI
 // FIXME FUNÇÃO TEMPORARIA
@@ -16,9 +13,8 @@ type RankingSystyemProps = {
 };
 
 interface Ranking {
-  [ticker: string]: {
-    points: Pontuation;
-  };
+  [ticker: string]: Pontuation
+  
 }
 
 class RankingSystyem {
@@ -31,9 +27,8 @@ class RankingSystyem {
         const stock: StockProps = await StockDataBase.getStock(ticker)
         const bazin = new Bazin(stock);
 
-        console.log(ticker);
-
-        this.ranking[ticker] = { points: bazin.makePoints(stock) };
+        this.ranking[ticker] = await bazin.makePoints(stock)
+        console.log(ticker)
       } catch (error) {
         continue;
       }

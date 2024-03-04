@@ -3,7 +3,7 @@
 import { Transaction } from '../interfaces/TransactionProtocol';
 import { SellTransactionProcol } from '../interfaces/TransactionSellProtocol.type';
 import { TransactionProps } from '../types/transaction.type';
-import { TransactionHistory } from './Transaction';
+import { TransactionHistory } from '../interfaces/Transaction';
 
 export default class SellTransaction
   extends Transaction

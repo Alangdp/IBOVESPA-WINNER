@@ -1,5 +1,5 @@
 // import { TransactionProtocol } from 'sequelize';
-import { TransactionHistory } from '../Entities/Transaction';
+import { TransactionHistory } from './Transaction';
 import {
   ChartConstructor,
   Chart as ChartModel,
