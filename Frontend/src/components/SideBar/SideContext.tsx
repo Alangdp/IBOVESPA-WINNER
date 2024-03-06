@@ -10,12 +10,12 @@ interface SelectedProviderProps {
 }
 
 const SelectedContext = createContext<SelectedContextType>({
-  selected: "Overview",
+  selected: "",
   setSelected: () => {}
 });
 
 export const SelectedProvider: React.FC<SelectedProviderProps> = ({ children }) => {
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<string>("Overview");
 
   return (
     <SelectedContext.Provider value={{ selected, setSelected }}>

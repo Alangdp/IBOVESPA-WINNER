@@ -16,8 +16,10 @@ export function SideButton({ icon, text, active }: SideButtonProps) {
     setSelected(text);
   };
 
+  active = selected === text ? true : false
+
   return (
-    <Button.Root active={selected === text} onClick={handleClick}>
+    <Button.Root active={active} onClick={handleClick}>
       <Button.Icon icon={icon} active={active} />
       <Button.Content text={text} active={active} />
     </Button.Root>

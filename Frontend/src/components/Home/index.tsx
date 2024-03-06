@@ -17,9 +17,9 @@ export default function Home() {
     <div className="bg-[#3F3F3F] w-screen h-screen text-white">
       {/* nav */}
       <div className="nav h-14 bg-df flex justify-around items-center p-4">
-        <div className="company flex items-center justify-between w-fit gap-4">
+        <div className="company flex items-center justify-between w-fit gap-4 text-white">
           <a href=""><img src={OficialLogo} alt="Logo" className=" " /></a>
-          <div className="text-lg">CPI</div>
+          <div className="text-lg ">CPI</div>
         </div>
 
         <div className="main-buttons flex items-center gap-8">
