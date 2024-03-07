@@ -51,7 +51,7 @@ export function Header({ title }: headerProps) {
   };
 
   return (
-    <div className="content bg-zinc-900 flex w-full">
+    <div className="content bg-zinc-900 flex w-full text-lg">
       <main className="w-full">
         <nav className="Header flex items-center justify-around mt-2">
           <h2 className="font-semibold text-3xl text-white">{title}</h2>
@@ -89,7 +89,7 @@ export function Header({ title }: headerProps) {
             </div>
             <div className="user flex p-2 items-center justify-around">
               <div className="user-photo bg-[#9E9E9E] p-5 rounded-df"></div>
-              <div className="user-name text-white ml-2 text-sm flex gap-2 items-center">
+              <div className="user-name text-white ml-2 text-base flex gap-2 items-center">
                 <p>User</p>
                 <ArrowDownIcon className="w-4 h-4" />
               </div>

@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { ElementType } from "react";
 
 interface ButtonIconProps {
@@ -6,7 +7,7 @@ interface ButtonIconProps {
 } 
 export function ButtonIcon({ icon: Icon, active }: ButtonIconProps) {
   return (
-    <div className={active ? "text-white" : ""}>
+    <div className={cn(active ? "text-white" : "", "")}>
       <Icon />
     </div>
   );
