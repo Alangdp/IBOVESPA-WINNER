@@ -7,18 +7,22 @@ import {
 } from "@radix-ui/react-icons";
 import { DividendItem } from "./Stocks/Dividend";
 
-import newImage from "../../assets/imgs/news.png"
-import OficialLogo from "../../assets/OficialLog.svg"
+import newImage from "../../assets/imgs/news.png";
+import OficialLogo from "../../assets/OficialLog.svg";
+import { VariationItem } from "./Stocks/Variation";
 
 export default function Home() {
-  const mockUrlImage = "https://investidor10.com.br/storage/companies/5f19c3e7e124c.jpeg"
+  const mockUrlImage =
+    "https://investidor10.com.br/storage/companies/5f19c3e7e124c.jpeg";
 
   return (
     <div className="bg-[#3F3F3F] w-screen h-screen text-white">
       {/* nav */}
       <div className="nav h-14 bg-df flex justify-around items-center p-4">
         <div className="company flex items-center justify-between w-fit gap-4 text-white">
-          <a href=""><img src={OficialLogo} alt="Logo" className=" " /></a>
+          <a href="">
+            <img src={OficialLogo} alt="Logo" className=" " />
+          </a>
           <div className="text-lg ">CPI</div>
         </div>
 
@@ -41,7 +45,10 @@ export default function Home() {
       {/* main */}
 
       <main className="bg-[#3F3F3F]">
-        <div className="news h-[360px] relative w-100 bg-cover bg-no-repeat"  style={{ backgroundImage: "url(" + newImage +")"}}>
+        <div
+          className="news h-[360px] relative w-100 bg-cover bg-no-repeat"
+          style={{ backgroundImage: "url(" + newImage + ")" }}
+        >
           <div className="home-buttons w-fit bg-df bottom-6 rounded-df p-2 absolute left-1/2 transform -translate-x-1/2 ">
             <div className="buttons flex items-center gap-4 w-fit">
               <a href="" className="p-1 bg-bl rounded w-max">
@@ -114,117 +121,53 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 w-80 transition-all flex- flex-col justify-center">
+          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 w-85 transition-all flex- flex-col justify-center">
             <div className="altas rounded-df inline w-full bg-blue-700">
               <div className="title">
                 <h3 className="font-bold text-2xl m-4">Altas</h3>
               </div>
               <div className="content">
                 <div className="info flex flex-col">
-                  <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                    <img
-                      src={mockUrlImage}
-                      className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                      alt=""
-                    />
-                    <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                      <div className="name flex items-center gap-3">
-                        <h5 className="font-semibold">BBAS3</h5>
-                        <p className="text-xs opacity-60">Banco do Brasil</p>
-                      </div>
-                      <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                        <div className="porcent flex  items-center">
-                          <ArrowUpIcon className="text-green-700 w-6 h-6" />
-                          <div className="text-sm">16.74%</div>
-                        </div>
-                        <div className="price text-sm opacity-40">R$16.50</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                    <img
-                      src={mockUrlImage}
-                      className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                      alt=""
-                    />
-                    <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                      <div className="name flex items-center gap-3">
-                        <h5 className="font-semibold">BBAS3</h5>
-                        <p className="text-xs opacity-60">Banco do Brasil</p>
-                      </div>
-                      <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                        <div className="porcent flex  items-center">
-                          <ArrowUpIcon className="text-green-700 w-6 h-6" />
-                          <div className="text-sm">16.74%</div>
-                        </div>
-                        <div className="price text-sm opacity-40">R$16.50</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                    <img
-                      src={mockUrlImage}
-                      className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                      alt=""
-                    />
-                    <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                      <div className="name flex items-center gap-3">
-                        <h5 className="font-semibold">BBAS3</h5>
-                        <p className="text-xs opacity-60">Banco do Brasil</p>
-                      </div>
-                      <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                        <div className="porcent flex  items-center">
-                          <ArrowUpIcon className="text-green-700 w-6 h-6" />
-                          <div className="text-sm">16.74%</div>
-                        </div>
-                        <div className="price text-sm opacity-40">R$16.50</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                    <img
-                      src={mockUrlImage}
-                      className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                      alt=""
-                    />
-                    <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                      <div className="name flex items-center gap-3">
-                        <h5 className="font-semibold">BBAS3</h5>
-                        <p className="text-xs opacity-60">Banco do Brasil</p>
-                      </div>
-                      <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                        <div className="porcent flex  items-center">
-                          <ArrowUpIcon className="text-green-700 w-6 h-6" />
-                          <div className="text-sm">16.74%</div>
-                        </div>
-                        <div className="price text-sm opacity-40">R$16.50</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                    <img
-                      src={mockUrlImage}
-                      className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                      alt=""
-                    />
-                    <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                      <div className="name flex items-center gap-3">
-                        <h5 className="font-semibold">BBAS3</h5>
-                        <p className="text-xs opacity-60">Banco do Brasil</p>
-                      </div>
-                      <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                        <div className="porcent flex  items-center">
-                          <ArrowUpIcon className="text-green-700 w-6 h-6" />
-                          <div className="text-sm">16.74%</div>
-                        </div>
-                        <div className="price text-sm opacity-40">R$16.50</div>
-                      </div>
-                    </div>
-                  </div>
+                  <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="up"
+                    value={16.8}
+                    variation={1}
+                  />
+                  <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="up"
+                    value={16.8}
+                    variation={1}
+                  />
+                  <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="up"
+                    value={16.8}
+                    variation={1}
+                  />
+                  <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="up"
+                    value={16.8}
+                    variation={1}
+                  />
+                  <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="up"
+                    value={16.8}
+                    variation={1}
+                  />
                 </div>
               </div>
             </div>
@@ -233,110 +176,52 @@ export default function Home() {
                 <h3 className="font-bold text-2xl m-4">Baixas</h3>
               </div>
               <div className="info flex flex-col">
-                <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                  <img
-                    src={mockUrlImage}
-                    className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                    alt=""
+              
+              <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="down"
+                    value={16.8}
+                    variation={1}
                   />
-                  <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                    <div className="name flex items-center gap-3">
-                      <h5 className="font-semibold">BBAS3</h5>
-                      <p className="text-xs opacity-60">Banco do Brasil</p>
-                    </div>
-                    <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                      <div className="porcent flex  items-center">
-                        <ArrowDownIcon className="text-red-700 w-6 h-6" />
-                        <div className="text-sm">16.74%</div>
-                      </div>
-                      <div className="price text-sm opacity-40">R$16.50</div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                  <img
-                    src={mockUrlImage}
-                    className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                    alt=""
+<VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="down"
+                    value={16.8}
+                    variation={1}
                   />
-                  <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                    <div className="name flex items-center gap-3">
-                      <h5 className="font-semibold">BBAS3</h5>
-                      <p className="text-xs opacity-60">Banco do Brasil</p>
-                    </div>
-                    <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                      <div className="porcent flex  items-center">
-                        <ArrowDownIcon className="text-red-700 w-6 h-6" />
-                        <div className="text-sm">16.74%</div>
-                      </div>
-                      <div className="price text-sm opacity-40">R$16.50</div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                  <img
-                    src={mockUrlImage}
-                    className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                    alt=""
+<VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="down"
+                    value={16.8}
+                    variation={1}
                   />
-                  <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                    <div className="name flex items-center gap-3">
-                      <h5 className="font-semibold">BBAS3</h5>
-                      <p className="text-xs opacity-60">Banco do Brasil</p>
-                    </div>
-                    <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                      <div className="porcent flex  items-center">
-                        <ArrowDownIcon className="text-red-700 w-6 h-6" />
-                        <div className="text-sm">16.74%</div>
-                      </div>
-                      <div className="price text-sm opacity-40">R$16.50</div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                  <img
-                    src={mockUrlImage}
-                    className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                    alt=""
+              <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="down"
+                    value={16.8}
+                    variation={1}
                   />
-                  <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                    <div className="name flex items-center gap-3">
-                      <h5 className="font-semibold">BBAS3</h5>
-                      <p className="text-xs opacity-60">Banco do Brasil</p>
-                    </div>
-                    <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                      <div className="porcent flex  items-center">
-                        <ArrowDownIcon className="text-red-700 w-6 h-6" />
-                        <div className="text-sm">16.74%</div>
-                      </div>
-                      <div className="price text-sm opacity-40">R$16.50</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="item rounded-df grid grid-cols-[1fr,2fr] h-max m-2 p-2 bg-df">
-                  <img
-                    src={mockUrlImage}
-                    className="overflow-hidden rounded-df 2xl:w-1/2 h-auto"
-                    alt=""
+              
+              <VariationItem
+                    img={mockUrlImage}
+                    name="Banco do Brasil"
+                    ticker="BBAS3"
+                    type="down"
+                    value={16.8}
+                    variation={1}
                   />
-                  <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
-                    <div className="name flex items-center gap-3">
-                      <h5 className="font-semibold">BBAS3</h5>
-                      <p className="text-xs opacity-60">Banco do Brasil</p>
-                    </div>
-                    <div className="variation flex  2xl:gap-24 lg:gap-2 xl:gap-8 items-center">
-                      <div className="porcent flex  items-center">
-                        <ArrowDownIcon className="text-red-700 w-6 h-6" />
-                        <div className="text-sm">16.74%</div>
-                      </div>
-                      <div className="price text-sm opacity-40">R$16.50</div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
               <div className="content"></div>
             </div>

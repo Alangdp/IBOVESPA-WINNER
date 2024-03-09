@@ -4,6 +4,7 @@ import { createBrowserRouter, Link } from "react-router-dom";
 import { App } from "./App";
 import Home from "./components/Home";
 import { TransactionTable } from "./components/Ranking";
+import  { Home2 }from "./components/aFazerComponents/home2"
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test",
-    element: <TransactionTable />
+    element: <Home2 />
   },
   {
     path: "*",
