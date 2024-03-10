@@ -5,21 +5,15 @@ import {
   FileTextIcon,
 } from "@radix-ui/react-icons";
 
-import { Navigate, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { SideButton } from "../SideButton";
-import { SelectedProvider } from "./SideContext";
-
 import OfficialLog from "../../assets/OficialLog.svg";
-
-
 
 export function SideBar() {
   const navigate = useNavigate()
 
   return (
-    <SelectedProvider>
-      <nav className="w-[256px] text-white flex flex-col h-full justify-between ">
+      <nav className="w-[256px] text-white flex flex-col h-full justify-between bg-[#1B2028]">
         <div className="title flex justify-center items-center gap-4 py-4">
           <img src={OfficialLog} className="w-16 h-16" alt="" />
           <div className="text-2xl text-white font-bold">CPI</div>
@@ -38,6 +32,5 @@ export function SideBar() {
           <SideButton text="Sair" active={false} icon={FileTextIcon} onClick={() =>  navigate("/")} />
         </div>
       </nav>
-    </SelectedProvider>
   );
 }

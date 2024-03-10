@@ -176,52 +176,50 @@ export default function Home() {
                 <h3 className="font-bold text-2xl m-4">Baixas</h3>
               </div>
               <div className="info flex flex-col">
-              
-              <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="down"
-                    value={16.8}
-                    variation={1}
-                  />
+                <VariationItem
+                  img={mockUrlImage}
+                  name="Banco do Brasil"
+                  ticker="BBAS3"
+                  type="down"
+                  value={16.8}
+                  variation={1}
+                />
 
-<VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="down"
-                    value={16.8}
-                    variation={1}
-                  />
+                <VariationItem
+                  img={mockUrlImage}
+                  name="Banco do Brasil"
+                  ticker="BBAS3"
+                  type="down"
+                  value={16.8}
+                  variation={1}
+                />
 
-<VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="down"
-                    value={16.8}
-                    variation={1}
-                  />
+                <VariationItem
+                  img={mockUrlImage}
+                  name="Banco do Brasil"
+                  ticker="BBAS3"
+                  type="down"
+                  value={16.8}
+                  variation={1}
+                />
 
-              <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="down"
-                    value={16.8}
-                    variation={1}
-                  />
-              
-              <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="down"
-                    value={16.8}
-                    variation={1}
-                  />
-                
+                <VariationItem
+                  img={mockUrlImage}
+                  name="Banco do Brasil"
+                  ticker="BBAS3"
+                  type="down"
+                  value={16.8}
+                  variation={1}
+                />
+
+                <VariationItem
+                  img={mockUrlImage}
+                  name="Banco do Brasil"
+                  ticker="BBAS3"
+                  type="down"
+                  value={16.8}
+                  variation={1}
+                />
               </div>
               <div className="content"></div>
             </div>

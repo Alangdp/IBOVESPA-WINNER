@@ -1,18 +1,19 @@
-import {
-  MagnifyingGlassIcon,
-  BellIcon,
-  ArrowDownIcon,
-} from "@radix-ui/react-icons";
 import { SideBar } from "./components/SideBar";
-import { useState } from "react";
 import { Header } from "./components/Header";
+import { SelectedProvider } from "./components/SideBar/SideContext";
+import { DashBoard } from "./components/Dashboard";
 
 export function App() {
+
   return (
-    <div className="content bg-[#1e1e1e] flex h-screen">
-      <SideBar />
-      <Header title="Dashboard"/>
-    </div>
-      
+    <SelectedProvider>
+      <div className="content bg-[#1e1e1e] flex h-screen overflow-hidden w-screen">
+        <SideBar />
+        <div className="container w-full h-full p-4 mx-12">
+          <Header title="Dashboard" />
+          <DashBoard />
+        </div>
+      </div>
+    </SelectedProvider>
   );
 }

@@ -1,10 +1,11 @@
 import { MagnifyingGlassIcon, BellIcon, ArrowDownIcon } from "@radix-ui/react-icons";
-import { SideBar } from "./components/SideBar";
+import { SideBar } from "./SideBar";
+
 
 export function App() {
 
   return (
-    <div className="content bg-zinc-900 flex">
+    <div className="contentflex">
       <SideBar />
       {/* Header */}
       <main className="w-full">

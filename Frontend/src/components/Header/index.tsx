@@ -6,97 +6,87 @@ import {
   BellIcon,
   ArrowDownIcon,
 } from "@radix-ui/react-icons";
+import { TickerItem } from "./TickerItem";
 
 interface headerProps {
-  title: string
+  title: string;
 }
 
 export function Header({ title }: headerProps) {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<string[]>([]);
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [finded, setFinded] = useState<string[]>([]);
+  const [tickers, setTickers] = useState<string[]>([]);
 
-  let mockData: string[] = []
-  
-  function getTickers() {
-    let executed = false;
-  
-    return async function() {
-      if (!executed) {
-        const response = await axios.get("http://localhost:3002/stock/tickers");
-        const data: string[] = response.data.tickers;
-        mockData = data;
-        executed = true;
-      }
-    };
-  }
-  
-  const getTickersFn = getTickers();
-  
   useEffect(() => {
-    getTickersFn();
-  });
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSearchTerm(value);
-    if (value.length > 2) {
-      const results = mockData.filter((item) =>
-        item.toLowerCase().includes(value.toLowerCase())
-      );
-      setSearchResults(results);
-      setShowResults(true);
-    } else {
-      setShowResults(false);
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:3002/stock/tickers");
+      setTickers(response.data.tickers);
+    };
+    fetchData();
+  }, []);
+
+  function searchTickers(toFind: string) {
+    const filtredTickers: string[] = [];
+    if (toFind.length < 2) {
+      setFinded([]);
+      return;
     }
-  };
+    for (let i = 0; i < tickers.length; i++) {
+      if (tickers[i].includes(toFind)) filtredTickers.push(tickers[i]);
+      continue;
+    }
+
+    console.log(filtredTickers);
+    setFinded(filtredTickers);
+  }
 
   return (
-    <div className="content bg-zinc-900 flex w-full text-lg">
-      <main className="w-full">
-        <nav className="Header flex items-center justify-around mt-2">
-          <h2 className="font-semibold text-3xl text-white">{title}</h2>
-          <div className="search p-2 bg-[#1B2028] text-[#9E9E9E] rounded-df w-1/4 flex items-center justify-between">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Digite para buscar..."
-                value={searchTerm}
-                onChange={handleChange}
-                onBlur={() => setShowResults(false)}
-                className=" bg-[#1B2028] outline-none"
-              />
-              {mockData}
-              <div className="grid grid-cols-1 divide-y absolute top-10 overflow-hidden rounded w-fit">
-                {showResults &&
-                  searchResults.map((item, index) => (
-                    <div
-                      key={index}
-                      className={"p-2 bg-[#1B2028] hover:bg-[#2C313C] cursor-pointer text-zinc-400 w-fit flex"}
-                    >
-                      <img src={`http://localhost:3002/static/imgs/logos/${item}-logo.jpg`} alt="" />
-                      {item}
-                    </div>
-                  ))
-                }
+    <nav className="w-full">
+      <nav className="Header flex items-center justify-around mt-2">
+        <h2 className="font-semibold text-3xl text-white">{title}</h2>
+        <div className="relative search p-2 bg-[#1B2028] text-[#9E9E9E] rounded-df w-1/4 flex items-center justify-between">
+          <div className="flex w-max">
+            <input
+              type="text"
+              placeholder="Digite para buscar..."
+              onBlur={() => setShowResults(false)}
+              onFocus={() => setShowResults(true)}
+              onChange={(e) => {
+                const value = e.target.value.toUpperCase();
+                setSearchTerm(value);
+                searchTickers(value);
+              }}
+              className=" bg-[#1B2028] outline-none w-max"
+              value={searchTerm}
+            />
+            {finded.length > 0 && showResults && (
+              <div className="grid grid-cols-1 absolute top-14 overflow-hidden w-full gap-1 right-0 divide-x-y divide-zinc-600">
+                {finded.map((item, index) => {
+                  if (item.includes(searchTerm) && showResults) {
+                    if (index >= 5) return;
+                    return <TickerItem index={index} ticker={item} />;
+                  }
+                })}
               </div>
-            </div>
-            <MagnifyingGlassIcon className="w-6 h-6" />{" "}
+            )}
           </div>
+          <MagnifyingGlassIcon className="w-6 h-6" />{" "}
+        </div>
 
-          <div className="notify-user flex justify-between items-center gap-12">
-            <div className="notification p-2 rounded-df bg-[#1B2028] ">
-              <BellIcon className="w-6 h-6 text-white" />
-            </div>
-            <div className="user flex p-2 items-center justify-around">
-              <div className="user-photo bg-[#9E9E9E] p-5 rounded-df"></div>
-              <div className="user-name text-white ml-2 text-base flex gap-2 items-center">
-                <p>User</p>
-                <ArrowDownIcon className="w-4 h-4" />
-              </div>
+        <div className="notify-user flex justify-between items-center gap-12">
+          <div className="notification p-2 rounded-df bg-[#1B2028] cursor-pointer">
+            <BellIcon className="w-6 h-6 text-white" />
+          </div>
+          <div className="user flex p-2 items-center justify-around">
+            <div className="user-photo bg-[#9E9E9E] p-5 rounded-df  cursor-pointer"></div>
+            <div className="user-name text-white ml-2 text-base flex gap-2 items-center  cursor-pointer">
+              <p>User</p>
+              <ArrowDownIcon className="w-4 h-4" />
             </div>
           </div>
-        </nav>
-      </main>
-    </div>
+        </div>
+      </nav>
+    </nav>
   );
 }
