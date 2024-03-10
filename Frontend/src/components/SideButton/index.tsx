@@ -27,7 +27,7 @@ export function SideButton({
   if (activable !== false) active = selected === text ? true : false;
 
   return (
-    <Button.Root active={active} onClick={handleClick}>
+    <Button.Root active={active} onClick={handleClick} className="p-2 w-[200px] text-[#9E9E9E] rounded-[10px] flex items-center justify-start gap-2 transition-all duration-700 ">
       <Button.Icon icon={icon} active={active} />
       <Button.Content text={text} active={active} />
     </Button.Root>

@@ -7,7 +7,7 @@ interface TickerItemProps {
 export function TickerItem({ index, ticker, onClick }: TickerItemProps) {
   return (
     <span
-      className="item flex gap-4 items-center p-2 bg-zinc-200 rounded-df hover:bg-zinc-400 transition-all duration-300 cursor-pointer"
+      className="item flex gap-4 items-center p-2 bg-zinc-200 rounded-df hover:bg-zinc-400 transition-all duration-300 cursor-pointer z-20"
       onClick={onClick ? onClick : () => {}}
     >
       <img

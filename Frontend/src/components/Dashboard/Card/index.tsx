@@ -50,7 +50,7 @@ export function VariationCard({ name, ticker, price, variation, className}: Vari
           <p className={`font-semibold ${type === "up" ? "text-[#1ECB4F]": "text-[#F46D22]"} text-sm`} >{variation}%</p>
         </div>
         <div className="prices col-span-2  h-full rounded-df">
-          <SimpleLineChart data={mockData} />
+          <SimpleLineChart data={mockData} x={true}/>
         </div>
       </div>
     </div>

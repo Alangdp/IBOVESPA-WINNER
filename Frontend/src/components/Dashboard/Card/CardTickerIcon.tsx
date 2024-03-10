@@ -9,6 +9,11 @@ export function TickerIcon({img}: TickerIconProps) {
         className="w-8 h-8 rounded-df"
         src={img}
         alt="STOCK ICON"
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src =
+            "http://localhost:3002/images/avatar/NO-IMAGE.png";
+        }}
       />
     </div>
   );

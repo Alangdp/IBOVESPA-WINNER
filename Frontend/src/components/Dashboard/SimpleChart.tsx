@@ -1,4 +1,4 @@
-import { ResponsiveContainer, LineChart, Line, Tooltip, XAxis } from "recharts";
+import { ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis } from "recharts";
 
 type LineData = {
   value: number;
@@ -6,16 +6,22 @@ type LineData = {
 };
 
 interface SimpleLineChartProps {
+  className?: string;
   data: LineData[];
+  x?: boolean
+  y?: boolean
 } 
 
-export function SimpleLineChart({data}: SimpleLineChartProps) {
+export function SimpleLineChart({data, className, x, y}: SimpleLineChartProps) {
   return (
-    <ResponsiveContainer height="100%" width="100%">
-      <LineChart data={data}>
+    <ResponsiveContainer height="100%" width="100%" className={className}>
+      <LineChart data={data} margin={{left: 20, right: 20}}>
 
+        
         <Tooltip />
-        <XAxis dataKey="name"/>
+
+        {x ? <XAxis dataKey="name"/> : null}
+        <YAxis />
         <Line
           type="monotone"
           stroke="#3A6FF8"
