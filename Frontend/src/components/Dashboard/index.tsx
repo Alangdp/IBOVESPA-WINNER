@@ -35,23 +35,23 @@ export function DashBoard() {
           variation={2.32}
           price={52.9}
           name="Banco do Brasil"
-          ticker="BBAS3"
+          ticker="TAEE11"
         />
         <VariationCard
           className="w-1/3 p-2"
           variation={-2.32}
           price={52.9}
           name="Banco do Brasil"
-          ticker="BBAS3"
+          ticker="KLBN3"
         />
         <VariationCard
           className="w-1/3 p-2"
           variation={-2.32}
           price={52.9}
           name="Banco do Brasil"
-          ticker="BBAS3"
+          ticker="PSSA3"
         />
-      </div>
+      </div> 
 
       <div className="grid grid-cols-3 h-full py-4 rounded-df gap-4 pb-60">
         <div className="grid col-span-1 grid-rows-1 h-fit gap-4">

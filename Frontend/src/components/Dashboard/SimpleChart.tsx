@@ -19,9 +19,11 @@ export function SimpleLineChart({data, className, x, y}: SimpleLineChartProps) {
 
         
         <Tooltip />
-
-        {x ? <XAxis dataKey="name"/> : null}
-        <YAxis />
+        {y ? <YAxis /> : null}
+        {x ? <XAxis dataKey="name" interval={1} style={{
+          fontSize: "0.5rem",
+          fontFamily: "Roboto"
+        }}/> : null}
         <Line
           type="monotone"
           stroke="#3A6FF8"
