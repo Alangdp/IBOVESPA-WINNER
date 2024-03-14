@@ -45,7 +45,7 @@ export function VariationCard({
         name: string;
       } = response.data;
 
-      const prices = data.price.reverse().slice(0, 7);
+      const prices = data.price.reverse().slice(0, 7).reverse();
 
       setLineData({
         prices: prices.map((item) => {
@@ -77,7 +77,7 @@ export function VariationCard({
         <span className="flex">
           <div className="grid grid-cols-3 overflow-hidden">
             <div className="name col-span-2">
-              <h4 className="text-white break-keep ">
+              <h4 className="text-white break-keep overflow-hidden text-nowrap">
                 {lineData.name !== ""
                   ? lineData.name.split("-")[1].split(":")[0]
                   : "Carregando..."}{" "}
@@ -100,7 +100,7 @@ export function VariationCard({
         </span>
       </div>
       <div className="economic grid grid-cols-3 mx-1 my-2 h-2/3">
-        <div className="prices col-span-1 flex flex-col gap-6 justify-center">
+        <div className="prices col-span-1 flex flex-col justify-center">
           <h3 className="font-semibold text-white transition-all duration-300">
             R${" "}
             {lineData.prices.length > 0 && lineData.prices[0]?.value
