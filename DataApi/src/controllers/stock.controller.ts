@@ -20,7 +20,7 @@ export const indexPrices: RequestHandler = async (req, res, next) => {
     const ticker: string = req.body.ticker;
     const stock: StockProps = await StockDataBase.getStock(ticker);
 
-    return res.status(200).json({ price: stock.priceHistory, actual: stock.actualPrice })
+    return res.status(200).json({ price: stock.priceHistory, actual: stock.actualPrice, name: stock.name})
   } catch (error: any) {
     return res.status(400).json({ error: error.message })
   }

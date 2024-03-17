@@ -14,6 +14,7 @@ import { useState } from "react";
 import { ButtonSelectable } from "./ButtonSelectable";
 import { SimpleLineChart } from "./SimpleChart";
 import { useMock } from "../SideBar/SideContext";
+import { PortifolioCard } from "./Card/CardPortifolio";
 
 export function DashBoard() {
   const [selectedOption, setSelectedOption] = useState<string>("1hr");
@@ -21,39 +22,40 @@ export function DashBoard() {
   const { mockData } = useMock();
 
   return (
-    <main className="p-4 flex flex-col gap-4 h-full">
-      <div className="top-cards flex w-full h-fit gap-7">
+    <main className="p-4 flex flex-col gap-4 h-full lg:overflow-scroll md:overflow-scroll">
+
+      <div className="top-cards xl:flex grid-cols-2 grid w-full h-fit gap-7">
         <VariationCard
-          className="w-1/3 p-2"
+          className="p-2 md:w-full"
           variation={2.32}
           price={52.9}
           name="Banco do Brasil"
           ticker="BBAS3"
         />
         <VariationCard
-          className="w-1/3 p-2"
+          className="p-2 md:w-full"
           variation={2.32}
           price={52.9}
           name="Banco do Brasil"
-          ticker="BBAS3"
+          ticker="TAEE11"
         />
         <VariationCard
-          className="w-1/3 p-2"
+          className="p-2 md:w-full"
           variation={-2.32}
           price={52.9}
           name="Banco do Brasil"
-          ticker="BBAS3"
+          ticker="KLBN3"
         />
         <VariationCard
-          className="w-1/3 p-2"
+          className="p-2 md:w-full"
           variation={-2.32}
           price={52.9}
           name="Banco do Brasil"
-          ticker="BBAS3"
+          ticker="PSSA3"
         />
       </div>
 
-      <div className="grid grid-cols-3 h-full py-4 rounded-df gap-4 pb-60">
+      <div className="grid grid-cols-1 xl:grid-cols-3 h-full py-4 rounded-df gap-4">
         <div className="grid col-span-1 grid-rows-1 h-fit gap-4">
           <div className="wallet bg-[#3A6FF8] rounded-df">
             <h4 className="text-xl text-white p-4 font-semibold">Carteira</h4>
@@ -63,114 +65,20 @@ export function DashBoard() {
             </div>
           </div>
 
-          <div className="portifolio bg-[#1B2028] row-span-2 rounded-df">
+          <div className="portifolio bg-[#1B2028] row-span-2 rounded-df h-max">
             <h4 className="text-xl text-white p-4 font-semibold">Portifolio</h4>
             <div className="cards p-4 flex flex-col gap-2">
-              <div className="card grid grid-cols-4 items-center">
-                <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
-                <div className="grid grid-rows-2 ">
-                  <h4 className="text-white font-semibold text-lg">BBAS3</h4>
-                  <p className="opacity-60 text-white text-lg">R$ 4.231,23</p>
-                </div>
-                <div className="grid grid-rows-2 text-white mx-6">
-                  <div className="flex items-center gap-1">
-                    100 <p className="text-sm opacity-65">QTD</p>
-                  </div>
-                  <div className="">42,31</div>
-                </div>
-                <div className="">
-                  <p className="text-[#F46D22]">-6.00%</p>
-                </div>
-              </div>
-
-              <div className="card grid grid-cols-4 items-center">
-                <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
-                <div className="grid grid-rows-2 ">
-                  <h4 className="text-white font-semibold text-lg">BBAS3</h4>
-                  <p className="opacity-60 text-white text-lg">R$ 4.231,23</p>
-                </div>
-                <div className="grid grid-rows-2 text-white mx-6">
-                  <div className="flex items-center gap-1">
-                    100 <p className="text-sm opacity-65">QTD</p>
-                  </div>
-                  <div className="">42,31</div>
-                </div>
-                <div className="">
-                  <p className="text-[#F46D22]">-6.00%</p>
-                </div>
-              </div>
-
-              <div className="card grid grid-cols-4 items-center">
-                <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
-                <div className="grid grid-rows-2 ">
-                  <h4 className="text-white font-semibold text-lg">BBAS3</h4>
-                  <p className="opacity-60 text-white text-lg">R$ 4.231,23</p>
-                </div>
-                <div className="grid grid-rows-2 text-white mx-6">
-                  <div className="flex items-center gap-1">
-                    100 <p className="text-sm opacity-65">QTD</p>
-                  </div>
-                  <div className="">42,31</div>
-                </div>
-                <div className="">
-                  <p className="text-[#F46D22]">-6.00%</p>
-                </div>
-              </div>
-              <div className="card grid grid-cols-4 items-center">
-                <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
-                <div className="grid grid-rows-2 ">
-                  <h4 className="text-white font-semibold text-lg">BBAS3</h4>
-                  <p className="opacity-60 text-white text-lg">R$ 4.231,23</p>
-                </div>
-                <div className="grid grid-rows-2 text-white mx-6">
-                  <div className="flex items-center gap-1">
-                    100 <p className="text-sm opacity-65">QTD</p>
-                  </div>
-                  <div className="">42,31</div>
-                </div>
-                <div className="">
-                  <p className="text-[#F46D22]">-6.00%</p>
-                </div>
-              </div>
-
-              <div className="card grid grid-cols-4 items-center">
-                <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
-                <div className="grid grid-rows-2 ">
-                  <h4 className="text-white font-semibold text-lg">BBAS3</h4>
-                  <p className="opacity-60 text-white text-lg">R$ 4.231,23</p>
-                </div>
-                <div className="grid grid-rows-2 text-white mx-6">
-                  <div className="flex items-center gap-1">
-                    100 <p className="text-sm opacity-65">QTD</p>
-                  </div>
-                  <div className="">42,31</div>
-                </div>
-                <div className="">
-                  <p className="text-[#F46D22]">-6.00%</p>
-                </div>
-              </div>
-
-              <div className="card grid grid-cols-4 items-center">
-                <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
-                <div className="grid grid-rows-2 ">
-                  <h4 className="text-white font-semibold text-lg">BBAS3</h4>
-                  <p className="opacity-60 text-white text-lg">R$ 4.231,23</p>
-                </div>
-                <div className="grid grid-rows-2 text-white mx-6">
-                  <div className="flex items-center gap-1">
-                    100 <p className="text-sm opacity-65">QTD</p>
-                  </div>
-                  <div className="">42,31</div>
-                </div>
-                <div className="">
-                  <p className="text-[#F46D22]">-6.00%</p>
-                </div>
-              </div>
+              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
+              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
+              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
+              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
+              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
+              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
             </div>
           </div>
         </div>
         <div className="grid col-span-2 grid-rows-4 h-full gap-4">
-          <div className="row-span-3 bg-[#1B2028] rounded-df w-full h-full">
+          <div className="row-span-4 bg-[#1B2028] rounded-df w-full h-full">
             <div className="flex w-full p-4 items-center justify-between">
               <h4 className="text-xl text-white font-semibold">Carteira</h4>
               <div className="options items-center flex gap-4">
@@ -245,7 +153,7 @@ export function DashBoard() {
                 </div>
               </div>
             </div>
-            <div className="graph h-2/3">
+            <div className="graph h-2/3 lg:pb-14 lg:mb-10">
               <div className="options flex items-center justify-between p-4">
                 <div className="value">
                   <p className="text-2xl font-semibold text-white">
@@ -274,7 +182,7 @@ export function DashBoard() {
               <SimpleLineChart data={mockData} x={true} />
             </div>
           </div>
-          <div className="row-span-1 bg-[#1B2028] rounded-df"></div>
+          
         </div>
       </div>
     </main>

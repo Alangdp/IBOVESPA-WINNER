@@ -16,12 +16,12 @@ export function SimpleLineChart({data, className, x, y}: SimpleLineChartProps) {
   return (
     <ResponsiveContainer height="100%" width="100%" className={className}>
       <LineChart data={data} margin={{left: 20, right: 20}}>
-
-        
         <Tooltip />
-
-        {x ? <XAxis dataKey="name"/> : null}
-        <YAxis />
+        {y ? <YAxis /> : null}
+        {x ? <XAxis dataKey="name" interval={5} style={{
+          fontSize: "0.8rem",
+          fontFamily: "Roboto"
+        }}/> : null}
         <Line
           type="monotone"
           stroke="#3A6FF8"

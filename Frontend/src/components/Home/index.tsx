@@ -10,6 +10,7 @@ import { DividendItem } from "./Stocks/Dividend";
 import newImage from "../../assets/imgs/news.png";
 import OficialLogo from "../../assets/OficialLog.svg";
 import { VariationItem } from "./Stocks/Variation";
+import { RegisterDialog } from "../sign";
 
 export default function Home() {
   const mockUrlImage =
@@ -36,9 +37,11 @@ export default function Home() {
           <a href="" className="">
             Login
           </a>
-          <a href="" className="p-1  bg-bl rounded">
-            Registro
-          </a>
+          <RegisterDialog>
+            <p className="p-1  bg-bl rounded cursor-pointer">
+              Registro
+            </p>
+          </RegisterDialog>
         </div>
       </div>
 
