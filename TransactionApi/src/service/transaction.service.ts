@@ -49,6 +49,17 @@ class TransactionService {
       return resp(500, error.message, null, error);
     }
   }
+
+  async editTransaction(transactionId: number, userId: number, transaction: TransactionsProps) {
+    try {
+      const transaction = await this.model.findByPk(transactionId);
+      if(!transaction) throw new Error("Invalid Transaction ID");
+      if(transaction.userId !== userId) throw new Error("Transaction does not belong to the user");
+      return resp(200, "Transaction Deleted", await transaction.update({...transaction}));
+    } catch (error: any) {
+      return resp(500, error.message, null, error);
+    }
+  }
 }
 
 export default TransactionService;

@@ -41,3 +41,22 @@ export const deleteTransaction: RequestHandler = async (req, res, next) => {
   }
 }
 
+export const editTransaction: RequestHandler = async (req, res, next) => {
+  const service = new TransactionService();
+
+  try {
+    const transactionId: string = req.params.id;
+    const token = req.body.token;
+    const transaction: TransactionsProps = req.body.transaction
+
+    const userId = await getUserIdByToken(token);
+    if(!userId) throw new Error('Invalid Token');
+    const data = await service.editTransaction(Number(transactionId), userId, transaction);
+    if(data.status === 500) throw new Error(data.message);
+
+    return res.status(200).json({ transactionDeleted: data.data, msg: data.message});
+  } catch (error: any) {
+    return res.status(400).json({ error: error.message })
+  }
+}
+

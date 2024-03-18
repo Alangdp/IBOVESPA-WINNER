@@ -19,6 +19,7 @@ export class MongooConnection {
   static async makeConnection() {
     if (MongooConnection.verifyConnection() === 1)
       return MongooConnection.mongoose
+
     await MongooConnection.mongoose.connect(process.env.MONGOOSE_URI as string);
     return MongooConnection.mongoose
   }

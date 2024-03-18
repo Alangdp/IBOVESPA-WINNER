@@ -29,19 +29,17 @@ class Pontuation implements PontuationProps {
   calculate() {
     for (const rule of this.totalEvaluate) {
       if (rule.rule) {
-        this.totalPoints +=
-          rule.ifTrue === this.defaultIfTrue ? this.defaultIfTrue : rule.ifTrue;
+        if (rule.ifTrue) this.totalPoints += rule.ifTrue;
+        else this.totalPoints += this.defaultIfTrue;
         rule.scored = true;
       }
       if (!rule.rule) {
-        this.totalPoints -=
-          rule.ifFalse === this.defaultIfFalse
-            ? this.defaultIfFalse
-            : rule.ifFalse;
+        if (rule.ifFalse) this.totalPoints -= rule.ifFalse;
+        else this.totalPoints -= this.defaultIfFalse;
         rule.scored = false;
       }
     }
   }
 }
 
-export { Pontuation }
+export { Pontuation };
