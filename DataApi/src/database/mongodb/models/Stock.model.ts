@@ -130,6 +130,11 @@ const stockSchema = new Schema<StockProps>({
   passiveChart: {
     required: false,
     type: [passiveChartSchema]
+  },
+
+  segment: {
+    required: true,
+    type: String
   }
 }, { timestamps: true })
 

@@ -1,8 +1,8 @@
 export interface PontuationRule {
   ruleName: string;
   rule: boolean;
-  ifTrue: number;
-  ifFalse: number;
+  ifTrue?: number;
+  ifFalse?: number;
   scored?: boolean;
 }
 

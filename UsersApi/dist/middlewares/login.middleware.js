@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import dotenv from 'dotenv';
 dotenv.config();
-import { resp } from '../utils/resp.js';
 import axios from 'axios';
 const loginRequired = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const TOKEN_URL = process.env.TOKEN_URL;
@@ -27,8 +26,7 @@ const loginRequired = (req, res, next) => __awaiter(void 0, void 0, void 0, func
     }
     catch (error) {
         console.log(error);
-        resp(403, error.message, null, error);
-        return res.status(403).json("DEU ERRO");
+        return res.status(403).json({ msg: error.message });
     }
 });
 export default loginRequired;

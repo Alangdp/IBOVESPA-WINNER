@@ -37,7 +37,7 @@ class TokenController {
         status: userStatus,
       } = await userService.getById(Tokendata.user_id);
       if (userStatus !== 200) return res.status(userStatus).json({ userData });
-      return res.status(userStatus).json({ userData, userMessage });
+      return res.status(userStatus).json({ userData, msg: userMessage});
     } catch (error) {
       console.log(error)
       next(error);

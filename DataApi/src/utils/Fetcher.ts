@@ -12,10 +12,14 @@ import Utilities from './Utilities.js';
 import { IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
 import apiGetter from './ApiGetter.js';
 import { PayoutReturn, RootPayout } from '../types/Payout.type.js';
-import { PassiveChart, PassiveChartReturn } from '../types/PassiveChart.type.js';
+import {
+  PassiveChart,
+  PassiveChartReturn,
+} from '../types/PassiveChart.type.js';
 import { ReportReturn, RootReport } from '../types/report.type.js';
 import { BasicInfoReturn } from '../types/BasicInfo.type.js';
 import { StockQuery } from '../types/QueryStock.type.js';
+import { Segment } from '../types/Segment.type.js';
 
 // FIXME REFAZER TUDO AQUI
 
@@ -32,19 +36,19 @@ export default class TickerFetcher {
   async initialize(): Promise<this> {
     const htmlPage: string = await this.getHtmlPage();
     this.Utility = new Scrapper(htmlPage);
-    
-    return this
+
+    return this;
   }
 
   async getHtmlPage() {
     try {
       return (
-        (await axios.get(`https://statusinvest.com.br/acoes/${this.ticker}`, {
+        await axios.get(`https://statusinvest.com.br/acoes/${this.ticker}`, {
           headers: {
-            "User-Agent": 'CPI/V1'
-          }
-        })).data 
-      );
+            'User-Agent': 'CPI/V1',
+          },
+        })
+      ).data;
     } catch (err: any) {
       const status = err.response.status;
 
@@ -85,7 +89,8 @@ export default class TickerFetcher {
         '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(4) > div > div > strong',
       shareQuantity:
         '#company-section > div:nth-child(1) > div > div.top-info.info-3.sm.d-flex.justify-between.mb-3 > div:nth-child(9) > div > div > strong',
-        segment: "#company-section > div:nth-child(1) > div > div.card.bg-main-gd-h.white-text.rounded.ov-hidden.pt-0.pb-0 > div > div:nth-child(3) > div > div > div > a > strong"
+      segment:
+        '#company-section > div:nth-child(1) > div > div.card.bg-main-gd-h.white-text.rounded.ov-hidden.pt-0.pb-0 > div > div:nth-child(3) > div > div > div > a > strong',
     };
 
     const totalStocksInCirculation: string = this.Utility.extractText(
@@ -131,7 +136,7 @@ export default class TickerFetcher {
       liquidPatrimony,
       grossDebt,
       shareQuantity,
-      segment
+      segment,
     };
 
     return data;
@@ -228,6 +233,24 @@ export default class TickerFetcher {
     return rebuyInfo;
   }
 
+  async getSegment(): Promise<Segment | null>{
+    {
+      try {
+        const paths = {
+          finalSegment:
+            '#company-section > div:nth-child(1) > div > div.card.bg-main-gd-h.white-text.rounded.ov-hidden.pt-0.pb-0 > div > div:nth-child(3) > div > div > div > a > strong',
+        };
+
+        const segmentFinal = this.Utility?.extractText(paths.finalSegment);
+
+        if(!segmentFinal) throw Error("Invalid Tickers");
+        return {segmentFinal}
+      } catch (error) {
+        return null;
+      }
+    }
+  }
+
   async getDividendInfo() {
     const ticker = this.ticker;
 
@@ -248,11 +271,11 @@ export default class TickerFetcher {
       const data = await apiGetter<RootDividend>(
         {
           method: 'GET',
-          headers: {}
+          headers: {},
         },
         `companytickerprovents?ticker=${ticker}&chartProventsType=2`
       );
-      if(!data) throw new Error('Error Getting Dividends Data')
+      if (!data) throw new Error('Error Getting Dividends Data');
 
       const formatNumber = Utilities.formateNumber;
 
@@ -299,29 +322,31 @@ export default class TickerFetcher {
   async getIndicatorsInfo() {
     const ticker = this.ticker;
 
-    const data = await apiGetter<IndicatorRoot>({
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/x-www-form-urlencoded'
+    const data = await apiGetter<IndicatorRoot>(
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
       },
-      params: `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
-      
-    }, 'indicatorhistoricallist')
-    if(!data) throw new Error('Error Getting Indicators Data')
+      'indicatorhistoricallist'
+    );
+    if (!data) throw new Error('Error Getting Indicators Data');
 
-    const indicatorsData: IndicatorsData = {}
-    const tickerReference = Object.keys(data.data)[0]
-    for(const item of data.data[tickerReference]) {
+    const indicatorsData: IndicatorsData = {};
+    const tickerReference = Object.keys(data.data)[0];
+    for (const item of data.data[tickerReference]) {
       indicatorsData[item.key] = {
         actual: item.actual,
         avg: item.avg,
-        olds: item.ranks.map( data => {
+        olds: item.ranks.map((data) => {
           return {
             date: data.rank,
-            value: data.value ?? 0
-          }
+            value: data.value ?? 0,
+          };
         }),
-      }
+      };
     }
 
     return indicatorsData;
@@ -331,22 +356,23 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const data = await apiGetter<MainPrices[]>({
-        method: "POST",
-        params: {
-          'ticker': ticker,
-          'type': 4,
-          'currences[]': '1',
+      const data = await apiGetter<MainPrices[]>(
+        {
+          method: 'POST',
+          params: {
+            ticker: ticker,
+            type: 4,
+            'currences[]': '1',
+          },
+          headers: {
+            'Content-Type': 'application/json',
+            'user-agent': 'CPI/V1',
+          },
         },
-        headers: {
-          "Content-Type": 'application/json',
-          "user-agent": 'CPI/V1'
-        },
-      },
-      'tickerprice'
-      )
+        'tickerprice'
+      );
 
-      if(!data) throw new Error('Error Getting Prices Data')
+      if (!data) throw new Error('Error Getting Prices Data');
 
       const priceReturn: PriceReturn = {
         price: data[0].prices[0].price,
@@ -364,14 +390,17 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const data = await apiGetter<RootPayout>({
-        method: 'GET',
-        headers: {},
-        params: {
-          code: ticker,
-          type: 1
+      const data = await apiGetter<RootPayout>(
+        {
+          method: 'GET',
+          headers: {},
+          params: {
+            code: ticker,
+            type: 1,
+          },
         },
-      }, `payoutresult?code=${ticker}`)
+        `payoutresult?code=${ticker}`
+      );
       if (!data) throw new Error('Error Getting Payout Data');
 
       const payoutReturn: PayoutReturn = {
@@ -392,16 +421,18 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const data = await apiGetter<PassiveChart[]>({
-        method: 'POST',
-        params: {
-          code: ticker,
-          type: 1
+      const data = await apiGetter<PassiveChart[]>(
+        {
+          method: 'POST',
+          params: {
+            code: ticker,
+            type: 1,
+          },
+          headers: {},
         },
-        headers:{}
-      
-      }, 'getbsactivepassivechart')
-      if(!data) throw new Error('Error Getting Payout Data');
+        'getbsactivepassivechart'
+      );
+      if (!data) throw new Error('Error Getting Payout Data');
       const dataFormated: PassiveChartReturn[] = [];
 
       for (const passiveObject of data) {
@@ -429,15 +460,18 @@ export default class TickerFetcher {
     try {
       const returnData: ReportReturn[] = [];
 
-      const data = await apiGetter<RootReport>({
-        method: 'POST',
-        params: {
-          code: ticker,
-          year: this.actualyear,
+      const data = await apiGetter<RootReport>(
+        {
+          method: 'POST',
+          params: {
+            code: ticker,
+            year: this.actualyear,
+          },
+          headers: {},
         },
-        headers: {}
-      }, 'getassetreports') 
-      if(!data) throw new Error('Error Getting Report Data');
+        'getassetreports'
+      );
+      if (!data) throw new Error('Error Getting Report Data');
 
       for (const report of data.data) {
         returnData.push({
@@ -461,14 +495,17 @@ export default class TickerFetcher {
   async getCashFlow(): Promise<Header[] | null> {
     const ticker = this.ticker;
     try {
-      const data = await apiGetter<RootCashFlow>({
-        method: 'GET',
-        headers: {},
-      }, `getfluxocaixa?code=${ticker}&range.min=${2000}&range.max=${
-        this.actualyear - 1
-      }`)
-      if(!data) throw new Error('Error Getting CashFlow Data');
-      
+      const data = await apiGetter<RootCashFlow>(
+        {
+          method: 'GET',
+          headers: {},
+        },
+        `getfluxocaixa?code=${ticker}&range.min=${2000}&range.max=${
+          this.actualyear - 1
+        }`
+      );
+      if (!data) throw new Error('Error Getting CashFlow Data');
+
       const grid = data.data.grid;
       const header: Header[] = [];
       const yearsOrdened: string[] = grid[0].columns
@@ -527,12 +564,15 @@ export default class TickerFetcher {
     const ticker = this.ticker;
 
     try {
-      const data = await apiGetter<StockQuery[]>({
-        method: 'GET',
-        headers: {},
-        url: 'home'
-      }, `mainsearchquery?q=${ticker}`)
-      if(!data) throw new Error('Error Getting Image Data');
+      const data = await apiGetter<StockQuery[]>(
+        {
+          method: 'GET',
+          headers: {},
+          url: 'home',
+        },
+        `mainsearchquery?q=${ticker}`
+      );
+      if (!data) throw new Error('Error Getting Image Data');
       return data;
     } catch (error) {
       return null;

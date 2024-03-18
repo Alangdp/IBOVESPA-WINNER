@@ -3,6 +3,10 @@ export interface Root {
   data: SegmentData[];
 }
 
+export interface Segment {
+  segmentFinal: string;
+}
+
 export interface SegmentData {
   categoryId: number;
   companyId: number;

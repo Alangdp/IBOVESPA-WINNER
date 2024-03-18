@@ -42,9 +42,10 @@ module.exports = {
       type: {
         type: Sequelize.STRING,
         validate: {
-          is: {
-            args: ['DIVIDEND', 'BUY', 'JCP', 'SELL'],
-            msg: 'Type not is Valid',
+          isValidType(value) {
+            if (!/(DIVIDEND|BUY|JCP|SELL)/.test(value)) {
+              throw new Error('Type not is Valid');
+            }
           },
         },
       },

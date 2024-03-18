@@ -18,6 +18,7 @@ export abstract class BazinProtocol {
   protected dividendYieldMedian: number = 0;
   protected dividendYieldAverage: number = 0;
   protected lastDividendYieldBrute: number[] = [];
+  protected segment: string = "";
 
   protected lastDividendsValue: number[] = [];
   protected lastDividendsYield: number[] = [];

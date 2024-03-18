@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,40 +15,84 @@ import {
   PersonIcon,
 } from "@radix-ui/react-icons";
 import { IconProps } from "@radix-ui/react-icons/dist/types";
-import { ElementType, ReactNode } from "react";
+import validator from "validator"
+import { toast } from "sonner"
 
 interface RegisterDialogProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 interface DialogItemProps {
-  Icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>;
+  Icon?: React.ComponentType<IconProps>;
   text?: string;
   placeHolder?: string;
   type: "text" | "password";
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
-function DialogItem({ Icon, placeHolder, text, type }: DialogItemProps) {
+function DialogItem({ Icon, placeHolder, text, type, value, onChange }: DialogItemProps) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  };
+
   return (
-    <div className="field flex items-center gap-2 w/1">
-      {Icon ? <Icon width={30} height={30}/> : null}
+    <div className="field flex items-center gap-2 w-full">
+      {Icon && <Icon width={30} height={30} />}
       <div className="input flex flex-col items-start gap-1 w-fit">
-        <label htmlFor="name  " className="text-sm">
+        <label htmlFor={text} className="text-sm">
           {text}
         </label>
         <Input
           className="border-none bg-transparent outline-none"
-          id="name"
+          id={text}
           placeholder={placeHolder}
           type={type}
+          value={value}
+          onChange={handleChange}
         />
-        <div className="w-full h-[1px] bg-zinc-100/80 rounded-df  "></div>
+        <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
       </div>
     </div>
   );
 }
 
+interface RegisterData {
+  name: string;
+  password: string;
+  email: string;
+}
+
 export function RegisterDialog({ children }: RegisterDialogProps) {
+  const [registerData, setRegisterData] = useState<RegisterData>({
+    email: "",
+    name: "",
+    password: "",
+  });
+
+  const handleInputChange = (field: keyof RegisterData) => (value: string) => {
+    setRegisterData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+
+  const validateForms = () =>{
+    let valid = true
+    if(!validator.isEmail(registerData.email)) {{
+      valid = false
+      toast("Event has been created", {
+        description: "Sunday, December 03, 2023 at 9:00 AM",
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      })
+    }}
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -63,13 +108,17 @@ export function RegisterDialog({ children }: RegisterDialogProps) {
             Icon={PersonIcon}
             placeHolder="Ex. João Silveira"
             text="Nome"
+            value={registerData.name}
+            onChange={handleInputChange("name")}
           />
 
           <DialogItem
             type="text"
             Icon={EnvelopeClosedIcon}
-            placeHolder="Ex. João Silveira"
-            text="Nome"
+            placeHolder="Ex. Email@email.com"
+            text="Email"
+            value={registerData.email}
+            onChange={handleInputChange("email")}
           />
 
           <DialogItem
@@ -77,11 +126,15 @@ export function RegisterDialog({ children }: RegisterDialogProps) {
             Icon={LockClosedIcon}
             placeHolder="Ex. **********"
             text="Senha"
+            value={registerData.password}
+            onChange={handleInputChange("password")}
           />
         </div>
 
         <DialogFooter>
-          <Button type="submit" className="bg-[#3A6FF8]">Criar Conta</Button>
+          <Button type="submit" className="bg-[#3A6FF8]" onClick={() => validateForms()}>
+            Criar Conta
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

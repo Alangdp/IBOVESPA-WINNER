@@ -21,7 +21,9 @@ export class Bazin extends BazinProtocol implements BazinMethods {
       lastDividendsYieldYear,
       lastDividendsValueYear,
       activeValue,
+      segment
     } = stock;
+    this.segment = segment;
     this.lastDividendsValue = lastDividendsValueYear.splice(0, 5);
     this.lastDividendsYield = lastDividendsYieldYear.splice(0, 5);
     this.lastDividendYieldBrute = lastDividendsYieldYear.splice(0, 5);
@@ -86,6 +88,8 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     const { dividendYieldMedian } = this;
     const { grossDebt, patrimony, actualDividendYield, payout, actualPrice, ticker } =
       stock;
+    const segment = this.segment;
+    const permitedSegments = ["Bancos", "Energia Elétrica", "Água e Saneamento", "Telecomunicações", "Seguradoras"]
 
     const maxPrice = (this.dividendYieldAverage * stock.actualPrice) / 0.06;
 
@@ -97,7 +101,8 @@ export class Bazin extends BazinProtocol implements BazinMethods {
       { ifFalse: 1, ifTrue: 1, rule: this.constistentDividend(), ruleName: "Pagamento constante de dividendos nos últimos 5 anos" },
       { ifFalse: 1, ifTrue: 1, rule: this.crescentDividend(), ruleName: "Dividendos crescentes nos últimos 5 anos" },
       { ifFalse: 1, ifTrue: 1, rule: payout > 0 && payout < 1, ruleName: "0 < Payout < 1" },
-      { ifFalse: 1, ifTrue: 1, rule: actualPrice < maxPrice, ruleName: "Preço Atual < Preço Máximo" }
+      { ifFalse: 1, ifTrue: 1, rule: actualPrice < maxPrice, ruleName: "Preço Atual < Preço Máximo" },
+      { ifFalse: 4, ifTrue: 0, rule: permitedSegments.includes(segment), ruleName: "Segmento válido" }
     ];
 
     const pontuation = new Pontuation({

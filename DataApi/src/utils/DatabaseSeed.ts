@@ -31,8 +31,7 @@ class DatabaseSeed {
 
   async getData (ticker: string) {
     try {
-      const imgFetcher = new GetStockImage(ticker);
-      await imgFetcher.downloadImage("avatar");
+      StockDataBase.getStock(ticker)
       return true
     } catch (error) {
         console.log(error)

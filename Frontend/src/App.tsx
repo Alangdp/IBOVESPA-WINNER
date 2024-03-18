@@ -3,8 +3,13 @@ import { Header } from "./components/Header";
 import { SelectedProvider } from "./components/SideBar/SideContext";
 import { DashBoard } from "./components/Dashboard";
 import { NavBar } from "./components/Dashboard/Navbar";
+import { Toaster } from "./components/ui/sonner"
+import { toast } from "sonner";
 
 export function App() {
+  toast("Teste", {
+    
+  })
 
   return (
     <SelectedProvider>
@@ -15,7 +20,9 @@ export function App() {
           <Header title="Dashboard" />
           <DashBoard />
         </div>
+        
       </div>
+      <Toaster />
     </SelectedProvider>
   );
 }
