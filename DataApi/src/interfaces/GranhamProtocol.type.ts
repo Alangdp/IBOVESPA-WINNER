@@ -35,7 +35,7 @@ import { StockProtocol } from './StockProtocol.type';
 // TODO - REFAZER TUDO
 
 export interface GranhamMethods {
-  makePoints(stock: StockProtocol): Pontuation;
+  makePoints(stock: StockProtocol): Promise<Pontuation>;
   crescentNetLiquid(netLiquidOn10Years: NetLiquid[]): boolean;
   crescentLpa(): boolean;
   constantDividend(stock: StockProtocol): boolean;

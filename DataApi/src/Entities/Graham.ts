@@ -1,11 +1,14 @@
 import {
   GranhamMethods,
   GranhamProtocol,
-} from '../interfaces/GranamProtocal.type';
+} from '../interfaces/GranhamProtocol.type.js';
 import { StockProtocol } from '../interfaces/StockProtocol.type';
-import { Pontuation } from './Pontuation';
+import { Pontuation } from './Pontuation.js';
 import { oldIndicator } from '../types/indicators.type';
 import { NetLiquid } from '../types/stock.types';
+import { PontuationRule } from '../types/Pontuation.type';
+import MathUtils from '../utils/MathUtils.js';
+import { MacroInfo } from '../global/MacroInfo.js';
 
 // Princípios utilizados:
 
@@ -44,7 +47,6 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
   constructor(stock: StockProtocol) {
     super();
     const { indicators, passiveChart } = stock;
-
     const { currentLiabilities, currentAssets } = passiveChart[0];
 
     this.p_l = Number(indicators.p_l.actual);
@@ -69,8 +71,83 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
 
     this.gb_p = this.grossDebt / this.patrimony;
   }
-  makePoints(stock: StockProtocol): Pontuation {
-    throw new Error('Method not implemented.');
+
+  async makePoints(stock: StockProtocol): Promise<Pontuation> {
+    const { netLiquid, vpa, lpa, p_l, p_vp, roe } = this;
+
+    const lpaAverage = MathUtils.makeAverage(lpa);
+    const vpaAverage = MathUtils.makeAverage(vpa);
+    const netLiquidOn10Years = netLiquid.slice(0, 10);
+    const rules: PontuationRule[] = [
+      {
+        ruleName: 'A empresa tem dados de "Net Liquid" para os últimos 10 anos',
+        rule: netLiquidOn10Years.every((value) => value.value > 0),
+      },
+      {
+        ruleName: '"Net Liquid" crescente nos últimos 10 anos',
+        rule: this.crescentNetLiquid(netLiquidOn10Years),
+      },
+      {
+        ruleName: 'LPA crescente',
+        rule: this.crescentLpa(),
+      },
+      {
+        ruleName: 'Pagamento constante de dividendos',
+        rule: this.constantDividend(stock),
+      },
+      {
+        ruleName:
+          'Fórmula de Benjamin Graham para Valor Intrínseco (Preço Justo)',
+        rule:
+          Math.sqrt(22.5 * vpaAverage * lpaAverage) > 1.5 * stock.actualPrice,
+      },
+      {
+        ruleName: 'P/L (Preço/Lucro) entre 0 e 15',
+        rule: p_l > 0 && p_l < 15,
+      },
+      {
+        ruleName: 'P/VP (Preço/Valor Patrimonial) entre 0 e 1.5',
+        rule: p_vp > 0 && p_vp < 1.5,
+      },
+      {
+        ruleName: 'Crescimento médio em 5 anos é positivo',
+        rule: this.calculateYearGrowth(stock, 5),
+      },
+      {
+        ruleName: 'ROE (Return On Equity) maior que 0.2',
+        rule: roe > 0.2,
+      },
+      {
+        ruleName: 'Dividend Yield atual maior que a taxa CDI',
+        rule: stock.actualDividendYield > MacroInfo.CDI,
+      },
+      {
+        ruleName: 'Índice de Liquidez Corrente maior que 1.5',
+        rule: this.currentRatio > 1.5,
+      },
+      {
+        ruleName: 'Dívida Bruta/Patrimônio inferior a 0.5',
+        rule: this.patrimony > 2000000000,
+      },
+    ];
+
+    const pontuation = new Pontuation({
+      defaultIfFalse: 1,
+      defaultIfTrue: 1,
+      id: stock.ticker,
+      subId: 'GRAHAM',
+      totalPoints: 0,
+    });
+
+    rules.forEach(rule => {
+      pontuation.addRule(rule);
+    });
+
+    pontuation.calculate()
+    // const model = await pontuationModel;
+    // await model.create(pontuation);
+
+    return pontuation
   }
 
   crescentNetLiquid(netLiquidOn10Years: NetLiquid[]): boolean {
@@ -110,7 +187,7 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     try {
       const { netLiquid } = stock;
 
-      const actualYear = (new Date().getFullYear() - 1).toString();
+      const actualYear = netLiquid[0].year;
       const lastYear = (Number(actualYear) - numberYears).toString();
 
       const actualNetLiquid = netLiquid.find(

@@ -9,28 +9,30 @@ interface PontuationDocument extends PontuationProps {
   subId: string
   totalEvaluate: PontuationRule[];
   totalPoints: number
+  createdAt: Date
 }
 
 const pontuationSchema = new Schema<PontuationDocument>({
   defaultIfTrue: { type: Number, required: true },
   defaultIfFalse: { type: Number, required: true },
-  id: { type: String, required: true, unique: true },
+  id: { type: String, required: true},
+  subId: { type: String, required: true},
   totalPoints: {type: Number, required: true},
   totalEvaluate: [
     {
       ruleName: { type: String, required: true },
       rule: { type: Boolean, required: true },
-      ifTrue: { type: Number, required: true },
-      ifFalse: { type: Number, required: true },
+      ifTrue: { type: Number, required: false },
+      ifFalse: { type: Number, required: false },
       scored: { type: Boolean, default: false }
     }
-  ]
+  ],
+  createdAt: {type: Date, default: new Date()}
 });
 
 async function makeConnection() {
   const mongoose = await MongooConnection.makeConnection() 
   return mongoose.model<PontuationDocument>('pontuations', pontuationSchema)
-
 }
 
 const pontuationModel = makeConnection()

@@ -29,15 +29,15 @@ class TokenController {
         status: tokenStatus,
       } = await tokenService.getToken(token);
       if (tokenStatus !== 200)
-        return res.status(tokenStatus).json({ TokenMessage });
+        return res.status(tokenStatus).json({ msg: TokenMessage });
 
       const {
         data: userData,
         message: userMessage,
         status: userStatus,
       } = await userService.getById(Tokendata.user_id);
-      if (userStatus !== 200) return res.status(userStatus).json({ userData });
-      return res.status(userStatus).json({ userData, msg: userMessage});
+      if (userStatus !== 200) return res.status(userStatus).json({ data: userData });
+      return res.status(userStatus).json({ data: userData, msg: userMessage});
     } catch (error) {
       console.log(error)
       next(error);

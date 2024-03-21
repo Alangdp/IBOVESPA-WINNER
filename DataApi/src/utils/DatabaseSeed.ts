@@ -2,6 +2,7 @@ import { StockDataBase } from "../useCases/stockDataBase.js";
 import { GetStockImage } from "../useCases/getStockImage.js";
 import JSON from '../utils/Json.js'
 import TickerFetcher from "./Fetcher.js";
+import { PontuationDataBase } from "../useCases/PontuationDatabase.js";
 
 interface DatabaseSeedProps {
   tickers: string[]
@@ -31,7 +32,9 @@ class DatabaseSeed {
 
   async getData (ticker: string) {
     try {
-      StockDataBase.getStock(ticker)
+      const stock = await StockDataBase.getStock(ticker)
+      await PontuationDataBase.get({ticker: stock.ticker, type: "BAZIN"})
+      await PontuationDataBase.get({ticker: stock.ticker, type: "GRAHAM"})
       return true
     } catch (error) {
         console.log(error)

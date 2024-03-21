@@ -423,18 +423,13 @@ export default class TickerFetcher {
     try {
       const data = await apiGetter<PassiveChart[]>(
         {
-          method: 'POST',
-          params: {
-            code: ticker,
-            type: 1,
-          },
+          method: 'GET',
           headers: {},
         },
-        'getbsactivepassivechart'
+        `getbsactivepassivechart?code=${ticker}&type=1`
       );
       if (!data) throw new Error('Error Getting Payout Data');
       const dataFormated: PassiveChartReturn[] = [];
-
       for (const passiveObject of data) {
         dataFormated.push({
           year: passiveObject.year,
