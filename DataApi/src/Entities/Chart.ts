@@ -13,20 +13,21 @@ import { TransactionHistory } from '../interfaces/Transaction';
 // FIXME ARRUMAR SOLID AQUI
 
 export default class Chart implements ChartProtocol {
-  public globalRentabily!: number;
+  public globalRentability!: number;
   public globalStockQuantity!: number;
   public globalStockValue!: number;
   public globalDividendValue!: number;
   public globalTotalValue!: number;
+  public globalInvested!: number;
   public individualRentability!: StockRentability;
 
   constructor(requirements: ChartConstructor | null) {
     if (!requirements) {
       this.makeEmptyChart();
-      return this;
+      return;
     }
 
-    this.globalRentabily = requirements.globalRentabily;
+    this.globalRentability = requirements.globalRentability;
     this.globalStockQuantity = requirements.globalStockQuantity;
     this.globalStockValue = requirements.globalStockValue;
     this.globalDividendValue = requirements.globalDividendValue;
@@ -35,7 +36,7 @@ export default class Chart implements ChartProtocol {
   }
 
   makeEmptyChart() {
-    this.globalRentabily = 0;
+    this.globalRentability = 0;
     this.globalStockQuantity = 0;
     this.globalStockValue = 0;
     this.globalDividendValue = 0;
@@ -89,11 +90,12 @@ export default class Chart implements ChartProtocol {
     this.individualRentability[ticker] = individualChart;
   }
 
-  updateGlobals() {
+  updateGlobals(prices: StockPrice) {
     let globalStockQuantity = 0;
     let globalStockValue = 0;
     let globalDividendValue = 0;
     let globalTotalValue = 0;
+    let globalInvested = 0;
 
     for (const ticker in this.individualRentability) {
       const stockData = this.individualRentability[ticker];
@@ -102,13 +104,16 @@ export default class Chart implements ChartProtocol {
       globalStockQuantity += quantity;
       globalStockValue += valueInvested;
       globalDividendValue += dividendValue;
-      globalTotalValue += valueInvested + dividendValue;
+      globalTotalValue += (prices[ticker].price * quantity) + dividendValue
+      globalInvested += valueInvested
+
     }
 
     this.globalStockQuantity = globalStockQuantity;
     this.globalStockValue = globalStockValue;
     this.globalDividendValue = globalDividendValue;
     this.globalTotalValue = globalTotalValue;
+    this.globalInvested = globalInvested;
   }
 
   updateTickers(pricesOnDate: StockPrice, date: string) {
@@ -170,8 +175,9 @@ export default class Chart implements ChartProtocol {
     }
 
     this.updateTickers(prices, date);
-    this.updateGlobals();
+    this.updateGlobals(prices);
     this.updateDividends(dividends, date);
+    this.makePortfolioChart();
 
     // FIXME - REFAZER ESSA PARTE
     // this.globalRentabily = this.globalTotalValue / this.globalStockValue;
@@ -197,14 +203,16 @@ export default class Chart implements ChartProtocol {
       totalValue += value;
     }
 
-    this.globalRentabily = totalValue * totalWeigth;
+    console.log(totalWeigth, totalValue, 'Indicadores de Peso')
+
+    this.globalRentability = totalValue * totalWeigth + 1;
 
     return portifolioChart;
   }
 
   returnChart(): ChartModel {
     return {
-      globalRentabily: this.globalRentabily,
+      globalRentability: this.globalRentability,
       globalStockQuantity: this.globalStockQuantity,
       globalStockValue: this.globalStockValue,
       globalDividendValue: this.globalDividendValue,

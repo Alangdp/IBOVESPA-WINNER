@@ -23,7 +23,7 @@ export default class BuyTransaction
   }
 
   static create(
-    requirements: TransactionProps,
+    requirements: TransactionProps ,
     sellData: {
       ticker: string;
     }

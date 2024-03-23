@@ -6,16 +6,17 @@ export interface ChartPortifolio {
 }
 
 export interface ChartConstructor {
-  globalRentabily: number;
+  globalRentability: number;
   globalStockQuantity: number;
   globalStockValue: number;
   globalDividendValue: number;
   globalTotalValue: number;
+  globalInvested: number;
   individualRentability: StockRentability;
 }
 
 export interface Chart {
-  globalRentabily: number;
+  globalRentability: number;
   globalStockQuantity: number;
   globalStockValue: number;
   globalDividendValue: number;

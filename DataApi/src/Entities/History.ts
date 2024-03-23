@@ -166,13 +166,24 @@ class History {
 const transactions: TransactionHistory[] = [
   BuyTransaction.create(
     {
-      price: 10,
-      quantity: 10,
+      price: 55,
+      quantity: 100,
       transactionDate: new Date('02/01/2024'),
       type: 'BUY',
       userId: 1,
     },
     { ticker: 'BBAS3' }
+  ),
+
+  BuyTransaction.create(
+    {
+      price: 20,
+      quantity: 100,
+      transactionDate: new Date('02/01/2024'),
+      type: 'BUY',
+      userId: 1,
+    },
+    { ticker: 'TAEE11' }
   ),
 ];
 

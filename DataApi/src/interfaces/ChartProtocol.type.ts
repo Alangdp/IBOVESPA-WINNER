@@ -28,7 +28,7 @@ export interface ChartProtocol extends ChartConstructor {
     quantity: number,
     valueInvested: number
   ): void;
-  updateGlobals(): void;
+  updateGlobals(prices: StockPrice): void;
 
   updateTickers(pricesOnDate: StockPrice, date: string): void;
   updateDividends(dividends: DividendOnDate, date: string): void;

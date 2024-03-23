@@ -22,6 +22,8 @@ import { StockQuery } from '../types/QueryStock.type.js';
 import { Segment } from '../types/Segment.type.js';
 
 // FIXME REFAZER TUDO AQUI
+// TODO - ROE INCORRETO CONSERTAR
+
 
 export default class TickerFetcher {
   public ticker: string;
