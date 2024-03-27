@@ -5,14 +5,39 @@ import { App } from "./App";
 import Home from "./components/Home";
 import { TransactionTable } from "./components/Ranking";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home  />,
+    element: (
+      <>
+        <ToastContainer
+          limit={3}
+          stacked={true}
+          position="bottom-right"
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
+        <Home />
+      </>
+    ),
   },
   {
     path: "/dashboard",
-    element: <App />,
+    element: (
+      <>
+        <ToastContainer
+          limit={3}
+          stacked={true}
+          position="bottom-right"
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
+        <App />
+      </>
+    ),
   },
   {
     path: "*",

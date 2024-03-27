@@ -13,5 +13,5 @@ router.get('/', loginRequired, userController.index);
 router.post('/', userController.store);
 router.delete('/', loginRequired, userController.delete);
 router.post('/login', userController.login);
-router.get('/admin/:id', userController.turnToAdmin);
+router.get('/admin/:userId', userController.turnToAdmin);
 export default router;

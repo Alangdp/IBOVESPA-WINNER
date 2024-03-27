@@ -1,10 +1,10 @@
 import { ModelStatic, Optional } from 'sequelize';
 import User from '../models/User.js';
-import { resp } from '../utils/resp.js';
 import axios from 'axios';
 
 import dotenv from 'dotenv';
 import { TokenResponse } from '../types/token.js';
+import { ResponseProps } from '../types/response.types.js';
 
 dotenv.config();
 
@@ -16,44 +16,26 @@ class UserService {
     return this;
   }
 
-  async findById(id: number): Promise<User | Resp> {
-    try {
-      const user = await this.model.findByPk(id);
-      if (!user) return resp(404, 'User not found', null);
-      return user;
-    } catch (error: any) {
-      return resp(500, error.message, null, error);
-    }
+  async findById(id: number): Promise<User> {
+    const user = await this.model.findByPk(id);
+    if (!user) throw new Error("User not found");
+    return user;
   }
 
-  async index() {
-    try {
-      const users = await this.model.findAll({});
-      if (users.length === 0) return resp(404, 'Users not found', null);
-      return resp(200, 'Users found', users);
-    } catch (error: any) {
-      return resp(500, error.message, null, error);
-    }
+  async index(): Promise<User[]>{
+    const users = await this.model.findAll({});
+    return users
   }
 
-  async store(data: Optional<User, 'id'>) {
-    try {
-      const user = await this.model.create(data);
-      return resp(201, 'User created', user);
-    } catch (error: any) {
-      console.log(error);
-      return resp(500, error.message, null, error);
-    }
+  async store(data: Optional<User, 'id'>): Promise<User>{
+    const user = await this.model.create(data);
+    return user;
   }
 
   async delete(id: number) {
-    try {
-      const user = await this.model.destroy({ where: { id } });
-      if (user === 0) return resp(404, 'User not found', null);
-      return resp(200, 'User deleted', user);
-    } catch (error: any) {
-      return resp(500, error.message, null, error);
-    }
+    const user = await this.model.destroy({ where: { id } });
+    if (user === 0) throw new Error('Invalid or non-existent id');
+    return user;
   }
 
   validUserIsActive(user: User) {
@@ -61,26 +43,32 @@ class UserService {
     return false;
   }
 
-  async login(data: any) {
-    try {
+  async loginWithToken(token: string): Promise<User> {
+    const response = await axios.post(`${process.env.TOKEN_URL!}user`, {
+      authorization: process.env.SECRET_TOKEN as string,
+      token,
+    });
+
+    const user: { data?: User; msg: string } = response.data;
+    if (!user.data) throw new Error('Invalid token');
+
+    return user.data;
+  }
+
+  async login(data: User) {
       const user = await this.model.findOne({ where: { email: data.email } });
-      if (!user) return resp(404, 'User not found', null);
-      if (!this.validUserIsActive(user))
-        return resp(403, 'User not active', null);
-      if (!(await user.login(data.password)))
-        return resp(400, 'Invalid password', null);
+      if (!user) throw new Error("Invalid Email");
+      if (!this.validUserIsActive(user)) throw new Error("User not active")
+      if (!(await user.login(data.password))) throw new Error("Invalid email or password");
 
       const response = await axios.post(process.env.TOKEN_URL as string, {
         authorization: process.env.SECRET_TOKEN as string,
         userId: user.id,
       });
 
-      const tokenResponse: TokenResponse = response.data;
-      return resp(200, 'User logged in', { user, token: tokenResponse });
-    } catch (error: any) {
-      console.log(error);
-      return resp(500, error.message, null, error);
-    }
+      const tokenResponse: ResponseProps<User> = response.data;
+      if(!tokenResponse.data) throw new Error("Invalid Login");
+      return tokenResponse.data;
   }
 }
 

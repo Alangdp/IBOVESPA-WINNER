@@ -39,7 +39,6 @@ module.exports = {
       },
 
       cpf: {
-        unique: true,
         type: Sequelize.STRING(11),
         allowNull: false,
         validate: {

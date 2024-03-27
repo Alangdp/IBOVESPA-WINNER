@@ -52,7 +52,7 @@ User.init(
         },
 
         is: {
-          args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+          args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*)(])/,
           msg: 'Password must have at least one special character, one number, one lowercase and one uppercase letter',
         },
       },
@@ -60,9 +60,8 @@ User.init(
 
     cpf: {
       type: sequelize.STRING(11),
-      allowNull: false,
+      allowNull: true,
       validate: {
-        notEmpty: { msg: 'CPF is required' },
         len: {
           args: [11, 11],
           msg: 'CPF must have 11 characters',
@@ -113,14 +112,12 @@ User.init(
       field: 'createdAt',
       type: sequelize.DATE,
       allowNull: false,
-      defaultValue: sequelize.fn('NOW'),
     },
 
     updatedAt: {
       field: 'updatedAt',
       type: sequelize.DATE,
       allowNull: false,
-      defaultValue: sequelize.fn('NOW'),
     },
   },
   {

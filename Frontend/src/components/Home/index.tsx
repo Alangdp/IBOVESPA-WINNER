@@ -1,8 +1,5 @@
-import logo from "../../assets/Logo.svg";
 import {
-  ArrowLeftIcon,
   ArrowRightIcon,
-  ArrowDownIcon,
   ArrowUpIcon,
 } from "@radix-ui/react-icons";
 import { DividendItem } from "./Stocks/Dividend";
@@ -10,14 +7,14 @@ import { DividendItem } from "./Stocks/Dividend";
 import newImage from "../../assets/imgs/news.png";
 import OficialLogo from "../../assets/OficialLog.svg";
 import { VariationItem } from "./Stocks/Variation";
-import { RegisterDialog } from "../sign";
+import { Register } from "../sign";
 
 export default function Home() {
   const mockUrlImage =
     "https://investidor10.com.br/storage/companies/5f19c3e7e124c.jpeg";
 
-  return (
-    <div className="bg-[#3F3F3F] w-screen h-screen text-white">
+    return (
+      <div className="bg-[#3F3F3F] w-screen h-screen text-white">
       {/* nav */}
       <div className="nav h-14 bg-df flex justify-around items-center p-4">
         <div className="company flex items-center justify-between w-fit gap-4 text-white">
@@ -37,11 +34,11 @@ export default function Home() {
           <a href="" className="">
             Login
           </a>
-          <RegisterDialog>
+          <Register >
             <p className="p-1  bg-bl rounded cursor-pointer">
               Registro
             </p>
-          </RegisterDialog>
+          </Register>
         </div>
       </div>
 

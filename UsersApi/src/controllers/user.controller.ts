@@ -2,15 +2,19 @@ import User from '../models/User.js';
 import UserService from '../services/user.service.js';
 import { NextFunction, Request, Response } from 'express';
 
+import { ValidationErrorItem } from 'sequelize';
+import { response, errorResponse } from '../utils/responses.js';
+
 class userController {
   async index(req: Request, res: Response, next: NextFunction) {
     const service = new UserService();
 
     try {
-      const { status, message, data } = await service.index();
-      res.status(status).json({ message, data });
+      const users: User[] = await service.index();
+      return response<User[]>(res, { data: users, status: 200 });
     } catch (error: any) {
-      next(error);
+      console.log(error)
+      return errorResponse(res, error);
     }
   }
 
@@ -27,16 +31,16 @@ class userController {
         return res.status(status).json({ message });
       }
 
+      if (user.admin) {
+        return response(res, { data: user, status: 200 });
+      }
+
       user.admin = true;
       await user.save();
 
-      const status = 200;
-      const message = 'Usuário promovido a administrador com sucesso';
-      const data = { user };
-
-      res.status(status).json({ message, data });
+      return response(res, { data: user, status: 200 });
     } catch (error: any) {
-      next(error);
+      return errorResponse(res, error);
     }
   }
 
@@ -44,32 +48,38 @@ class userController {
     const service = new UserService();
 
     try {
-      const { status, message, data } = await service.store(req.body);
-      res.status(status).json({ message, data });
+      const user: User = await service.store(req.body);
+      return response(res, { data: user, status: 200 });
     } catch (error: any) {
-      next(error);
+      return errorResponse(res, error);
     }
   }
   async update(req: Request, res: Response) {}
 
   async delete(req: Request, res: Response, next: NextFunction) {
+    const service = new UserService();
+
     try {
-      const { id } = req.body 
-      const service = new UserService();
-      const { status, message, data } = await service.delete(id);
-      res.status(status).json({ message, data });
+      const { token } = req.body;
+      if (!token) throw new Error('Invalid Token');
+      const userMock = await service.loginWithToken(String(token));
+      const user = await service.findById(userMock.id);
+
+      user.active = false;
+      user.save();
+
+      return response(res, { status: 200, data: user });
     } catch (error: any) {
-      next(error);
+      return errorResponse(res, error);
     }
   }
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {
       const service = new UserService();
-      const { status, message, data } = await service.login(req.body);
-      res.status(status).json({ message, data });
+      const user = await service.login(req.body);
+      return response(res, { status: 200, data: user });
     } catch (error: any) {
-      console.log(error, 1321312);
       next(error);
     }
   }

@@ -1,142 +1,165 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import {
-  EnvelopeClosedIcon,
-  LockClosedIcon,
-  PersonIcon,
-} from "@radix-ui/react-icons";
-import { IconProps } from "@radix-ui/react-icons/dist/types";
-import validator from "validator"
-import { toast } from "sonner"
-
+import { Input } from "../ui/input";
+import { RegisterDialog } from "./RegisterDialog";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../ui/button";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { DialogItem } from "./DialgoInput";
 interface RegisterDialogProps {
   children: React.ReactNode;
 }
 
-interface DialogItemProps {
-  Icon?: React.ComponentType<IconProps>;
-  text?: string;
-  placeHolder?: string;
-  type: "text" | "password";
-  value?: string;
-  onChange?: (value: string) => void;
-}
+import {
+  Cross2Icon,
+  EnvelopeClosedIcon,
+  LockClosedIcon,
+  Pencil1Icon,
+  PersonIcon,
+} from "@radix-ui/react-icons";
+import axios from "axios";
 
-function DialogItem({ Icon, placeHolder, text, type, value, onChange }: DialogItemProps) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(event.target.value);
-    }
-  };
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
 
-  return (
-    <div className="field flex items-center gap-2 w-full">
-      {Icon && <Icon width={30} height={30} />}
-      <div className="input flex flex-col items-start gap-1 w-fit">
-        <label htmlFor={text} className="text-sm">
-          {text}
-        </label>
-        <Input
-          className="border-none bg-transparent outline-none"
-          id={text}
-          placeholder={placeHolder}
-          type={type}
-          value={value}
-          onChange={handleChange}
-        />
-        <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
-      </div>
-    </div>
-  );
-}
+const userFilterSchema = z.object({
+  name: z.string().trim().min(3, { message: "Name must be a min 3 length" }),
+  email: z
+    .string()
+    .email({ message: "Email is not valid" })
+    .trim()
+    .min(4)
+    .toLowerCase(),
+  password: z.string().trim().min(8, "Password must be a min 8 length"),
+  phone: z.string().regex(phoneRegex, "Invalid phone number")
+});
 
-interface RegisterData {
-  name: string;
-  password: string;
-  email: string;
-}
+type UserFilterSchema = z.infer<typeof userFilterSchema>;
 
-export function RegisterDialog({ children }: RegisterDialogProps) {
-  const [registerData, setRegisterData] = useState<RegisterData>({
-    email: "",
-    name: "",
-    password: "",
+export function Register({ children }: RegisterDialogProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+  } = useForm<UserFilterSchema>({
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
+    resolver: zodResolver(userFilterSchema),
   });
+  const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
 
-  const handleInputChange = (field: keyof RegisterData) => (value: string) => {
-    setRegisterData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
-
-  const validateForms = () =>{
-    let valid = true
-    if(!validator.isEmail(registerData.email)) {{
-      valid = false
-      toast("Event has been created", {
-        description: "Sunday, December 03, 2023 at 9:00 AM",
-        action: {
-          label: "Undo",
-          onClick: () => console.log("Undo"),
-        },
-      })
-    }}
+  async function handleRegister(data: UserFilterSchema) {
+    const status = toast.loading("Tentando criar conta!", {closeButton: Cross2Icon});
+  
+    try {
+      await axios.post("http://localhost:3000/users/", {...data});
+      toast.update(status, {render: "Conta criada", type:"success", isLoading:false, autoClose: 1000 });
+    } catch (error: any) {
+      if (error.response && error.response.data && error.response.data.data) {
+        const errors = error.response.data;
+        console.log(Object.values(errors))
+        console.log(errors.message, "MENSAGEM")
+        const errorMessage = "12312"
+        toast.update(status, {render: errorMessage, type: "error", isLoading: false, autoClose: 1000});
+      } else {
+        // Handle unexpected errors
+        console.error("Error:", error);
+        toast.update(status, {render: "Erro ao criar conta", type: "error", isLoading: false, autoClose: 1000});
+      }
+    }
   }
 
+  useEffect(() => {
+    console.log(errors.name);
+    if (userKeys.length > 0) {
+      console.log(Object.keys(errors));
+      userKeys.forEach((item: keyof UserFilterSchema) => {
+        toast.error(errors[item]?.message);
+      });
+    }
+  }, [errors]);
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[320px] bg-[#1B2028]">
-        <DialogHeader>
-          <DialogTitle>
-            <h4 className="text-white">Criar Conta</h4>
-          </DialogTitle>
-        </DialogHeader>
-        <div className="flex flex-col justify-center items-center text-white gap-y-6">
-          <DialogItem
-            type="text"
-            Icon={PersonIcon}
-            placeHolder="Ex. João Silveira"
-            text="Nome"
-            value={registerData.name}
-            onChange={handleInputChange("name")}
-          />
+    <RegisterDialog
+      form={
+        <form
+          onSubmit={handleSubmit(handleRegister)}
+          className="flex flex-col justify-center items-center text-white gap-y-6"
+        >
+          <div className="field flex items-center gap-2 w-full justify-center">
+            <PersonIcon width={30} height={30} />
+            <div className="input flex flex-col items-start gap-1 w-fit">
+              <label className="text-sm">Nome</label>
+              <Input
+                className="border-none bg-transparent outline-none text-white"
+                id={"name"}
+                placeholder={"Ex. João Silveira"}
+                type={"text"}
+                {...register("name")}
+              />
+              <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
+            </div>
+          </div>
 
-          <DialogItem
-            type="text"
-            Icon={EnvelopeClosedIcon}
-            placeHolder="Ex. Email@email.com"
-            text="Email"
-            value={registerData.email}
-            onChange={handleInputChange("email")}
-          />
+          <div className="field flex items-center gap-2 w-full justify-center">
+            <EnvelopeClosedIcon width={30} height={30} />
+            <div className="input flex flex-col items-start gap-1 w-fit">
+              <label className="text-sm">Email</label>
+              <Input
+                className="border-none bg-transparent outline-none text-white"
+                id={"email"}
+                placeholder={"Ex. email@email.com"}
+                type={"text"}
+                {...register("email")}
+              />
+              <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
+            </div>
+          </div>
 
-          <DialogItem
-            type="password"
-            Icon={LockClosedIcon}
-            placeHolder="Ex. **********"
-            text="Senha"
-            value={registerData.password}
-            onChange={handleInputChange("password")}
-          />
-        </div>
+          <div className="field flex items-center gap-2 w-full justify-center">
+            <LockClosedIcon width={30} height={30} />
+            <div className="input flex flex-col items-start gap-1 w-fit">
+              <label className="text-sm">Senha</label>
+              <Input
+                className="border-none bg-transparent outline-none text-white"
+                id={"email"}
+                placeholder={"Ex. ********"}
+                type={"password"}
+                {...register("password")}
+              />
+              <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
+            </div>
+          </div>
 
-        <DialogFooter>
-          <Button type="submit" className="bg-[#3A6FF8]" onClick={() => validateForms()}>
+          <div className="field flex items-center gap-2 w-full justify-center">
+            <Pencil1Icon width={30} height={30} />
+            <div className="input flex flex-col items-start gap-1 w-fit">
+              <label className="text-sm">Telefone</label>
+              <Input
+                className="border-none bg-transparent outline-none text-white"
+                id={"phone"}
+                placeholder={"Ex. ********"}
+                type={"text"}
+                {...register("phone")}
+              />
+              <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
+            </div>
+          </div>
+
+          <Button
+            type="submit"
+            className="bg-[#3A6FF8]"
+            onClick={() => trigger("name")}
+          >
             Criar Conta
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </form>
+      }
+    >
+      {children}
+    </RegisterDialog>
   );
 }

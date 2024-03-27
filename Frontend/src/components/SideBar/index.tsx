@@ -11,7 +11,7 @@ import OfficialLog from "../../assets/OficialLog.svg";
 import { cn } from "@/lib/utils";
 
 interface SideBarProps {
-  className: string;
+  className?: string;
 }
 
 export function SideBar({ className }: SideBarProps) {
