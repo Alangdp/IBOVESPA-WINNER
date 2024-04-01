@@ -1,12 +1,14 @@
 // DEFAULT DATE FORMAT "11/12/2023"
 
-export interface TransactionProps {
-  id?: string;
-  userId: number;
-  quantity: number;
-  type: string;
-  price: number;
-  transactionDate: Date;
-  trasactionDateString?: string;
-  description?: string;
+export interface TransactionsProps {
+  id: number
+  ticker: string
+  transactionDate: Date
+  price: number
+  quantity: number
+  totalValue: number
+  type: string
+  userId: number
+  createdAt: string
+  updatedAt: string
 }

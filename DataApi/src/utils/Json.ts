@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // FIXME Revisar SOLID mais tarde
 export default class Json {
   static readJSONFromFile(filename: string) {
-    const absolutePath = path.resolve(__dirname, '..', 'json', filename);
+    const absolutePath = path.resolve(__dirname,'..', '..', 'json', filename);
     try {
       const jsonData = fs.readFileSync(absolutePath, 'utf8');
       return JSON.parse(jsonData);

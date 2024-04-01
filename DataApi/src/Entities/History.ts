@@ -11,8 +11,11 @@ import Chart from './Chart.js';
 
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
-import { TransactionHistory } from '../interfaces/Transaction.js';
 import { StockDataBase } from '../useCases/stockDataBase.js';
+import { DateFormatter } from '../utils/DateFormater.js';
+import { TransactionHistory } from '../interfaces/Transaction.js';
+import { TransactionsProps } from '../types/transaction.type.js';
+
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -27,9 +30,9 @@ import { StockDataBase } from '../useCases/stockDataBase.js';
 
 // TODO: SISTEMA DE THREADS(OTIMIZAÇÃO) - https://stackoverflow.com/questions/25167590/one-thread-for-many-tasks-vs-many-threads-for-each-task-do-sleeping-threads-aft
 
-class History {
+export class History {
   stockInfo: StockInfo;
-  transactions: TransactionHistory[];
+  transactions: TransactionsProps[]
   historyData: HistoryData;
   chart: ChartProtocol = new Chart(null);
 
@@ -41,7 +44,7 @@ class History {
     private uniqueTickers: string[]
   ) {
     this.stockInfo = requirements.stockInfo;
-    this.transactions = requirements.transactions;
+    this.transactions = requirements.transactions
     this.historyData = {};
 
     let indexHistoryPrice: IndexHistoryPrice = {};
@@ -91,10 +94,10 @@ class History {
     return dividendsPaymentOnDate;
   }
 
-  getTransactionsOnDate(date: string): TransactionHistory[] {
+  getTransactionsOnDate(date: string): TransactionsProps[] {
     return this.transactions.filter((transaction) => {
-      if (transaction.getTransactionDateString() === date)
-        return transaction.getTransactionDateString();
+      if (DateFormatter.dateToString(new Date(transaction.transactionDate)) === date)
+        return DateFormatter.dateToString(new Date(transaction.transactionDate));
     });
   }
 
@@ -137,11 +140,11 @@ class History {
     Json.saveJSONToFile(this.historyData, 'history.json');
   }
 
-  static async instanceHistory(transactions: TransactionHistory[]) {
+  static async instanceHistory(transactions: TransactionsProps[]) {
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
     const allTickers = transactions.map((transaction) =>
-      transaction.getTicker()
+      transaction.ticker
     );
     const uniqueTickers = Utilities.uniqueElements(allTickers);
 
@@ -162,34 +165,3 @@ class History {
     return new History({ stockInfo, transactions }, uniqueTickers);
   }
 }
-
-const transactions: TransactionHistory[] = [
-  BuyTransaction.create(
-    {
-      price: 55,
-      quantity: 100,
-      transactionDate: new Date('02/01/2024'),
-      type: 'BUY',
-      userId: 1,
-    },
-    { ticker: 'BBAS3' }
-  ),
-
-  BuyTransaction.create(
-    {
-      price: 20,
-      quantity: 100,
-      transactionDate: new Date('02/01/2024'),
-      type: 'BUY',
-      userId: 1,
-    },
-    { ticker: 'TAEE11' }
-  ),
-];
-
-async function teste() {
-  const history = await History.instanceHistory(transactions);
-  console.log(history);
-}
-
-teste()

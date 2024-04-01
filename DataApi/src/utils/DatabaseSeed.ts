@@ -3,6 +3,8 @@ import { GetStockImage } from "../useCases/getStockImage.js";
 import JSON from '../utils/Json.js'
 import TickerFetcher from "./Fetcher.js";
 import { PontuationDataBase } from "../useCases/PontuationDatabase.js";
+import { Pontuation } from "../Entities/Pontuation.js";
+import Json from "../utils/Json.js";
 
 interface DatabaseSeedProps {
   tickers: string[]
@@ -11,6 +13,8 @@ interface DatabaseSeedProps {
 class DatabaseSeed {
   private tickers: string[];
   private invalidTicker: string[] = [];
+  private rankingBazin: any[] = [];
+  private rankingGraham: any[] = [];
 
   constructor(props: DatabaseSeedProps) {
     this.tickers = props.tickers;
@@ -18,8 +22,10 @@ class DatabaseSeed {
   }
 
   async execute() {
+    const invalidTickers: string[] = Json.readJSONFromFile('invalidTickers.json');
+
     for(const ticker of this.tickers) {
-      console.log(ticker)
+      if(invalidTickers.includes(ticker)) continue;
       try {
         await this.getData(ticker);
       } catch (error: any) {
@@ -31,22 +37,22 @@ class DatabaseSeed {
   }
 
   async getData (ticker: string) {
+
     try {
       const stock = await StockDataBase.getStock(ticker)
-      await PontuationDataBase.get({ticker: stock.ticker, type: "BAZIN"})
-      await PontuationDataBase.get({ticker: stock.ticker, type: "GRAHAM"})
+      this.rankingBazin.push(await PontuationDataBase.get({ticker: stock.ticker, type: "BAZIN"}));
+      this.rankingGraham.push(await PontuationDataBase.get({ticker: stock.ticker, type: "GRAHAM"}));
       return true
     } catch (error) {
-        console.log(error)
+      console.log(error);
       throw new Error(ticker)
     }
-    
   }
 }
 
 async function teste() {
   const tickers = await TickerFetcher.getAllTickers();
-  const seed  = new DatabaseSeed({tickers}); 
+  const seed = new DatabaseSeed({tickers}); 
   seed.execute()
 }
 

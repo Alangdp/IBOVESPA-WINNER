@@ -69,7 +69,8 @@ export class PontuationDataBase {
     if (!points) return PontuationDataBase.create(props);
 
     const time = points.get('createdAt') as Date;
-    if (!PontuationDataBase.validTime(time.getTime())) {
+    const valid = PontuationDataBase.validTime(time.getTime())
+    if (!valid) {;
       await points.deleteOne({ ...props });
       return PontuationDataBase.create(props);
     }

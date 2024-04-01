@@ -8,7 +8,10 @@ import {
 } from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
 import { StockPrice } from '../types/stock.types';
-import { TransactionHistory } from '../interfaces/Transaction';
+import {
+  TransactionHistory,
+} from '../interfaces/Transaction';
+import { TransactionsProps } from '../types/transaction.type';
 
 // FIXME ARRUMAR SOLID AQUI
 
@@ -104,9 +107,8 @@ export default class Chart implements ChartProtocol {
       globalStockQuantity += quantity;
       globalStockValue += valueInvested;
       globalDividendValue += dividendValue;
-      globalTotalValue += (prices[ticker].price * quantity) + dividendValue
-      globalInvested += valueInvested
-
+      globalTotalValue += prices[ticker].price * quantity + dividendValue;
+      globalInvested += valueInvested;
     }
 
     this.globalStockQuantity = globalStockQuantity;
@@ -147,7 +149,7 @@ export default class Chart implements ChartProtocol {
   }
 
   updateChart(
-    transactions: TransactionHistory[],
+    transactions: TransactionsProps[],
     prices: StockPrice,
     dividends: DividendOnDate,
     date: string
@@ -155,20 +157,20 @@ export default class Chart implements ChartProtocol {
     const transactionsLength = transactions.length;
     if (transactionsLength > 0) {
       for (const transaction of transactions) {
-        const ticker = transaction.getTicker();
-        const quantity = transaction.getQuantity();
-        const price = transaction.getPrice();
+        const ticker = transaction.ticker;
+        const quantity = transaction.quantity;
+        const price = transaction.price;
         const valueInvested = quantity * price;
         let individualChart: StockData = this.individualRentability[ticker];
 
         if (!individualChart)
           individualChart = this.createTickerOnChart(ticker);
 
-        if (transaction.getType() === 'BUY') {
+        if (transaction.type === 'BUY') {
           this.buyUpdate(individualChart, ticker, quantity, valueInvested);
         }
 
-        if (transaction.getType() === 'SELL') {
+        if (transaction.type === 'SELL') {
           this.sellUpdate(individualChart, ticker, quantity, valueInvested);
         }
       }
@@ -203,7 +205,7 @@ export default class Chart implements ChartProtocol {
       totalValue += value;
     }
 
-    console.log(totalWeigth, totalValue, 'Indicadores de Peso')
+    console.log(totalWeigth, totalValue, 'Indicadores de Peso');
 
     this.globalRentability = totalValue * totalWeigth + 1;
 

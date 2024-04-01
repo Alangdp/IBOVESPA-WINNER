@@ -1,10 +1,4 @@
-export interface UserResponse {
-  userData: UserData
-  msg: string
-  tokenMessage: string
-}
-
-export interface UserData {
+export interface UserProps {
   id: number
   name: string
   password: string

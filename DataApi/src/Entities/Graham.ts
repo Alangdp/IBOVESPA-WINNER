@@ -144,8 +144,6 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     });
 
     pontuation.calculate()
-    // const model = await pontuationModel;
-    // await model.create(pontuation);
 
     return pontuation
   }

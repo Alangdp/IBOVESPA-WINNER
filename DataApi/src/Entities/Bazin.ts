@@ -2,12 +2,10 @@ import {
   BazinMethods,
   BazinProtocol,
 } from '../interfaces/BazinProtocol.type.js';
-import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { PontuationRule } from '../types/Pontuation.type.js';
 import { StockProps } from '../types/stock.types.js';
 import MathUtils from '../utils/MathUtils.js';
 import { Pontuation } from './Pontuation.js';
-import { pontuationModel } from '../database/mongodb/models/Pontuation.model.js';
 
 // TODO - REFAZER TUDO
 
@@ -118,9 +116,6 @@ export class Bazin extends BazinProtocol implements BazinMethods {
     })
 
     pontuation.calculate();
-
-    const model = await pontuationModel;
-    await model.create(pontuation);
 
     return pontuation
   }

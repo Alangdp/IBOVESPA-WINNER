@@ -10,5 +10,4 @@ router.post("/", makeTransaction);
 router.delete("/:id", deleteTransaction);
 router.post("/:id", editTransaction);
 
-
 export default router;

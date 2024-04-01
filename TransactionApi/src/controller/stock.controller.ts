@@ -3,6 +3,7 @@ import { getUserIdByToken } from "../utils/getter";
 import { TransactionsProps } from "../types/transaction.type";
 import TransactionService from "../service/transaction.service";
 import { validTypes } from "../types/validTypes";
+import { errorResponse, response } from "../utils/Responses";
 
 
 export const makeTransaction: RequestHandler = async (req, res, next) => {
@@ -14,13 +15,12 @@ export const makeTransaction: RequestHandler = async (req, res, next) => {
     const userId = await getUserIdByToken(token);
     if (!userId) throw new Error('Invalid Token');
     if(! validTypes.includes(transaction.type)) throw new Error('Invalid transaction type');
-
-    const data = await service.create(userId, transaction);
-    if(data.status === 500) throw new Error(data.message);
-
-    return res.status(200).json({ transaction: data.data, msg: data.message});
+    const newTransaction = await service.create(userId, transaction);
+    console.log(newTransaction)
+    return response(res, {status: 200, data: newTransaction});
   } catch (error: any) {
-    return res.status(400).json({ error: error.message })
+    console.log(error)
+    return errorResponse(res,error);
   }
 }
 
@@ -32,12 +32,10 @@ export const deleteTransaction: RequestHandler = async (req, res, next) => {
     const token = req.body.token;
     const userId = await getUserIdByToken(token);
     if(!userId) throw new Error('Invalid Token');
-    const data = await service.deleteUserTransaction(Number(transactionId), userId);
-    if(data.status === 500) throw new Error(data.message);
-
-    return res.status(200).json({ transactionDeleted: data.data, msg: data.message});
+    await service.deleteUserTransaction(Number(transactionId), userId);
+    return response(res, {status: 200});
   } catch (error: any) {
-    return res.status(400).json({ error: error.message })
+    return errorResponse(res, error);
   }
 }
 
@@ -48,15 +46,12 @@ export const editTransaction: RequestHandler = async (req, res, next) => {
     const transactionId: string = req.params.id;
     const token = req.body.token;
     const transaction: TransactionsProps = req.body.transaction
-
     const userId = await getUserIdByToken(token);
     if(!userId) throw new Error('Invalid Token');
     const data = await service.editTransaction(Number(transactionId), userId, transaction);
-    if(data.status === 500) throw new Error(data.message);
-
-    return res.status(200).json({ transactionDeleted: data.data, msg: data.message});
+    return response(res, {status: 200, data: data});
   } catch (error: any) {
-    return res.status(400).json({ error: error.message })
+    return errorResponse(res, error);
   }
 }
 
