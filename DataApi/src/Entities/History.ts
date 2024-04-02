@@ -104,16 +104,20 @@ export class History {
   getStocksPriceOnDate(date: string): StockPrice {
     const stockPrice = this.indexHistoryPrice[date];
     const result: StockPrice = {};
+    const uniqueTickers: string[] = []
 
     Object.entries(stockPrice).forEach(([ticker, { price }]) => {
+      uniqueTickers.push(ticker, date);
       result[ticker] = { price, ticker };
     });
+
 
     return result;
   }
 
   constructHistory() {
     const dates = Object.keys(this.indexHistoryPrice);
+    dates.pop();
 
     for (const date of dates) {
       const dividends = this.getDividendsOnDate(date);

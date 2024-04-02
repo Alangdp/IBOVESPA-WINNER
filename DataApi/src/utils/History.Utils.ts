@@ -54,14 +54,16 @@ export default class HistoryUtils {
     ticker: string,
     reusableObject: IndexHistoryPrice
   ) {
+    let lastPrice = 0;
+
     for (const info of historyPrice) {
-      const { date, price } = info;
+      let { date, price } = info;
       const formatedDate = HistoryUtils.formatPriceDate(date);
 
       if (!reusableObject[formatedDate]) {
         reusableObject[formatedDate] = {};
       }
-
+      
       reusableObject[formatedDate][ticker] = {
         price: price,
       };

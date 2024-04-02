@@ -142,7 +142,11 @@ export default class Chart implements ChartProtocol {
       this.globalDividendValue += dividendValue;
 
       individualChart.dividendValue += dividendValue;
-      individualChart.dividendPayments.push(date);
+      individualChart.dividendPayments.push({
+        date,
+        value: dividendValue,
+        unitaryValue: dividend.value
+      });
 
       this.individualRentability[ticker] = individualChart;
     }
@@ -205,7 +209,7 @@ export default class Chart implements ChartProtocol {
       totalValue += value;
     }
 
-    console.log(totalWeigth, totalValue, 'Indicadores de Peso');
+    // console.log(totalWeigth, totalValue, 'Indicadores de Peso');
 
     this.globalRentability = totalValue * totalWeigth + 1;
 

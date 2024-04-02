@@ -30,12 +30,19 @@ export interface StockRentability {
 
 export interface StockData {
   dividendValue: number;
-  dividendPayments: string[];
+  // Todo Alterar aqui caso de erro
+  dividendPayments: DividendPayment[];
   medianPrice: number;
   rentability: number;
   quantity: number;
   valueTotal: number;
   valueInvested: number;
+}
+
+export interface DividendPayment {
+  date: string,
+  value: number
+  unitaryValue: number
 }
 
 export interface chartUpdateInfo {

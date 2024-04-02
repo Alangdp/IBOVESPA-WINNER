@@ -19,9 +19,6 @@ const getHistory: RequestHandler = async (req, res, next) => {
     const data: ResponseProps<TransactionsProps[]> = responseData.data;
     if(!data.data) throw new Error("Invalid Token");
     const transactions = data.data;
-
-    console.log(new Date(transactions[0].transactionDate), typeof transactions[0].transactionDate)
-
     const history = await History.instanceHistory(transactions);
     return response(res, { status: 200, data: history });
   } catch (error: any) {
