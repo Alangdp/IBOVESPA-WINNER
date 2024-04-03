@@ -8,10 +8,13 @@ import newImage from "../../assets/imgs/news.png";
 import OficialLogo from "../../assets/OficialLog.svg";
 import { VariationItem } from "./Stocks/Variation";
 import { Register } from "../sign";
+import SimpleButton from "./SimpleButton";
 
 export default function Home() {
   const mockUrlImage =
     "https://investidor10.com.br/storage/companies/5f19c3e7e124c.jpeg";
+
+
 
     return (
       <div className="bg-[#3F3F3F] w-screen h-screen text-white">
@@ -28,6 +31,7 @@ export default function Home() {
           <a href="">Home</a>
           <a href="">Contato</a>
           <a href="">Ações</a>
+
         </div>
 
         <div className="sign flex gap-4 items-center">

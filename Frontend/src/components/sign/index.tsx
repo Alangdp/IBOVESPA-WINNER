@@ -19,6 +19,7 @@ import {
   PersonIcon,
 } from "@radix-ui/react-icons";
 import axios from "axios";
+import { ResponseProps } from "@/types/Response.type";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -52,6 +53,7 @@ export function Register({ children }: RegisterDialogProps) {
   const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
 
   async function handleRegister(data: UserFilterSchema) {
+    const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ""
     const status = toast.loading("Tentando criar conta!", {closeButton: Cross2Icon});
   
     try {
@@ -59,11 +61,11 @@ export function Register({ children }: RegisterDialogProps) {
       toast.update(status, {render: "Conta criada", type:"success", isLoading:false, autoClose: 1000 });
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.data) {
-        const errors = error.response.data;
-        console.log(Object.values(errors))
-        console.log(errors.message, "MENSAGEM")
-        const errorMessage = "12312"
-        toast.update(status, {render: errorMessage, type: "error", isLoading: false, autoClose: 1000});
+        const errors: ResponseProps<any>  = error.response.data;
+
+        errors.errors?.forEach( error => {
+          toast.update(status, {render: capitalize(error.message), type: "error", isLoading: false, autoClose: 1000});
+        })
       } else {
         // Handle unexpected errors
         console.error("Error:", error);
@@ -73,14 +75,13 @@ export function Register({ children }: RegisterDialogProps) {
   }
 
   useEffect(() => {
-    console.log(errors.name);
-    if (userKeys.length > 0) {
-      console.log(Object.keys(errors));
+    if (userKeys.length > 1) {
+      console.log(userKeys)
       userKeys.forEach((item: keyof UserFilterSchema) => {
         toast.error(errors[item]?.message);
       });
     }
-  }, [errors]);
+  }, [errors, userKeys]);
 
   return (
     <RegisterDialog
