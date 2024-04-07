@@ -54,6 +54,8 @@ export default class TickerFetcher {
     } catch (err: any) {
       const status = err.response.status;
 
+      console.log(err)
+
       if (status === 403) throw new Error('BLOCKED REQUEST CODE 403');
       if (status === 404) throw new Error('INVALID TICKER CODE 404');
       throw new Error(err.message);
@@ -156,18 +158,17 @@ export default class TickerFetcher {
       };
 
       const response = await axios.request(options);
+      console.log(response)
 
       const $ = Cheerio.load(response.data);
       const tickers: string[] = $('td span a')
         .map((index, element) => $(element).text())
         .get();
 
+
       return tickers;
     } catch (error: any) {
-      if (error.response && error.response.status === 404) {
-        throw new Error('Invalid Ticker');
-      }
-
+      console.log(error)
       throw new Error('Error fetching tickers');
     }
   }
