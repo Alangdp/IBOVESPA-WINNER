@@ -9,7 +9,7 @@ dotenv.config();
 const router = express.Router();
 
 router.post('/stock', index)
-router.get('/stock/:ticker', indexGet)
+router.get('/stock/get/:ticker', indexGet)
 router.post('/stock/price', indexPrices)
 router.post('/stock/dividend', indexDividends)
 router.post('/stock/indicators', indexIndicators)
