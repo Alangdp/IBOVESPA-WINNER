@@ -2,6 +2,8 @@ import { RequestHandler } from "express";
 import { StockProps } from "../types/stock.types.js";
 import TickerFetcher from "../utils/Fetcher.js";
 import { StockDataBase } from "../useCases/stockDataBase.js";
+import Database from "../utils/JsonDatabase.js";
+import { errorResponse, response } from "../utils/Responses.js";
 
 
 export const index: RequestHandler = async (req, res, next) => {
@@ -72,5 +74,16 @@ export const indexTickers: RequestHandler = async (req, res, next) => {
     return res.status(200).json({ tickers })
   } catch (error: any) {
     return res.status(400).json({ error: error.message })
+  }
+}
+
+export const validTicker: RequestHandler = async(req, res, next) => {
+  try {
+    const { ticker } = req.params
+    const fetcher = new TickerFetcher(ticker);
+    await fetcher.initialize();
+    return response(res, {status: 200})
+  } catch (error) {
+    return response(res, {status: 404})
   }
 }

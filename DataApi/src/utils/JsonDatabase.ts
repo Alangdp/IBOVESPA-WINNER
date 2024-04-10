@@ -49,7 +49,7 @@ export default class Database<T> {
 
     return null;
   }
-
+  
   get() {
     return this.db.data;
   }
