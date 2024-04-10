@@ -79,3 +79,14 @@ export const indexTickers: RequestHandler = async (req, res, next) => {
     return errorResponse(res, error);
   }
 }
+
+export const validTicker: RequestHandler = async(req, res, next) => {
+  try {
+    const { ticker } = req.params;
+    const fetcher = new TickerFetcher(ticker);
+    await fetcher.initialize();
+    return response(res, {status: 200})
+  } catch (error: any) {
+    return response(res, {status: 404})
+  }
+}
