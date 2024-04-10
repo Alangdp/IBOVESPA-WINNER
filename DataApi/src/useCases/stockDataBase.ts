@@ -1,4 +1,4 @@
-import { StockProtocol } from "../interfaces/StockProtocol.type";
+import { StockProtocol } from "../interfaces/StockProtocol.type.js";
 import { configDotenv } from "dotenv";
 
 configDotenv();

@@ -8,7 +8,7 @@ import newImage from "../../assets/imgs/news.png";
 import OficialLogo from "../../assets/OficialLog.svg";
 import { VariationItem } from "./Stocks/Variation";
 import { Register } from "../sign";
-import SimpleButton from "./SimpleButton";
+import { NavBar } from "../Nav";
 
 export default function Home() {
   const mockUrlImage =
@@ -19,35 +19,9 @@ export default function Home() {
     return (
       <div className="bg-[#3F3F3F] w-screen h-screen text-white">
       {/* nav */}
-      <div className="nav h-14 bg-df flex justify-around items-center p-4">
-        <div className="company flex items-center justify-between w-fit gap-4 text-white">
-          <a href="">
-            <img src={OficialLogo} alt="Logo" className=" " />
-          </a>
-          <div className="text-lg ">CPI</div>
-        </div>
-
-        <div className="main-buttons flex items-center gap-8">
-          <a href="">Home</a>
-          <a href="">Contato</a>
-          <a href="">Ações</a>
-
-        </div>
-
-        <div className="sign flex gap-4 items-center">
-          <a href="" className="">
-            Login
-          </a>
-          <Register >
-            <p className="p-1  bg-bl rounded cursor-pointer">
-              Registro
-            </p>
-          </Register>
-        </div>
-      </div>
-
+      <NavBar />
+      
       {/* main */}
-
       <main className="bg-[#3F3F3F]">
         <div
           className="news h-[360px] relative w-100 bg-cover bg-no-repeat"

@@ -6,6 +6,8 @@ import { TickerIcon } from "./CardTickerIcon";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LineData } from "@/types/LineData.type";
+import { ResponseProps } from "@/types/Response.type";
+import { toast } from "react-toastify";
 
 interface VariationCardProps {
   ticker: string;
@@ -29,6 +31,9 @@ export function VariationCard({
   variation,
   className,
 }: VariationCardProps) {
+  const STOCK_API_URL = import.meta.env.VITE_STOCK_API_URL
+  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+
   const [lineData, setLineData] = useState<{
     prices: LineData[];
     name: string;
@@ -36,16 +41,19 @@ export function VariationCard({
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.post("http://localhost:3002/stock/price", {
+      const response = await axios.post(`http://${STOCK_API_URL}/stock/price`, {
         ticker: ticker,
       });
-      const data: {
+      const responseProps: ResponseProps<{
         actual: number;
         price: PriceData[];
         name: string;
-      } = response.data;
+      }> = response.data;
 
-      const prices = data.price.reverse().slice(0, 7).reverse();
+      const data = responseProps.data
+      if(!data) toast.error("Error Getting Stocks Price")
+
+      const prices = data!.price.reverse().slice(0, 360).reverse();
 
       setLineData({
         prices: prices.map((item) => {
@@ -55,7 +63,7 @@ export function VariationCard({
             value: item.price,
           };
         }),
-        name: data.name,
+        name: data!.name,
       });
     };
     fetchData();
@@ -72,7 +80,7 @@ export function VariationCard({
       <div className="info flex gap-2">
         {/* TODO FAZER HERENCA DA IMAGEM */}
         <TickerIcon
-          img={`http://localhost:3002/images/avatar/${ticker}-logo.jpg`}
+          img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
         />
         <span className="flex">
           <div className="grid grid-cols-3 overflow-hidden">

@@ -3,6 +3,8 @@ interface TickerIconProps {
 }
 
 export function TickerIcon({img}: TickerIconProps) {
+  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+
   return (
     <div className="icon p-2 rounded-df bg-[#31353F] overflow-hidden h-fit w-fit">
       <img
@@ -11,8 +13,7 @@ export function TickerIcon({img}: TickerIconProps) {
         alt="STOCK ICON"
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src =
-            "http://localhost:3002/images/avatar/NO-IMAGE.png";
+          currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`
         }}
       />
     </div>

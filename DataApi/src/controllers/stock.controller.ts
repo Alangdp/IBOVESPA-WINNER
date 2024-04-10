@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import { StockProps } from "../types/stock.types.js";
 import TickerFetcher from "../utils/Fetcher.js";
-import { StockDataBase } from "../useCases/stockDataBase.js";
+import { StockDataBase } from "../useCases/stockDataBase.jts";
 import { errorResponse, response } from "../utils/Responses.js";
 
 
@@ -35,7 +35,8 @@ export const indexPrices: RequestHandler = async (req, res, next) => {
     return response(res, {status: 200, data: {
       price: stock.priceHistory,
       actual: stock.actualPrice,
-      name: stock.name
+      name: stock.name,
+      ticker: stock.ticker
     }})
   } catch (error: any) {
     return errorResponse(res, error);

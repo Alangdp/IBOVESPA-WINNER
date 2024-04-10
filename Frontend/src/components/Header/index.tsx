@@ -13,6 +13,8 @@ interface headerProps {
 }
 
 export function Header({ title }: headerProps) {
+  const STOCK_API_URL = import.meta.env.VITE_STOCK_API_URL
+
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
   const [finded, setFinded] = useState<string[]>([]);
@@ -20,7 +22,7 @@ export function Header({ title }: headerProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3002/stock/tickers");
+      const response = await axios.get(`http://${STOCK_API_URL}/stock/tickers`);
       setTickers(response.data.tickers);
     };
     fetchData();

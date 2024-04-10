@@ -15,9 +15,12 @@ export function PortifolioCard({
   totalValue,
   variation,
 }: PortifolioCardProps) {
+
+  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+
   return (
     <div className="card grid grid-cols-5 items-center">
-      <TickerIcon img="http://localhost:3002/images/avatar/BBAS3-logo.jpg" />
+      <TickerIcon img={`http://${AVATAR_IMAGES_URL}/BBAS3-logo.jpg`} />
       <div className="grid grid-rows-2">
         <h4 className="text-white font-semibold text-lg">{ticker}</h4>
         <p className="opacity-60 text-white text-lg text-nowrap ">
