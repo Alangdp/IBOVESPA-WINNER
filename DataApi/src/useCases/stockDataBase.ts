@@ -1,9 +1,9 @@
 import { StockProtocol } from "../interfaces/StockProtocol.type.js";
 import { configDotenv } from "dotenv";
-
-configDotenv();
 import stockModel from "../database/mongodb/models/Stock.model.js";
 import { InstanceStock } from "./instanceStock.js";
+
+configDotenv();
 
 const HOUR_IN_MILISECONDS = 3600000;
 

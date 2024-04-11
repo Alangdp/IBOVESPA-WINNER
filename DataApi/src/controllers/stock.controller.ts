@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
 import { StockProps } from "../types/stock.types.js";
 import TickerFetcher from "../utils/Fetcher.js";
-import { StockDataBase } from "../useCases/stockDataBase.jts";
 import { errorResponse, response } from "../utils/Responses.js";
+import { StockDataBase } from "../useCases/stockDataBase.js";
 
 
 export const index: RequestHandler = async (req, res, next) => {

@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         />
 
         <NavBar />
-        <div className="screen w-screen h-screen bg-zinc-800 text-white flex flex-col items-center">
+        <div className="screen w-screen bg-zinc-800 text-white flex flex-col items-center">
           <Market marketName="Brasil"/>
         </div>
       </>

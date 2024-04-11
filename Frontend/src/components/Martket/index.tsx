@@ -10,25 +10,38 @@ import B3 from "../../assets/svg/B3.svg";
 import { CaretDownIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import {
   LineChart,
-  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   Line,
   ResponsiveContainer,
 } from "recharts";
 import { getPrice } from "@/Utils/ApiUtils";
-import { useEffect, useRef, useState } from "react";
-import { PriceData } from "@/types/Price.type";
+import { useEffect, useState } from "react";
+import { Price, PriceData } from "@/types/Price.type";
 import LocalStorage from "@/Utils/LocalStorage";
 import { validateToleranceTime } from "@/Utils/Math";
+import { Button } from "../Button";
+
+interface TimeLimits {
+  [key: string]: number;
+}
+
+const timeLimits: TimeLimits = {
+  "1week": 7,
+  "1month": 30,
+  "3month": 90,
+  "6month": 180,
+  "1year": 365,
+  last: 188825,
+};
 
 export default function Market({ marketName }: MarketProps) {
   const localStorage = new LocalStorage<PriceData, PriceData[]>({
     key: "prices",
   });
   const [prices, setPrices] = useState<PriceData>();
+  const [interval, setInteval] = useState<string>("1month");
 
   const { stockTicker } = useParams();
   const UpperStockTicker = stockTicker?.toUpperCase();
@@ -61,6 +74,26 @@ export default function Market({ marketName }: MarketProps) {
   useEffect(() => {
     fetchPrices();
   }, []);
+
+  const growthOrDown = (priceData: PriceData | undefined) => {
+    if (!priceData) return "#fff";
+    const price = priceData.price
+      .filter((_, index) => index <= timeLimits[interval])
+      .map((item) => ({
+        date: item.date.split(" ")[0],
+        price: item.price,
+      }));
+
+    if (price[price.length - 1].price - price[0].price < 0) {
+      return "#1ECB4F";
+    }
+
+    return "#F46D22";
+  };
+
+  const pricesFiltered: Price[] = prices
+    ? prices.price.reverse().filter((_, index) => index <= timeLimits[interval])
+    : [];
 
   return (
     <div className="w-[90%] bg-[#1E1E1E] rounded h-full">
@@ -148,27 +181,162 @@ export default function Market({ marketName }: MarketProps) {
               </div>
             </div>
           </div>
-          <div className="graph w-full">
-            <ResponsiveContainer width="100%" height={400} className="p-2" >
+          <div className="graph w-full flex flex-col justify-center items-center">
+            <ResponsiveContainer
+              width="90%"
+              height={400}
+              className="p-2 z-10 bg-zinc-700 rounded-df font-bold"
+            >
               <LineChart
                 width={730}
                 height={250}
-                data={prices?.price.map((item) => {
-                  return { date: item.date.split(" ")[0], price: item.price };
-                })}
+                data={pricesFiltered.reverse()}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
-                <XAxis  dataKey="date" interval={300}/>
-                <Tooltip trigger="hover" label={"Teste"}/>
+                <XAxis
+                  dataKey="date"
+                  interval={Math.round(
+                    timeLimits[interval] / (timeLimits[interval] < 91 ? 6 : 9)
+                  )}
+                />
+                <YAxis tickCount={10} />
+                <Tooltip trigger="hover" />
                 <Line
                   type="monotone"
                   dataKey="price"
-                  stroke="#8884d8"
-                  activeDot={false}
+                  stroke={growthOrDown(prices)}
                   dot={false}
                 />
               </LineChart>
             </ResponsiveContainer>
+            <div className="buttons w-[90%] grid grid-cols-5 gap-4 m-4">
+              <Button.Root
+                active={interval === "1week" ? true : false}
+                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
+                onClick={() => setInteval("1week")}
+              >
+                <Button.Content
+                  active={interval === "1week" ? true : false}
+                  text="1 Semana"
+                  className="break-keep"
+                />
+              </Button.Root>
+
+              <Button.Root
+                active={interval === "1month" ? true : false}
+                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
+                onClick={() => setInteval("1month")}
+              >
+                <Button.Content
+                  active={interval === "1month" ? true : false}
+                  text="1 Mês"
+                  className="break-keep"
+                />
+              </Button.Root>
+
+              <Button.Root
+                active={interval === "3month" ? true : false}
+                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
+                onClick={() => setInteval("3month")}
+              >
+                <Button.Content
+                  active={interval === "3month" ? true : false}
+                  text="3 Mês"
+                  className="break-keep"
+                />
+              </Button.Root>
+
+              <Button.Root
+                active={interval === "6month" ? true : false}
+                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
+                onClick={() => setInteval("6month")}
+              >
+                <Button.Content
+                  active={interval === "6month" ? true : false}
+                  text="6 Mês"
+                  className="break-keep"
+                />
+              </Button.Root>
+
+              <Button.Root
+                active={interval === "1year" ? true : false}
+                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
+                onClick={() => setInteval("1year")}
+              >
+                <Button.Content
+                  active={interval === "1year" ? true : false}
+                  text="1 Ano"
+                  className="break-keep"
+                />
+              </Button.Root>
+            </div>
+          </div>
+
+          <div className="p-6 w-full">
+          <a href="">
+            <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer">
+              Principais Estatiscas
+              <CaretRightIcon className="w-12 h-8" />
+            </div>
+          </a>
+
+          <div className="info grid grid-cols-4 grid-rows-2 items-center justify-center">
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+
+            <a href="">
+              <div className="grid grid-cols">
+                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
+                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
+              </div>
+            </a>
+          </div>
           </div>
         </div>
       </div>
