@@ -18,10 +18,12 @@ import {
 } from "recharts";
 import { getPrice } from "@/Utils/ApiUtils";
 import { useEffect, useState } from "react";
-import { Price, PriceData } from "@/types/Price.type";
+import { PriceList } from "@/types/Price.type";
 import LocalStorage from "@/Utils/LocalStorage";
 import { validateToleranceTime } from "@/Utils/Math";
 import { Button } from "../Button";
+import { InfoCard } from "./info-card";
+import IndexCard from "./index-card";
 
 interface TimeLimits {
   [key: string]: number;
@@ -36,34 +38,38 @@ const timeLimits: TimeLimits = {
 };
 
 export default function Market({ marketName }: MarketProps) {
-  const localStorage = new LocalStorage<PriceData, PriceData[]>({
+  const localStorage = new LocalStorage<PriceList>({
     key: "prices",
   });
-  const [prices, setPrices] = useState<PriceData>();
-  const [interval, setInteval] = useState<string>("1month");
 
+  let [priceList, setPriceList] = useState<PriceList>(localStorage.get());
+  const [interval, setInteval] = useState<string>("1year");
   const { stockTicker } = useParams();
-  const UpperStockTicker = stockTicker?.toUpperCase();
+  const upperStockTicker = stockTicker?.toUpperCase();
+
+  let pricesFiltered = priceList[upperStockTicker!]
+    ? priceList[upperStockTicker!].price.reverse().filter(
+        (_, index) => index <= timeLimits[interval]
+      )
+    : [];
 
   const fetchPrices = async () => {
     const updateStorage = async () => {
-      const pricesData = await getPrice(UpperStockTicker!);
+      const pricesData = await getPrice(upperStockTicker!);
       pricesData.timestamp = new Date().getTime();
-      localStorage.addItem(pricesData);
-      setPrices(pricesData);
+      const newItem: PriceList = { [`${upperStockTicker}`]: pricesData };
+      localStorage.addItem(newItem);
+      setPriceList({ ...priceList, ...newItem });
     };
 
-    const items = localStorage.get() || [];
-
-    const filteredItems = items.filter(
-      (item) => item.ticker === UpperStockTicker
-    );
+    const item = localStorage.get();
 
     if (
-      filteredItems.length > 1 &&
-      validateToleranceTime(filteredItems[0].timestamp)
+      item &&
+      upperStockTicker &&
+      validateToleranceTime(item[upperStockTicker]?.timestamp) &&
+      upperStockTicker
     ) {
-      setPrices(filteredItems[0]);
       return;
     }
 
@@ -74,7 +80,9 @@ export default function Market({ marketName }: MarketProps) {
     fetchPrices();
   }, []);
 
-  const growthOrDown = (priceData: PriceData | undefined) => {
+  const growthOrDown = (priceList: PriceList | null) => {
+    if (!priceList) return "#fff";
+    const priceData = priceList[upperStockTicker!];
     if (!priceData) return "#fff";
     const price = priceData.price
       .filter((_, index) => index <= timeLimits[interval])
@@ -89,10 +97,6 @@ export default function Market({ marketName }: MarketProps) {
 
     return "#F46D22";
   };
-
-  const pricesFiltered: Price[] = prices
-    ? prices.price.reverse().filter((_, index) => index <= timeLimits[interval])
-    : [];
 
   return (
     <div className="w-[90%] bg-[#1E1E1E] rounded h-full">
@@ -120,65 +124,10 @@ export default function Market({ marketName }: MarketProps) {
             <CaretRightIcon className="w-12 h-8" />
           </div>
           <div className="cards grid grid-cols-4 m-4 gap-2">
-            <div className="card grid grid-cols-4 items-center justify-center cursor-pointer hover:bg-[#1B2028] duration-300 py-2 rounded-df">
-              {/* {Foto Indicie} */}
-              <div className="img flex justify-center">
-                <img src={B3} alt="" className="w-12 rounded-full" />
-              </div>
-              <div className="flex flex-col col-span-2">
-                <p>{/* {Nome indiice} */} Indice Ibovespa</p>
-                <span className="text-sm flex gap-1">
-                  {" "}
-                  <p className="opacity-60">126759,12</p> BRL{" "}
-                  <p className="text-red-500 opacity-80">-12%</p>
-                </span>
-              </div>
-            </div>
-
-            <div className="card grid grid-cols-4 items-center justify-center cursor-pointer hover:bg-[#1B2028] duration-300 py-2 rounded-df">
-              {/* {Foto Indicie} */}
-              <div className="img flex justify-center">
-                <img src={B3} alt="" className="w-12 rounded-full" />
-              </div>
-              <div className="flex flex-col col-span-2">
-                <p>{/* {Nome indiice} */} Indice Ibovespa</p>
-                <span className="text-sm flex gap-1">
-                  {" "}
-                  <p className="opacity-60">126759,12</p> BRL{" "}
-                  <p className="text-red-500 opacity-80">-12%</p>
-                </span>
-              </div>
-            </div>
-
-            <div className="card grid grid-cols-4 items-center justify-center cursor-pointer hover:bg-[#1B2028] duration-300 py-2 rounded-df">
-              {/* {Foto Indicie} */}
-              <div className="img flex justify-center">
-                <img src={B3} alt="" className="w-12 rounded-full" />
-              </div>
-              <div className="flex flex-col col-span-2">
-                <p>{/* {Nome indiice} */} Indice Ibovespa</p>
-                <span className="text-sm flex gap-1">
-                  {" "}
-                  <p className="opacity-60">126759,12</p> BRL{" "}
-                  <p className="text-red-500 opacity-80">-12%</p>
-                </span>
-              </div>
-            </div>
-
-            <div className="card grid grid-cols-4 items-center justify-center cursor-pointer hover:bg-[#1B2028] duration-300 py-2 rounded-df">
-              {/* {Foto Indicie} */}
-              <div className="img flex justify-center">
-                <img src={B3} alt="" className="w-12 rounded-full" />
-              </div>
-              <div className="flex flex-col col-span-2">
-                <p>{/* {Nome indiice} */} Indice Ibovespa</p>
-                <span className="text-sm flex gap-1">
-                  {" "}
-                  <p className="opacity-60">126759,12</p> BRL{" "}
-                  <p className="text-red-500 opacity-80">-12%</p>
-                </span>
-              </div>
-            </div>
+            <IndexCard Icon={B3}/>
+            <IndexCard Icon={B3}/>
+            <IndexCard Icon={B3}/>
+            <IndexCard Icon={B3}/>
           </div>
           <div className="graph w-full flex flex-col justify-center items-center">
             <ResponsiveContainer
@@ -189,7 +138,10 @@ export default function Market({ marketName }: MarketProps) {
               <LineChart
                 width={730}
                 height={250}
-                data={pricesFiltered.reverse()}
+                data={pricesFiltered.reverse().map((item) => ({
+                  date: item.date.split(" ")[0],
+                  price: item.price,
+                }))}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
                 <XAxis
@@ -203,7 +155,7 @@ export default function Market({ marketName }: MarketProps) {
                 <Line
                   type="monotone"
                   dataKey="price"
-                  stroke={growthOrDown(prices)}
+                  stroke={growthOrDown(priceList)}
                   dot={false}
                 />
               </LineChart>
@@ -272,70 +224,24 @@ export default function Market({ marketName }: MarketProps) {
           </div>
 
           <div className="p-6 w-full">
-          <a href="">
-            <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer">
-              Principais Estatiscas
-              <CaretRightIcon className="w-12 h-8" />
+            <a href="">
+              <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer">
+                Principais Estatiscas
+                <CaretRightIcon className="w-12 h-8" />
+              </div>
+            </a>
+
+            <div className="info grid grid-cols-4 grid-rows-2 items-center justify-center gap-4 p-4">
+              <InfoCard infoName="Valor de Mercado" infoValue={"100 B"} />
+              <InfoCard infoName="Rendimento do Dividendo (Indicado)" infoValue={"-"}  />
+              <InfoCard infoName="Razão Preço/Lucro(12M)" infoValue={"6.75 B"} brl={true} />
+              <InfoCard infoName="EPS Básico (12M)" infoValue={"9.18"} brl={true} />
+              {/* { METADE } */}
+              <InfoCard infoName="Lucro Líquido" infoValue={"100 B"} brl={true} />
+              <InfoCard infoName="Receita" infoValue={"208.7 B"} brl={true} />
+              <InfoCard infoName="Flutuação da Ação" infoValue={"4 B"} brl={true} />
+              <InfoCard infoName="Beta(1A)" infoValue={"1.18"} />
             </div>
-          </a>
-
-          <div className="info grid grid-cols-4 grid-rows-2 items-center justify-center">
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-
-            <a href="">
-              <div className="grid grid-cols">
-                <div className="semi-title text-lg font-bold text-black">Valor de Mercado</div>
-                <div className="flex items-center gap-1">29.12 <div className="text-[12px]">BRL</div></div>
-              </div>
-            </a>
-          </div>
           </div>
         </div>
       </div>

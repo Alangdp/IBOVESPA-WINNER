@@ -2,35 +2,33 @@ export interface LocalStorageProps {
   key: string;
 }
 
-export default class LocalStorage<T, F extends T[]> {
+export default class LocalStorage<T> {
   private key: string;
 
   constructor({ key }: LocalStorageProps) {
     this.key = key;
   }
 
-  get(): F | null {
-    const storedValue = localStorage.getItem(this.key);
-    if (storedValue === null) {
-      return null; 
+  get(): T {
+    try {
+      const storedValue = localStorage.getItem(this.key);
+      const parsedValue: T = JSON.parse(storedValue || "");
+      return parsedValue;
+    } catch (error) {
+      return {} as T;
     }
-
-    const parsedValue: F = JSON.parse(storedValue);
-    return parsedValue;
   }
 
-  set(data: F): void {
+  set(data: T): void {
     localStorage.setItem(this.key, JSON.stringify(data));
   }
 
   addItem(newItem: T): void {
-    const existingItems = this.get();
-    if (Array.isArray(existingItems)) {
-      const updatedItems = existingItems.concat(newItem) as F;
-      this.set(updatedItems);
-    } else {
-      console.warn(`Tipo de dados inesperado no LocalStorage para a chave: ${this.key}. Inicializando com [${newItem}]`);
-      this.set([newItem] as F);
-    }
+    const existingItems = this.get() || {}; // Get existing items or initialize as an empty object if null
+    const updatedItems = {
+      ...existingItems,
+      ...newItem,
+    };
+    this.set(updatedItems);
   }
 }

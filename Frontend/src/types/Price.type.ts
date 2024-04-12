@@ -11,3 +11,7 @@ export interface Price {
   price: number
   _id: string
 }
+
+export interface PriceList {
+  [ticker : string]: PriceData
+}
