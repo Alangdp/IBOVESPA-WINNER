@@ -25,7 +25,6 @@ export default class LocalStorage<T, F extends T[]> {
 
   addItem(newItem: T): void {
     const existingItems = this.get();
-    console.log(existingItems)
     if (Array.isArray(existingItems)) {
       const updatedItems = existingItems.concat(newItem) as F;
       this.set(updatedItems);

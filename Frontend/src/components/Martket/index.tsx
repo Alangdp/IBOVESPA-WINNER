@@ -33,7 +33,6 @@ const timeLimits: TimeLimits = {
   "3month": 90,
   "6month": 180,
   "1year": 365,
-  last: 188825,
 };
 
 export default function Market({ marketName }: MarketProps) {
