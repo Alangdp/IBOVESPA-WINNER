@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import { NetLiquid, PriceHistory, StockProps } from '../../../types/stock.types'
 import { LastDividendPayment } from '../../../types/dividends.type';
-import { IndicatorsData } from '../../../types/indicators.type';
+import { IndicatorsData, oldIndicator } from '../../../types/indicators.type';
 import { PassiveChartReturn } from '../../../types/PassiveChart.type';
 import { MongooConnection } from '../../index.js'
 
@@ -19,15 +19,24 @@ const lastDividendsValueSchema = new Schema<LastDividendPayment>({
   value: { type: Number, default: 0, required: false }
 })
 
+const oldIndicatorSchema = new Schema<oldIndicator>({
+  date: { type: Number, default: 0, required: false },
+  value: { type: Number, default: 0 }
+});
+
 const indicatorsDataSchema = new Schema<IndicatorsData>({
-  actual: { type: Number},
-  avg: { type: Number},
-  // ? OLD INDICATORS
-  olds: [{
-    date: { type: Number, default: 0, required: false},
-    value: { type: Number, default: 0 }
-  }]
-})
+  data: {type: Map, of: {
+    actual: {
+      type: Number,
+      required: false,
+    },
+    avg: {
+      type: Number,
+      required: false
+    },
+    olds: [oldIndicatorSchema]
+  }}
+});
 
 const netLiquidSchema = new Schema<NetLiquid>({
   year: { type: String, required: false },
@@ -50,6 +59,16 @@ const stockSchema = new Schema<StockProps>({
     unique: true,
     required: false,
     type: String
+  },
+
+  lpa: {
+    required: false,
+    type: Number
+  },
+
+  p_l: {
+    required: false,
+    type: Number
   },
 
   name: {

@@ -1,4 +1,5 @@
 import { StockProtocol } from '../interfaces/StockProtocol.type.js';
+import { DreData } from '../types/DRE.type.js';
 import { PassiveChartReturn } from '../types/PassiveChart.type.js';
 import { LastDividendPayment } from '../types/dividends.type.js';
 import { IndicatorsData } from '../types/indicators.type.js';
@@ -18,6 +19,11 @@ export class Stock extends Variable implements StockProtocol {
   public dividendYield: number;
   public grossDebt: number;
   public patrimony: number;
+  public lpa: number;
+  public p_l: number;
+  public freeFloat: number;
+
+  public dreData: DreData;
 
   public lastDividendsYieldYear: number[];
   public lastDividendsValueYear: number[];
@@ -44,6 +50,10 @@ export class Stock extends Variable implements StockProtocol {
       }
     );
 
+    this.dreData = props.dreData;
+    this.freeFloat = props.freeFloat;
+    this.lpa = props.lpa;
+    this.p_l = props.p_l;
     this.segment = props.segment;
     this.indicators = props.indicators;
     this.dividendYield = props.dividendYield;

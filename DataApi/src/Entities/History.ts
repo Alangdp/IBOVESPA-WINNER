@@ -11,7 +11,7 @@ import Chart from './Chart.js';
 
 import { ChartProtocol } from './../interfaces/ChartProtocol.type';
 import BuyTransaction from './BuyTransaction.js';
-import { StockDataBase } from '../useCases/stockDataBase.jts';
+import { StockDataBase } from '../useCases/stockDataBase.js';
 import { DateFormatter } from '../utils/DateFormater.js';
 import { TransactionHistory } from '../interfaces/Transaction.js';
 import { TransactionsProps } from '../types/transaction.type.js';

@@ -10,6 +10,8 @@ import { CashFlowHeader, NetLiquid, StockProps } from "../types/stock.types";
 
 import { Stock } from "../Entities/Stock.js";
 import TickerFetcher from "../utils/Fetcher.js";
+import { contains } from "cheerio";
+import { DreData } from "../types/DRE.type";
 
 
 type instanceStockProps = {
@@ -20,6 +22,7 @@ type instanceStockProps = {
   basicInfo: BasicInfoReturn | null,
   indicators: IndicatorsData | null,
   cashFlow: Header[] | null,
+  dreData: DreData | null,
 }
 
 export class InstanceStock {
@@ -33,6 +36,7 @@ export class InstanceStock {
     indicators: null,
     cashFlow: null,
     passiveChart: null,
+    dreData: null
   };
 
   private constructor(tickerFetcher: TickerFetcher) {
@@ -67,6 +71,7 @@ export class InstanceStock {
     this.props.indicators = await this.tickerFetcher.getIndicatorsInfo();
     this.props.cashFlow = await this.tickerFetcher.getCashFlow();
     this.props.passiveChart = await this.tickerFetcher.getPassiveChart();
+    this.props.dreData = await this.tickerFetcher.getDreInfo();
   }
 
   private makeStockProps(): StockProps{
@@ -77,6 +82,7 @@ export class InstanceStock {
     const payout = props.payout!;
     const dividendInfo = props.dividendInfo!;
     const passiveChart = props.passiveChart!; 
+    const dreData = props.dreData!;
 
     // GET NET LIQUID
 
@@ -102,8 +108,11 @@ export class InstanceStock {
       lastDividendsYieldYear: lastDividendsYield,
       lastDividendsValueYear: lastDividendsPerYear,
       lastDividendsValue: dividendInfo.lastDividendPayments,
+      dreData: dreData,
       netLiquid: netLiquidArray,
       passiveChart: passiveChart,
+      lpa: basicInfo.LPA,
+      p_l: 0
     } 
 
     return stockProp;

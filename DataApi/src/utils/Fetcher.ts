@@ -20,6 +20,10 @@ import { ReportReturn, RootReport } from '../types/report.type.js';
 import { BasicInfoReturn } from '../types/BasicInfo.type.js';
 import { StockQuery } from '../types/QueryStock.type.js';
 import { Segment } from '../types/Segment.type.js';
+import { DReRoot, DreData, ValuesData } from '../types/DRE.type.js';
+import { combineTableNames } from 'sequelize/types/utils.js';
+import { ConnectionStates } from 'mongoose';
+import { val } from 'cheerio/lib/api/attributes.js';
 
 // FIXME REFAZER TUDO AQUI
 // TODO - ROE INCORRETO CONSERTAR
@@ -53,8 +57,6 @@ export default class TickerFetcher {
       ).data;
     } catch (err: any) {
       const status = err.response.status;
-
-      console.log(err)
 
       if (status === 403) throw new Error('BLOCKED REQUEST CODE 403');
       if (status === 404) throw new Error('INVALID TICKER CODE 404');
@@ -158,7 +160,6 @@ export default class TickerFetcher {
       };
 
       const response = await axios.request(options);
-      console.log(response)
 
       const $ = Cheerio.load(response.data);
       const tickers: string[] = $('td span a')
@@ -353,6 +354,53 @@ export default class TickerFetcher {
     }
 
     return indicatorsData;
+  }
+
+  async getDreInfo() {
+    const ticker = this.ticker;
+
+    try {
+      const data = await apiGetter<DReRoot>(
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+        `getdre?code=${ticker}&type=0&futureData=false&range.min=2009&range.max=2022`
+      );
+  
+      if(!data) throw new Error("Error getting DRE DATA")
+
+      const DreData:DreData = {}
+
+      for(const item of data.data['grid']) {
+        const key = item.gridLineModel?.key;
+        const values = item.gridLineModel?.values;
+        const valuesToSave: ValuesData = {};
+
+        if(values) {
+          for(let i = 0; i < values.length; i++) {
+            valuesToSave[(new Date().getFullYear() - (i + 1)).toString()] = {
+               date: (new Date().getFullYear() - (i + 1)).toString(),
+               value: values[i]
+            }
+          }
+        }
+
+        if (key && values) {
+          DreData[key] = {
+            actual: values[0],
+            values: valuesToSave
+          }
+        }
+      }
+
+      return DreData;
+    } catch (error) {
+      console.log(error)
+      return null;
+    }
   }
 
   async getPrice() {
