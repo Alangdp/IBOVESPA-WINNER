@@ -28,7 +28,6 @@ import { val } from 'cheerio/lib/api/attributes.js';
 // FIXME REFAZER TUDO AQUI
 // TODO - ROE INCORRETO CONSERTAR
 
-
 export default class TickerFetcher {
   public ticker: string;
   private Utility?: Scrapper;
@@ -166,10 +165,9 @@ export default class TickerFetcher {
         .map((index, element) => $(element).text())
         .get();
 
-
       return tickers;
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       throw new Error('Error fetching tickers');
     }
   }
@@ -237,7 +235,7 @@ export default class TickerFetcher {
     return rebuyInfo;
   }
 
-  async getSegment(): Promise<Segment | null>{
+  async getSegment(): Promise<Segment | null> {
     {
       try {
         const paths = {
@@ -247,8 +245,8 @@ export default class TickerFetcher {
 
         const segmentFinal = this.Utility?.extractText(paths.finalSegment);
 
-        if(!segmentFinal) throw Error("Invalid Tickers");
-        return {segmentFinal}
+        if (!segmentFinal) throw Error('Invalid Tickers');
+        return { segmentFinal };
       } catch (error) {
         return null;
       }
@@ -369,36 +367,36 @@ export default class TickerFetcher {
         },
         `getdre?code=${ticker}&type=0&futureData=false&range.min=2009&range.max=2022`
       );
-  
-      if(!data) throw new Error("Error getting DRE DATA")
 
-      const DreData:DreData = {}
+      if (!data) throw new Error('Error getting DRE DATA');
 
-      for(const item of data.data['grid']) {
+      const DreData: DreData = {};
+
+      for (const item of data.data['grid']) {
         const key = item.gridLineModel?.key;
         const values = item.gridLineModel?.values;
         const valuesToSave: ValuesData = {};
 
-        if(values) {
-          for(let i = 0; i < values.length; i++) {
+        if (values) {
+          for (let i = 0; i < values.length; i++) {
             valuesToSave[(new Date().getFullYear() - (i + 1)).toString()] = {
-               date: (new Date().getFullYear() - (i + 1)).toString(),
-               value: values[i]
-            }
+              date: (new Date().getFullYear() - (i + 1)).toString(),
+              value: values[i],
+            };
           }
         }
 
         if (key && values) {
           DreData[key] = {
             actual: values[0],
-            values: valuesToSave
-          }
+            values: valuesToSave,
+          };
         }
       }
 
       return DreData;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return null;
     }
   }
@@ -621,6 +619,94 @@ export default class TickerFetcher {
       if (!data) throw new Error('Error Getting Image Data');
       return data;
     } catch (error) {
+      return null;
+    }
+  }
+
+  static async getHighsAndLows() {
+    async function getHtmlPage() {
+      try {
+        return (
+          await axios.get(`https://statusinvest.com.br/`, {
+            headers: {
+              'User-Agent': 'CPI/V1',
+            },
+          })
+        ).data;
+      } catch (err: any) {
+        throw new Error(err.message);
+      }
+    }
+
+    interface ItemData {
+      ticker: string;
+      companyName: string;
+      variation: string;
+      currentPrice: string;
+    }
+
+    interface HomeItens {
+      lows: ItemData[];
+      high: ItemData[];
+      dividends: ItemData[];
+      Announcements: ItemData[];
+    }
+
+    try {
+      const $ = Cheerio;
+      const html = await getHtmlPage();
+      const scrapper = new Scrapper(html);
+
+      const selectors = {
+        listItem: '[role="listitem"]',
+      };
+
+      const listItems = scrapper.extractElement(selectors.listItem);
+      console.log(listItems?.html());
+
+      if (!listItems) {
+        throw new Error('Não foi possível encontrar os itens da lista.');
+      }
+
+      const categorizedItems: HomeItens = {
+        lows: [],
+        high: [],
+        dividends: [],
+        Announcements: [],
+      };
+
+      listItems.each((i, item) => {
+        if (i > 23) return; // Para no sexto item
+        const $item = $(item);
+        const ticker = $item.find('h4').text().trim();
+        const companyName = $item.find('h4 small').text().trim();
+        const variation = $item.find('.main-info .value').text().trim();
+        const currentPrice = $item
+          .find('.main-info .other-value')
+          .text()
+          .trim();
+
+        const itemData: ItemData = {
+          ticker,
+          companyName,
+          variation,
+          currentPrice,
+        };
+
+        if (variation.includes('JCP') || variation.includes('Dividendo')) {
+          categorizedItems.dividends.push(itemData);
+        } else if (variation.includes('comunicado novo/atualizado')) {
+          categorizedItems.Announcements.push(itemData);
+        } else if (variation.includes('arrow_upward')) {
+          categorizedItems.high.push(itemData);
+        } else if (variation.includes('arrow_downward')) {
+          categorizedItems.lows.push(itemData);
+        }
+      });
+
+      return categorizedItems;
+    } catch (error: any) {
+      console.log('Erro:', error.message);
       return null;
     }
   }
