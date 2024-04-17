@@ -8,6 +8,8 @@ import cors, { CorsOptions } from 'cors';
 import './database/index.js';
 
 import stockRoutes from './routes/stock.routes.js';
+import variationRoutes from './routes/variation.routes.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -30,6 +32,7 @@ class App {
   }
   routes() {
     this.app.use('/', stockRoutes);
+    this.app.use('/', variationRoutes)
   }
 
   middlewares() {

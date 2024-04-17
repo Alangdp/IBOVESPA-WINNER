@@ -662,7 +662,6 @@ export default class TickerFetcher {
       };
 
       const listItems = scrapper.extractElement(selectors.listItem);
-      console.log(listItems?.html());
 
       if (!listItems) {
         throw new Error('Não foi possível encontrar os itens da lista.');
@@ -676,7 +675,7 @@ export default class TickerFetcher {
       };
 
       listItems.each((i, item) => {
-        if (i > 23) return; // Para no sexto item
+        if (i > 23) return;
         const $item = $(item);
         const ticker = $item.find('h4').text().trim();
         const companyName = $item.find('h4 small').text().trim();
@@ -689,13 +688,13 @@ export default class TickerFetcher {
         const itemData: ItemData = {
           ticker,
           companyName,
-          variation,
+          variation: variation,
           currentPrice,
         };
 
-        if (variation.includes('JCP') || variation.includes('Dividendo')) {
+        if (variation.includes('R$')) {
           categorizedItems.dividends.push(itemData);
-        } else if (variation.includes('comunicado novo/atualizado')) {
+        } else if (variation.includes('comunicado')) {
           categorizedItems.Announcements.push(itemData);
         } else if (variation.includes('arrow_upward')) {
           categorizedItems.high.push(itemData);
