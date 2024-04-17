@@ -7,6 +7,7 @@ import {
   ArrowDownIcon,
 } from "@radix-ui/react-icons";
 import { TickerItem } from "./TickerItem";
+import { ResponseProps } from "@/types/Response.type";
 
 interface headerProps {
   title: string;
@@ -23,7 +24,9 @@ export function Header({ title }: headerProps) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`http://${STOCK_API_URL}/stock/tickers`);
-      setTickers(response.data.tickers);
+      const data:ResponseProps<string[]> = response.data;
+
+      setTickers(data.data ?? []);
     };
     fetchData();
   }, []);
@@ -39,7 +42,6 @@ export function Header({ title }: headerProps) {
       continue;
     }
 
-    console.log(filtredTickers);
     setFinded(filtredTickers);
   }
 

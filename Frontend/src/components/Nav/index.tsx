@@ -7,10 +7,10 @@ export function NavBar() {
   return(
     <div className="nav h-14 bg-df flex justify-around items-center p-4 text-white">
         <div className="company flex items-center justify-between w-fit gap-4 text-white">
-          <a href="">
+          <a href="/" className="flex justify-center items-center gap-4">
             <img src={OficialLogo} alt="Logo" className=" " />
+            <div className="text-lg ">CPI</div>
           </a>
-          <div className="text-lg ">CPI</div>
         </div>
 
         <div className="main-buttons flex items-center gap-8">

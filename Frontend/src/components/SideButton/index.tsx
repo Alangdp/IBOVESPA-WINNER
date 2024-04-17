@@ -32,7 +32,7 @@ export function SideButton({
   return (
     <Button.Root active={active} onClick={handleClick} className={cn("p-2 w-[200px] text-[#9E9E9E] rounded-[10px] flex items-center justify-start gap-2 transition-all duration-700", className)}>
       {icon ? <Button.Icon icon={icon} active={active} /> : null}
-      <Button.Content text={selected + 123} active={active} />
+      <Button.Content text={text} active={active} />
     </Button.Root>
   );
 }

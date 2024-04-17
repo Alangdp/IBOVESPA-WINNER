@@ -1,7 +1,6 @@
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 
 interface VariationProps {
-    img: string;
     ticker: string;
     name: string;
     variation: number;
@@ -10,13 +9,19 @@ interface VariationProps {
 }
 
 
-export function VariationItem({ img, name, ticker, type, value, variation }: VariationProps) {
+export function VariationItem({ name, ticker, type, value, variation }: VariationProps) {
+    const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+
     return (
         <div className="item rounded-df grid grid-cols-[3fr,8fr] h-max m-2 p-2 bg-df">
             <img
-                src={img}
+                src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+                onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+                }}
+                alt="Ticker Logo"
                 className="overflow-hidden rounded-df lg:h-16"
-                alt=""
             />
             <div className="info flex flex-col items-stretch  w-full justify-around ml-2">
                 <div className="name flex items-center gap-3">

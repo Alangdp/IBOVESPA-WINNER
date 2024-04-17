@@ -1,3 +1,5 @@
+import { DreData } from "@/types/Dre.type";
+import { HomeItens } from "@/types/HomeItens.type";
 import { PriceData } from "@/types/Price.type";
 import { ResponseProps } from "@/types/Response.type";
 import axios from "axios";
@@ -13,6 +15,28 @@ export const validateTicker = async (ticker: string) => {
     return false;
   } catch (error) {
     return false;
+  }
+}
+
+export const getVariations = async () => {
+  try {
+    const response = await axios.get(`http://${dataAPI}/stock/variations`);
+    const data: ResponseProps<HomeItens> = response.data;
+    return data.data;
+  } catch (error) {
+    throw new Error("Error getting variation items");
+  }
+}
+
+export const getDre = async (ticker: string) => {
+  try {
+    const response = await axios.post(`http://${dataAPI}/stock/stockInfo/`, {
+      ticker
+    });
+    const data: ResponseProps<DreData> = response.data;
+    return data.data;
+  } catch (error) {
+    throw new Error("Invalid Ticker or internal Error")
   }
 }
 

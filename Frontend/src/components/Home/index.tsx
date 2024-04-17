@@ -1,26 +1,31 @@
-import {
-  ArrowRightIcon,
-  ArrowUpIcon,
-} from "@radix-ui/react-icons";
+import { ArrowRightIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { DividendItem } from "./Stocks/Dividend";
 
 import newImage from "../../assets/imgs/news.png";
-import OficialLogo from "../../assets/OficialLog.svg";
 import { VariationItem } from "./Stocks/Variation";
-import { Register } from "../sign";
 import { NavBar } from "../Nav";
+import { useEffect, useState } from "react";
+import { HomeItens } from "@/types/HomeItens.type";
+import { getVariations } from "@/Utils/ApiUtils";
 
 export default function Home() {
-  const mockUrlImage =
-    "https://investidor10.com.br/storage/companies/5f19c3e7e124c.jpeg";
+  const [variations, setVariations] = useState<HomeItens>();
 
+  const fetchData = async () => {
+    if (!variations) setVariations(await getVariations());
+  };
 
+  useEffect(() => {
+    fetchData();
+  });
 
-    return (
-      <div className="bg-[#3F3F3F] w-screen h-screen text-white">
+  console.log(variations?.dividends);
+
+  return (
+    <div className="bg-[#3F3F3F] w-screen h-screen text-white">
       {/* nav */}
       <NavBar />
-      
+
       {/* main */}
       <main className="bg-[#3F3F3F]">
         <div
@@ -106,46 +111,28 @@ export default function Home() {
               </div>
               <div className="content">
                 <div className="info flex flex-col">
-                  <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="up"
-                    value={16.8}
-                    variation={1}
-                  />
-                  <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="up"
-                    value={16.8}
-                    variation={1}
-                  />
-                  <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="up"
-                    value={16.8}
-                    variation={1}
-                  />
-                  <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="up"
-                    value={16.8}
-                    variation={1}
-                  />
-                  <VariationItem
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                    type="up"
-                    value={16.8}
-                    variation={1}
-                  />
+                  {variations &&
+                    variations.high.map((item, index) => (
+                      <>
+                        <VariationItem
+                          name={item.ticker.split(item.ticker.split(" ")[0])[1]}
+                          ticker={item.ticker.split(" ")[0]}
+                          type="up"
+                          value={Number(
+                            item.currentPrice
+                              .split("R$")[1]
+                              .trim()
+                              .replace(",", ".")
+                          )}
+                          variation={Number(
+                            item.variation
+                              .split("arrow_upward")[1]
+                              .replace("%", "")
+                              .replace(",", ".")
+                          )}
+                        />
+                      </>
+                    ))}
                 </div>
               </div>
             </div>
@@ -154,50 +141,28 @@ export default function Home() {
                 <h3 className="font-bold text-2xl m-4">Baixas</h3>
               </div>
               <div className="info flex flex-col">
-                <VariationItem
-                  img={mockUrlImage}
-                  name="Banco do Brasil"
-                  ticker="BBAS3"
-                  type="down"
-                  value={16.8}
-                  variation={1}
-                />
-
-                <VariationItem
-                  img={mockUrlImage}
-                  name="Banco do Brasil"
-                  ticker="BBAS3"
-                  type="down"
-                  value={16.8}
-                  variation={1}
-                />
-
-                <VariationItem
-                  img={mockUrlImage}
-                  name="Banco do Brasil"
-                  ticker="BBAS3"
-                  type="down"
-                  value={16.8}
-                  variation={1}
-                />
-
-                <VariationItem
-                  img={mockUrlImage}
-                  name="Banco do Brasil"
-                  ticker="BBAS3"
-                  type="down"
-                  value={16.8}
-                  variation={1}
-                />
-
-                <VariationItem
-                  img={mockUrlImage}
-                  name="Banco do Brasil"
-                  ticker="BBAS3"
-                  type="down"
-                  value={16.8}
-                  variation={1}
-                />
+                {variations &&
+                  variations.lows.map((item, index) => (
+                    <>
+                      <VariationItem
+                        name={item.ticker.split(item.ticker.split(" ")[0])[1]}
+                        ticker={item.ticker.split(" ")[0]}
+                        type="down"
+                        value={Number(
+                          item.currentPrice
+                            .split("R$")[1]
+                            .trim()
+                            .replace(",", ".")
+                        )}
+                        variation={Number(
+                          item.variation
+                            .split("arrow_downward")[1]
+                            .replace("%", "")
+                            .replace(",", ".")
+                        )}
+                      />
+                    </>
+                  ))}
               </div>
               <div className="content"></div>
             </div>
@@ -205,50 +170,18 @@ export default function Home() {
               <h3 className="font-bold text-2xl m-4">Dividendos</h3>
               <div className="content">
                 <div className="info flex flex-col">
-                  <DividendItem
-                    dividendDate={new Date("03/13/2024")}
-                    dividendType="JCP"
-                    dividendValue={0.41}
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                  />
-
-                  <DividendItem
-                    dividendDate={new Date("03/13/2024")}
-                    dividendType="JCP"
-                    dividendValue={0.41}
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                  />
-
-                  <DividendItem
-                    dividendDate={new Date("03/13/2024")}
-                    dividendType="JCP"
-                    dividendValue={0.41}
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                  />
-
-                  <DividendItem
-                    dividendDate={new Date("03/13/2024")}
-                    dividendType="JCP"
-                    dividendValue={0.41}
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                  />
-
-                  <DividendItem
-                    dividendDate={new Date("03/13/2024")}
-                    dividendType="JCP"
-                    dividendValue={0.41}
-                    img={mockUrlImage}
-                    name="Banco do Brasil"
-                    ticker="BBAS3"
-                  />
+                  {variations &&
+                    variations.dividends.map((item, index) => (
+                      <>
+                        <DividendItem
+                          name={item.ticker.split(item.ticker.split(" ")[0])[1]}
+                          ticker={item.ticker.split(" ")[0]}
+                          dividendValue={Number(item.variation.split("R$")[1].replace(",", "."))}
+                          dividendDate={item.currentPrice.split("\n")[0]}
+                          dividendType={item.currentPrice.split("\n")[3]}
+                        />
+                      </>
+                    ))}
                 </div>
               </div>
             </div>

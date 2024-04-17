@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <>
+      <div>
         <ToastContainer
           limit={3}
           stacked={true}
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           pauseOnFocusLoss={false}
         />
         <App />
-      </>
+      </div>
     ),
   },
   {
