@@ -1,5 +1,5 @@
 import { Input } from "../ui/input";
-import { RegisterDialog } from "./RegisterDialog";
+import { HomeDialog } from "./HomeDialog";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,13 +20,11 @@ import {
 } from "@radix-ui/react-icons";
 import axios from "axios";
 import { ResponseProps } from "@/types/Response.type";
-
-const phoneRegex = new RegExp(
-  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
-);
+import { TokenProps } from "@/types/Token.type";
+import AuthProvider, { useAuth } from "@/contexts/AuthContext";
+import LocalStorage from "@/Utils/LocalStorage";
 
 const userFilterSchema = z.object({
-  name: z.string().trim().min(3, { message: "Name must be a min 3 length" }),
   email: z
     .string()
     .email({ message: "Email is not valid" })
@@ -34,12 +32,13 @@ const userFilterSchema = z.object({
     .min(4)
     .toLowerCase(),
   password: z.string().trim().min(8, "Password must be a min 8 length"),
-  phone: z.string().regex(phoneRegex, "Invalid phone number")
 });
 
 type UserFilterSchema = z.infer<typeof userFilterSchema>;
 
-export function Register({ children }: RegisterDialogProps) {
+export function Login({ children }: RegisterDialogProps) {
+  const USER_API_URL = import.meta.env.VITE_USER_API_URL;
+
   const {
     register,
     handleSubmit,
@@ -51,14 +50,25 @@ export function Register({ children }: RegisterDialogProps) {
     resolver: zodResolver(userFilterSchema),
   });
   const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
+  const localStorageToken = new LocalStorage<string>({ key: "userToken" });
 
-  async function handleRegister(data: UserFilterSchema) {
+  async function handleLogin(data: UserFilterSchema) {
     const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ""
     const status = toast.loading("Tentando criar conta!", {closeButton: Cross2Icon});
   
     try {
-      await axios.post("http://localhost:3000/users/", {...data});
-      toast.update(status, {render: "Conta criada", type:"success", isLoading:false, autoClose: 1000 });
+      const response = await axios.post(`http://${USER_API_URL}/users/login`, {...data});
+      const responseData: ResponseProps<TokenProps>= response.data;
+
+      const tokenData = responseData.data;
+      if(!tokenData) {
+        toast.update(status, {render: "Erro ao logar", type:"error", isLoading:false, autoClose: 1000 });
+        return
+      }
+
+      localStorageToken.set(tokenData.token);
+      
+      toast.update(status, {render: "Login Concluido", type:"success", isLoading:false, autoClose: 1000 });
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.data) {
         const errors: ResponseProps<any>  = error.response.data;
@@ -76,7 +86,6 @@ export function Register({ children }: RegisterDialogProps) {
 
   useEffect(() => {
     if (userKeys.length > 1) {
-      console.log(userKeys)
       userKeys.forEach((item: keyof UserFilterSchema) => {
         toast.error(errors[item]?.message);
       });
@@ -84,26 +93,12 @@ export function Register({ children }: RegisterDialogProps) {
   }, [errors, userKeys]);
 
   return (
-    <RegisterDialog
+    <HomeDialog
       form={
         <form
-          onSubmit={handleSubmit(handleRegister)}
+          onSubmit={handleSubmit(handleLogin)}
           className="flex flex-col justify-center items-center text-white gap-y-6"
         >
-          <div className="field flex items-center gap-2 w-full justify-center">
-            <PersonIcon width={30} height={30} />
-            <div className="input flex flex-col items-start gap-1 w-fit">
-              <label className="text-sm">Nome</label>
-              <Input
-                className="border-none bg-transparent outline-none text-white"
-                id={"name"}
-                placeholder={"Ex. João Silveira"}
-                type={"text"}
-                {...register("name")}
-              />
-              <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
-            </div>
-          </div>
 
           <div className="field flex items-center gap-2 w-full justify-center">
             <EnvelopeClosedIcon width={30} height={30} />
@@ -135,25 +130,9 @@ export function Register({ children }: RegisterDialogProps) {
             </div>
           </div>
 
-          <div className="field flex items-center gap-2 w-full justify-center">
-            <Pencil1Icon width={30} height={30} />
-            <div className="input flex flex-col items-start gap-1 w-fit">
-              <label className="text-sm">Telefone</label>
-              <Input
-                className="border-none bg-transparent outline-none text-white"
-                id={"phone"}
-                placeholder={"Ex. ********"}
-                type={"text"}
-                {...register("phone")}
-              />
-              <div className="w-full h-[1px] bg-zinc-100/80 rounded-df"></div>
-            </div>
-          </div>
-
           <Button
             type="submit"
             className="bg-[#3A6FF8]"
-            onClick={() => trigger("name")}
           >
             Criar Conta
           </Button>
@@ -161,6 +140,6 @@ export function Register({ children }: RegisterDialogProps) {
       }
     >
       {children}
-    </RegisterDialog>
+    </HomeDialog>
   );
 }

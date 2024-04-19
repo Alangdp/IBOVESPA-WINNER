@@ -15,7 +15,7 @@ interface RegisterDialogProps {
   form: React.ReactNode;
 }
 
-export function RegisterDialog({ children, form }: RegisterDialogProps) {
+export function HomeDialog({ children, form }: RegisterDialogProps) {
 
   return (
     <Dialog>
@@ -27,10 +27,7 @@ export function RegisterDialog({ children, form }: RegisterDialogProps) {
             <span className="text-white">Criar Conta</span>
           </DialogTitle>
         </DialogHeader>
-        {/* <div className="flex flex-col justify-center items-center text-white gap-y-6">
-        </div> */}
         {form}
-
       </DialogContent>
     </Dialog>
   );

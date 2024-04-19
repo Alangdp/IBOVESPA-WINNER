@@ -9,6 +9,7 @@ import { HomeItens } from "@/types/HomeItens.type";
 import { getVariations } from "@/Utils/ApiUtils";
 
 export default function Home() {
+
   const [variations, setVariations] = useState<HomeItens>();
 
   const fetchData = async () => {
@@ -18,8 +19,6 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   });
-
-  console.log(variations?.dividends);
 
   return (
     <div className="bg-[#3F3F3F] w-screen h-screen text-white">
@@ -104,7 +103,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 w-85 transition-all flex- flex-col justify-center">
+          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 w-4/5 transition-all flex- flex-col justify-center">
             <div className="altas rounded-df inline w-full bg-blue-700">
               <div className="title">
                 <h3 className="font-bold text-2xl m-4">Altas</h3>
@@ -112,27 +111,32 @@ export default function Home() {
               <div className="content">
                 <div className="info flex flex-col">
                   {variations &&
-                    variations.high.map((item, index) => (
-                      <>
-                        <VariationItem
-                          name={item.ticker.split(item.ticker.split(" ")[0])[1]}
-                          ticker={item.ticker.split(" ")[0]}
-                          type="up"
-                          value={Number(
-                            item.currentPrice
-                              .split("R$")[1]
-                              .trim()
-                              .replace(",", ".")
-                          )}
-                          variation={Number(
-                            item.variation
-                              .split("arrow_upward")[1]
-                              .replace("%", "")
-                              .replace(",", ".")
-                          )}
-                        />
-                      </>
-                    ))}
+                    variations.high.map((item, index) => {
+
+                      if(index >5 ) return (<></>)
+                      return((
+
+                        <>
+                          <VariationItem
+                            name={item.ticker.split(item.ticker.split(" ")[0])[1]}
+                            ticker={item.ticker.split(" ")[0]}
+                            type="up"
+                            value={Number(
+                              item.currentPrice
+                                .split("R$")[1]
+                                .trim()
+                                .replace(",", ".")
+                            )}
+                            variation={Number(
+                              item.variation
+                                .split("arrow_upward")[1]
+                                .replace("%", "")
+                                .replace(",", ".")
+                            )}
+                          />
+                        </>
+                      ))
+                    })}
                 </div>
               </div>
             </div>
