@@ -1,16 +1,12 @@
-/* eslint-disable react-refresh/only-export-components */
-import { createBrowserRouter, Link, useParams } from "react-router-dom";
-
-import { App } from "./App";
-import Home from "./components/Home";
-import { TransactionTable } from "./components/Ranking";
-
+import { App } from "../App";
+import Home from "../components/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { NavBar } from "./components/Nav";
-import Market from "./components/Martket";
+import { NavBar } from "../components/Nav";
+import Market from "../components/Martket";
+import Private from "./private";
 
-const router = createBrowserRouter([
+const publicRoutes = [
   {
     path: "/",
     element: (
@@ -29,16 +25,18 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <div>
-        <ToastContainer
-          limit={3}
-          stacked={true}
-          position="bottom-right"
-          pauseOnHover={false}
-          pauseOnFocusLoss={false}
-        />
-        <App />
-      </div>
+      <Private>
+        <>
+          <ToastContainer
+            limit={3}
+            stacked={true}
+            position="bottom-right"
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+          />
+          <App />
+        </>
+      </Private>
     ),
   },
   {
@@ -64,6 +62,6 @@ const router = createBrowserRouter([
     path: "*",
     element: <h1>EITA QUE DEU MERDA</h1>,
   },
-]);
+];
 
-export { router };
+export { publicRoutes } ;

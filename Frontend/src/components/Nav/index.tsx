@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export function NavBar() {
   const { token } = useAuth();
+  console.log(token)
 
   return (
     <div className="nav h-14 bg-df flex justify-around items-center p-4 text-white">

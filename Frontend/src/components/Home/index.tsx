@@ -7,9 +7,11 @@ import { NavBar } from "../Nav";
 import { useEffect, useState } from "react";
 import { HomeItens } from "@/types/HomeItens.type";
 import { getVariations } from "@/Utils/ApiUtils";
+import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Home() {
-
+  const location = useLocation();
   const [variations, setVariations] = useState<HomeItens>();
 
   const fetchData = async () => {
@@ -17,6 +19,12 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const message = location.state?.redirectMessage as string | undefined;
+    if(message) {
+      toast.error(message);
+      location.state = {};
+    }
+
     fetchData();
   });
 

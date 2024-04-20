@@ -15,14 +15,11 @@ import {
   Cross2Icon,
   EnvelopeClosedIcon,
   LockClosedIcon,
-  Pencil1Icon,
-  PersonIcon,
 } from "@radix-ui/react-icons";
 import axios from "axios";
 import { ResponseProps } from "@/types/Response.type";
 import { TokenProps } from "@/types/Token.type";
-import AuthProvider, { useAuth } from "@/contexts/AuthContext";
-import LocalStorage from "@/Utils/LocalStorage";
+import { useAuth } from "@/contexts/AuthContext";
 
 const userFilterSchema = z.object({
   email: z
@@ -37,49 +34,73 @@ const userFilterSchema = z.object({
 type UserFilterSchema = z.infer<typeof userFilterSchema>;
 
 export function Login({ children }: RegisterDialogProps) {
+  const { updateToken, token } = useAuth();
   const USER_API_URL = import.meta.env.VITE_USER_API_URL;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    trigger,
   } = useForm<UserFilterSchema>({
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     resolver: zodResolver(userFilterSchema),
   });
   const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
-  const localStorageToken = new LocalStorage<string>({ key: "userToken" });
 
   async function handleLogin(data: UserFilterSchema) {
-    const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ""
-    const status = toast.loading("Tentando criar conta!", {closeButton: Cross2Icon});
-  
+    const capitalize = (s: string) =>
+      (s && s[0].toUpperCase() + s.slice(1)) || "";
+    const status = toast.loading("Tentando criar conta!", {
+      closeButton: Cross2Icon,
+    });
+
     try {
-      const response = await axios.post(`http://${USER_API_URL}/users/login`, {...data});
-      const responseData: ResponseProps<TokenProps>= response.data;
+      const response = await axios.post(`http://${USER_API_URL}/users/login`, {
+        ...data,
+      });
+      const responseData: ResponseProps<TokenProps> = response.data;
 
       const tokenData = responseData.data;
-      if(!tokenData) {
-        toast.update(status, {render: "Erro ao logar", type:"error", isLoading:false, autoClose: 1000 });
-        return
+      if (!tokenData) {
+        toast.update(status, {
+          render: "Erro ao logar",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
+        return;
       }
 
-      localStorageToken.set(tokenData.token);
-      
-      toast.update(status, {render: "Login Concluido", type:"success", isLoading:false, autoClose: 1000 });
+      updateToken(tokenData.token); // Usando diretamente o valor retornado por updateToken
+
+      toast.update(status, {
+        render: "Login Concluido",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.data) {
-        const errors: ResponseProps<any>  = error.response.data;
+        const errors: ResponseProps<any> = error.response.data;
 
-        errors.errors?.forEach( error => {
-          toast.update(status, {render: capitalize(error.message), type: "error", isLoading: false, autoClose: 1000});
-        })
+        errors.errors?.forEach((error) => {
+          toast.update(status, {
+            render: capitalize(error.message),
+            type: "error",
+            isLoading: false,
+            autoClose: 1000,
+          });
+        });
       } else {
         // Handle unexpected errors
         console.error("Error:", error);
-        toast.update(status, {render: "Erro ao criar conta", type: "error", isLoading: false, autoClose: 1000});
+        toast.update(status, {
+          render: "Erro ao criar conta",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
       }
     }
   }
@@ -99,7 +120,6 @@ export function Login({ children }: RegisterDialogProps) {
           onSubmit={handleSubmit(handleLogin)}
           className="flex flex-col justify-center items-center text-white gap-y-6"
         >
-
           <div className="field flex items-center gap-2 w-full justify-center">
             <EnvelopeClosedIcon width={30} height={30} />
             <div className="input flex flex-col items-start gap-1 w-fit">
@@ -130,10 +150,7 @@ export function Login({ children }: RegisterDialogProps) {
             </div>
           </div>
 
-          <Button
-            type="submit"
-            className="bg-[#3A6FF8]"
-          >
+          <Button type="submit" className="bg-[#3A6FF8]">
             Criar Conta
           </Button>
         </form>

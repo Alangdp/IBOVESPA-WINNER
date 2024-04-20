@@ -19,7 +19,7 @@ export default class LocalStorage<T> {
     }
   }
 
-  set(data: T): void {
+  set(data: T | null): void {
     localStorage.setItem(this.key, JSON.stringify(data));
   }
 

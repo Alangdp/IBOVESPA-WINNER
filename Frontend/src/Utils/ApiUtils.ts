@@ -6,6 +6,8 @@ import axios from "axios";
 
 
 const dataAPI: string = import.meta.env.VITE_STOCK_API_URL;
+const tokenAPI: string = import.meta.env.VITE_TOKEN_API_URL;
+const secretToken: string = import.meta.env.VITE_SECRET_TOKEN;
 
 export const validateTicker = async (ticker: string) => {
   try {
@@ -14,6 +16,23 @@ export const validateTicker = async (ticker: string) => {
     if(status === 200) return true;
     return false;
   } catch (error) {
+    return false;
+  }
+}
+
+export const validateToken = async (token: string | undefined) => {
+  try {
+    if(!token) return false;
+    const response = await axios.post(`http://${tokenAPI}/token/user`, {
+      token,
+      authorization: secretToken
+    });
+
+    const status = response.status;
+    if(status === 200) return true;
+    return false;
+  } catch (error) {
+    console.log(error)
     return false;
   }
 }
