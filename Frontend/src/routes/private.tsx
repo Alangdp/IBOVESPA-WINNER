@@ -1,31 +1,27 @@
-import { validateToken } from "@/Utils/ApiUtils";
+import { validateToken } from "@/Utils/ApiUtils"; // Corrected typo
 import { useAuth } from "@/contexts/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface PrivateProps {
-  children: React.JSX.Element;
+  children: JSX.Element;
 }
 
 export default function Private({ children }: PrivateProps) {
-  const { token, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const validate = async () => {
-    const status = await validateToken(token);
-    console.log(status)
-    if(!status) {
-      logout();
-      // navigate("/", { state: { redirectMessage: "Invalid Token"}})
-    }
-  } 
+  const { token, logout} = useAuth();
+  const navigate = useNavigate()
 
   useEffect(() => {
+    async function validate() {
+      const status = await validateToken(token);
+      if (!status) {
+        logout();
+        navigate("/", { state: { redirectMessage: "Invalid Token"}});
+      }
+    }
+
     validate();
-  }, [])
+  }, [token]);
 
-
-  return(
-    children
-  )
+  return <>{children}</>; 
 }

@@ -2,13 +2,16 @@ import OficialLogo from "../../assets/OficialLog.svg";
 import { Register } from "../sign/register";
 import { Login } from "../sign/login";
 import { useAuth } from "@/contexts/AuthContext";
+import { cn } from "@/lib/utils";
 
-export function NavBar() {
+interface NavBarProps {
+  className?: string
+}
+
+export function NavBar({ className }: NavBarProps) {
   const { token } = useAuth();
-  console.log(token)
-
   return (
-    <div className="nav h-14 bg-df flex justify-around items-center p-4 text-white">
+    <div className={cn("nav h-14 bg-df flex justify-around items-center p-4 text-white", className)}>
       <div className="company flex items-center justify-between w-fit gap-4 text-white">
         <a href="/" className="flex justify-center items-center gap-4">
           <img src={OficialLogo} alt="Logo" className=" " />

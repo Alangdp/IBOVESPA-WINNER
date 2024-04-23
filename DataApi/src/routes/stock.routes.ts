@@ -19,4 +19,5 @@ router.get('/stock/rank', getRank)
 router.post('/stock/history', getHistory)
 router.get('/stock/validTicker/:ticker', validTicker);
 
+
 export default router;

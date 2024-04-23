@@ -5,19 +5,26 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavBar } from "../components/Nav";
 import Market from "../components/Martket";
 import Private from "./private";
+import { TransactionTable } from "@/components/Ranking";
+import { SideBar } from "@/components/SideBar";
+import { Header } from "@/components/Header";
+
+const DefaultToast = () => (
+  <ToastContainer
+    limit={3}
+    stacked={true}
+    position="bottom-right"
+    pauseOnHover={false}
+    pauseOnFocusLoss={false}
+  />
+);
 
 const publicRoutes = [
   {
     path: "/",
     element: (
       <>
-        <ToastContainer
-          limit={3}
-          stacked={true}
-          position="bottom-right"
-          pauseOnHover={false}
-          pauseOnFocusLoss={false}
-        />
+        <DefaultToast key={"TOAST"} />
         <Home />
       </>
     ),
@@ -27,13 +34,7 @@ const publicRoutes = [
     element: (
       <Private>
         <>
-          <ToastContainer
-            limit={3}
-            stacked={true}
-            position="bottom-right"
-            pauseOnHover={false}
-            pauseOnFocusLoss={false}
-          />
+          <DefaultToast />
           <App />
         </>
       </Private>
@@ -43,20 +44,13 @@ const publicRoutes = [
     path: "/market/brasil/:stockTicker",
     element: (
       <>
-        <ToastContainer
-          limit={3}
-          stacked={true}
-          position="bottom-right"
-          pauseOnHover={false}
-          pauseOnFocusLoss={false}
-        />
-
+        <DefaultToast />
         <NavBar />
         <div className="screen w-screen bg-zinc-800 text-white flex flex-col items-center">
-          <Market marketName="Brasil"/>
+          <Market marketName="Brasil" />
         </div>
       </>
-    )
+    ),
   },
   {
     path: "*",
@@ -64,4 +58,4 @@ const publicRoutes = [
   },
 ];
 
-export { publicRoutes } ;
+export { publicRoutes };

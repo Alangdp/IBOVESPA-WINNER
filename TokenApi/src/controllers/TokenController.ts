@@ -22,7 +22,6 @@ const getUserByToken: RequestHandler = async (req, res, next) => {
   const userService = new UserService();
 
   try {
-    console.log(req.body);
     const { token } = req.body;
     const tokenInstance = await tokenService.getToken(token);
     const user = await userService.getById(tokenInstance.user_id);

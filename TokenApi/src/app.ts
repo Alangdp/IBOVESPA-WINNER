@@ -22,11 +22,11 @@ class App {
   }
 
   private middlewares(): void {
-    this.app.use(cors()); // Allow all origins by default
-    this.app.use(express.json()); // Parse JSON bodies
+    this.app.use(cors());
+    this.app.use(express.json());
 
-    // Define config options for cors
-    this.app.options('*', cors()); // Enable pre-flight across all routes
+    this.app.use('*', cors())
+    this.app.options('*', cors());
   }
 }
 

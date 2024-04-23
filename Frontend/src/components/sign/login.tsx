@@ -94,7 +94,7 @@ export function Login({ children }: RegisterDialogProps) {
         });
       } else {
         // Handle unexpected errors
-        console.error("Error:", error);
+        console.log("Error:", error);
         toast.update(status, {
           render: "Erro ao criar conta",
           type: "error",

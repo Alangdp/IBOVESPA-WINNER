@@ -12,4 +12,5 @@ export interface PontuationProps {
   id: string;
   subId?: string;
   totalPoints: number;
+  totalEvaluate: PontuationRule[]
 }
