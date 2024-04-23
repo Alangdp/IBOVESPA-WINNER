@@ -9,7 +9,7 @@ export default class LocalStorage<T> {
     this.key = key;
   }
 
-  get(): T {
+  get(): T | {} {
     try {
       const storedValue = localStorage.getItem(this.key);
       const parsedValue: T = JSON.parse(storedValue || "");
@@ -19,7 +19,7 @@ export default class LocalStorage<T> {
     }
   }
 
-  set(data: T): void {
+  set(data: T | null): void {
     localStorage.setItem(this.key, JSON.stringify(data));
   }
 

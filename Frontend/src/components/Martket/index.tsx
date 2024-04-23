@@ -17,13 +17,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getPrice } from "@/Utils/ApiUtils";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { PriceList } from "@/types/Price.type";
 import LocalStorage from "@/Utils/LocalStorage";
 import { validateToleranceTime } from "@/Utils/Math";
 import { Button } from "../Button";
 import { InfoCard } from "./info-card";
 import IndexCard from "./index-card";
+import { GridStockPage } from "./StockData";
+import { Loading } from "../Loading";
 
 interface TimeLimits {
   [key: string]: number;
@@ -48,9 +50,9 @@ export default function Market({ marketName }: MarketProps) {
   const upperStockTicker = stockTicker?.toUpperCase();
 
   let pricesFiltered = priceList[upperStockTicker!]
-    ? priceList[upperStockTicker!].price.reverse().filter(
-        (_, index) => index <= timeLimits[interval]
-      )
+    ? priceList[upperStockTicker!].price
+        .reverse()
+        .filter((_, index) => index <= timeLimits[interval])
     : [];
 
   const fetchPrices = async () => {
@@ -124,10 +126,10 @@ export default function Market({ marketName }: MarketProps) {
             <CaretRightIcon className="w-12 h-8" />
           </div>
           <div className="cards grid grid-cols-4 m-4 gap-2">
-            <IndexCard Icon={B3}/>
-            <IndexCard Icon={B3}/>
-            <IndexCard Icon={B3}/>
-            <IndexCard Icon={B3}/>
+            <IndexCard Icon={B3} />
+            <IndexCard Icon={B3} />
+            <IndexCard Icon={B3} />
+            <IndexCard Icon={B3} />
           </div>
           <div className="graph w-full flex flex-col justify-center items-center">
             <ResponsiveContainer
@@ -231,17 +233,9 @@ export default function Market({ marketName }: MarketProps) {
               </div>
             </a>
 
-            <div className="info grid grid-cols-4 grid-rows-2 items-center justify-center gap-4 p-4">
-              <InfoCard infoName="Valor de Mercado" infoValue={"100 B"} />
-              <InfoCard infoName="Rendimento do Dividendo (Indicado)" infoValue={"-"}  />
-              <InfoCard infoName="Razão Preço/Lucro(12M)" infoValue={"6.75 B"} brl={true} />
-              <InfoCard infoName="EPS Básico (12M)" infoValue={"9.18"} brl={true} />
-              {/* { METADE } */}
-              <InfoCard infoName="Lucro Líquido" infoValue={"100 B"} brl={true} />
-              <InfoCard infoName="Receita" infoValue={"208.7 B"} brl={true} />
-              <InfoCard infoName="Flutuação da Ação" infoValue={"4 B"} brl={true} />
-              <InfoCard infoName="Beta(1A)" infoValue={"1.18"} />
-            </div>
+            <Suspense fallback={<Loading />}>
+              <GridStockPage ticker={upperStockTicker!}/>
+            </Suspense>
           </div>
         </div>
       </div>

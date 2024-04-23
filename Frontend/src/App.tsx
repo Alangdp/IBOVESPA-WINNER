@@ -10,7 +10,7 @@ export function App() {
         <div className="content bg-[#1e1e1e] flex h-screen overflow-hidden w-screen flex-col lg:flex-row">
           <SideBar className="hidden lg:grid" />
           <NavBar className="lg:hidden gap-4" />
-          <div className="container w-full h-full p-4">
+          <div className="container w-full h-full p-4 overflow-y-scroll no-scrollbar">
             <Header title="Dashboard" />
             <DashBoard />
           </div>
