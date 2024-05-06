@@ -1,0 +1,162 @@
+[
+  {
+    "key": "HomeItems",
+    "data": [
+      {
+        "lows": [
+          {
+            "ticker": "BRKM5 BRASKEM",
+            "companyName": "BRASKEM",
+            "variation": "arrow_downward\n-14,57%",
+            "currentPrice": "R$\n19,65"
+          },
+          {
+            "ticker": "MRFG3 MARFRIG",
+            "companyName": "MARFRIG",
+            "variation": "arrow_downward\n-5,00%",
+            "currentPrice": "R$\n9,12"
+          },
+          {
+            "ticker": "BEEF3 MINERVA",
+            "companyName": "MINERVA",
+            "variation": "arrow_downward\n-3,84%",
+            "currentPrice": "R$\n6,01"
+          },
+          {
+            "ticker": "CSAN3 COSAN",
+            "companyName": "COSAN",
+            "variation": "arrow_downward\n-3,66%",
+            "currentPrice": "R$\n14,22"
+          },
+          {
+            "ticker": "DXCO3 DURATEX",
+            "companyName": "DURATEX",
+            "variation": "arrow_downward\n-3,32%",
+            "currentPrice": "R$\n7,57"
+          },
+          {
+            "ticker": "BRFS3 BRF",
+            "companyName": "BRF",
+            "variation": "arrow_downward\n-3,11%",
+            "currentPrice": "R$\n16,20"
+          }
+        ],
+        "high": [
+          {
+            "ticker": "PETZ3 PETZ",
+            "companyName": "PETZ",
+            "variation": "arrow_upward\n4,72%",
+            "currentPrice": "R$\n5,10"
+          },
+          {
+            "ticker": "SLCE3 SLC AGRICOLA",
+            "companyName": "SLC AGRICOLA",
+            "variation": "arrow_upward\n1,64%",
+            "currentPrice": "R$\n18,58"
+          },
+          {
+            "ticker": "BBSE3 BB SEGURIDADE",
+            "companyName": "BB SEGURIDADE",
+            "variation": "arrow_upward\n1,61%",
+            "currentPrice": "R$\n33,37"
+          },
+          {
+            "ticker": "USIM5 USIMINAS",
+            "companyName": "USIMINAS",
+            "variation": "arrow_upward\n1,50%",
+            "currentPrice": "R$\n8,12"
+          },
+          {
+            "ticker": "PCAR3 CIA BRASILEIRA DE DISTRIBUIÇÃO",
+            "companyName": "CIA BRASILEIRA DE DISTRIBUIÇÃO",
+            "variation": "arrow_upward\n1,47%",
+            "currentPrice": "R$\n3,45"
+          },
+          {
+            "ticker": "RDOR3 REDE D OR SÃO LUIZ S.A.",
+            "companyName": "REDE D OR SÃO LUIZ S.A.",
+            "variation": "arrow_upward\n1,45%",
+            "currentPrice": "R$\n27,21"
+          }
+        ],
+        "dividends": [
+          {
+            "ticker": "EGIE3 ENGIE BRASIL",
+            "companyName": "ENGIE BRASIL",
+            "variation": "R$1,2188",
+            "currentPrice": "06/05/2024\n\n\nDividendo"
+          },
+          {
+            "ticker": "ITSA4 ITAUSA",
+            "companyName": "ITAUSA",
+            "variation": "R$0,0235",
+            "currentPrice": "31/05/2024\n\n\nJCP"
+          },
+          {
+            "ticker": "ITUB4 BANCO ITAU UNIBANCO",
+            "companyName": "BANCO ITAU UNIBANCO",
+            "variation": "R$0,0177",
+            "currentPrice": "31/05/2024\n\n\nJCP"
+          },
+          {
+            "ticker": "BBDC3 BRADESCO",
+            "companyName": "BRADESCO",
+            "variation": "R$0,0172",
+            "currentPrice": "03/06/2024\n\n\nJCP"
+          },
+          {
+            "ticker": "BBDC4 BRADESCO",
+            "companyName": "BRADESCO",
+            "variation": "R$0,0190",
+            "currentPrice": "03/06/2024\n\n\nJCP"
+          },
+          {
+            "ticker": "ITUB4 BANCO ITAU UNIBANCO",
+            "companyName": "BANCO ITAU UNIBANCO",
+            "variation": "R$0,0177",
+            "currentPrice": "28/06/2024\n\n\nJCP"
+          }
+        ],
+        "Announcements": [
+          {
+            "ticker": "RENT3 LOCALIZA",
+            "companyName": "LOCALIZA",
+            "variation": "2\ncomunicados novos/atualizados",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "RAIL3 RUMO",
+            "companyName": "RUMO",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "BBSE3 BB SEGURIDADE",
+            "companyName": "BB SEGURIDADE",
+            "variation": "7\ncomunicados novos/atualizados",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "ENEV3 ENEVA",
+            "companyName": "ENEVA",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "CMIG4 CEMIG",
+            "companyName": "CEMIG",
+            "variation": "2\ncomunicados novos/atualizados",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "CSAN3 COSAN",
+            "companyName": "COSAN",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          }
+        ]
+      }
+    ],
+    "instanceTime": 1715033583767
+  }
+]

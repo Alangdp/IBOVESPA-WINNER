@@ -51,6 +51,7 @@ export default class Database<T> {
   }
   
   get() {
+    if(this.db.data.length === 0) return [];
     return this.db.data;
   }
 

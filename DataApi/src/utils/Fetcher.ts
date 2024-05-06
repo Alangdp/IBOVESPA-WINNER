@@ -24,6 +24,7 @@ import { DReRoot, DreData, ValuesData } from '../types/DRE.type.js';
 import { combineTableNames } from 'sequelize/types/utils.js';
 import { ConnectionStates } from 'mongoose';
 import { val } from 'cheerio/lib/api/attributes.js';
+import { HomeItens, ItemData } from '../types/HomeItens.type.js';
 
 // FIXME REFAZER TUDO AQUI
 // TODO - ROE INCORRETO CONSERTAR
@@ -637,21 +638,7 @@ export default class TickerFetcher {
         throw new Error(err.message);
       }
     }
-
-    interface ItemData {
-      ticker: string;
-      companyName: string;
-      variation: string;
-      currentPrice: string;
-    }
-
-    interface HomeItens {
-      lows: ItemData[];
-      high: ItemData[];
-      dividends: ItemData[];
-      Announcements: ItemData[];
-    }
-
+    
     try {
       const $ = Cheerio;
       const html = await getHtmlPage();
