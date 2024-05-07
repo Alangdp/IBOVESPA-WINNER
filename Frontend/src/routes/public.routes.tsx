@@ -5,9 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavBar } from "../components/Nav";
 import Market from "../components/Martket";
 import Private from "./private";
-import { TransactionTable } from "@/components/Ranking";
-import { SideBar } from "@/components/SideBar";
-import { Header } from "@/components/Header";
 
 const DefaultToast = () => (
   <ToastContainer
@@ -24,7 +21,7 @@ const publicRoutes = [
     path: "/",
     element: (
       <>
-        <DefaultToast key={"TOAST"} />
+        <DefaultToast/>
         <Home />
       </>
     ),

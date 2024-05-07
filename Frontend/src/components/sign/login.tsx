@@ -72,7 +72,7 @@ export function Login({ children }: RegisterDialogProps) {
         return;
       }
 
-      updateToken(tokenData.token); // Usando diretamente o valor retornado por updateToken
+      updateToken(tokenData.token);
 
       toast.update(status, {
         render: "Login Concluido",

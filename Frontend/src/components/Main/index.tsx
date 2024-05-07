@@ -14,8 +14,10 @@ export default function MainDashBoard() {
       <NavBar className="lg:hidden gap-4"/>
       <div className="container w-full h-full p-4 overflow-y-scroll no-scrollbar">
         <Header title="Dashboard" />
-        {selected === "Overview" ? <DashBoard /> : <></>}
-        {selected === "Transações" ? <TransactionTable /> : <></>}
+        {/* {selected === "Overview" ? <DashBoard /> : <></>} */}
+        {/* {selected === "Transações" ? <TransactionTable /> : <></>} */}
+        {selected === "Overview" ? <TransactionTable /> : <></>}
+
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 export type TransactionType  = "BUY" | "SELL";
 
 export interface TransactionsProps {
-  img?: string
+  id: number
   ticker: string
-  name: string
-  transactionDate: Date
-  transactionDateString: string
-  quantity: number
+  transactionDate: string
   price: number
-  type: TransactionType
+  quantity: number
+  totalValue: number
+  type: string
+  userId: number
 }

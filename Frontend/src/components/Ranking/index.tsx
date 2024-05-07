@@ -1,76 +1,44 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TransactionsProps } from "@/types/Transaction.type";
-import { ButtonHTMLAttributes, useState } from "react";
-import { Button } from "../ui/button";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { TransactionsProps } from "@/types/Transaction.type";
+import { deleteTransaction, getTransaction } from "@/Utils/ApiUtils";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "../ui/button";
 
-const transactions: TransactionsProps[] = [
-  {
-    img: "https://statusinvest.com.br/img/company/avatar/331.jpg?v=42",
-    ticker: "AAPL",
-    name: "Banco do Brasil",
-    transactionDate: new Date("2024-03-01"),
-    transactionDateString: "2024-03-01",
-    quantity: 100,
-    price: 150.25,
-    type: "BUY",
-  },
-  {
-    img: "https://statusinvest.com.br/img/company/avatar/331.jpg?v=42",
-    ticker: "GOOGL",
-    name: "Banco do Brasil",
-    transactionDate: new Date("2024-03-03"),
-    transactionDateString: "2024-03-03",
-    quantity: 50,
-    price: 2100.75,
-    type: "SELL",
-  },
-  {
-    img: "https://statusinvest.com.br/img/company/avatar/331.jpg?v=42",
-    ticker: "MSFT",
-    name: "Banco do Brasil",
-    transactionDate: new Date("2024-03-05"),
-    transactionDateString: "2024-03-05",
-    quantity: 75,
-    price: 300.5,
-    type: "BUY",
-  },
-  {
-    img: "https://statusinvest.com.br/img/company/avatar/331.jpg?v=42",
-    ticker: "AMZN",
-    name: "Banco do Brasil",
-    transactionDate: new Date("2024-03-06"),
-    transactionDateString: "2024-03-06",
-    quantity: 25,
-    price: 3500.0,
-    type: "SELL",
-  },
-];
+const AVATAR_URL: string = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
 export function TransactionTable() {
-  // TODO - FAZER SISTEMA PEGA AS TRANSAÇÕES VIA API
+  const { token } = useAuth();
+  const [transactions, setTransactions] = useState<TransactionsProps[]>();
   const [selected, setSelected] = useState<string>("Histórico");
 
-  const teste = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClickOption = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const button = e.target as HTMLButtonElement;
     setSelected(button.innerText);
   };
+
+  const fetchData = async () => {
+    if (!transactions) setTransactions(await getTransaction(token!));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [token]);
 
   return (
     <>
       <div className="menu px-8 flex items-center gap-4 w-full mt-8"> 
         <button
           onClick={(event) => {
-            teste(event);
+            handleClickOption(event);
           }}
           className={cn(
             "relative text-white text-xl font-bold duration-300 flex",
@@ -83,7 +51,7 @@ export function TransactionTable() {
 
         <button
           onClick={(event) => {
-            teste(event);
+            handleClickOption(event);
           }}
           className={cn(
             "relative text-white text-xl font-bold duration-300 flex",
@@ -94,10 +62,10 @@ export function TransactionTable() {
           <span className={cn("absolute left-1/2 -translate-x-1/2 bottom-0 top-7 w-5/6 h-1 bg-bl rounded-df transition-all duration-300 line-on-hover", selected !== "Agendadas" ? "hidden" : "")}></span>
         </button>
       </div>
-      <div className="container rounded-df w-full mt-4 p-0 shadow-lg ">
-        <Table className="rounded-df bg-[#1B2028] text-white shadow-gray-700 w-full p-0">
+      <div className="h-full container rounded-df w-full mt-4 p-0 shadow-lg bg-[#1B2028]">
+        <Table className="rounded-df bg-[#1B2028] text-white shadow-gray-700 w-full p-0 h-full">
           <TableHeader className="rounded-df">
-            <TableRow className="text-white font-bold rounded-df">
+            <TableRow className="text-white font-bold rounded-df h-2">
               <TableHead className="w-[200px] text-center font-bold text-lg">
                 Ticker
               </TableHead>
@@ -116,24 +84,26 @@ export function TransactionTable() {
               <TableHead className="text-center font-bold text-lg">
                 Data
               </TableHead>
+              <TableHead className="text-center font-bold text-lg">
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody className="rounded-df">
-            {transactions.map((transaction, index) => (
-              <TableRow key={index}>
+            {transactions && transactions.map((transaction, index) => (
+              <TableRow key={index} className="">
                 <TableCell className="flex justify-start items-center gap-2 ml-4">
                   <img
-                    src={transaction.img}
+                    src={`http://${AVATAR_URL}/${transaction.ticker}-logo.jpg`}
                     alt=""
                     className="rounded w-14 h-14"
                   />
                   <div className="col flex flex-col">
-                    <h4>{transaction.ticker}3</h4>
-                    Tipo
+                    <h4>{transaction.ticker}</h4>
+                    <h2>{transaction.type}</h2>
                   </div>
                 </TableCell>
-                <TableCell className="text-lg text-center">
-                  {transaction.name}
+                <TableCell className="text-lg text-center h-fit">
+                  {transaction.ticker}
                 </TableCell>
                 <TableCell className="text-center">
                   {transaction.quantity}
@@ -145,7 +115,12 @@ export function TransactionTable() {
                   {transaction.price * transaction.quantity}
                 </TableCell>
                 <TableCell className="text-center">
-                  {transaction.transactionDateString}
+                  {new Date(transaction.transactionDate).toLocaleDateString()}
+                </TableCell>
+
+                <TableCell className="justify-center gap-4">
+                  <Button variant={"destructive"} onClick={async() => await deleteTransaction(transaction.id, token!)} className="mb-2 w-20 hover:opacity-70 duration-300">Deletar</Button>
+                  <Button variant={"default"} onClick={async() => await deleteTransaction(transaction.id, token!)} className="ml-2 w-20 bg-[#3A6FF8]">Editar</Button>
                 </TableCell>
               </TableRow>
             ))}

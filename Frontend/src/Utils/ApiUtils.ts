@@ -2,11 +2,14 @@ import { DreData } from "@/types/Dre.type";
 import { HomeItens } from "@/types/HomeItens.type";
 import { PriceData } from "@/types/Price.type";
 import { ResponseProps } from "@/types/Response.type";
+import { toast } from "react-toastify";
+import { TransactionsProps } from "@/types/Transaction.type";
 import axios from "axios";
 
 
 const dataAPI: string = import.meta.env.VITE_STOCK_API_URL;
 const tokenAPI: string = import.meta.env.VITE_TOKEN_API_URL;
+const transactionAPI: string = import.meta.env.VITE_TRANSACTION_API_URL
 const secretToken: string = import.meta.env.VITE_SECRET_TOKEN;
 
 export const validateTicker = async (ticker: string) => {
@@ -72,5 +75,35 @@ export const getPrice = async (ticker: string) => {
     return data.data!;
   } catch (error) {
     throw new Error("Invalid Ticker or internal Error")
+  }
+}
+
+export const getTransaction = async (token: string) => {
+  try {
+    const response = await axios.post(`http://${transactionAPI}/transactions`, {
+      token
+    });
+    
+    const transactions: ResponseProps<TransactionsProps[]> = response.data;
+
+    return transactions.data || []
+  } catch (error) {
+    throw new Error("Invalid Token or internal Error")
+  }
+}
+
+export const deleteTransaction = async (transactionId: number, token: string) => {
+  try {
+    const response = await axios.delete(`http://${transactionAPI}/stock/${transactionId}`, {
+      data: {
+        token
+      }
+    });
+    
+    const responseData: ResponseProps<null> = response.data;
+    if(responseData.status === 200) return toast.success("Transação deletada com sucesso");
+    return toast.error("Erro ao apagar transação");
+  } catch (error) {
+    throw new Error("Invalid Token or internal Error")
   }
 }
