@@ -12,6 +12,7 @@ import { TransactionsProps } from "@/types/Transaction.type";
 import { deleteTransaction, getTransaction } from "@/Utils/ApiUtils";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "../ui/button";
+import { TransactionEdit } from "./editModal";
 
 const AVATAR_URL: string = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
@@ -29,9 +30,16 @@ export function TransactionTable() {
     if (!transactions) setTransactions(await getTransaction(token!));
   };
 
+  const deleteTransactionUpdateState = async (transactionId: number, token: string) => {
+    const transactionIdPro = await deleteTransaction(transactionId, token);
+    if(!transactionIdPro) return null;
+
+    setTransactions(transactions?.filter( item => item.id !== transactionIdPro))
+  }
+
   useEffect(() => {
     fetchData();
-  }, [token]);
+  }, [transactions]);
 
   return (
     <>
@@ -62,7 +70,7 @@ export function TransactionTable() {
           <span className={cn("absolute left-1/2 -translate-x-1/2 bottom-0 top-7 w-5/6 h-1 bg-bl rounded-df transition-all duration-300 line-on-hover", selected !== "Agendadas" ? "hidden" : "")}></span>
         </button>
       </div>
-      <div className="h-full container rounded-df w-full mt-4 p-0 shadow-lg bg-[#1B2028]">
+      <div className="h-5/6 container rounded-df w-full mt-4 p-0 shadow-lg bg-[#1B2028]">
         <Table className="rounded-df bg-[#1B2028] text-white shadow-gray-700 w-full p-0 h-full">
           <TableHeader className="rounded-df">
             <TableRow className="text-white font-bold rounded-df h-2">
@@ -119,9 +127,12 @@ export function TransactionTable() {
                 </TableCell>
 
                 <TableCell className="justify-center gap-4">
-                  <Button variant={"destructive"} onClick={async() => await deleteTransaction(transaction.id, token!)} className="mb-2 w-20 hover:opacity-70 duration-300">Deletar</Button>
-                  <Button variant={"default"} onClick={async() => await deleteTransaction(transaction.id, token!)} className="ml-2 w-20 bg-[#3A6FF8]">Editar</Button>
+                  <Button variant={"destructive"} onClick={async() => await deleteTransactionUpdateState(transaction.id, token!)} className="mb-2 w-20 hover:opacity-70 duration-300">Deletar</Button>
+                  <TransactionEdit props={transaction} token={token!} transactions={transactions} state={setTransactions}>
+                    <Button variant={"default"} className="ml-2 w-20 bg-[#3A6FF8]">Editar</Button>
+                  </TransactionEdit>
                 </TableCell>
+
               </TableRow>
             ))}
           </TableBody>

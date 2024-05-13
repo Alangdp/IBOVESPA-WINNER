@@ -20,6 +20,7 @@ import axios from "axios";
 import { ResponseProps } from "@/types/Response.type";
 import { TokenProps } from "@/types/Token.type";
 import { useAuth } from "@/contexts/AuthContext";
+import { capitalizeFirstLetter } from "@/Utils/String";
 
 const userFilterSchema = z.object({
   email: z
@@ -49,8 +50,6 @@ export function Login({ children }: RegisterDialogProps) {
   const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
 
   async function handleLogin(data: UserFilterSchema) {
-    const capitalize = (s: string) =>
-      (s && s[0].toUpperCase() + s.slice(1)) || "";
     const status = toast.loading("Tentando criar conta!", {
       closeButton: Cross2Icon,
     });
@@ -86,15 +85,13 @@ export function Login({ children }: RegisterDialogProps) {
 
         errors.errors?.forEach((error) => {
           toast.update(status, {
-            render: capitalize(error.message),
+            render: capitalizeFirstLetter(error.message),
             type: "error",
             isLoading: false,
             autoClose: 1000,
           });
         });
       } else {
-        // Handle unexpected errors
-        console.log("Error:", error);
         toast.update(status, {
           render: "Erro ao criar conta",
           type: "error",

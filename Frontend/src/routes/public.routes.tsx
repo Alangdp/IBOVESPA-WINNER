@@ -8,7 +8,7 @@ import Private from "./private";
 
 const DefaultToast = () => (
   <ToastContainer
-    limit={3}
+    limit={4}
     stacked={true}
     position="bottom-right"
     pauseOnHover={false}

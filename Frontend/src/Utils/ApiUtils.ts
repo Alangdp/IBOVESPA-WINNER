@@ -101,8 +101,28 @@ export const deleteTransaction = async (transactionId: number, token: string) =>
     });
     
     const responseData: ResponseProps<null> = response.data;
-    if(responseData.status === 200) return toast.success("Transação deletada com sucesso");
-    return toast.error("Erro ao apagar transação");
+    if(responseData.status === 200) {
+      toast.success("Transação deletada com sucesso");
+      return transactionId;
+    }
+    
+    toast.error("Erro ao apagar transação");
+    return null;
+  } catch (error) {
+    throw new Error("Invalid Token or internal Error")
+  }
+}
+
+export const editTransaction = async (transactionId: number, token: string, transactionData: TransactionsProps) => {
+  try {
+    const response = await axios.post(`http://${transactionAPI}/stock/${transactionId}`, {
+      transaction: transactionData,
+      token
+    });
+    
+    const responseData: ResponseProps<TransactionsProps> = response.data;
+    toast.success("Transação editada com sucesso");
+    return responseData
   } catch (error) {
     throw new Error("Invalid Token or internal Error")
   }

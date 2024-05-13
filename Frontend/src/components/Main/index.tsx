@@ -1,9 +1,10 @@
 import { DashBoard } from "../Dashboard";
 import { Header } from "../Header";
 import { NavBar } from "../Nav";
-import { TransactionTable } from "../Ranking";
+import { TransactionTable } from "../Transactions";
 import { SideBar } from "../SideBar";
 import { useSelected } from "../SideBar/SideContext";
+import BuySellModal from "../Transactions/buySellModal";
 
 export default function MainDashBoard() {
   const { selected } = useSelected();
@@ -14,10 +15,9 @@ export default function MainDashBoard() {
       <NavBar className="lg:hidden gap-4"/>
       <div className="container w-full h-full p-4 overflow-y-scroll no-scrollbar">
         <Header title="Dashboard" />
-        {/* {selected === "Overview" ? <DashBoard /> : <></>} */}
-        {/* {selected === "Transações" ? <TransactionTable /> : <></>} */}
-        {selected === "Overview" ? <TransactionTable /> : <></>}
-
+        {selected === "Carteira" ? <DashBoard />: <></>}
+        {selected === "Overview" ? <BuySellModal text="Comprar ação"/> : <></>}
+        {selected === "Transações" ? <TransactionTable /> : <></>}
       </div>
     </div>
   );
