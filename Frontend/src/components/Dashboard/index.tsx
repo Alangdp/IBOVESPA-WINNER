@@ -17,6 +17,7 @@ import { useMock } from "../SideBar/SideContext";
 import { PortifolioCard } from "./Card/CardPortifolio";
 import { useAuth } from "@/contexts/AuthContext";
 import { ChartProps } from "@/types/Chart.type";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface DashBoardProps {
   chart: ChartProps;
@@ -28,7 +29,14 @@ export function DashBoard({ chart }: DashBoardProps) {
   const { mockData } = useMock();
 
   return (
-    <main className="p-4 flex flex-col gap-4 h-fit">
+    <AnimatePresence>
+
+    <motion.main 
+      className="p-4 flex flex-col gap-4 h-fit"
+      initial={{ x: 100 }}
+      animate={{ x: 0}}
+      exit={{ x: 100 }}
+    >
 
       <div className="top-cards xl:flex grid-cols-2 grid w-full h-fit gap-7">
         <VariationCard
@@ -196,6 +204,7 @@ export function DashBoard({ chart }: DashBoardProps) {
           </div>
         </div>
       </div>
-    </main>
+    </motion.main>
+    </AnimatePresence>
   );
 }

@@ -9,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { ChartProps } from "@/types/Chart.type";
 import { getChart } from "@/Utils/ApiUtils";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function MainDashBoard() {
   const { selected } = useSelected();
@@ -29,9 +30,11 @@ export default function MainDashBoard() {
       <NavBar className="lg:hidden gap-4"/>
       <div className="container w-full h-full p-4 overflow-y-scroll no-scrollbar">
         <Header title="Dashboard" />
-        {selected === "Overview" ? <DashBoard chart={chart!}/>: <></>}
-        {selected === "Carteira" ? <BuySellModal text="Teste"/> : <></>}
-        {selected === "Transações" ? <TransactionTable chart={chart!}/> : <></>}
+        <AnimatePresence mode="popLayout">
+          {selected === "Overview" ? <DashBoard chart={chart!}/>: <></>}
+          {selected === "Carteira" ? <BuySellModal text="Teste"/> : <></>}
+          {selected === "Transações" ? <TransactionTable chart={chart!}/> : <></>}
+        </AnimatePresence>
       </div>
     </div>
   );

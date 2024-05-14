@@ -14,6 +14,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "../ui/button";
 import { TransactionEdit } from "./editModal";
 import { ChartProps } from "@/types/Chart.type";
+import { motion } from "framer-motion";
 
 const AVATAR_URL: string = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
@@ -47,7 +48,12 @@ export function TransactionTable({ chart }: TransactionTableProps) {
   }, [transactions]);
 
   return (
-    <>
+    <motion.div 
+      className="h-full"
+      initial={{ x: 100 }}
+      animate={{ x: 0}}
+      exit={{ x: 100 }}
+    >
       <div className="menu px-8 flex items-center gap-4 w-full mt-8"> 
         <button
           onClick={(event) => {
@@ -142,6 +148,6 @@ export function TransactionTable({ chart }: TransactionTableProps) {
           </TableBody>
         </Table>
       </div>
-    </>
+    </motion.div>
   );
 }
