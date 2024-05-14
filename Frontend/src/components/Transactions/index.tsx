@@ -132,7 +132,6 @@ export function TransactionTable() {
                     <Button variant={"default"} className="ml-2 w-20 bg-[#3A6FF8]">Editar</Button>
                   </TransactionEdit>
                 </TableCell>
-
               </TableRow>
             ))}
           </TableBody>

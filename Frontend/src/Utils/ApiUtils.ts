@@ -3,7 +3,7 @@ import { HomeItens } from "@/types/HomeItens.type";
 import { PriceData } from "@/types/Price.type";
 import { ResponseProps } from "@/types/Response.type";
 import { toast } from "react-toastify";
-import { TransactionsProps } from "@/types/Transaction.type";
+import { TransactionFilterSchema, TransactionsProps } from "@/types/Transaction.type";
 import axios from "axios";
 
 
@@ -122,6 +122,28 @@ export const editTransaction = async (transactionId: number, token: string, tran
     
     const responseData: ResponseProps<TransactionsProps> = response.data;
     toast.success("Transação editada com sucesso");
+    return responseData
+  } catch (error) {
+    throw new Error("Invalid Token or internal Error")
+  }
+}
+
+
+export const registerTransaction = async (transactionData: TransactionFilterSchema, token: string, type: "BUY" | "SELL") => {
+  try {
+    const response = await axios.post(`http://${transactionAPI}/stock/`, {
+      transaction: {
+        ticker: transactionData.ticker,
+        transactionDate: transactionData.transactionDate,
+        quantity: transactionData.quantity,
+        price: transactionData.value,
+        type: type
+      },
+      token
+    });
+    const responseData: ResponseProps<TransactionsProps> = response.data;
+    console.log(responseData)
+    toast.success("Transação Registrada com sucesso");
     return responseData
   } catch (error) {
     throw new Error("Invalid Token or internal Error")

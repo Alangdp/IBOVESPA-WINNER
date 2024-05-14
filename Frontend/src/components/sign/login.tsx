@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-import { DialogItem } from "./DialgoInput";
+
 interface RegisterDialogProps {
   children: React.ReactNode;
 }
@@ -35,7 +35,7 @@ const userFilterSchema = z.object({
 type UserFilterSchema = z.infer<typeof userFilterSchema>;
 
 export function Login({ children }: RegisterDialogProps) {
-  const { updateToken, token } = useAuth();
+  const { updateToken } = useAuth();
   const USER_API_URL = import.meta.env.VITE_USER_API_URL;
 
   const {

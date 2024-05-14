@@ -3,8 +3,8 @@ import MainDashBoard from "./components/Main";
 
 export function App() {
   return (
-      <SelectedProvider>
-        <MainDashBoard />
-      </SelectedProvider>
+    <SelectedProvider>
+      <MainDashBoard />
+    </SelectedProvider>
   );
 }

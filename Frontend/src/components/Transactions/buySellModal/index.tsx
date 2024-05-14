@@ -5,33 +5,19 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { ComboOptions } from "@/components/General/ComboxOptions";
-import { z } from "zod";
 import { useAuth } from "@/contexts/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { TransactionFilterSchema, transactionFilterSchema } from "@/types/Transaction.type";
+import { ResponseProps } from "@/types/Response.type";
+import { capitalizeFirstLetter } from "@/Utils/String";
+import { registerTransaction } from "@/Utils/ApiUtils";
 
 interface BuySellModalProps {
   text: string;
   className?: string;
 }
-
-const transactionFilterSchema = z.object({
-  quantity: z.number().min(1, "Quantidade mínima é 1"),
-  value: z.number().min(1, "Valor mínimo é 1"),
-  ticker: z
-    .string()
-    .regex(new RegExp(/^[A-Z]{4}\d{1,2}$/i), "Ticker inválido")
-    .default("A"),
-  transactionDate: z.date({
-    errorMap: ({ code }, { defaultError }) => {
-      if (code == "invalid_date") return { message: "Data inválida" };
-      return { message: defaultError };
-    },
-  }),
-});
-
-type TransactionFilterSchema = z.infer<typeof transactionFilterSchema>;
 
 export default function BuySellModal({ text, className }: BuySellModalProps) {
   const { token } = useAuth();
@@ -56,6 +42,10 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
   ) as (keyof TransactionFilterSchema)[];
 
   useEffect(() => {
+    if(errors.ticker) {
+      toast.error(errors['ticker']?.message);
+    }
+
     if (transactionKeys.length > 1) {
       transactionKeys.forEach((item: keyof TransactionFilterSchema) => {
         toast.error(errors[item]?.message);
@@ -63,8 +53,31 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
     }
   }, [errors, transactionKeys]);
 
-  const handleRegister = (data: TransactionFilterSchema) => {
-    console.log(data);
+  const handleRegister = async (data: TransactionFilterSchema) => {
+    try {
+      await registerTransaction(data, token!, option as "BUY" | "SELL");
+      setIsOpen(false)
+    } catch (error: any) {
+      if (error.response && error.response.data && error.response.data.data) {
+        const errors: ResponseProps<any> = error.response.data;
+
+        errors.errors?.forEach((error) => {
+          toast.update(status, {
+            render: capitalizeFirstLetter(error.message),
+            type: "error",
+            isLoading: false,
+            autoClose: 1000,
+          });
+        });
+      } else {
+        toast.update(status, {
+          render: "Erro ao criar conta",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
+      }
+    }
   };
 
   return (
@@ -90,7 +103,7 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
                 />
                 <p
                   onClick={toggleStatus}
-                  className="hover:brightness-75 duration-300 cursor-pointer"
+                  className="hover:brightness-50 duration-300 cursor-pointer font-bold opacity-80"
                 >
                   {" "}
                   Voltar
@@ -133,7 +146,7 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
                     <div className="w-full grid grid-cols-2 pt-4">
                       <div className="w-full mb-6 md:mb-0">
                         <label className="block uppercase  text-black tracking-wide text-xs font-bold mb-1">
-                          Valor
+                          Quantidade
                         </label>
                         <input
                           {...register("quantity", {
