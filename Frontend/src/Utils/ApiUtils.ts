@@ -5,6 +5,7 @@ import { ResponseProps } from "@/types/Response.type";
 import { toast } from "react-toastify";
 import { TransactionFilterSchema, TransactionsProps } from "@/types/Transaction.type";
 import axios from "axios";
+import { ChartProps } from "@/types/Chart.type";
 
 
 const dataAPI: string = import.meta.env.VITE_STOCK_API_URL;
@@ -149,3 +150,18 @@ export const registerTransaction = async (transactionData: TransactionFilterSche
     throw new Error("Invalid Token or internal Error")
   }
 }
+
+export const getChart = async (token: string) => {
+  try {
+    const response = await axios.post(`http://${dataAPI}/stock/chart`, {
+      token
+    });
+
+    const responseData: ResponseProps<ChartProps> = response.data;
+    if(!responseData.data) throw new Error("Erro getting Data")
+    return responseData.data
+  } catch (error) {
+    throw new Error("Invalid Token or internal Error")
+  }
+}
+

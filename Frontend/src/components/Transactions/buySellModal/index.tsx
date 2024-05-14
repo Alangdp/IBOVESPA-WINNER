@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowLeftIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { ComboOptions } from "@/components/General/ComboxOptions";
 import { useAuth } from "@/contexts/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,6 +42,7 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
   ) as (keyof TransactionFilterSchema)[];
 
   useEffect(() => {
+    console.log(errors)
     if(errors.ticker) {
       toast.error(errors['ticker']?.message);
     }
@@ -54,7 +55,12 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
   }, [errors, transactionKeys]);
 
   const handleRegister = async (data: TransactionFilterSchema) => {
+    const status = toast.loading("Registradno transação", {
+      closeButton: Cross2Icon,
+    });
+
     try {
+      console.log(data, 123)
       await registerTransaction(data, token!, option as "BUY" | "SELL");
       setIsOpen(false)
     } catch (error: any) {
@@ -71,7 +77,7 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
         });
       } else {
         toast.update(status, {
-          render: "Erro ao criar conta",
+          render: "Erro ao registrar transação",
           type: "error",
           isLoading: false,
           autoClose: 1000,

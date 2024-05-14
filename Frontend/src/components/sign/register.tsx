@@ -84,7 +84,7 @@ export function Register({ children }: RegisterDialogProps) {
   }, [errors, userKeys]);
 
   return (
-    <HomeDialog
+    <HomeDialog title="Registro"
       form={
         <form
           onSubmit={handleSubmit(handleRegister)}

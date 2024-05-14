@@ -50,7 +50,7 @@ export function Login({ children }: RegisterDialogProps) {
   const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
 
   async function handleLogin(data: UserFilterSchema) {
-    const status = toast.loading("Tentando criar conta!", {
+    const status = toast.loading("Entrando na sua conta", {
       closeButton: Cross2Icon,
     });
 
@@ -93,7 +93,7 @@ export function Login({ children }: RegisterDialogProps) {
         });
       } else {
         toast.update(status, {
-          render: "Erro ao criar conta",
+          render: "Erro Entrar na conta!",
           type: "error",
           isLoading: false,
           autoClose: 1000,
@@ -111,7 +111,7 @@ export function Login({ children }: RegisterDialogProps) {
   }, [errors, userKeys]);
 
   return (
-    <HomeDialog
+    <HomeDialog title="Login"
       form={
         <form
           onSubmit={handleSubmit(handleLogin)}
@@ -148,7 +148,7 @@ export function Login({ children }: RegisterDialogProps) {
           </div>
 
           <Button type="submit" className="bg-[#3A6FF8]">
-            Criar Conta
+            Entrar na sua conta
           </Button>
         </form>
       }

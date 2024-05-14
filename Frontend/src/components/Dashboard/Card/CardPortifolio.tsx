@@ -20,7 +20,7 @@ export function PortifolioCard({
 
   return (
     <div className="card grid grid-cols-5 items-center">
-      <TickerIcon img={`http://${AVATAR_IMAGES_URL}/BBAS3-logo.jpg`} />
+      <TickerIcon img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`} />
       <div className="grid grid-rows-2">
         <h4 className="text-white font-semibold text-lg">{ticker}</h4>
         <p className="opacity-60 text-white text-lg text-nowrap ">
@@ -36,7 +36,7 @@ export function PortifolioCard({
         </div>
       </div>
       <div className="">
-        <p className={variation < 0 ? "text-[#F46D22]" : "text-[#1ECB4F]"}>{variation}</p>
+        <p className={`${variation < 0 ? "text-[#F46D22]" : "text-[#1ECB4F]"} font-semibold flex gap-1`}>{variation} <p className="text-white">%</p></p>
       </div>
     </div>
   );

@@ -13,10 +13,15 @@ import { deleteTransaction, getTransaction } from "@/Utils/ApiUtils";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "../ui/button";
 import { TransactionEdit } from "./editModal";
+import { ChartProps } from "@/types/Chart.type";
 
 const AVATAR_URL: string = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
-export function TransactionTable() {
+interface TransactionTableProps {
+  chart: ChartProps;
+}
+
+export function TransactionTable({ chart }: TransactionTableProps) {
   const { token } = useAuth();
   const [transactions, setTransactions] = useState<TransactionsProps[]>();
   const [selected, setSelected] = useState<string>("Histórico");

@@ -15,7 +15,7 @@ export default function Home() {
   const [variations, setVariations] = useState<HomeItens>();
 
   const fetchData = async () => {
-    if (!variations) setVariations(await getVariations());
+    if(!variations) setVariations(await getVariations())
   };
 
   useEffect(() => {

@@ -13,9 +13,10 @@ import {
 interface RegisterDialogProps {
   children: React.ReactNode;
   form: React.ReactNode;
+  title: string;
 }
 
-export function HomeDialog({ children, form }: RegisterDialogProps) {
+export function HomeDialog({ children, form, title }: RegisterDialogProps) {
 
   return (
     <Dialog>
@@ -24,7 +25,7 @@ export function HomeDialog({ children, form }: RegisterDialogProps) {
         <div className="top absolute w-full h-6 rounded-t-lg bg-gradient-to-r from-blue-600 to-gray-900"></div>
         <DialogHeader className="mt-4">
           <DialogTitle>
-            <span className="text-white">Criar Conta</span>
+            <span className="text-white">{title}</span>
           </DialogTitle>
         </DialogHeader>
         {form}

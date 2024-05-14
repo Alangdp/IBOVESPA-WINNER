@@ -15,10 +15,16 @@ import { ButtonSelectable } from "./ButtonSelectable";
 import { SimpleLineChart } from "./SimpleChart";
 import { useMock } from "../SideBar/SideContext";
 import { PortifolioCard } from "./Card/CardPortifolio";
+import { useAuth } from "@/contexts/AuthContext";
+import { ChartProps } from "@/types/Chart.type";
 
-export function DashBoard() {
+interface DashBoardProps {
+  chart: ChartProps;
+}
+
+export function DashBoard({ chart }: DashBoardProps) {
+  const { token } = useAuth();
   const [selectedOption, setSelectedOption] = useState<string>("1hr");
-  // const { selected, setSelected } = useSelected();
   const { mockData } = useMock();
 
   return (
@@ -61,22 +67,23 @@ export function DashBoard() {
           <div className="wallet bg-[#3A6FF8] rounded-df h-fit row-span-1">
             <h4 className="text-xl text-white p-4 font-semibold">Carteira</h4>
             <div className="flex p-4 items-center gap-4">
-              <p className="text-2xl font-semibold text-white">R$ 56.312,23</p>
-              <p className="text-[#1ECB4F] font-semibold">+0.25%</p>
+              <p className="text-2xl font-semibold text-white">R$ {chart ? chart.globalTotalValue : ""}</p>
+              <p className="text-[#1ECB4F] font-semibold">{chart ? `${(chart.globalRentability * 100 ).toFixed(2)}%` : ""}</p>
             </div>
           </div>
 
           <div className="portifolio bg-[#1B2028] rounded-df row-span-4">
             <h4 className="text-xl text-white p-4 font-semibold">Portifolio</h4>
             <div className="cards p-4 flex flex-col gap-2">
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-              <PortifolioCard actualValue={10} quantity={1000} totalValue={10000} ticker="BBAS3" variation={0} />
-
+              {chart && Object.keys(chart.individualRentability).map( ticker=> 
+                <PortifolioCard 
+                  actualValue={chart.individualRentability[ticker].valueInvested}
+                  quantity={chart.individualRentability[ticker].quantity}
+                  totalValue={chart.individualRentability[ticker].valueTotal}
+                  ticker={ticker}
+                  variation={Number((chart.individualRentability[ticker].rentability * 100).toFixed(2))}
+                />
+              )}
             </div>
           </div>
 
