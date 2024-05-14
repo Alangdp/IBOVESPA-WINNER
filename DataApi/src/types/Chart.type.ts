@@ -13,6 +13,7 @@ export interface ChartConstructor {
   globalTotalValue: number;
   globalInvested: number;
   individualRentability: StockRentability;
+  portifolio: ChartPortifolio
 }
 
 export interface Chart {

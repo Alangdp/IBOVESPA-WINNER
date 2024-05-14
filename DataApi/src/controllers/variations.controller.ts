@@ -7,18 +7,17 @@ import CacheJSON from '../utils/CacheJson';
 const getVariations: RequestHandler = async (req, res, next) => {
   try {
     const cache = new CacheJSON<HomeItens, CacheProps<HomeItens>>({
-      duration: 10,
+      duration: 60,
       path: "./json/HomeCache.json"
     });
 
-    console.log(cache.validDuration())
     if(!cache.validDuration()) {
       const variations = await TickerFetcher.getHighsAndLows();
       if(!variations) throw new Error("Error Getting Variations");    
-      cache.replaceData(variations);
+      cache.replaceData(variations, "HomeItems");
     }
 
-    return response(res, {status: 200, data: cache.get()});
+    return response(res, {status: 200, data: cache.get()[0].data[0]});
   } catch (error: any) {
     return errorResponse(res, error);
   }

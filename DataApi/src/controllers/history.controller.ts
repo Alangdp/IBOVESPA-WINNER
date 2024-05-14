@@ -27,4 +27,26 @@ const getHistory: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const getPortifolio: RequestHandler = async (req, res, next) => {
+  try {
+    const token: string = req.body.token;
+
+    const responseData = await axios.post(
+      'http://localhost:3004/transactions',
+      {
+        authorization: process.env.SECRET_TOKEN,
+        token,
+      }
+    )
+
+    const data: ResponseProps<TransactionsProps[]> = responseData.data;
+    const history = await History.instanceHistory(data.data || []);
+    return response(res, { status: 200, data: history.chart });
+  } catch (error: any) {
+    console.log(error)
+    return errorResponse(res, error);
+  }
+};
+
+
 export { getHistory };

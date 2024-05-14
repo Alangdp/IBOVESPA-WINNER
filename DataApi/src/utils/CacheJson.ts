@@ -13,9 +13,9 @@ export default class CacheJSON<T, Y extends CacheProps<T>> extends Database<Y> {
     this.validTime()
   }
 
-  replaceData(data: T) {
+  replaceData(data: T, key: string) {
     const cache: CacheProps<T> = {
-      key: "HomeItems",
+      key,
       data: [data],
       instanceTime: new Date().getTime()
     }

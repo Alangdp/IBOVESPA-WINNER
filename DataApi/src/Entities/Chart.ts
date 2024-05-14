@@ -8,12 +8,7 @@ import {
 } from '../types/Chart.type';
 import { DividendOnDate } from '../types/dividends.type';
 import { StockPrice } from '../types/stock.types';
-import {
-  TransactionHistory,
-} from '../interfaces/Transaction';
 import { TransactionsProps } from '../types/transaction.type';
-
-// FIXME ARRUMAR SOLID AQUI
 
 export default class Chart implements ChartProtocol {
   public globalRentability!: number;
@@ -23,6 +18,7 @@ export default class Chart implements ChartProtocol {
   public globalTotalValue!: number;
   public globalInvested!: number;
   public individualRentability!: StockRentability;
+  public portifolio!: ChartPortifolio;
 
   constructor(requirements: ChartConstructor | null) {
     if (!requirements) {
@@ -36,6 +32,7 @@ export default class Chart implements ChartProtocol {
     this.globalDividendValue = requirements.globalDividendValue;
     this.globalTotalValue = requirements.globalTotalValue;
     this.individualRentability = requirements.individualRentability;
+    this.portifolio = requirements.portifolio
   }
 
   makeEmptyChart() {
@@ -191,29 +188,34 @@ export default class Chart implements ChartProtocol {
     return this;
   }
 
-  makePortfolioChart() {
-    let totalWeigth = 0;
+  makePortfolioChart(): ChartPortifolio {
+    let totalWeight = 0;
     let totalValue = 0;
 
-    const portifolioChart: ChartPortifolio = {};
+    const portfolioChart: ChartPortifolio = {};
 
     for (const ticker of Object.keys(this.individualRentability)) {
-      const individualChart = this.individualRentability[ticker];
+        const individualChart = this.individualRentability[ticker];
 
-      const weigth = this.globalTotalValue / individualChart.valueTotal;
-      const value = weigth * individualChart.rentability;
+        const weight = this.globalTotalValue / individualChart.valueTotal;
+        const value = weight * individualChart.rentability;
 
-      portifolioChart[ticker] = weigth;
+        portfolioChart[ticker] = weight;
 
-      totalWeigth += weigth;
-      totalValue += value;
+        totalWeight += weight;
+        totalValue += value;
     }
 
-    // console.log(totalWeigth, totalValue, 'Indicadores de Peso');
+    // Correção do cálculo da rentabilidade global
+    this.globalRentability = totalWeight > 0 ? totalValue / totalWeight : 0;
 
-    this.globalRentability = totalValue * totalWeigth + 1;
+    // Normalização dos pesos para somar 1
+    for (const ticker of Object.keys(portfolioChart)) {
+        portfolioChart[ticker] /= totalWeight;
+    }
 
-    return portifolioChart;
+    this.portifolio = portfolioChart;
+    return portfolioChart;
   }
 
   returnChart(): ChartModel {
