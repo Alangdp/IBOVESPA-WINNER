@@ -2,7 +2,7 @@ import { StockProtocol } from '../interfaces/StockProtocol.type.js';
 import { DreData } from '../types/DRE.type.js';
 import { PassiveChartReturn } from '../types/PassiveChart.type.js';
 import { LastDividendPayment } from '../types/dividends.type.js';
-import { IndicatorsData } from '../types/indicators.type.js';
+import { FinancialIndicators } from '../types/indicators.type.js';
 import {
   NetLiquid,
   StockProps,
@@ -36,7 +36,7 @@ export class Stock extends Variable implements StockProtocol {
 
   public segment: string
 
-  public indicators: IndicatorsData;
+  public indicators: FinancialIndicators;
 
   constructor(props: StockProps) {
     super(

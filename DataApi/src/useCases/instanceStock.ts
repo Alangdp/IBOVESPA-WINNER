@@ -4,7 +4,7 @@ import { PassiveChartReturn } from "../types/PassiveChart.type";
 import { PayoutReturn } from "../types/Payout.type";
 import { DividendReturn } from "../types/dividends.type";
 import { Header } from "../types/get.type";
-import { IndicatorsData } from "../types/indicators.type";
+import { FinancialIndicators } from "../types/indicators.type";
 import { PriceReturn } from "../types/prices.type";
 import { CashFlowHeader, NetLiquid, StockProps } from "../types/stock.types";
 
@@ -12,6 +12,7 @@ import { Stock } from "../Entities/Stock.js";
 import TickerFetcher from "../utils/Fetcher.js";
 import { contains } from "cheerio";
 import { DreData } from "../types/DRE.type";
+import Json from "../utils/Json";
 
 
 type instanceStockProps = {
@@ -20,7 +21,7 @@ type instanceStockProps = {
   dividendInfo: DividendReturn | null,
   passiveChart: PassiveChartReturn[] | null,
   basicInfo: BasicInfoReturn | null,
-  indicators: IndicatorsData | null,
+  indicators: FinancialIndicators | null,
   cashFlow: Header[] | null,
   dreData: DreData | null,
 }
@@ -79,6 +80,7 @@ export class InstanceStock {
     const basicInfo = props.basicInfo!;
     const priceHistory = props.priceHistory!;
     const indicators = props.indicators!;
+    Json.saveJSONToFile(indicators, "indicators.json")
     const payout = props.payout!;
     const dividendInfo = props.dividendInfo!;
     const passiveChart = props.passiveChart!; 

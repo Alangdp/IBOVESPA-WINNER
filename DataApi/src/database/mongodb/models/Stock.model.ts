@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import { NetLiquid, PriceHistory, StockProps } from '../../../types/stock.types'
 import { LastDividendPayment } from '../../../types/dividends.type';
-import { IndicatorsData, oldIndicator } from '../../../types/indicators.type';
+import { FinancialIndicators } from '../../../types/indicators.type';
 import { PassiveChartReturn } from '../../../types/PassiveChart.type';
 import { MongooConnection } from '../../index.js'
 
@@ -19,23 +19,47 @@ const lastDividendsValueSchema = new Schema<LastDividendPayment>({
   value: { type: Number, default: 0, required: false }
 })
 
-const oldIndicatorSchema = new Schema<oldIndicator>({
-  date: { type: Number, default: 0, required: false },
-  value: { type: Number, default: 0 }
+const oldIndicatorSchema = new Schema({
+  date: { type: Number, required: true },
+  value: { type: Number, required: true }
 });
 
-const indicatorsDataSchema = new Schema<IndicatorsData>({
-  data: {type: Map, of: {
-    actual: {
-      type: Number,
-      required: false,
-    },
-    avg: {
-      type: Number,
-      required: false
-    },
-    olds: [oldIndicatorSchema]
-  }}
+const financialDataSchema = new Schema({
+  actual: { type: Number, required: false },
+  avg: { type: Number, required: false },
+  olds: [oldIndicatorSchema] 
+});
+
+const indicatorsDataSchema = new Schema({
+  dy: financialDataSchema,
+  p_l: financialDataSchema,
+  p_vp: financialDataSchema,
+  p_ebita: financialDataSchema,
+  p_ebit: financialDataSchema,
+  p_sr: financialDataSchema,
+  p_ativo: financialDataSchema,
+  p_capitlgiro: financialDataSchema,
+  p_ativocirculante: financialDataSchema,
+  ev_ebitda: financialDataSchema,
+  ev_ebit: financialDataSchema,
+  lpa: financialDataSchema,
+  vpa: financialDataSchema,
+  peg_Ratio: financialDataSchema,
+  dividaliquida_patrimonioliquido: financialDataSchema,
+  dividaliquida_ebitda: financialDataSchema,
+  dividaliquida_ebit: financialDataSchema,
+  patrimonio_ativo: financialDataSchema,
+  passivo_ativo: financialDataSchema,
+  liquidezcorrente: financialDataSchema,
+  margembruta: financialDataSchema,
+  margemebitda: financialDataSchema,
+  margemebit: financialDataSchema,
+  margemliquida: financialDataSchema,
+  roe: financialDataSchema,
+  roa: financialDataSchema,
+  roic: financialDataSchema,
+  giro_ativos: financialDataSchema,
+  receitas_cagr5: financialDataSchema
 });
 
 const netLiquidSchema = new Schema<NetLiquid>({

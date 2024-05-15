@@ -4,7 +4,7 @@ import TickerFetcher from "../utils/Fetcher.js";
 import { errorResponse, response } from "../utils/Responses.js";
 import { StockDataBase } from "../useCases/stockDataBase.js";
 import { data } from "cheerio/lib/api/attributes.js";
-import { IndicatorsData } from "../types/indicators.type.js";
+import { FinancialIndicators } from "../types/indicators.type.js";
 import { InstanceStock } from "../useCases/instanceStock.js";
 import MathUtils from "../utils/MathUtils.js";
 

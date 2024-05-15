@@ -2,7 +2,7 @@ import { VariableProps } from '../interfaces/Variable.type';
 import { DreData } from './DRE.type';
 import { PassiveChartReturn } from './PassiveChart.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
-import { IndicatorsData } from './indicators.type';
+import { FinancialIndicators } from './indicators.type';
 
 
 export type NetLiquid = {
@@ -39,7 +39,7 @@ export interface StockProps extends VariableProps {
   lastDividendsYieldYear: number[];
   lastDividendsValueYear: number[];
   lastDividendsValue: LastDividendPayment[];
-  indicators: IndicatorsData;
+  indicators: FinancialIndicators;
 
   // Graham variables
 
