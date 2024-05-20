@@ -21,7 +21,7 @@ export default function HistoryChart({
           <p
             className={
               "text-2xl font-semibold " +
-              (history.chart.globalRentability > 0
+              (history.chart.globalRentability >= 0
                 ? "text-[#1ECB4F]"
                 : "text-[#F46D22]")
             }
