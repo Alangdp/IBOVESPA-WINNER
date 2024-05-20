@@ -23,10 +23,6 @@ const getHistory: RequestHandler = async (req, res, next) => {
     const history: HistoryProps = await History.instanceHistory(transactionsDB);
     const { historyData, chart, transactions,...historyCleaned } = history;
 
-    console.log('\n \n \n')
-    console.log(historyData[Object.keys(historyData)[0]])
-    console.log(historyData[Object.keys(historyData)[Object.keys(historyData).length-1]])
-
     const filteredHistoryData = Object.fromEntries(
       Object.entries(historyData).map(([date, data]) => [
         date,

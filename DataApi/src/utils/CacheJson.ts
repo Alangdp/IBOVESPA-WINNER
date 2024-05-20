@@ -29,7 +29,7 @@ export default class CacheJSON<T, Y extends CacheProps<T>> extends Database<Y> {
     const cacheData = this.get();
     if (cacheData.length === 0) return false;
     const firstCacheItem = cacheData[0];
-    if (firstCacheItem.instanceTime && (firstCacheItem.instanceTime - new Date().getTime()) < this.duration) return true;
+    if (firstCacheItem.instanceTime && (new Date().getTime() - firstCacheItem.instanceTime ) < this.duration) return true;
     return false;
   }
 }
