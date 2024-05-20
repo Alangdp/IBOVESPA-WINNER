@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { TransactionFilterSchema, transactionFilterSchema } from "@/types/Transaction.type";
 import { ResponseProps } from "@/types/Response.type";
 import { capitalizeFirstLetter } from "@/Utils/String";
-import { registerTransaction } from "@/Utils/ApiUtils";
+import { getTickers, registerTransaction } from "@/Utils/ApiUtils";
 
 interface BuySellModalProps {
   text: string;
@@ -23,6 +23,7 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
   const { token } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState("BUY");
+  const [tickers, setTickers] = useState<string[]>()
 
   const toggleStatus = () => setIsOpen(!isOpen);
 
@@ -41,8 +42,12 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
     errors
   ) as (keyof TransactionFilterSchema)[];
 
+  const fetchTickers = async () => {
+    if(!tickers) setTickers(await getTickers())
+  }
+
   useEffect(() => {
-    console.log(errors)
+    fetchTickers()
     if(errors.ticker) {
       toast.error(errors['ticker']?.message);
     }
@@ -189,22 +194,7 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
                             className="p-2"
                             placeholder="Tickers"
                             defaultValue="BBAS3"
-                            options={[
-                              "ABEV3",
-                              "B3SA3",
-                              "MGLU3",
-                              "VVAR3",
-                              "GNDI3",
-                              "PETR4",
-                              "VALE3",
-                              "ITUB4",
-                              "BBDC4",
-                              "ABEV3",
-                              "B3SA3",
-                              "MGLU3",
-                              "VVAR3",
-                              "GNDI3",
-                            ]}
+                            options={tickers || []}
                             title="Tickers"
                             {...register("ticker")}
                             onChange={(value) => {
@@ -230,14 +220,20 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
                             </svg>
                           </div>
                           <input
-                            {...register("transactionDate", {
-                              setValueAs(value) {
-                                return new Date(value);
-                              },
-                            })}
+                            id="dateInput"
+                            onChange={(event) => {
+                              const date = new Date(event.target.value);
+                              if([0, 6].includes(date.getUTCDay())) {
+                                toast.error("Não pode ser fim de semana!");
+                                return;
+                              } 
+
+                              setValue("transactionDate", date)
+
+                              
+                            }}
                             type="date"
                             className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block ps-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[205px]"
-                            placeholder="Data da Transação"
                           ></input>
                         </div>
                       </div>

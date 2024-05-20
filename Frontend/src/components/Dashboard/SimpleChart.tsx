@@ -1,4 +1,5 @@
-import { ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis } from "recharts";
+import { ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis, CartesianGrid } from "recharts";
+import { number } from "zod";
 
 type LineData = {
   value: number;
@@ -6,30 +7,46 @@ type LineData = {
 };
 
 interface SimpleLineChartProps {
+  margin?: {
+    left?: number,
+    right?: number
+    top?: number,
+    bottom?: number
+  },
+
+  paddingX?: {
+    left?: number,
+    right?: number
+    top?: number,
+    bottom?: number
+  },
+  interval?: number;
   className?: string;
   data: LineData[];
-  x?: boolean
-  y?: boolean
+  x?: boolean;
+  y?: boolean;
+  xName?: string;
+  yName?: string;
 } 
 
-export function SimpleLineChart({data, className, x, y}: SimpleLineChartProps) {
+export function SimpleLineChart({data, className, x, y, xName, yName, interval, margin, paddingX}: SimpleLineChartProps) {
   return (
     <ResponsiveContainer height="100%" width="100%" className={className}>
-      <LineChart data={data} margin={{left: 20, right: 20}}>
+      <LineChart data={data} margin={margin}>
         <Tooltip />
-        {y ? <YAxis /> : null}
-        {x ? <XAxis dataKey="name" interval={5} style={{
+        {y ? <YAxis domain={['auto', 'auto']}/> : null}
+        {x ? <XAxis padding={paddingX} dataKey={xName ? xName : "name"} interval={interval || 30} style={{
           fontSize: "0.8rem",
           fontFamily: "Roboto"
-        }}/> : null}
+        }} dx={30}/> : null}
         <Line
           type="monotone"
           stroke="#3A6FF8"
-          dataKey="value"
+          dataKey={yName ? yName : "value"}
           dot={false}
           strokeWidth={2.5}
         />
-      </LineChart>
+      </LineChart> 
     </ResponsiveContainer>
   );
 }

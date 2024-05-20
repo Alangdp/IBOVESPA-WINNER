@@ -1,11 +1,5 @@
 import { capitalizeFirstLetter } from "@/Utils/String";
 import { useParams } from "react-router-dom";
-
-interface MarketProps {
-  marketName: string;
-}
-
-import BrazilFlag from "../../assets/svg/flags/Brazil.svg";
 import B3 from "../../assets/svg/B3.svg";
 import { CaretDownIcon, CaretRightIcon } from "@radix-ui/react-icons";
 import {
@@ -17,18 +11,21 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getPrice } from "@/Utils/ApiUtils";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PriceList } from "@/types/Price.type";
 import LocalStorage from "@/Utils/LocalStorage";
 import { validateToleranceTime } from "@/Utils/Math";
-import { Button } from "../Button";
-import { InfoCard } from "./info-card";
 import IndexCard from "./index-card";
 import { GridStockPage } from "./StockData";
-import { Loading } from "../Loading";
+import TimeOptions from "./timeOptions";
+import { IndicatorsData } from "./StockData/indicatorsData";
 
 interface TimeLimits {
   [key: string]: number;
+}
+
+interface MarketProps {
+  marketName: string;
 }
 
 const timeLimits: TimeLimits = {
@@ -47,7 +44,7 @@ export default function Market({ marketName }: MarketProps) {
   let [priceList, setPriceList] = useState<PriceList>(localStorage.get());
   const [interval, setInteval] = useState<string>("1year");
   const { stockTicker } = useParams();
-  const upperStockTicker = stockTicker?.toUpperCase();
+  const upperStockTicker = stockTicker?.toUpperCase()!;
 
   let pricesFiltered = priceList[upperStockTicker!]
     ? priceList[upperStockTicker!].price
@@ -69,7 +66,7 @@ export default function Market({ marketName }: MarketProps) {
     if (
       item &&
       upperStockTicker &&
-      validateToleranceTime(item[upperStockTicker]?.timestamp) &&
+      validateToleranceTime((item as PriceList)[upperStockTicker]?.timestamp) &&
       upperStockTicker
     ) {
       return;
@@ -111,7 +108,7 @@ export default function Market({ marketName }: MarketProps) {
         <div className="w-full h-full flex justify-center">
           <div className="flag px-4 py-2 text-white w-fit h-fit text-4xl bg-df hover:bg-bl duration-300 rounded-df flex gap-2 items-center group cursor-pointer">
             <img
-              src={BrazilFlag}
+              src={`http://192.168.1.111:3002/images/avatar/${stockTicker}-logo.jpg`}
               alt={`${capitalizeFirstLetter(marketName)} Flag`}
               className="w-12 rounded-full"
             />
@@ -120,7 +117,7 @@ export default function Market({ marketName }: MarketProps) {
           </div>
         </div>
         <div className="indexes px-6 py-12 w-full">
-          <div className="title text-3xl flex items-center hover:text-bl duration-300 cursor-pointer">
+          <div className="title text-3xl flex items-center hover:text-bl duration-300 cursor-pointer w-fit">
             Principais Índices do{" "}
             {capitalizeFirstLetter(marketName?.toLowerCase())}
             <CaretRightIcon className="w-12 h-8" />
@@ -152,7 +149,7 @@ export default function Market({ marketName }: MarketProps) {
                     timeLimits[interval] / (timeLimits[interval] < 91 ? 6 : 9)
                   )}
                 />
-                <YAxis tickCount={10} />
+                <YAxis tickCount={10} domain={['auto', 'auto']}/>
                 <Tooltip trigger="hover" />
                 <Line
                   type="monotone"
@@ -162,80 +159,34 @@ export default function Market({ marketName }: MarketProps) {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <div className="buttons w-[90%] grid grid-cols-5 gap-4 m-4">
-              <Button.Root
-                active={interval === "1week" ? true : false}
-                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
-                onClick={() => setInteval("1week")}
-              >
-                <Button.Content
-                  active={interval === "1week" ? true : false}
-                  text="1 Semana"
-                  className="break-keep"
-                />
-              </Button.Root>
-
-              <Button.Root
-                active={interval === "1month" ? true : false}
-                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
-                onClick={() => setInteval("1month")}
-              >
-                <Button.Content
-                  active={interval === "1month" ? true : false}
-                  text="1 Mês"
-                  className="break-keep"
-                />
-              </Button.Root>
-
-              <Button.Root
-                active={interval === "3month" ? true : false}
-                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
-                onClick={() => setInteval("3month")}
-              >
-                <Button.Content
-                  active={interval === "3month" ? true : false}
-                  text="3 Mês"
-                  className="break-keep"
-                />
-              </Button.Root>
-
-              <Button.Root
-                active={interval === "6month" ? true : false}
-                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
-                onClick={() => setInteval("6month")}
-              >
-                <Button.Content
-                  active={interval === "6month" ? true : false}
-                  text="6 Mês"
-                  className="break-keep"
-                />
-              </Button.Root>
-
-              <Button.Root
-                active={interval === "1year" ? true : false}
-                className="bg-zinc-800 rounded-df px-2 py-1 duration-300"
-                onClick={() => setInteval("1year")}
-              >
-                <Button.Content
-                  active={interval === "1year" ? true : false}
-                  text="1 Ano"
-                  className="break-keep"
-                />
-              </Button.Root>
-            </div>
+            <TimeOptions interval={interval} setInteval={setInteval} />
           </div>
 
-          <div className="p-6 w-full">
-            <a href="">
-              <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer">
+          <div className="p-4 w-full flex flex-col gap-2">
+            <a href="" className="w-fit">
+              <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer w-fit">
                 Principais Estatiscas
                 <CaretRightIcon className="w-12 h-8" />
               </div>
             </a>
-
-            <Suspense fallback={<Loading />}>
+            
+            <div className="p-2 bg-[#3F3F3F] rounded border-opacity-60 shadow-xl">
               <GridStockPage ticker={upperStockTicker!}/>
-            </Suspense>
+            </div>
+          </div>
+
+          <div className="p-4 w-full flex flex-col gap-2">
+            <a href="" className="w-fit">
+              <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer w-fit">
+                Indicadores Fundamentalistas
+                <CaretRightIcon className="w-12 h-8" />
+              </div>
+            </a>
+
+
+            <div className="p-2 bg-[#3F3F3F] rounded border-opacity-60 shadow-xl">
+              <IndicatorsData ticker={stockTicker!} />
+            </div>
           </div>
         </div>
       </div>

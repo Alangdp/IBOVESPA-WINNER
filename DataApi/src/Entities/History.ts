@@ -35,9 +35,9 @@ export class History {
   transactions: TransactionsProps[]
   historyData: HistoryData;
   chart: ChartProtocol = new Chart(null);
-
   indexHistoryPrice: IndexHistoryPrice;
   indexDividend: IndexDividend;
+  idCounter: number[] = []
 
   constructor(
     private requirements: HistoryRequirements,
@@ -46,6 +46,7 @@ export class History {
     this.stockInfo = requirements.stockInfo;
     this.transactions = requirements.transactions
     this.historyData = {};
+    this.idCounter = []
 
     let indexHistoryPrice: IndexHistoryPrice = {};
     for (const ticker of this.uniqueTickers) {
@@ -95,10 +96,43 @@ export class History {
   }
 
   getTransactionsOnDate(date: string): TransactionsProps[] {
-    return this.transactions.filter((transaction) => {
-      if (DateFormatter.dateToString(new Date(transaction.transactionDate)) === date)
-        return DateFormatter.dateToString(new Date(transaction.transactionDate));
-    });
+    const targetDate = new Date(date).getTime();
+    const tolerance = 100 * 24 * 60 * 60 * 1000; 
+    const sortedTransactions = this.transactions.sort(
+      (a, b) => new Date(a.transactionDate).getTime() - new Date(b.transactionDate).getTime()
+    );
+
+    let closestDate: number | null = null;
+    let minDiff = Infinity;
+
+    for (const transaction of sortedTransactions) {
+      const transactionDate = new Date(transaction.transactionDate).getTime();
+      const diff = Math.abs(targetDate - transactionDate);
+
+      if (diff < minDiff && diff <= tolerance) {
+        minDiff = diff;
+        closestDate = transactionDate;
+      }
+    }
+
+    if (closestDate !== null) {
+      const filtredTransaction = sortedTransactions.filter(
+        (transaction) => new Date(transaction.transactionDate).getTime() === closestDate
+      );
+
+      const goodTransacitons:TransactionsProps[] = []
+      for(const transaction of filtredTransaction) {
+        if(!this.idCounter.includes(transaction.id)) {
+          this.idCounter.push(transaction.id)
+          goodTransacitons.push(transaction);
+        }
+        else continue;
+      }
+
+      return goodTransacitons;
+    }
+
+    return [];
   }
 
   getStocksPriceOnDate(date: string): StockPrice {
@@ -124,7 +158,7 @@ export class History {
       const transactions = this.getTransactionsOnDate(date);
       const prices = this.getStocksPriceOnDate(date);
 
-      const chart = this.chart.updateChart(
+      const chartUpdate = this.chart.updateChart(
         transactions,
         prices,
         dividends,
@@ -136,7 +170,7 @@ export class History {
         prices,
         dividends,
         transactions,
-        chart: chart,
+        chart: chartUpdate,
       };
 
     }
@@ -151,7 +185,6 @@ export class History {
       transaction.ticker
     );
     const uniqueTickers = Utilities.uniqueElements(allTickers);
-
     for (const ticker of uniqueTickers) {
       const stock = await StockDataBase.getStock(ticker);
 

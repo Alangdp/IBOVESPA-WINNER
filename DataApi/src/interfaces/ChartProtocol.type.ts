@@ -38,7 +38,7 @@ export interface ChartProtocol extends ChartConstructor {
     prices: StockPrice,
     dividends: DividendOnDate,
     date: string
-  ): this;
+  ): ChartConstructor;
 
   makePortfolioChart(): ChartPortifolio;
   returnChart(): ChartModel;

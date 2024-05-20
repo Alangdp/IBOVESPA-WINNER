@@ -53,7 +53,7 @@ export function VariationCard({
       const data = responseProps.data
       if(!data) toast.error("Error Getting Stocks Price")
 
-      const prices = data!.price.reverse().slice(0, 360).reverse();
+      const prices = data!.price.reverse().slice(0, 180).reverse();
 
       setLineData({
         prices: prices.map((item) => {
@@ -125,7 +125,7 @@ export function VariationCard({
           </p>
         </div>
         <div className="prices col-span-2  h-full rounded-df">
-          <SimpleLineChart data={lineData.prices} x={true} />
+          <SimpleLineChart data={lineData.prices} x={true} interval={75} />
         </div>
       </div>
     </div>

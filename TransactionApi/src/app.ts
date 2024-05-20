@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
+import cors from "cors"
 
 import './database/index.js';
 import transactionRouter from './routes/transaction.routes.js';
@@ -24,6 +25,8 @@ class App {
   private middlewares(): void {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use('*', cors())
+    this.app.options('*', cors())
   }
 }
 

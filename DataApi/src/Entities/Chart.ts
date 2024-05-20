@@ -1,3 +1,4 @@
+import { ChartCoordinate } from 'recharts/types/util/types';
 import { ChartProtocol } from '../interfaces/ChartProtocol.type';
 import {
   ChartConstructor,
@@ -98,14 +99,18 @@ export default class Chart implements ChartProtocol {
     let globalInvested = 0;
 
     for (const ticker in this.individualRentability) {
-      const stockData = this.individualRentability[ticker];
-      const { quantity, valueInvested, dividendValue } = stockData;
+      try {
+        const stockData = this.individualRentability[ticker];
+        const { quantity, valueInvested, dividendValue } = stockData;
 
-      globalStockQuantity += quantity;
-      globalStockValue += valueInvested;
-      globalDividendValue += dividendValue;
-      globalTotalValue += prices[ticker].price * quantity + dividendValue;
-      globalInvested += valueInvested;
+        globalStockQuantity += quantity;
+        globalStockValue += valueInvested;
+        globalDividendValue += dividendValue;
+        globalTotalValue += prices[ticker].price * quantity + dividendValue;
+        globalInvested += valueInvested;
+      } catch (error) {
+        continue
+      }
     }
 
     this.globalStockQuantity = globalStockQuantity;
@@ -117,15 +122,19 @@ export default class Chart implements ChartProtocol {
 
   updateTickers(pricesOnDate: StockPrice, date: string) {
     for (const ticker in this.individualRentability) {
-      const individualChart = this.individualRentability[ticker];
-      const stockData = this.individualRentability[ticker];
-      const { medianPrice } = individualChart;
-      const actualPrice = pricesOnDate[ticker].price;
-      const { quantity } = stockData;
+      try {
+        const individualChart = this.individualRentability[ticker];
+        const stockData = this.individualRentability[ticker];
+        const { medianPrice } = individualChart;
+        const actualPrice = pricesOnDate[ticker].price;
+        const { quantity } = stockData;
 
-      stockData.valueTotal = quantity * actualPrice;
-      stockData.rentability = (actualPrice - medianPrice) / medianPrice;
-      this.individualRentability[ticker] = stockData;
+        stockData.valueTotal = quantity * actualPrice;
+        stockData.rentability = (actualPrice - medianPrice) / medianPrice;
+        this.individualRentability[ticker] = stockData;
+      } catch (error: any) {
+        continue;
+      }
     }
   }
 
@@ -154,7 +163,7 @@ export default class Chart implements ChartProtocol {
     prices: StockPrice,
     dividends: DividendOnDate,
     date: string
-  ): this {
+  ): ChartConstructor {
     const transactionsLength = transactions.length;
     if (transactionsLength > 0) {
       for (const transaction of transactions) {
@@ -182,10 +191,17 @@ export default class Chart implements ChartProtocol {
     this.updateDividends(dividends, date);
     this.makePortfolioChart();
 
-    // FIXME - REFAZER ESSA PARTE
-    // this.globalRentabily = this.globalTotalValue / this.globalStockValue;
-
-    return this;
+    const dataToReturn: ChartConstructor = {
+      globalRentability: this.globalRentability,
+      globalStockQuantity: this.globalStockQuantity,
+      globalStockValue: this.globalStockValue,
+      globalDividendValue: this.globalDividendValue,
+      globalTotalValue: this.globalTotalValue,
+      globalInvested: this.globalInvested,
+      individualRentability: this.individualRentability,
+      portifolio: this.portifolio
+    }
+    return dataToReturn
   }
 
   makePortfolioChart(): ChartPortifolio {

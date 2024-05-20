@@ -9,6 +9,7 @@ import { errorResponse, response } from "../utils/Responses";
 export const makeTransaction: RequestHandler = async (req, res, next) => {
   const service = new TransactionService();
 
+  console.log(req.body)
   try {
     const token = req.body.token;
     const transaction: TransactionsProps = req.body.transaction

@@ -115,7 +115,7 @@ export const indicatorData: RequestHandler = async(req, res, next) => {
     const actualDate = new Date();
     const ticker: string | undefined = req.body.ticker;
     if(!ticker) throw new Error("Invalid ticker");
-    const stock = await InstanceStock.execute(ticker);
+    const stock = await StockDataBase.getStock(ticker);
 
     let totalDividendsLastYear = 0
     stock.lastDividendsValue.forEach(item => {
@@ -136,7 +136,6 @@ export const indicatorData: RequestHandler = async(req, res, next) => {
     }
     return response(res, {status: 200, data})
   } catch (error) {
-
     console.log(error)
     return errorResponse(res, error);
   }
