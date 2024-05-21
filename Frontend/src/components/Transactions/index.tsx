@@ -81,8 +81,8 @@ export function TransactionTable({ chart }: TransactionTableProps) {
           <span className={cn("absolute left-1/2 -translate-x-1/2 bottom-0 top-7 w-5/6 h-1 bg-bl rounded-df transition-all duration-300 line-on-hover", selected !== "Agendadas" ? "hidden" : "")}></span>
         </button>
       </div>
-      <div className="h-5/6 container rounded-df w-full mt-4 p-0 shadow-lg bg-[#1B2028]">
-        <Table className="rounded-df bg-[#1B2028] text-white shadow-gray-700 w-full p-0 h-full">
+      <div className="h-5/6 container rounded-df w-full mt-4 p-0 shadow-lg bg-df">
+        <Table className="rounded-df bg-df text-white shadow-gray-700 w-full p-0 h-full">
           <TableHeader className="rounded-df">
             <TableRow className="text-white font-bold rounded-df h-2">
               <TableHead className="w-[200px] text-center font-bold text-lg">

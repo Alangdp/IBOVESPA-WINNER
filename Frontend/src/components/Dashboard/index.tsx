@@ -100,7 +100,7 @@ export function DashBoard({ chart, history }: DashBoardProps) {
                 </p>
               </div>
             </div>
-            <div className="row-span-5 h-full bg-[#1B2028] shadow-lg rounded-df">
+            <div className="row-span-5 h-full bg-df shadow-lg rounded-df">
               <h4 className="text-xl text-white p-4 font-semibold">
                 Portifolio
               </h4>
@@ -128,7 +128,7 @@ export function DashBoard({ chart, history }: DashBoardProps) {
               </div>
             </div>
           </div>
-          <div className="col-span-4 bg-[#1B2028] grid-rows-6 shadow-lg rounded-df">
+          <div className="col-span-4 bg-df grid-rows-6 shadow-lg rounded-df">
             <div className="p-4 w-full flex items-center justify-between">
               <ChartHeader />
             </div>

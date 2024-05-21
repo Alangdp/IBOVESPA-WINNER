@@ -11,6 +11,7 @@ import { ChartProps } from "@/types/Chart.type";
 import { getHistory } from "@/Utils/ApiUtils";
 import { AnimatePresence } from "framer-motion";
 import { SimplifiedDataHistory } from "@/types/History.type";
+import { Ranking } from "../Ranking";
 
 export default function MainDashBoard() {
   const { selected } = useSelected();
@@ -54,6 +55,7 @@ export default function MainDashBoard() {
           {selected === "Overview" ? <DashBoard chart={chart!} history={history || empty}/>: <></>}
           {selected === "Carteira" ? <BuySellModal text="Teste"/> : <></>}
           {selected === "Transações" ? <TransactionTable chart={chart!}/> : <></>}
+          {selected === "Ranking" ? <Ranking/> : <></>}
         </AnimatePresence>
       </div>
     </div>

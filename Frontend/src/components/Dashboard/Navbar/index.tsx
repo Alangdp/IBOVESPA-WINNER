@@ -20,7 +20,7 @@ export function NavBar({ className }: NavBarProps) {
   return (
     <nav
       className={cn(
-        "w-full bg-[#1B2028] flex items-center justify-center py-4",
+        "w-full bg-df flex items-center justify-center py-4",
         className
       )}
     >

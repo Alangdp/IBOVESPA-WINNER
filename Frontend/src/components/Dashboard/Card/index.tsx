@@ -73,7 +73,7 @@ export function VariationCard({
   return (
     <div
       className={cn(
-        "rounded-2xl p-4card w-[256px] bg-[#1B2028] h-44",
+        "rounded-2xl p-4card w-[256px] bg-df h-44",
         className
       )}
     >

@@ -206,3 +206,11 @@ export const getTickers = async () => {
   }
 }
 
+export const getRanking = async() => {
+  try {
+    
+  } catch (error) {
+    console.log(error)
+    throw new Error("Invalid Token or internal Error")
+  }
+}

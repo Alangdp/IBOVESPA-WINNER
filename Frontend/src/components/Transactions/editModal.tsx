@@ -114,7 +114,7 @@ export function TransactionEdit({ props, children, token, transactions, state }:
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-[#1B2028] text-white">
+      <DialogContent className="sm:max-w-[425px] bg-df text-white">
         <DialogHeader>
           <DialogTitle>Edição transação</DialogTitle>
           <DialogDescription>

@@ -6,7 +6,7 @@ interface IndexCardProps {
 
 export default function IndexCard({ Icon }: IndexCardProps) {
   return (
-    <div className="card grid grid-cols-4 items-center justify-center cursor-pointer hover:bg-[#1B2028] duration-300 py-2 rounded-df">
+    <div className="card grid grid-cols-4 items-center justify-center cursor-pointer hover:bg-df duration-300 py-2 rounded-df">
       {/* {Foto Indicie} */}
       <div className="img flex justify-center">
         <div className="w-12 rounded-full">

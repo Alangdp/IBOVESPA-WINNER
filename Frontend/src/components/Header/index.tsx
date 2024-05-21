@@ -49,7 +49,7 @@ export function Header({ title }: headerProps) {
     <nav className="w-full">
       <nav className="Header flex items-center justify-around mt-2">
         <h2 className="font-semibold text-3xl text-white">{title}</h2>
-        <div className="relative search p-2 bg-[#1B2028] text-[#9E9E9E] rounded-df w-1/4 flex items-center justify-between">
+        <div className="relative search p-2 bg-df text-[#9E9E9E] rounded-df w-1/4 flex items-center justify-between">
           <div className="flex w-max">
             <input
               type="text"
@@ -61,7 +61,7 @@ export function Header({ title }: headerProps) {
                 setSearchTerm(value);
                 searchTickers(value);
               }}
-              className=" bg-[#1B2028] outline-none w-max"
+              className=" bg-df outline-none w-max"
               value={searchTerm}
             />
             {finded.length > 0 && showResults && (
@@ -79,7 +79,7 @@ export function Header({ title }: headerProps) {
         </div>
 
         <div className="notify-user flex justify-between items-center gap-12">
-          <div className="notification p-2 rounded-df bg-[#1B2028] cursor-pointer">
+          <div className="notification p-2 rounded-df bg-df cursor-pointer">
             <BellIcon className="w-6 h-6 text-white" />
           </div>
           <div className="user flex p-2 items-center justify-around">

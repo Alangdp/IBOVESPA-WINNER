@@ -20,7 +20,7 @@ export function SideBar({ className }: SideBarProps) {
   return (
     <nav
       className={cn(
-        "w-[256px] text-white grid grid-rows-10 h-full justify-between bg-[#1B2028]",
+        "w-[256px] text-white grid grid-rows-10 h-full justify-between bg-df",
         className
       )}
     >
@@ -31,6 +31,7 @@ export function SideBar({ className }: SideBarProps) {
 
       <div className="buttons flex flex-col justify-center items-center gap-4 row-span-6">
         <SideButton text="Overview" active={true} icon={Squares} />
+        <SideButton text="Ranking" active={false} icon={FileTextIcon} />
         <SideButton text="Carteira" active={false} icon={PieChartIcon} />
         <SideButton text="Transações" active={false} icon={CardStackIcon} />
         <SideButton text="Noticias" active={false} icon={FileTextIcon} />
