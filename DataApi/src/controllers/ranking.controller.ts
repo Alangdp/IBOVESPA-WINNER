@@ -3,12 +3,21 @@ import { Comparator } from '../Entities/Comparator.js';
 import Database from '../utils/JsonDatabase.js';
 import { Pontuation } from '../Entities/Pontuation.js';
 import { errorResponse, response } from '../utils/Responses.js';
+import { PontuationDataBase } from '../useCases/PontuationDatabase.js';
+import { PontuationProps } from '../types/Pontuation.type.js';
 
 const getRank: RequestHandler = async (req, res, next) => {
   try {
-    const db = new Database<Pontuation[]>('./json/Ranking.json');
-    return response(res, { status: 200, data: db.get() });
+    const data = await PontuationDataBase.getAll("BAZIN");
+
+    const formattedData: PontuationProps[] = data;
+    const sortedData = formattedData.filter( (item, index) => 
+      index % 2 === 0
+    ).sort((a, b) => b.totalPoints - a.totalPoints);
+    console.log(sortedData)
+    return response(res, { status: 200, data: sortedData });
   } catch (error: any) {
+    console.log(error);
     return errorResponse(res, error);
   }
 };

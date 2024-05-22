@@ -4,13 +4,14 @@ import { pontuationModel } from '../database/mongodb/models/Pontuation.model.js'
 import { InstanceStock } from './instanceStock.js';
 import { Bazin } from '../Entities/Bazin.js';
 import { Granham } from '../Entities/Graham.js';
+import { prop } from 'cheerio/lib/api/attributes.js';
 
 configDotenv();
 
 const HOUR_IN_MILISECONDS = 3600000;
 
 interface DatabaseProps {
-  ticker: string;
+  ticker?: string;
   type: 'BAZIN' | 'GRAHAM';
 }
 
@@ -19,6 +20,7 @@ export class PontuationDataBase {
     .TOLERANCE_TIME_HOURS_RANKING as unknown as number;
 
   static async create(props: DatabaseProps) {
+    if(!props.ticker) throw new Error("To register pontuation is necessari ticker!")
     const stock = await InstanceStock.execute(props.ticker);
     let pontuation: Pontuation | undefined = undefined;
 
@@ -74,6 +76,11 @@ export class PontuationDataBase {
       await points.deleteOne({ ...props });
       return PontuationDataBase.create(props);
     }
+    return points;
+  }
+
+  static async getAll(subID: 'BAZIN' | 'GRAHAM') {
+    const points = await (await pontuationModel).find({subId: "BAZIN"});
     return points;
   }
 }

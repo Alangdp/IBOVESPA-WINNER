@@ -15,7 +15,7 @@ router.post('/stock/dividend', indexDividends);
 router.post('/stock/indicators', indexIndicators);
 router.post('/stock/stockInfo', indicatorData);
 router.get('/stock/tickers', indexTickers);
-router.get('/stock/rank', getRank);
+router.get('/stock/ranking', getRank);
 router.post('/stock/history', getHistory);
 router.post('/stock/chart', getPortifolio);
 router.get('/stock/validTicker/:ticker', validTicker);

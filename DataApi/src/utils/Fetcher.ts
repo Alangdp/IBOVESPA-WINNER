@@ -25,6 +25,7 @@ import { combineTableNames } from 'sequelize/types/utils.js';
 import { ConnectionStates } from 'mongoose';
 import { val } from 'cheerio/lib/api/attributes.js';
 import { HomeItens, ItemData } from '../types/HomeItens.type.js';
+import { NewsRoot } from '../types/News.type.js';
 
 // FIXME REFAZER TUDO AQUI
 // TODO - ROE INCORRETO CONSERTAR
@@ -694,6 +695,16 @@ export default class TickerFetcher {
     } catch (error: any) {
       console.log('Erro:', error.message);
       return null;
+    }
+  }
+
+  static async getNews() {
+    try {
+      const data = await axios.get("https://statusinvest.com.br/admnews/get?page=1&quantityItens=6&providers%5B%5D=34&providers%5B%5D=35&contentType=2");
+      console.log(data.status, data.data)
+    } catch(error) {
+      console.log(error)
+      return null
     }
   }
 }
