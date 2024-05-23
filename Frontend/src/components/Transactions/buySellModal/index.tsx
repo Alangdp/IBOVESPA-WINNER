@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ElementType, useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -15,15 +15,16 @@ import { capitalizeFirstLetter } from "@/Utils/String";
 import { getTickers, registerTransaction } from "@/Utils/ApiUtils";
 
 interface BuySellModalProps {
-  text: string;
+  Text: React.ReactNode;
   className?: string;
+  ticker?: string;
+  tickers: string[]
 }
 
-export default function BuySellModal({ text, className }: BuySellModalProps) {
+export default function BuySellModal({ tickers, Text, className, ticker}: BuySellModalProps) {
   const { token } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState("BUY");
-  const [tickers, setTickers] = useState<string[]>()
 
   const toggleStatus = () => setIsOpen(!isOpen);
 
@@ -42,12 +43,8 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
     errors
   ) as (keyof TransactionFilterSchema)[];
 
-  const fetchTickers = async () => {
-    if(!tickers) setTickers(await getTickers())
-  }
-
   useEffect(() => {
-    fetchTickers()
+    setValue("ticker", ticker || "");
     if(errors.ticker) {
       toast.error(errors['ticker']?.message);
     }
@@ -93,19 +90,19 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
 
   return (
     <>
-      <Button onClick={toggleStatus} className={cn("", className)}>
-        {text}
-      </Button>
+      <div className="cursor-pointer" onClick={toggleStatus}>
+        {Text}
+      </div>
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed top-2 right-2">
+          <div className={cn("fixed top-2 right-2")}>
             <motion.div
               key={"buysell"}
               initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, y: "100%", transition: { duration: 0.5 } }} // Animação de saída
               transition={{ duration: 0.5 }}
-              className="fixed w-96 h-[calc(100vh-50%)] bg-white rounded-lg top-2 right-2 drop-shadow-lg shadow-lg divide-y "
+              className={cn("fixed w-96 bg-white rounded-lg top-2 right-2 drop-shadow-lg shadow-lg divide-y ", className)}
             >
               <nav className="w-full h-14 flex items-center justify-between p-4 text-black">
                 <ArrowLeftIcon
@@ -193,8 +190,8 @@ export default function BuySellModal({ text, className }: BuySellModalProps) {
                           <ComboOptions
                             className="p-2"
                             placeholder="Tickers"
-                            defaultValue="BBAS3"
-                            options={tickers || []}
+                            defaultValue={ticker || ""}
+                            options={tickers}
                             title="Tickers"
                             {...register("ticker")}
                             onChange={(value) => {

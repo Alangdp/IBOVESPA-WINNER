@@ -32,3 +32,17 @@ export interface DividendPayment {
   value: number
   unitaryValue: number
 }
+
+
+export const getEmptyChart = (): ChartProps => {
+  return {
+    globalRentability: 0,
+    globalStockQuantity: 0,
+    globalStockValue: 0,
+    globalDividendValue: 0,
+    globalTotalValue: 0,
+    globalInvested: 0,
+    individualRentability: {},
+    portifolio: {}
+  };
+};

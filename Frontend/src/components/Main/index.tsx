@@ -7,19 +7,22 @@ import { useSelected } from "../SideBar/SideContext";
 import BuySellModal from "../Transactions/buySellModal";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState } from "react";
-import { ChartProps } from "@/types/Chart.type";
-import { getHistory } from "@/Utils/ApiUtils";
+import { ChartProps, getEmptyChart } from "@/types/Chart.type";
+import { getHistory, getTickers } from "@/Utils/ApiUtils";
 import { AnimatePresence } from "framer-motion";
 import { SimplifiedDataHistory } from "@/types/History.type";
 import { Ranking } from "../Ranking";
+import Wallet from "../Wallet";
 
 export default function MainDashBoard() {
   const { selected } = useSelected();
   const { token } = useAuth();
   const [chart, setChart] = useState<ChartProps>()
   const [history, setHistory] = useState<SimplifiedDataHistory>()
+  const [tickers, setTickers] = useState<string[]>()
  
   const fetchData = async () => {
+    if(!tickers) setTickers(await getTickers())
     if(!history) {
       const history = await getHistory(token!)
       setHistory(history);
@@ -29,7 +32,7 @@ export default function MainDashBoard() {
 
   useEffect(() => {
     fetchData();
-  }, [token]);
+  }, [token, tickers]);
 
   const empty: SimplifiedDataHistory = {
     historyData: {},
@@ -53,7 +56,7 @@ export default function MainDashBoard() {
         <Header title={selected} />
         <AnimatePresence mode="popLayout">
           {selected === "Overview" ? <DashBoard chart={chart!} history={history || empty}/>: <></>}
-          {selected === "Carteira" ? <BuySellModal text="Teste"/> : <></>}
+          {selected === "Carteira" ? <Wallet tickers={tickers} chart={chart ? chart : getEmptyChart() }/> : <></>}
           {selected === "Transações" ? <TransactionTable chart={chart!}/> : <></>}
           {selected === "Ranking" ? <Ranking/> : <></>}
         </AnimatePresence>

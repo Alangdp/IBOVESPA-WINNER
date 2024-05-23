@@ -8,6 +8,7 @@ import axios from "axios";
 import { ChartProps } from "@/types/Chart.type";
 import { FinancialIndicators } from "@/types/Indicators.type";
 import { SimplifiedDataHistory, SimplifiedHistoryData } from "@/types/History.type";
+import { PontuationProps, PontuationReturn } from "@/types/rank.type";
 
 const dataAPI: string = import.meta.env.VITE_STOCK_API_URL;
 const tokenAPI: string = import.meta.env.VITE_TOKEN_API_URL;
@@ -68,12 +69,13 @@ export const getPrice = async (ticker: string) => {
   try {
     const validTicker = await validateTicker(ticker);
     if(!validTicker) throw new Error("Invalid Ticker")
-
     const response = await axios.post(`http://${dataAPI}/stock/price`, {
       ticker
     })
-    if(!response.data.data || !response.data) throw new Error("internal Error")
+
+    if(!response.data.data || !response.data) throw new Error("internal Error");
     const data: ResponseProps<PriceData> = (response).data;
+
     return data.data!;
   } catch (error) {
     throw new Error("Invalid Ticker or internal Error")
@@ -208,7 +210,11 @@ export const getTickers = async () => {
 
 export const getRanking = async() => {
   try {
-    
+    const response = await axios.get(`http://${dataAPI}/stock/rank`);
+    const responseData: ResponseProps<PontuationReturn> = response.data;
+    if(!responseData.data) throw new Error("Erro getting Data")
+      console.log(responseData)
+    return responseData.data
   } catch (error) {
     console.log(error)
     throw new Error("Invalid Token or internal Error")

@@ -1,3 +1,6 @@
+
+const logoURL = import.meta.env.VITE_LOGO_IMAGES_URL;
+
 interface RankingCardProps {
   rankingNumber: number;
   ticker: string;
@@ -26,7 +29,7 @@ export default function RankingCardDark({
       <div className="w-full h-[40%] grid grid-cols-2">
         <div className="w-full h-full flex flex-col p-2">
           <img
-            src="https://statusinvest.com.br/img/company/cover/331.jpg?v=78"
+            src={`http://${logoURL}/${ticker}-logo.jpg`}
             className="w-[165px] h-[55px] rounded-[55px]"
             alt=""
           />

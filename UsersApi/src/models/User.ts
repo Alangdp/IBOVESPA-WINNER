@@ -58,17 +58,6 @@ User.init(
       },
     },
 
-    cpf: {
-      type: sequelize.STRING(11),
-      allowNull: true,
-      validate: {
-        len: {
-          args: [11, 11],
-          msg: 'CPF must have 11 characters',
-        },
-      },
-    },
-
     email: {
       type: sequelize.STRING(100),
       allowNull: false,

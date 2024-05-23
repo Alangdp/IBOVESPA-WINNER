@@ -57,7 +57,7 @@ export function ComboOptions({
       <PopoverContent className="w-[200px] h-40 p-0">
         <Command>
           <CommandInput placeholder={title} />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandEmpty>No Data Found</CommandEmpty>
           <CommandGroup className="overflow-y-scroll">
             {options.map((option) => (
               <CommandItem
