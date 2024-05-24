@@ -1,15 +1,16 @@
 import { Schema } from 'mongoose';
-import { PontuationProps, PontuationRule } from '../../../types/Pontuation.type';
+import { InfoData, PontuationProps, PontuationRule } from '../../../types/Pontuation.type';
 import { MongooConnection } from '../../index.js';
 
 interface PontuationDocument extends PontuationProps {
   defaultIfTrue: number;
   defaultIfFalse: number;
   id: string;
-  subId: string
+  subId: string;
   totalEvaluate: PontuationRule[];
-  totalPoints: number
-  createdAt: Date
+  infoData: InfoData;
+  totalPoints: number;
+  createdAt: Date;
 }
 
 const pontuationSchema = new Schema<PontuationDocument>({
@@ -18,6 +19,11 @@ const pontuationSchema = new Schema<PontuationDocument>({
   id: { type: String, required: true},
   subId: { type: String, required: true},
   totalPoints: {type: Number, required: true},
+  infoData: {
+    actualPrice: { type: Number, required: true },
+    dy: { type: Number, required: true },
+    maxPrice: { type: Number, required: true }
+  },
   totalEvaluate: [
     {
       ruleName: { type: String, required: true },

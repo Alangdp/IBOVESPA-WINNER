@@ -4,6 +4,7 @@ import { StockDataBase } from '../useCases/stockDataBase.js';
 import Json from './Json.js';
 import TickerFetcher from './Fetcher.js';
 import { Pontuation } from '../Entities/Pontuation.js';
+import { PontuationDataBase } from '../useCases/PontuationDatabase.js';
 
 // FIXME ARRUMAR SOLID AQUI
 // FIXME FUNÇÃO TEMPORARIA
@@ -24,17 +25,13 @@ class RankingSystyem {
   async execute() {
     for (const ticker of this.tickers) {
       try {
-        const stock: StockProps = await StockDataBase.getStock(ticker)
-        const bazin = new Bazin(stock);
-
-        this.ranking[ticker] = await bazin.makePoints(stock)
+        await PontuationDataBase.get({ticker, type: 'BAZIN'})
         console.log(ticker)
       } catch (error) {
+        console.log(error)
         continue;
       }
     }
-
-    Json.saveJSONToFile(this.ranking, 'Ranking.json');
   }
 
   constructor({ tickers }: RankingSystyemProps) {

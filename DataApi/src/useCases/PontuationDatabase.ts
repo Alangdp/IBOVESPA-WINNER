@@ -21,17 +21,19 @@ export class PontuationDataBase {
 
   static async create(props: DatabaseProps) {
     if(!props.ticker) throw new Error("To register pontuation is necessari ticker!")
+    const model = await pontuationModel;
     const stock = await InstanceStock.execute(props.ticker);
     let pontuation: Pontuation | undefined = undefined;
 
     if (props.type === 'BAZIN') {
-      pontuation = await new Bazin(stock).makePoints(stock);
-      (await pontuationModel).create(pontuation);
+      pontuation = new Bazin(stock).makePoints(stock);
+      console.log(pontuation);
+      await model.create(pontuation);
       return pontuation
     }
     if (props.type === 'GRAHAM') {
       pontuation = await new Granham(stock).makePoints(stock);
-      (await pontuationModel).create(pontuation);
+      await model.create(pontuation);
       return pontuation
     }
     throw new Error('Invalid Type');
@@ -74,7 +76,7 @@ export class PontuationDataBase {
     const valid = PontuationDataBase.validTime(time.getTime())
     if (!valid) {;
       await points.deleteOne({ ...props });
-      return PontuationDataBase.create(props);
+      return await PontuationDataBase.create(props);
     }
     return points;
   }

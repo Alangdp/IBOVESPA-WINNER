@@ -11,7 +11,6 @@ export default async function apiGetter<T>(axiosParams: AxiosOptions, finalUrl: 
       finalUrl 
     ); 
   
-    console.log(options)
     const response = await axios.request(options)
     const responseData: T = response.data;
     return responseData;

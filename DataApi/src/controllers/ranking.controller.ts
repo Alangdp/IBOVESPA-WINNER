@@ -9,12 +9,8 @@ import { PontuationProps } from '../types/Pontuation.type.js';
 const getRank: RequestHandler = async (req, res, next) => {
   try {
     const data = await PontuationDataBase.getAll("BAZIN");
-
     const formattedData: PontuationProps[] = data;
-    const sortedData = formattedData.filter( (item, index) => 
-      index % 2 === 0
-    ).sort((a, b) => b.totalPoints - a.totalPoints);
-    console.log(sortedData)
+    const sortedData = formattedData.sort((a, b) => b.totalPoints - a.totalPoints);
     return response(res, { status: 200, data: sortedData });
   } catch (error: any) {
     console.log(error);

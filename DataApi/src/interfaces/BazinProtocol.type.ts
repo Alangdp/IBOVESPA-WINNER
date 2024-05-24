@@ -8,7 +8,7 @@ export interface BazinMethods {
   // validate(stock: StockProtocol): void;
   constistentDividend(): boolean;
   crescentDividend(): boolean;
-  makePoints(stock: StockProtocol): Promise<Pontuation>;
+  makePoints(stock: StockProtocol): Pontuation;
 }
 
 export abstract class BazinProtocol {
@@ -22,4 +22,5 @@ export abstract class BazinProtocol {
 
   protected lastDividendsValue: number[] = [];
   protected lastDividendsYield: number[] = [];
+  protected actualPrice: number = 0;
 }

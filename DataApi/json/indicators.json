@@ -1,169 +1,169 @@
 {
   "dy": {
-    "actual": 8.1542,
-    "avg": 7.87856,
+    "actual": 0,
+    "avg": 2.975675,
     "olds": [
       {
         "date": 2024,
-        "value": 8.1542
+        "value": 0
       },
       {
         "date": 2023,
-        "value": 8.3173
+        "value": 2.6735
       },
       {
         "date": 2022,
-        "value": 4.6191
+        "value": 2.4323
       },
       {
         "date": 2021,
-        "value": 14.7629
+        "value": 2.6908
       },
       {
         "date": 2020,
-        "value": 6.2552
+        "value": 0.9862
       },
       {
         "date": 2019,
-        "value": 6.6897
+        "value": 3.1034
       },
       {
         "date": 2018,
-        "value": 18.1652
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 4.5409
+        "value": 3.6191
       },
       {
         "date": 2016,
-        "value": 2.3162
+        "value": 4.7687
       },
       {
         "date": 2015,
-        "value": 4.9649
+        "value": 3.5314
       }
     ]
   },
   "p_l": {
-    "actual": 7.5391,
-    "avg": 7.16838,
+    "actual": 54.6539,
+    "avg": 21.577555555555556,
     "olds": [
       {
         "date": 2024,
-        "value": 7.5391
+        "value": 54.6539
       },
       {
         "date": 2023,
-        "value": 7.3913
+        "value": 52.8102
       },
       {
         "date": 2022,
-        "value": 6.6988
+        "value": 12.959
       },
       {
         "date": 2021,
-        "value": 5.3063
+        "value": 12.0473
       },
       {
         "date": 2020,
-        "value": 5.451
+        "value": 10.6592
       },
       {
         "date": 2019,
-        "value": 8.4406
+        "value": 22.7769
       },
       {
         "date": 2018,
-        "value": 6.056
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 8.0701
+        "value": 13.8689
       },
       {
         "date": 2016,
-        "value": 2.1209
+        "value": 6.8938
       },
       {
         "date": 2015,
-        "value": 14.6097
+        "value": 7.5288
       }
     ]
   },
   "p_vp": {
-    "actual": 0.9907,
-    "avg": 1.10524,
+    "actual": 0.6488,
+    "avg": 0.5821666666666667,
     "olds": [
       {
         "date": 2024,
-        "value": 0.9907
+        "value": 0.6488
       },
       {
         "date": 2023,
-        "value": 0.9713
+        "value": 0.6269
       },
       {
         "date": 2022,
-        "value": 0.9368
+        "value": 0.7
       },
       {
         "date": 2021,
-        "value": 1.1124
+        "value": 0.6813
       },
       {
         "date": 2020,
-        "value": 1.3322
+        "value": 0.6504
       },
       {
         "date": 2019,
-        "value": 1.2614
+        "value": 0.4879
       },
       {
         "date": 2018,
-        "value": 1.0295
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 1.0032
+        "value": 0.5634
       },
       {
         "date": 2016,
-        "value": 1.0339
+        "value": 0.4626
       },
       {
         "date": 2015,
-        "value": 1.381
+        "value": 0.4182
       }
     ]
   },
   "p_ebita": {
-    "actual": 5.5742,
-    "avg": 6.0671875,
+    "actual": 3.186,
+    "avg": 3.4352,
     "olds": [
       {
         "date": 2024,
-        "value": 5.5742
+        "value": 3.186
       },
       {
         "date": 2023,
-        "value": 5.4649
+        "value": 3.0786
       },
       {
         "date": 2022,
-        "value": 5.0398
+        "value": 2.7087
       },
       {
         "date": 2021,
-        "value": 4.0638
+        "value": 3.6732
       },
       {
         "date": 2020,
-        "value": 4.6103
+        "value": 2.5289
       },
       {
         "date": 2019,
-        "value": 6.8204
+        "value": 5.4358
       },
       {
         "date": 2018,
@@ -171,7 +171,7 @@
       },
       {
         "date": 2017,
-        "value": 5.3574
+        "value": 0
       },
       {
         "date": 2016,
@@ -179,267 +179,267 @@
       },
       {
         "date": 2015,
-        "value": 11.6067
+        "value": 0
       }
     ]
   },
   "p_ebit": {
-    "actual": 4.9419,
-    "avg": 5.12707,
+    "actual": 3.6636,
+    "avg": 3.758477777777778,
     "olds": [
       {
         "date": 2024,
-        "value": 4.9419
+        "value": 3.6636
       },
       {
         "date": 2023,
-        "value": 4.845
+        "value": 3.5401
       },
       {
         "date": 2022,
-        "value": 4.3418
+        "value": 3.0421
       },
       {
         "date": 2021,
-        "value": 3.6098
+        "value": 4.4261
       },
       {
         "date": 2020,
-        "value": 4.1388
+        "value": 2.8887
       },
       {
         "date": 2019,
-        "value": 6.3548
+        "value": 8.3212
       },
       {
         "date": 2018,
-        "value": 4.6344
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 5.3826
+        "value": 4.0024
       },
       {
         "date": 2016,
-        "value": 1.4149
+        "value": 1.8633
       },
       {
         "date": 2015,
-        "value": 11.6067
+        "value": 2.0788
       }
     ]
   },
   "p_sr": {
-    "actual": 3.0923,
-    "avg": 3.5984,
+    "actual": 0.1744,
+    "avg": 0.19113333333333332,
     "olds": [
       {
         "date": 2024,
-        "value": 3.0923
+        "value": 0.1744
       },
       {
         "date": 2023,
-        "value": 3.0317
+        "value": 0.1685
       },
       {
         "date": 2022,
-        "value": 2.7803
+        "value": 0.1747
       },
       {
         "date": 2021,
-        "value": 2.8943
+        "value": 0.1849
       },
       {
         "date": 2020,
-        "value": 4.9571
+        "value": 0.2169
       },
       {
         "date": 2019,
-        "value": 4.5013
+        "value": 0.1997
       },
       {
         "date": 2018,
-        "value": 3.5782
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 4.0796
+        "value": 0.2484
       },
       {
         "date": 2016,
-        "value": 1.3436
+        "value": 0.1805
       },
       {
         "date": 2015,
-        "value": 5.7256
+        "value": 0.1722
       }
     ]
   },
   "p_ativo": {
-    "actual": 0.5065,
-    "avg": 0.64116,
+    "actual": 0.1573,
+    "avg": 0.14913333333333334,
     "olds": [
       {
         "date": 2024,
-        "value": 0.5065
+        "value": 0.1573
       },
       {
         "date": 2023,
-        "value": 0.4966
+        "value": 0.152
       },
       {
         "date": 2022,
-        "value": 0.47
+        "value": 0.1641
       },
       {
         "date": 2021,
-        "value": 0.5528
+        "value": 0.1686
       },
       {
         "date": 2020,
-        "value": 0.7451
+        "value": 0.167
       },
       {
         "date": 2019,
-        "value": 0.6888
+        "value": 0.135
       },
       {
         "date": 2018,
-        "value": 0.6146
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 0.6387
+        "value": 0.1551
       },
       {
         "date": 2016,
-        "value": 0.6943
+        "value": 0.1269
       },
       {
         "date": 2015,
-        "value": 1.0042
+        "value": 0.1162
       }
     ]
   },
   "p_capitlgiro": {
-    "actual": 6.4207,
-    "avg": 6.85637,
+    "actual": 0.4112,
+    "avg": 0.46442222222222224,
     "olds": [
       {
         "date": 2024,
-        "value": 6.4207
+        "value": 0.4112
       },
       {
         "date": 2023,
-        "value": 6.2948
+        "value": 0.3973
       },
       {
         "date": 2022,
-        "value": 4.4877
+        "value": 0.5289
       },
       {
         "date": 2021,
-        "value": 6.3595
+        "value": 0.4361
       },
       {
         "date": 2020,
-        "value": 4.4309
+        "value": 0.5827
       },
       {
         "date": 2019,
-        "value": 4.4844
+        "value": 0.4112
       },
       {
         "date": 2018,
-        "value": 5.0135
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 5.9419
+        "value": 0.4483
       },
       {
         "date": 2016,
-        "value": 9.6648
+        "value": 0.4467
       },
       {
         "date": 2015,
-        "value": 15.4655
+        "value": 0.5174
       }
     ]
   },
   "p_ativocirculante": {
-    "actual": -0.6075,
-    "avg": -0.76489,
+    "actual": -0.607,
+    "avg": -0.48606666666666665,
     "olds": [
       {
         "date": 2024,
-        "value": -0.6075
+        "value": -0.607
       },
       {
         "date": 2023,
-        "value": -0.5955
+        "value": -0.5866
       },
       {
         "date": 2022,
-        "value": -0.5496
+        "value": -0.6198
       },
       {
         "date": 2021,
-        "value": -0.6349
+        "value": -0.5755
       },
       {
         "date": 2020,
-        "value": -0.9601
+        "value": -0.4961
       },
       {
         "date": 2019,
-        "value": -0.8927
+        "value": -0.3564
       },
       {
         "date": 2018,
-        "value": -0.7285
+        "value": 0
       },
       {
         "date": 2017,
-        "value": -0.7543
+        "value": -0.4584
       },
       {
         "date": 2016,
-        "value": -0.7814
+        "value": -0.3612
       },
       {
         "date": 2015,
-        "value": -1.1444
+        "value": -0.3136
       }
     ]
   },
   "ev_ebitda": {
-    "actual": 8.5306,
-    "avg": 7.7350375,
+    "actual": 6.9971,
+    "avg": 8.785933333333332,
     "olds": [
       {
         "date": 2024,
-        "value": 8.5306
+        "value": 6.9971
       },
       {
         "date": 2023,
-        "value": 8.4464
+        "value": 6.9958
       },
       {
         "date": 2022,
-        "value": 7.8109
+        "value": 6.074
       },
       {
         "date": 2021,
-        "value": 6.079
+        "value": 8.3415
       },
       {
         "date": 2020,
-        "value": 5.2172
+        "value": 6.2946
       },
       {
         "date": 2019,
-        "value": 7.6929
+        "value": 18.0126
       },
       {
         "date": 2018,
@@ -447,7 +447,7 @@
       },
       {
         "date": 2017,
-        "value": 5.7473
+        "value": 0
       },
       {
         "date": 2016,
@@ -455,159 +455,159 @@
       },
       {
         "date": 2015,
-        "value": 12.356
+        "value": 0
       }
     ]
   },
   "ev_ebit": {
-    "actual": 7.5629,
-    "avg": 6.41855,
+    "actual": 8.046,
+    "avg": 9.72295,
     "olds": [
       {
         "date": 2024,
-        "value": 7.5629
+        "value": 8.046
       },
       {
         "date": 2023,
-        "value": 7.4883
+        "value": 8.0445
       },
       {
         "date": 2022,
-        "value": 6.7292
+        "value": 6.8217
       },
       {
         "date": 2021,
-        "value": 5.3998
+        "value": 10.0513
       },
       {
         "date": 2020,
-        "value": 4.6836
+        "value": 7.1901
       },
       {
         "date": 2019,
-        "value": 7.1678
+        "value": 27.5738
       },
       {
         "date": 2018,
-        "value": 5.5693
+        "value": 0
       },
       {
         "date": 2017,
-        "value": 5.7743
+        "value": 3.1192
       },
       {
         "date": 2016,
-        "value": 1.4543
+        "value": 0
       },
       {
         "date": 2015,
-        "value": 12.356
+        "value": 6.937
       }
     ]
   },
   "lpa": {
-    "actual": 3.5853,
-    "avg": 7.63901,
+    "actual": 0.64,
+    "avg": 2.03638,
     "olds": [
       {
         "date": 2024,
-        "value": 3.5853
+        "value": 0.64
       },
       {
         "date": 2023,
-        "value": 3.5853
+        "value": 0.64
       },
       {
         "date": 2022,
-        "value": 3.4335
+        "value": 2.886
       },
       {
         "date": 2021,
-        "value": 4.5814
+        "value": 2.9052
       },
       {
         "date": 2020,
-        "value": 5.1018
+        "value": 3.0077
       },
       {
         "date": 2019,
-        "value": 2.6752
+        "value": 1.0098
       },
       {
         "date": 2018,
-        "value": 11.4234
+        "value": 2.2796
       },
       {
         "date": 2017,
-        "value": 8.2899
+        "value": 1.8098
       },
       {
         "date": 2016,
-        "value": 30.5862
+        "value": 2.9011
       },
       {
         "date": 2015,
-        "value": 3.1281
+        "value": 2.2846
       }
     ]
   },
   "vpa": {
-    "actual": 27.2844,
-    "avg": 36.94713,
+    "actual": 53.9176,
+    "avg": 48.417,
     "olds": [
       {
         "date": 2024,
-        "value": 27.2844
+        "value": 53.9176
       },
       {
         "date": 2023,
-        "value": 27.2844
+        "value": 53.9176
       },
       {
         "date": 2022,
-        "value": 24.5528
+        "value": 53.432
       },
       {
         "date": 2021,
-        "value": 21.854
+        "value": 51.3699
       },
       {
         "date": 2020,
-        "value": 20.8751
+        "value": 49.2914
       },
       {
         "date": 2019,
-        "value": 17.9005
+        "value": 47.1395
       },
       {
         "date": 2018,
-        "value": 67.1964
+        "value": 46.1931
       },
       {
         "date": 2017,
-        "value": 66.6869
+        "value": 44.549
       },
       {
         "date": 2016,
-        "value": 62.746
+        "value": 43.23
       },
       {
         "date": 2015,
-        "value": 33.0908
+        "value": 41.1299
       }
     ]
   },
   "peg_Ratio": {
-    "actual": -0.88380223,
-    "avg": -0.21024149,
+    "actual": -0.69241363,
+    "avg": -0.210158072,
     "olds": [
       {
         "date": 2024,
-        "value": -0.88380223
+        "value": -0.69241363
       },
       {
         "date": 2023,
-        "value": -0.86647277
+        "value": -0.66905605
       },
       {
         "date": 2022,
@@ -627,95 +627,95 @@
       },
       {
         "date": 2018,
-        "value": 0.16021405
+        "value": 0
       },
       {
         "date": 2017,
-        "value": -0.11159658
+        "value": -0.36868061
       },
       {
         "date": 2016,
-        "value": 0.00241615
+        "value": 0.25542534
       },
       {
         "date": 2015,
-        "value": 0.43779244
+        "value": 0.42393459
       }
     ]
   },
   "dividaliquida_patrimonioliquido": {
-    "actual": 0.4,
-    "avg": 0.238,
+    "actual": 1.03,
+    "avg": 0.845,
     "olds": [
       {
         "date": 2024,
-        "value": 0.4
+        "value": 1.03
       },
       {
         "date": 2023,
-        "value": 0.4
+        "value": 1.03
       },
       {
         "date": 2022,
-        "value": 0.42
+        "value": 1.15
       },
       {
         "date": 2021,
-        "value": 0.44
+        "value": 0.99
       },
       {
         "date": 2020,
-        "value": 0.15
+        "value": 0.91
       },
       {
         "date": 2019,
-        "value": 0.05
+        "value": 1.05
       },
       {
         "date": 2018,
-        "value": 0.21
+        "value": 0.88
       },
       {
         "date": 2017,
-        "value": 0.12
+        "value": -0.12
       },
       {
         "date": 2016,
-        "value": 0.07
+        "value": 0.42
       },
       {
         "date": 2015,
-        "value": 0.12
+        "value": 1.11
       }
     ]
   },
   "dividaliquida_ebitda": {
-    "actual": 2.26,
-    "avg": 1.355,
+    "actual": 5.07,
+    "avg": 5.843333333333334,
     "olds": [
       {
         "date": 2024,
-        "value": 2.26
+        "value": 5.07
       },
       {
         "date": 2023,
-        "value": 2.26
+        "value": 5.07
       },
       {
         "date": 2022,
-        "value": 2.26
+        "value": 4.43
       },
       {
         "date": 2021,
-        "value": 1.6
+        "value": 5.31
       },
       {
         "date": 2020,
-        "value": 0.51
+        "value": 3.54
       },
       {
         "date": 2019,
-        "value": 0.29
+        "value": 11.64
       },
       {
         "date": 2018,
@@ -723,7 +723,7 @@
       },
       {
         "date": 2017,
-        "value": 0.64
+        "value": 0
       },
       {
         "date": 2016,
@@ -731,267 +731,267 @@
       },
       {
         "date": 2015,
-        "value": 1.02
+        "value": 0
       }
     ]
   },
   "dividaliquida_ebit": {
-    "actual": 2,
-    "avg": 1.08,
+    "actual": 5.83,
+    "avg": 5.81,
     "olds": [
       {
         "date": 2024,
-        "value": 2
+        "value": 5.83
       },
       {
         "date": 2023,
-        "value": 2
+        "value": 5.83
       },
       {
         "date": 2022,
-        "value": 1.95
+        "value": 4.98
       },
       {
         "date": 2021,
-        "value": 1.42
+        "value": 6.4
       },
       {
         "date": 2020,
-        "value": 0.46
+        "value": 4.04
       },
       {
         "date": 2019,
-        "value": 0.27
+        "value": 17.82
       },
       {
         "date": 2018,
-        "value": 0.94
+        "value": 6.83
       },
       {
         "date": 2017,
-        "value": 0.65
+        "value": -0.87
       },
       {
         "date": 2016,
-        "value": 0.09
+        "value": 1.7
       },
       {
         "date": 2015,
-        "value": 1.02
+        "value": 5.54
       }
     ]
   },
   "patrimonio_ativo": {
-    "actual": 0.51,
-    "avg": 0.579,
+    "actual": 0.24,
+    "avg": 0.26,
     "olds": [
       {
         "date": 2024,
-        "value": 0.51
+        "value": 0.24
       },
       {
         "date": 2023,
-        "value": 0.51
+        "value": 0.24
       },
       {
         "date": 2022,
-        "value": 0.5
+        "value": 0.23
       },
       {
         "date": 2021,
-        "value": 0.5
+        "value": 0.25
       },
       {
         "date": 2020,
-        "value": 0.56
+        "value": 0.26
       },
       {
         "date": 2019,
-        "value": 0.55
+        "value": 0.28
       },
       {
         "date": 2018,
-        "value": 0.6
+        "value": 0.27
       },
       {
         "date": 2017,
-        "value": 0.64
+        "value": 0.28
       },
       {
         "date": 2016,
-        "value": 0.67
+        "value": 0.27
       },
       {
         "date": 2015,
-        "value": 0.75
+        "value": 0.28
       }
     ]
   },
   "passivo_ativo": {
-    "actual": 0.47,
-    "avg": 0.402,
+    "actual": 0.68,
+    "avg": 0.653,
     "olds": [
       {
         "date": 2024,
-        "value": 0.47
+        "value": 0.68
       },
       {
         "date": 2023,
-        "value": 0.47
+        "value": 0.68
       },
       {
         "date": 2022,
-        "value": 0.49
+        "value": 0.69
       },
       {
         "date": 2021,
-        "value": 0.49
+        "value": 0.67
       },
       {
         "date": 2020,
-        "value": 0.43
+        "value": 0.66
       },
       {
         "date": 2019,
-        "value": 0.36
+        "value": 0.63
       },
       {
         "date": 2018,
-        "value": 0.39
+        "value": 0.64
       },
       {
         "date": 2017,
-        "value": 0.35
+        "value": 0.63
       },
       {
         "date": 2016,
-        "value": 0.32
+        "value": 0.63
       },
       {
         "date": 2015,
-        "value": 0.25
+        "value": 0.62
       }
     ]
   },
   "liquidezcorrente": {
-    "actual": 1.9,
-    "avg": 3.1455555555555557,
+    "actual": 2.07,
+    "avg": 1.964,
     "olds": [
       {
         "date": 2024,
-        "value": 1.9
+        "value": 2.07
       },
       {
         "date": 2023,
-        "value": 1.9
+        "value": 2.07
       },
       {
         "date": 2022,
-        "value": 3.61
+        "value": 1.73
       },
       {
         "date": 2021,
-        "value": 3.05
+        "value": 2.21
       },
       {
         "date": 2020,
-        "value": 4.01
+        "value": 1.76
       },
       {
         "date": 2019,
-        "value": 3.05
+        "value": 2.12
       },
       {
         "date": 2018,
-        "value": 4.63
+        "value": 2.25
       },
       {
         "date": 2017,
-        "value": 3.35
+        "value": 2.1
       },
       {
         "date": 2016,
-        "value": 2.81
+        "value": 1.78
       },
       {
         "date": 2015,
-        "value": 0
+        "value": 1.55
       }
     ]
   },
   "margembruta": {
-    "actual": 59.76,
-    "avg": 69.878,
+    "actual": 19.84,
+    "avg": 26.093,
     "olds": [
       {
         "date": 2024,
-        "value": 59.76
+        "value": 19.84
       },
       {
         "date": 2023,
-        "value": 59.76
+        "value": 19.84
       },
       {
         "date": 2022,
-        "value": 60.17
+        "value": 21.36
       },
       {
         "date": 2021,
-        "value": 74.48
+        "value": 19.84
       },
       {
         "date": 2020,
-        "value": 69.27
+        "value": 27.37
       },
       {
         "date": 2019,
-        "value": 71.19
+        "value": 27.48
       },
       {
         "date": 2018,
-        "value": 77.23
+        "value": 29.92
       },
       {
         "date": 2017,
-        "value": 78.04
+        "value": 29.13
       },
       {
         "date": 2016,
-        "value": 93.58
+        "value": 33.27
       },
       {
         "date": 2015,
-        "value": 55.3
+        "value": 32.88
       }
     ]
   },
   "margemebitda": {
-    "actual": 55.48,
-    "avg": 67.04375,
+    "actual": 5.47,
+    "avg": 5.778333333333333,
     "olds": [
       {
         "date": 2024,
-        "value": 55.48
+        "value": 5.47
       },
       {
         "date": 2023,
-        "value": 55.48
+        "value": 5.47
       },
       {
         "date": 2022,
-        "value": 55.17
+        "value": 6.45
       },
       {
         "date": 2021,
-        "value": 71.22
+        "value": 5.03
       },
       {
         "date": 2020,
-        "value": 107.52
+        "value": 8.58
       },
       {
         "date": 2019,
-        "value": 66
+        "value": 3.67
       },
       {
         "date": 2018,
@@ -999,7 +999,7 @@
       },
       {
         "date": 2017,
-        "value": 76.15
+        "value": 0
       },
       {
         "date": 2016,
@@ -1007,375 +1007,375 @@
       },
       {
         "date": 2015,
-        "value": 49.33
+        "value": 0
       }
     ]
   },
   "margemebit": {
-    "actual": 62.57,
-    "avg": 75.725,
+    "actual": 4.76,
+    "avg": 5.925,
     "olds": [
       {
         "date": 2024,
-        "value": 62.57
+        "value": 4.76
       },
       {
         "date": 2023,
-        "value": 62.57
+        "value": 4.76
       },
       {
         "date": 2022,
-        "value": 64.04
+        "value": 5.74
       },
       {
         "date": 2021,
-        "value": 80.18
+        "value": 4.18
       },
       {
         "date": 2020,
-        "value": 119.77
+        "value": 7.51
       },
       {
         "date": 2019,
-        "value": 70.83
+        "value": 2.4
       },
       {
         "date": 2018,
-        "value": 77.21
+        "value": 5.72
       },
       {
         "date": 2017,
-        "value": 75.79
+        "value": 6.21
       },
       {
         "date": 2016,
-        "value": 94.96
+        "value": 9.69
       },
       {
         "date": 2015,
-        "value": 49.33
+        "value": 8.28
       }
     ]
   },
   "margemliquida": {
-    "actual": 41.02,
-    "avg": 53.454,
+    "actual": 0.32,
+    "avg": 1.532,
     "olds": [
       {
         "date": 2024,
-        "value": 41.02
+        "value": 0.32
       },
       {
         "date": 2023,
-        "value": 41.02
+        "value": 0.32
       },
       {
         "date": 2022,
-        "value": 41.5
+        "value": 1.35
       },
       {
         "date": 2021,
-        "value": 54.55
+        "value": 1.54
       },
       {
         "date": 2020,
-        "value": 90.94
+        "value": 2.03
       },
       {
         "date": 2019,
-        "value": 53.33
+        "value": 0.88
       },
       {
         "date": 2018,
-        "value": 59.09
+        "value": 2.18
       },
       {
         "date": 2017,
-        "value": 50.55
+        "value": 1.79
       },
       {
         "date": 2016,
-        "value": 63.35
+        "value": 2.62
       },
       {
         "date": 2015,
-        "value": 39.19
+        "value": 2.29
       }
     ]
   },
   "roe": {
-    "actual": 13.14,
-    "avg": 18.793,
+    "actual": 1.19,
+    "avg": 4.294,
     "olds": [
       {
         "date": 2024,
-        "value": 13.14
+        "value": 1.19
       },
       {
         "date": 2023,
-        "value": 13.14
+        "value": 1.19
       },
       {
         "date": 2022,
-        "value": 13.98
+        "value": 5.4
       },
       {
         "date": 2021,
-        "value": 20.96
+        "value": 5.66
       },
       {
         "date": 2020,
-        "value": 24.44
+        "value": 6.1
       },
       {
         "date": 2019,
-        "value": 14.94
+        "value": 2.14
       },
       {
         "date": 2018,
-        "value": 17
+        "value": 4.94
       },
       {
         "date": 2017,
-        "value": 12.43
+        "value": 4.06
       },
       {
         "date": 2016,
-        "value": 48.75
+        "value": 6.71
       },
       {
         "date": 2015,
-        "value": 9.15
+        "value": 5.55
       }
     ]
   },
   "roa": {
-    "actual": 6.72,
-    "avg": 11.039,
+    "actual": 0.29,
+    "avg": 1.124,
     "olds": [
       {
         "date": 2024,
-        "value": 6.72
+        "value": 0.29
       },
       {
         "date": 2023,
-        "value": 6.72
+        "value": 0.29
       },
       {
         "date": 2022,
-        "value": 7.02
+        "value": 1.27
       },
       {
         "date": 2021,
-        "value": 10.42
+        "value": 1.4
       },
       {
         "date": 2020,
-        "value": 13.67
+        "value": 1.57
       },
       {
         "date": 2019,
-        "value": 8.16
+        "value": 0.59
       },
       {
         "date": 2018,
-        "value": 10.15
+        "value": 1.33
       },
       {
         "date": 2017,
-        "value": 7.92
+        "value": 1.12
       },
       {
         "date": 2016,
-        "value": 32.74
+        "value": 1.84
       },
       {
         "date": 2015,
-        "value": 6.87
+        "value": 1.54
       }
     ]
   },
   "roic": {
-    "actual": 11.65,
-    "avg": 16.156,
+    "actual": 4.44,
+    "avg": 4.13,
     "olds": [
       {
         "date": 2024,
-        "value": 11.65
+        "value": 4.44
       },
       {
         "date": 2023,
-        "value": 11.65
+        "value": 4.44
       },
       {
         "date": 2022,
-        "value": 12.74
+        "value": 5.96
       },
       {
         "date": 2021,
-        "value": 16.52
+        "value": 3.43
       },
       {
         "date": 2020,
-        "value": 19.25
+        "value": 3.94
       },
       {
         "date": 2019,
-        "value": 11.52
+        "value": 0.78
       },
       {
         "date": 2018,
-        "value": 14.23
+        "value": 3.81
       },
       {
         "date": 2017,
-        "value": 11.05
+        "value": 3.85
       },
       {
         "date": 2016,
-        "value": 44.74
+        "value": 5.68
       },
       {
         "date": 2015,
-        "value": 8.21
+        "value": 4.97
       }
     ]
   },
   "giro_ativos": {
-    "actual": 0.16,
-    "avg": 0.201,
+    "actual": 0.9,
+    "avg": 0.77,
     "olds": [
       {
         "date": 2024,
-        "value": 0.16
+        "value": 0.9
       },
       {
         "date": 2023,
-        "value": 0.16
+        "value": 0.9
       },
       {
         "date": 2022,
-        "value": 0.17
+        "value": 0.94
       },
       {
         "date": 2021,
-        "value": 0.19
+        "value": 0.91
       },
       {
         "date": 2020,
-        "value": 0.15
+        "value": 0.77
       },
       {
         "date": 2019,
-        "value": 0.15
+        "value": 0.68
       },
       {
         "date": 2018,
-        "value": 0.17
+        "value": 0.61
       },
       {
         "date": 2017,
-        "value": 0.16
+        "value": 0.62
       },
       {
         "date": 2016,
-        "value": 0.52
+        "value": 0.7
       },
       {
         "date": 2015,
-        "value": 0.18
+        "value": 0.67
       }
     ]
   },
   "receitas_cagr5": {
-    "actual": 15.07,
-    "avg": 13.045,
+    "actual": 16.21,
+    "avg": 9.537,
     "olds": [
       {
         "date": 2024,
-        "value": 15.07
+        "value": 16.21
       },
       {
         "date": 2023,
-        "value": 15.07
+        "value": 16.21
       },
       {
         "date": 2022,
-        "value": 15.07
+        "value": 16.21
       },
       {
         "date": 2021,
-        "value": -6.6
+        "value": 11.31
       },
       {
         "date": 2020,
-        "value": 23.49
+        "value": 8.16
       },
       {
         "date": 2019,
-        "value": 24.55
+        "value": 3.46
       },
       {
         "date": 2018,
-        "value": 26.55
+        "value": 2.31
       },
       {
         "date": 2017,
-        "value": 6.04
+        "value": 2.82
       },
       {
         "date": 2016,
-        "value": 21.83
+        "value": 9.72
       },
       {
         "date": 2015,
-        "value": -10.62
+        "value": 8.96
       }
     ]
   },
   "lucros_cagr5": {
-    "actual": 11.59,
-    "avg": 27.37,
+    "actual": -18.77,
+    "avg": -1.51,
     "olds": [
       {
         "date": 2024,
-        "value": 11.59
+        "value": -18.77
       },
       {
         "date": 2023,
-        "value": 11.59
+        "value": -18.77
       },
       {
         "date": 2022,
-        "value": 10.62
+        "value": 9.78
       },
       {
         "date": 2021,
-        "value": -9.35
+        "value": 0.03
       },
       {
         "date": 2020,
-        "value": 46.13
+        "value": 5.65
       },
       {
         "date": 2019,
-        "value": 36.05
+        "value": -12.24
       },
       {
         "date": 2018,
-        "value": 125.99
+        "value": 4.67
       },
       {
         "date": 2017,
-        "value": 10.11
+        "value": -10.63
       },
       {
         "date": 2016,
-        "value": 40.06
+        "value": 10.44
       },
       {
         "date": 2015,
-        "value": -9.09
+        "value": 14.74
       }
     ]
   }
