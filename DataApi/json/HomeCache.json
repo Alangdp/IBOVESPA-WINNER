@@ -5,78 +5,78 @@
       {
         "lows": [
           {
-            "ticker": "LREN3 LOJAS RENNER",
-            "companyName": "LOJAS RENNER",
-            "variation": "arrow_downward\n-4,56%",
-            "currentPrice": "R$\n14,02"
+            "ticker": "MGLU3 MAGAZINE LUIZA",
+            "companyName": "MAGAZINE LUIZA",
+            "variation": "arrow_downward\n-4,79%",
+            "currentPrice": "R$\n12,52"
           },
           {
-            "ticker": "SUZB3 SUZANO S.A.",
-            "companyName": "SUZANO S.A.",
-            "variation": "arrow_downward\n-3,82%",
-            "currentPrice": "R$\n49,10"
-          },
-          {
-            "ticker": "LWSA3 LOCAWEB SERVIÇOS DE INTERNET S.A.",
-            "companyName": "LOCAWEB SERVIÇOS DE INTERNET S.A.",
-            "variation": "arrow_downward\n-3,06%",
-            "currentPrice": "R$\n4,44"
-          },
-          {
-            "ticker": "VAMO3 VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
-            "companyName": "VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
-            "variation": "arrow_downward\n-2,87%",
-            "currentPrice": "R$\n8,47"
-          },
-          {
-            "ticker": "RRRP3 3R PETROLEUM ÓLEO E GÁS S.A",
-            "companyName": "3R PETROLEUM ÓLEO E GÁS S.A",
-            "variation": "arrow_downward\n-2,73%",
-            "currentPrice": "R$\n29,99"
-          },
-          {
-            "ticker": "PRIO3 PETRO RIO",
-            "companyName": "PETRO RIO",
-            "variation": "arrow_downward\n-2,40%",
-            "currentPrice": "R$\n46,36"
-          }
-        ],
-        "high": [
-          {
-            "ticker": "YDUQ3 YDUQS",
-            "companyName": "YDUQS",
-            "variation": "arrow_upward\n9,66%",
-            "currentPrice": "R$\n13,74"
+            "ticker": "AZUL4 AZUL",
+            "companyName": "AZUL",
+            "variation": "arrow_downward\n-2,47%",
+            "currentPrice": "R$\n9,87"
           },
           {
             "ticker": "CMIN3 CSN MINERAÇÃO S.A.",
             "companyName": "CSN MINERAÇÃO S.A.",
-            "variation": "arrow_upward\n3,35%",
-            "currentPrice": "R$\n5,56"
+            "variation": "arrow_downward\n-2,25%",
+            "currentPrice": "R$\n5,22"
           },
           {
-            "ticker": "CMIG4 CEMIG",
-            "companyName": "CEMIG",
-            "variation": "arrow_upward\n3,05%",
-            "currentPrice": "R$\n10,82"
+            "ticker": "LREN3 LOJAS RENNER",
+            "companyName": "LOJAS RENNER",
+            "variation": "arrow_downward\n-1,95%",
+            "currentPrice": "R$\n13,08"
           },
           {
-            "ticker": "TRPL4 ISA CTEEP",
-            "companyName": "ISA CTEEP",
-            "variation": "arrow_upward\n2,58%",
-            "currentPrice": "R$\n28,26"
+            "ticker": "CVCB3 CVC BRASIL",
+            "companyName": "CVC BRASIL",
+            "variation": "arrow_downward\n-1,90%",
+            "currentPrice": "R$\n2,07"
           },
           {
-            "ticker": "EZTC3 EZ TEC",
-            "companyName": "EZ TEC",
-            "variation": "arrow_upward\n2,42%",
-            "currentPrice": "R$\n14,41"
+            "ticker": "ABEV3 AMBEV",
+            "companyName": "AMBEV",
+            "variation": "arrow_downward\n-1,78%",
+            "currentPrice": "R$\n11,60"
+          }
+        ],
+        "high": [
+          {
+            "ticker": "PCAR3 CIA BRASILEIRA DE DISTRIBUIÇÃO",
+            "companyName": "CIA BRASILEIRA DE DISTRIBUIÇÃO",
+            "variation": "arrow_upward\n3,87%",
+            "currentPrice": "R$\n3,22"
           },
           {
-            "ticker": "CPFE3 CPFL ENERGIA",
-            "companyName": "CPFL ENERGIA",
-            "variation": "arrow_upward\n1,94%",
-            "currentPrice": "R$\n34,76"
+            "ticker": "VAMO3 VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
+            "companyName": "VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
+            "variation": "arrow_upward\n3,43%",
+            "currentPrice": "R$\n8,44"
+          },
+          {
+            "ticker": "MULT3 MULTIPLAN",
+            "companyName": "MULTIPLAN",
+            "variation": "arrow_upward\n3,14%",
+            "currentPrice": "R$\n23,69"
+          },
+          {
+            "ticker": "PETR4 PETROBRAS",
+            "companyName": "PETROBRAS",
+            "variation": "arrow_upward\n3,03%",
+            "currentPrice": "R$\n38,13"
+          },
+          {
+            "ticker": "RECV3 PETRORECÔNCAVO S.A.",
+            "companyName": "PETRORECÔNCAVO S.A.",
+            "variation": "arrow_upward\n2,65%",
+            "currentPrice": "R$\n20,51"
+          },
+          {
+            "ticker": "ALOS3 ALIANSCSONAE",
+            "companyName": "ALIANSCSONAE",
+            "variation": "arrow_upward\n2,34%",
+            "currentPrice": "R$\n21,86"
           }
         ],
         "dividends": [
@@ -119,9 +119,15 @@
         ],
         "Announcements": [
           {
-            "ticker": "BPAC11 BTG",
-            "companyName": "BTG",
-            "variation": "2\ncomunicados novos/atualizados",
+            "ticker": "PETR4 PETROBRAS",
+            "companyName": "PETROBRAS",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "ITUB4 BANCO ITAU UNIBANCO",
+            "companyName": "BANCO ITAU UNIBANCO",
+            "variation": "10\ncomunicados novos/atualizados",
             "currentPrice": ""
           },
           {
@@ -131,32 +137,26 @@
             "currentPrice": ""
           },
           {
-            "ticker": "HAPV3 HAPVIDA",
-            "companyName": "HAPVIDA",
-            "variation": "2\ncomunicados novos/atualizados",
+            "ticker": "RAIL3 RUMO",
+            "companyName": "RUMO",
+            "variation": "1\ncomunicado novo/atualizado",
             "currentPrice": ""
           },
           {
-            "ticker": "BRFS3 BRF",
-            "companyName": "BRF",
-            "variation": "2\ncomunicados novos/atualizados",
+            "ticker": "GGBR4 GERDAU",
+            "companyName": "GERDAU",
+            "variation": "1\ncomunicado novo/atualizado",
             "currentPrice": ""
           },
           {
-            "ticker": "RECV3 PETRORECÔNCAVO S.A.",
-            "companyName": "PETRORECÔNCAVO S.A.",
-            "variation": "2\ncomunicados novos/atualizados",
-            "currentPrice": ""
-          },
-          {
-            "ticker": "RAIZ4 RAIZEN S.A.",
-            "companyName": "RAIZEN S.A.",
-            "variation": "3\ncomunicados novos/atualizados",
+            "ticker": "CSAN3 COSAN",
+            "companyName": "COSAN",
+            "variation": "1\ncomunicado novo/atualizado",
             "currentPrice": ""
           }
         ]
       }
     ],
-    "instanceTime": 1716308346017
+    "instanceTime": 1716911731526
   }
 ]

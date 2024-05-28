@@ -10,36 +10,36 @@ export interface FinancialData {
 }
 
 export interface FinancialIndicators {
-  _id: string;
-  dy: FinancialData;
-  p_l: FinancialData;
-  p_vp: FinancialData;
-  p_ebita: FinancialData;
-  p_ebit: FinancialData;
-  p_sr: FinancialData;
-  p_ativo: FinancialData;
-  p_capitlgiro: FinancialData;
-  p_ativocirculante: FinancialData;
-  ev_ebitda: FinancialData;
-  ev_ebit: FinancialData;
-  lpa: FinancialData;
-  vpa: FinancialData;
-  peg_Ratio: FinancialData;
-  dividaliquida_patrimonioliquido: FinancialData;
-  dividaliquida_ebitda: FinancialData;
-  dividaliquida_ebit: FinancialData;
-  patrimonio_ativo: FinancialData;
-  passivo_ativo: FinancialData;
-  liquidezcorrente: FinancialData;
-  margembruta: FinancialData;
-  margemebitda: FinancialData;
-  margemebit: FinancialData;
-  margemliquida: FinancialData;
-  roe: FinancialData;
-  roa: FinancialData;
-  roic: FinancialData;
-  giro_ativos: FinancialData;
-  receitas_cagr5: FinancialData;
+  _id?: string;
+  dy?: FinancialData;
+  p_l?: FinancialData;
+  p_vp?: FinancialData;
+  p_ebita?: FinancialData;
+  p_ebit?: FinancialData;
+  p_sr?: FinancialData;
+  p_ativo?: FinancialData;
+  p_capitlgiro?: FinancialData;
+  p_ativocirculante?: FinancialData;
+  ev_ebitda?: FinancialData;
+  ev_ebit?: FinancialData;
+  lpa?: FinancialData;
+  vpa?: FinancialData;
+  peg_Ratio?: FinancialData;
+  dividaliquida_patrimonioliquido?: FinancialData;
+  dividaliquida_ebitda?: FinancialData;
+  dividaliquida_ebit?: FinancialData;
+  patrimonio_ativo?: FinancialData;
+  passivo_ativo?: FinancialData;
+  liquidezcorrente?: FinancialData;
+  margembruta?: FinancialData;
+  margemebitda?: FinancialData;
+  margemebit?: FinancialData;
+  margemliquida?: FinancialData;
+  roe?: FinancialData;
+  roa?: FinancialData;
+  roic?: FinancialData;
+  giro_ativos?: FinancialData;
+  receitas_cagr5?: FinancialData;
 }
 
 const referenceList: { [key in keyof FinancialIndicators]?: { fullName: string, info: string } } = {

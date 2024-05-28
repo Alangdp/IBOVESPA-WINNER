@@ -20,6 +20,8 @@ export default function Wallet({tickers, chart}: WalletProps) {
   const [stocks, setStocks] = useState<PriceData[]>()
   const tickersChart = chart ? Object.keys(chart.individualRentability) : []
 
+  console.log(chart)
+
   const fetchStocks = async () => {
     if(!stocks && tickersChart.length !== 0) {
       const pricePromises = tickersChart.map(ticker => getPrice(ticker));
@@ -27,7 +29,6 @@ export default function Wallet({tickers, chart}: WalletProps) {
   
       setStocks(prices);
     }
-
   }
 
   useEffect( () => {
@@ -50,18 +51,7 @@ export default function Wallet({tickers, chart}: WalletProps) {
             </p>
 
             <div className="mt-[20px] h-full flex justify-between">
-              <div className="left">
-                <div className="flex gap-2 items-center">
-                  <img
-                    src={walletIcon}
-                    alt="Wallet Icon"
-                    className="w-8 h-auto"
-                  />
-                  <p className="text-xl font-bold">Saldo Da Carteira</p>
-                </div>
-                <h4 className="font-medium text-xl px-12">R$ 202,01</h4>
-              </div>
-
+              <div className=""></div>
               <div className="cards grid grid-cols-3 gap-8 mr-20">
                 <div className="card bg-bl w-[170px] h-24 rounded-df">
                   <span className="p-2 flex gap-2">
@@ -84,7 +74,11 @@ export default function Wallet({tickers, chart}: WalletProps) {
                     />
                     <h3 className="font-medium">Retorno Total</h3>
                   </span>
-                  <p className="p-2 mt-4">R$ {chart.globalTotalValue > chart.globalInvested ? (chart.globalTotalValue - chart.globalInvested).toFixed(2) : `-${(chart.globalInvested - chart.globalTotalValue).toFixed(2)}`}</p>
+                  <p className="p-2 mt-4"> R$ 
+                    {chart.globalTotalValue > (chart.globalInvested ?? 0) 
+                    ? ((chart.globalTotalValue - (chart.globalInvested ?? 0)).toFixed(2))
+                    : (((chart.globalInvested ?? 0) - chart.globalTotalValue).toFixed(2))}
+                  </p>
                 </div>
 
                 <div className="card bg-[#12B76A] w-[170px] h-24 rounded-df">
@@ -109,10 +103,10 @@ export default function Wallet({tickers, chart}: WalletProps) {
             <div className="values flex flex-col">
               <p className="text-[#1ECB4F] font-medium text-xl">R$ {chart.globalTotalValue.toFixed(2)}</p>
               <p className="text-[16px] flex gap-2">
-                Aportado <p className="font-medium">{chart.globalInvested.toFixed(2)}</p>
+                Aportado <p className="font-medium">{isNaN(chart.globalInvested) ? 0 : chart.globalInvested}</p>
               </p>
-              <p className="text-[16px] flex gap-2">
-                Variação <p className="font-medium">{chart.globalRentability > 0 ? "+" : "" }{(chart.globalInvested * chart.globalRentability).toFixed(2)} ({chart.globalRentability > 0 ? `+${(chart.globalRentability * 100).toFixed(2)}`: `-${(chart.globalRentability * 100).toFixed(2)}`})</p>
+              <p className="text-[16px] flex gap-2 font-bold text-lg items-center">
+                Variação <p className="font-medium text-base">{`${((chart.globalInvested ?? 0) * chart.globalRentability + (chart.globalInvested ?? 0)).toFixed((2))}R$ (${(chart.globalRentability * 100).toFixed(2)}%)`}</p>
               </p>
             </div>
             <PortifolioChart data={[{name: 'Ações', value: Number(chart.globalTotalValue.toFixed(2))}]} />

@@ -5,22 +5,13 @@ import { FinancialIndicators, referenceList } from "@/types/Indicators.type";
 import React from "react";
 
 interface IndicatorsDataProps {
+  data: FinancialIndicators;
   ticker: string;
 }
 
-export function IndicatorsData({ ticker }: IndicatorsDataProps) {
-  const [data, setData] = useState<FinancialIndicators>();
-
-  async function getData(ticker: string) {
-    const data = await getIndicators(ticker);
-    setData(data);
-  }
-
-  useEffect(() => {
-    if (!data) getData(ticker);
-  }, [ticker]);
+export function IndicatorsData({ ticker, data }: IndicatorsDataProps) {
   type FinancialIndicatorKey = keyof FinancialIndicators;
-
+  console.log(data)
   return (
     <div className="info grid grid-cols-4 grid-rows-2 items-center justify-center gap-4 p-4">
       {data &&

@@ -17,4 +17,12 @@ export interface PontuationProps {
   subId?: string;
   totalPoints: number;
   totalEvaluate: PontuationRule[]
+  infoData: InfoData;
 }
+
+export interface InfoData {
+  actualPrice: number;
+  maxPrice: number;
+  dy: number;
+}
+

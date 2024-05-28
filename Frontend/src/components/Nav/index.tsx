@@ -9,7 +9,7 @@ interface NavBarProps {
 }
 
 export function NavBar({ className }: NavBarProps) {
-  const { token } = useAuth();
+  const { token,logout } = useAuth();
   return (
     <div className={cn("nav h-14 bg-df flex justify-around items-center p-4 text-white", className)}>
       <div className="company flex items-center justify-between w-fit gap-4 text-white">
@@ -20,14 +20,15 @@ export function NavBar({ className }: NavBarProps) {
       </div>
 
       <div className="main-buttons flex items-center gap-8">
-        <a href="">Home</a>
-        <a href="">Contato</a>
-        <a href="">Ações</a>
+        <a href="/">Home</a>
+        <a href="/market/brasil">Ações</a>
       </div>
 
       <div className="sign flex gap-4 items-center">
         {token ? (
-          <p>Logado</p>
+          <div className="flex gap-4 items-center">
+            <p onClick={logout}>Sair</p>
+          </div>
         ) : (
           <>
             <Register>

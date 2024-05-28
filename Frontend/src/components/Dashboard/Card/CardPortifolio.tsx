@@ -20,7 +20,9 @@ export function PortifolioCard({
 
   return (
     <div className="card grid grid-cols-5 items-center">
-      <TickerIcon img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`} />
+      <a href={`/market/brasil/${ticker}`}>
+        <TickerIcon img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`} />
+      </a>
       <div className="grid grid-rows-2">
         <h4 className="text-white font-semibold text-lg">{ticker}</h4>
         <p className="opacity-60 text-white text-lg text-nowrap ">

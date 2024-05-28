@@ -7,6 +7,7 @@ interface RankingCardProps {
   name: string;
   price: number;
   maxPrice: number;
+  dy: number;
 }
 
 export default function RankingCardDark({
@@ -15,6 +16,7 @@ export default function RankingCardDark({
   price,
   rankingNumber,
   ticker,
+  dy
 }: RankingCardProps) {
   return (
     <div className="w-full h-80 rounded-xl text-white bg-df shadow-sm shadow-white/5 text-sm p-1">
@@ -28,24 +30,20 @@ export default function RankingCardDark({
       </div>
       <div className="w-full h-[40%] grid grid-cols-2">
         <div className="w-full h-full flex flex-col p-2">
-          <img
-            src={`http://${logoURL}/${ticker}-logo.jpg`}
-            className="w-[165px] h-[55px] rounded-[55px]"
-            alt=""
-          />
+          <a href={`/market/brasil/${ticker}`} className="w-20 h-20 rounded-full bg-cover bg-center border-2 border-gray-400 bg-white cursor-pointer hover:opacity-60 duration-300" style={{backgroundImage: `url('http://${logoURL}/${ticker}-logo.jpg')`}}></a>
           <div className="flex flex-col justify-center items-start p-2 gap-1">
             <h5 className="flex gap-2 items-center">
               Cotação <p className="px-1 bg-yellow-400 text-black">{price}R$</p>
             </h5>
             <h5 className="flex gap-2 items-center">
-              Preço teto <p className="px-1 bg-green-500 text-black">{maxPrice}R$</p>
+              Preço teto <p className="px-1 bg-green-500 text-black">{maxPrice.toFixed(2)}R$</p>
             </h5>
           </div>
         </div>
 
         <div className="w-full h-full flex flex-col p-2 px-4 gap-2 items-end">
           <div className="text-center p-1 bg-gray-700 w-16 rounded-lg text-white">
-            DY 20%
+          {dy ? dy.toFixed(2) + "%" : "-"}
           </div>
           <div className="text-center p-1 bg-gray-700 w-16 rounded-lg text-white flex items-center gap-2 justify-center">
             MDI <p className="w-2 h-2 rounded-full bg-green-500"></p>

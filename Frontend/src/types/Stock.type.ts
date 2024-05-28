@@ -13,7 +13,6 @@ export interface StockProps extends VariableProps {
   // Abrangent Data
 
   segment: string;
-
   lpa: number;
   p_l: number;
   freeFloat: number;
@@ -48,6 +47,7 @@ export interface StockProps extends VariableProps {
   // Other
 
   dreData: DreData
+  timestamp?: number;
 }
 
 export interface PriceHistory {

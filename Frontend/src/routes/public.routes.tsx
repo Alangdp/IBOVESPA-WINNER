@@ -43,7 +43,7 @@ const publicRoutes = [
       <>
         <DefaultToast />
         <NavBar />
-        <div className="screen bg-zinc-800 text-white flex flex-col items-center">
+        <div className="h-screen bg-[#1E1E1E] text-white flex flex-col items-center overflow-scroll no-scrollbar">
           <Market marketName="Brasil" />
         </div>
       </>

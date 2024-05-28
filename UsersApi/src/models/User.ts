@@ -9,7 +9,6 @@ class User extends Model {
   public declare name: string;
   public declare email: string;
   public declare password: string;
-  public declare cpf: String;
   public declare active: Boolean;
   public declare admin: Boolean;
   public declare readonly created_at: Date;

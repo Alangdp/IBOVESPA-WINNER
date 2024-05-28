@@ -5,10 +5,11 @@ import { ResponseProps } from "@/types/Response.type";
 import { toast } from "react-toastify";
 import { TransactionFilterSchema, TransactionsProps } from "@/types/Transaction.type";
 import axios from "axios";
-import { ChartProps } from "@/types/Chart.type";
+import { ChartProps, StockData } from "@/types/Chart.type";
 import { FinancialIndicators } from "@/types/Indicators.type";
 import { SimplifiedDataHistory, SimplifiedHistoryData } from "@/types/History.type";
 import { PontuationProps, PontuationReturn } from "@/types/rank.type";
+import { StockProps } from "@/types/Stock.type";
 
 const dataAPI: string = import.meta.env.VITE_STOCK_API_URL;
 const tokenAPI: string = import.meta.env.VITE_TOKEN_API_URL;
@@ -29,6 +30,7 @@ export const validateTicker = async (ticker: string) => {
 export const validateToken = async (token: string | undefined) => {
   try {
     if(!token) return false;
+    console.log(`http://${tokenAPI}/token/user`, token)
     const response = await axios.post(`http://${tokenAPI}/token/user`, {
       token: token,
       authorization: secretToken,
@@ -210,10 +212,23 @@ export const getTickers = async () => {
 
 export const getRanking = async() => {
   try {
-    const response = await axios.get(`http://${dataAPI}/stock/rank`);
+    const response = await axios.get(`http://${dataAPI}/stock/ranking`);
     const responseData: ResponseProps<PontuationReturn> = response.data;
     if(!responseData.data) throw new Error("Erro getting Data")
-      console.log(responseData)
+    return responseData.data
+  } catch (error) {
+    console.log(error)
+    throw new Error("Invalid Token or internal Error")
+  }
+}
+
+export const getStock = async(ticker: string) => {
+  try {
+    const response = await axios.post(`http://${dataAPI}/stock/`, {
+      ticker
+    });
+    const responseData: ResponseProps<StockProps> = response.data;
+    if(!responseData.data) throw new Error("Erro getting Data")
     return responseData.data
   } catch (error) {
     console.log(error)

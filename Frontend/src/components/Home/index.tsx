@@ -26,10 +26,10 @@ export default function Home() {
     }
 
     fetchData();
-  });
+  }, []);
 
   return (
-    <div className="bg-[#3F3F3F] w-screen h-screen text-white">
+    <div className="bg-[#3F3F3F] w-screen h-screen text-white overflow-x-hidden no-scrollbar">
       {/* nav */}
       <NavBar />
 
@@ -202,6 +202,21 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <footer className="footer bg-df h-20 flex items-center justify-center mt-20">
+          <div className="footer-content flex items-center justify-between w-4/5">
+            <div className="footer-left flex items-center gap-4">
+              <div className="logo w-12 h-12 bg-cover bg-center"></div>
+              <div className="text-white text-lg">CPI</div>
+            </div>
+            <div className="footer-right flex items-center gap-4">
+              <a href="">Home</a>
+              <a href="">Contato</a>
+              <a href="">Ações</a>
+            </div>
+          </div>
+        </footer>
+
       </main>
     </div>
   );

@@ -24,7 +24,7 @@ export default class LocalStorage<T> {
   }
 
   addItem(newItem: T): void {
-    const existingItems = this.get() || {}; // Get existing items or initialize as an empty object if null
+    const existingItems = this.get() || {}; 
     const updatedItems = {
       ...existingItems,
       ...newItem,

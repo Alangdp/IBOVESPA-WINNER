@@ -95,6 +95,8 @@ export class InstanceStock {
 
     const {lastDividendsPerYear, lastDividendsYield} = this.getDividends();
 
+    console.log(basicInfo)
+
     const stockProp: StockProps = {
       ...basicInfo,
       indicators,

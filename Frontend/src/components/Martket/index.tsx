@@ -1,74 +1,47 @@
-import { capitalizeFirstLetter } from "@/Utils/String";
 import { useParams } from "react-router-dom";
-import B3 from "../../assets/svg/B3.svg";
-import { CaretDownIcon, CaretRightIcon } from "@radix-ui/react-icons";
-import {
-  LineChart,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Line,
-  ResponsiveContainer,
-} from "recharts";
-import { getPrice } from "@/Utils/ApiUtils";
-import { useEffect, useState } from "react";
-import { PriceList } from "@/types/Price.type";
+import { CaretRightIcon, QuoteIcon } from "@radix-ui/react-icons";
+import { getStock } from "@/Utils/ApiUtils";
 import LocalStorage from "@/Utils/LocalStorage";
 import { validateToleranceTime } from "@/Utils/Math";
-import IndexCard from "./index-card";
-import { GridStockPage } from "./StockData";
-import TimeOptions from "./timeOptions";
-import { IndicatorsData } from "./StockData/indicatorsData";
-
-interface TimeLimits {
-  [key: string]: number;
-}
+import PriceChart from "./PriceChart";
+import { useEffect, useState } from "react";
+import { StockProps } from "@/types/Stock.type";
+import { FinancialIndicators } from "@/types/Indicators.type";
+import ChartSvg from "@/assets/svg/Chart.svg";
 
 interface MarketProps {
   marketName: string;
 }
 
-const timeLimits: TimeLimits = {
-  "1week": 7,
-  "1month": 30,
-  "3month": 90,
-  "6month": 180,
-  "1year": 365,
-};
+interface StockList {
+  [key: string]: StockProps;
+}
 
 export default function Market({ marketName }: MarketProps) {
-  const localStorage = new LocalStorage<PriceList>({
-    key: "prices",
-  });
-
-  let [priceList, setPriceList] = useState<PriceList>(localStorage.get());
-  const [interval, setInteval] = useState<string>("1year");
+  const localStorage = new LocalStorage<StockList>({ key: "stocks" });
+  const [stock, setStock] = useState<StockProps>();
   const { stockTicker } = useParams();
   const upperStockTicker = stockTicker?.toUpperCase()!;
 
-  let pricesFiltered = priceList[upperStockTicker!]
-    ? priceList[upperStockTicker!].price
-        .reverse()
-        .filter((_, index) => index <= timeLimits[interval])
-    : [];
+  const prices = stock?.priceHistory || [];
+  const indicators: FinancialIndicators = stock?.indicators ?? {};
 
   const fetchPrices = async () => {
     const updateStorage = async () => {
-      const pricesData = await getPrice(upperStockTicker!);
-      pricesData.timestamp = new Date().getTime();
-      const newItem: PriceList = { [`${upperStockTicker}`]: pricesData };
-      localStorage.addItem(newItem);
-      setPriceList({ ...priceList, ...newItem });
+      const stockData = await getStock(upperStockTicker!);
+      stockData.timestamp = new Date().getTime();
+      localStorage.addItem({ [upperStockTicker!]: stockData });
+      setStock(stockData);
     };
 
-    const item = localStorage.get();
+    const item = localStorage.get() as StockList;
 
     if (
       item &&
       upperStockTicker &&
-      validateToleranceTime((item as PriceList)[upperStockTicker]?.timestamp) &&
-      upperStockTicker
+      validateToleranceTime(item[upperStockTicker!]?.timestamp || 0)
     ) {
+      setStock(item[upperStockTicker!]);
       return;
     }
 
@@ -79,117 +52,250 @@ export default function Market({ marketName }: MarketProps) {
     fetchPrices();
   }, []);
 
-  const growthOrDown = (priceList: PriceList | null) => {
-    if (!priceList) return "#fff";
-    const priceData = priceList[upperStockTicker!];
-    if (!priceData) return "#fff";
-    const price = priceData.price
-      .filter((_, index) => index <= timeLimits[interval])
-      .map((item) => ({
-        date: item.date.split(" ")[0],
-        price: item.price,
-      }));
-
-    if (price[price.length - 1].price - price[0].price < 0) {
-      return "#1ECB4F";
-    }
-
-    return "#F46D22";
-  };
-
   return (
-    <div className="w-[90%] bg-[#1E1E1E] rounded h-full">
-      <div className="info flex flex-col ">
-        <div className="selected-market flex p-6 gap-2 text-sm">
-          Mercados /
-          <p className="opacity-60">{capitalizeFirstLetter(marketName)} / </p>
-          <p className="opacity-60">{stockTicker?.toUpperCase()}</p>
+    <>
+      <div className="w-full h-14 drop-shadow-lg shadow bg-zinc-800 brightness-150 flex justify-center">
+        <div className="w-3/4 h-full p-4">
+          <section className="flex gap-1 font-medium">
+            {stockTicker?.toUpperCase()} -{" "}
+            <p className="font-light">
+              {stock?.name.split("-")[1].split("ON")[0].split("PM")[0].trim()}
+            </p>
+          </section>
         </div>
-        <div className="w-full h-full flex justify-center">
-          <div className="flag px-4 py-2 text-white w-fit h-fit text-4xl bg-df hover:bg-bl duration-300 rounded-df flex gap-2 items-center group cursor-pointer">
-            <img
-              src={`http://192.168.1.111:3002/images/avatar/${stockTicker}-logo.jpg`}
-              alt={`${capitalizeFirstLetter(marketName)} Flag`}
-              className="w-12 rounded-full"
-            />
-            {capitalizeFirstLetter(marketName?.toLowerCase())}
-            <CaretDownIcon className="w-12 h-8 group-hover:h-12 transition-all duration-300" />
-          </div>
-        </div>
-        <div className="indexes px-6 py-12 w-full">
-          <div className="title text-3xl flex items-center hover:text-bl duration-300 cursor-pointer w-fit">
-            Principais Índices do{" "}
-            {capitalizeFirstLetter(marketName?.toLowerCase())}
-            <CaretRightIcon className="w-12 h-8" />
-          </div>
-          <div className="cards grid grid-cols-4 m-4 gap-2">
-            <IndexCard Icon={B3} />
-            <IndexCard Icon={B3} />
-            <IndexCard Icon={B3} />
-            <IndexCard Icon={B3} />
-          </div>
-          <div className="graph w-full flex flex-col justify-center items-center">
-            <ResponsiveContainer
-              width="90%"
-              height={400}
-              className="p-2 z-10 bg-zinc-700 rounded-df font-bold"
-            >
-              <LineChart
-                width={730}
-                height={250}
-                data={pricesFiltered.reverse().map((item) => ({
-                  date: item.date.split(" ")[0],
-                  price: item.price,
-                }))}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <XAxis
-                  dataKey="date"
-                  interval={Math.round(
-                    timeLimits[interval] / (timeLimits[interval] < 91 ? 6 : 9)
-                  )}
-                />
-                <YAxis tickCount={10} domain={['auto', 'auto']}/>
-                <Tooltip trigger="hover" />
-                <Line
-                  type="monotone"
-                  dataKey="price"
-                  stroke={growthOrDown(priceList)}
-                  dot={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-            <TimeOptions interval={interval} setInteval={setInteval} />
-          </div>
-
-          <div className="p-4 w-full flex flex-col gap-2">
-            <a href="" className="w-fit">
-              <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer w-fit">
-                Principais Estatiscas
-                <CaretRightIcon className="w-12 h-8" />
+      </div>
+      <div className="w-1/2">
+        <div className="w-full h-36 flex divide-x divide-gray-500 gap-0.5 mt-6 text-white">
+          <div className="PRICE flex-[0.25] bg-bl rounded">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="">
+                <p className="font-light">Preço Atual</p>
+                <p className="text-2xl flex items-center gap-0.5">
+                  <p>R$</p>
+                  <p className="font-bold text-3xl">{stock?.actualPrice}</p>
+                </p>
               </div>
-            </a>
-            
-            <div className="p-2 bg-[#3F3F3F] rounded border-opacity-60 shadow-xl">
-              <GridStockPage ticker={upperStockTicker!}/>
             </div>
           </div>
 
-          <div className="p-4 w-full flex flex-col gap-2">
-            <a href="" className="w-fit">
-              <div className="title text-2xl flex items-center hover:text-bl duration-300 cursor-pointer w-fit">
-                Indicadores Fundamentalistas
-                <CaretRightIcon className="w-12 h-8" />
+          <div className="MIN flex-[0.25] bg-df brightness-150">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="">
+                <p className="font-light">Min. 52 Semanas</p>
+                <p className="text-2xl flex items-center gap-0.5">
+                  <p>R$</p>
+                  <p className="font-bold text-3xl">
+                    {Math.min(...prices.slice(-364).reverse().map(item => item.price))}
+                  </p>
+                </p>
+                <div className="flex flex-col">
+                  <p className="font-light text-sm">Min. Mês</p>
+                  <p className="text-2xl flex items-center gap-0.5">
+                    <p>R$</p>
+                    <p className="font-bold">
+                      {Math.min(...prices.slice(-31).reverse().map(item => item.price))}
+                    </p>
+                  </p>
+                </div>
               </div>
-            </a>
+            </div>
+          </div>
 
+          <div className="MAX flex-[0.25] bg-df brightness-150">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="">
+                <p className="font-light">Max. 52 Semanas</p>
+                <p className="text-2xl flex items-center gap-0.5">
+                  <p>R$</p>
+                  <p className="font-bold text-3xl">
+                    {Math.max(...prices.slice(-364).reverse().map(item => item.price))}
+                  </p>
+                </p>
+                <div className="flex flex-col">
+                  <p className="font-light text-sm">Max. Mês</p>
+                  <p className="text-2xl flex items-center gap-0.5">
+                    <p>R$</p>
+                    <p className="font-bold">
+                      {Math.max(...prices.slice(-31).reverse().map(item => item.price))}
+                    </p>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <div className="p-2 bg-[#3F3F3F] rounded border-opacity-60 shadow-xl">
-              <IndicatorsData ticker={stockTicker!} />
+          <div className="DY flex-[0.25] bg-df brightness-150">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="">
+                <p className="font-light">Dividend yield</p>
+                <p className="text-2xl flex items-center gap-0.5">
+                  <p className="font-bold text-3xl">
+                    {indicators.dy?.actual.toFixed(2) ?? 0}
+                  </p>
+                  <p>%</p>
+                </p>
+                <div className="flex flex-col">
+                  <p className="font-light text-sm">Últimos 12 Meses</p>
+                  <p className="text-2xl flex items-center gap-0.5">
+                    <p>R$</p>
+                    <p className="font-bold">
+                      {((((indicators.dy?.actual || 0) / 100) ?? 0) * (stock?.actualPrice ?? 0)).toFixed(2)}
+                    </p>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <PriceChart
+            priceData={{
+              actual: stock?.priceHistory[0].price || 0,
+              name: stock?.name || "",
+              price: stock?.priceHistory || [],
+              ticker: stockTicker!.toUpperCase(),
+            }}
+          />
+        </div>
+        <div className="info flex flex-col ">
+          <div className="indexes py-0 w-full">
+            <div className="w-full flex flex-col gap-2">
+              <a href="" className="w-fit">
+                <div className="title text-3xl flex items-center text-bl duration-300 cursor-pointer w-fit font-bold ">
+                  INDICADORES DA {stockTicker?.toUpperCase()}
+                </div>
+              </a>
+
+              <div className="w-full">
+                <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Valuation</h3>
+                <div className="grid grid-cols-6 items-center w-full gap-1">
+                  {[
+                    { label: "D.Y", value: indicators.dy?.actual.toFixed(2), unit: "%" },
+                    { label: "P/L", value: indicators.p_l?.actual.toFixed(2) },
+                    { label: "PEG RATIO", value: indicators.peg_Ratio?.actual.toFixed(2) },
+                    { label: "P/VP", value: indicators.p_vp?.actual.toFixed(2) },
+                    { label: "EV/EBIT", value: indicators.ev_ebit?.actual.toFixed(2) },
+                    { label: "P/EBITDA", value: indicators.p_ebita?.actual.toFixed(2) },
+                    { label: "P/EBIT", value: indicators.p_ebit?.actual.toFixed(2) },
+                    { label: "VPA", value: indicators.vpa?.actual.toFixed(2) },
+                    { label: "P/ATIVO", value: indicators.p_ativo?.actual.toFixed(2) },
+                    { label: "LPA", value: indicators.lpa?.actual.toFixed(2) },
+                    { label: "P/SR", value: indicators.p_sr?.actual.toFixed(2) },
+                    { label: "P/CAP. GIRO", value: indicators.p_capitlgiro?.actual.toFixed(2) },
+                    { label: "P/ATIVO CIRC. LIQ", value: indicators.p_ativocirculante?.actual.toFixed(2) }
+                  ].map((indicator, index) => (
+                    <div key={index} className="bg-df brightness-125 w-full h-full p-4 flex flex-col rounded">
+                      <h4 className="hover:text-[#F46D22] duration-300 font-medium flex gap-1 items-center text-nowrap overflow-ellipsis">
+                        {indicator.label} {<QuoteIcon className="scale-110" />}
+                      </h4>
+                      <div className="flex items-center justify-between">
+                        <div className="Value font-medium text-bl brightness-110 text-lg">{indicator.value}{indicator.unit}</div>
+                        <img alt="chart" className="h-6" src={ChartSvg} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-full flex flex-col gap-2">
+                <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Endividamento</h3>
+                <div className="grid grid-cols-5 items-center w-full gap-1">
+                  {[
+                    { label: "DIV. LIQ/PL", value: indicators.dividaliquida_patrimonioliquido?.actual.toFixed(2) },
+                    { label: "DIV. LIQ/EBITDA", value: indicators.dividaliquida_ebitda?.actual.toFixed(2) },
+                    { label: "DIV. LIQ/EBIT", value: indicators.dividaliquida_ebit?.actual.toFixed(2) },
+                    { label: "PASSIVO/ATIVOS", value: indicators.passivo_ativo?.actual.toFixed(2) },
+                    { label: "LIQ. CORRENTE", value: indicators.liquidezcorrente?.actual.toFixed(2) }
+                  ].map((indicator, index) => (
+                    <div key={index} className="bg-df brightness-125 w-full h-full p-4 flex flex-col rounded">
+                      <h4 className="hover:text-[#F46D22] duration-300 font-medium flex gap-1 items-center text-nowrap overflow-ellipsis">
+                        {indicator.label} {<QuoteIcon className="scale-110" />}
+                      </h4>
+                      <div className="flex items-center justify-between">
+                        <div className="Value font-medium text-bl brightness-110 text-lg">{indicator.value}</div>
+                        <img alt="chart" className="h-6" src={ChartSvg} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-full grid grid-cols-3 gap-1">
+                <div className="w-full">
+                  <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Rentabilidade</h3>
+                  <div className="flex items-center w-full">
+                    <div className="grid grid-cols-2 gap-1 w-full">
+                    {[
+                      { label: "MARGEM BRUTA", value: indicators.margembruta?.actual.toFixed(2), unit: "%" },
+                      { label: "MARGEM EBITDA", value: indicators.margemebitda?.actual.toFixed(2), unit: "%" },
+                      { label: "MARGEM EBIT", value: indicators.margemebit?.actual.toFixed(2), unit: "%" },
+                      { label: "MARGEM LÍQUIDA", value: indicators.margemliquida?.actual.toFixed(2), unit: "%" }
+                    ].map((indicator, index) => (
+                      <div key={index} className="bg-df brightness-125 w-full h-full p-4 flex flex-col rounded">
+                        <h4 className="hover:text-[#F46D22] duration-300 font-medium flex gap-1 items-center overflow-hidden text-nowrap overflow-ellipsis">
+                          {indicator.label} {<QuoteIcon className="scale-110" />}
+                        </h4>
+                        <div className="flex items-center justify-between">
+                          <div className="Value font-medium text-bl brightness-110 text-lg">{indicator.value}{indicator.unit}</div>
+                          <img alt="chart" className="h-6" src={ChartSvg} />
+                        </div>
+                      </div>
+                    ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Rentabilidade</h3>
+                  <div className="flex items-center w-full">
+                    <div className="grid grid-cols-2 gap-1 w-full">
+                    {[
+                      { label: "ROE", value: indicators.roe?.actual.toFixed(2), unit: "%" },
+                      { label: "ROA", value: indicators.roa?.actual.toFixed(2), unit: "%" },
+                      { label: "ROIC", value: indicators.roic?.actual.toFixed(2), unit: "%" },
+                      { label: "GIRO ATIVOS", value: indicators.giro_ativos?.actual.toFixed(2), unit: "%" },
+                    ].map((indicator, index) => (
+                      <div key={index} className="bg-df brightness-125 w-full h-full p-4 flex flex-col rounded">
+                        <h4 className="hover:text-[#F46D22] duration-300 font-medium flex gap-1 items-center overflow-hidden text-nowrap overflow-ellipsis">
+                          {indicator.label} {<QuoteIcon className="scale-110" />}
+                        </h4>
+                        <div className="flex items-center justify-between">
+                          <div className="Value font-medium text-bl brightness-110 text-lg">{indicator.value}{indicator.unit}</div>
+                          <img alt="chart" className="h-6" src={ChartSvg} />
+                        </div>
+                      </div>
+                    ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Rentabilidade</h3>
+                  <div className="flex items-center w-full">
+                    <div className="grid grid-cols-2 gap-1 w-full">
+                    {[
+                      { label: "CAGR RECEITAS 5 ANOS", value: indicators.receitas_cagr5?.actual.toFixed(2), unit: "%" },
+                      { label: "CAGR LUCRO 5 ANOS", value: indicators.liquidezcorrente?.actual.toFixed(2), unit: "%" },
+                    ].map((indicator, index) => (
+                      <div key={index} className="bg-df brightness-125 w-full h-full p-4 flex flex-col rounded">
+                        <h4 className="hover:text-[#F46D22] duration-300 font-medium flex gap-1 items-center overflow-hidden text-nowrap overflow-ellipsis">
+                          {indicator.label} {<QuoteIcon className="scale-110" />}
+                        </h4>
+                        <div className="flex items-center justify-between">
+                          <div className="Value font-medium text-bl brightness-110 text-lg">{indicator.value}{indicator.unit}</div>
+                          <img alt="chart" className="h-6" src={ChartSvg} />
+                        </div>
+                      </div>
+                    ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
