@@ -8,7 +8,6 @@ class User extends Model {
   public declare name: string;
   public declare email: string;
   public declare password: string;
-  public declare cpf: String;
   public declare active: Boolean;
   public declare admin: Boolean;
   public declare readonly created_at: Date;
@@ -49,18 +48,6 @@ User.init(
         is: {
           args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
           msg: 'Password must have at least one special character, one number, one lowercase and one uppercase letter',
-        },
-      },
-    },
-
-    cpf: {
-      type: sequelize.STRING(11),
-      allowNull: false,
-      validate: {
-        notEmpty: { msg: 'CPF is required' },
-        len: {
-          args: [11, 11],
-          msg: 'CPF must have 11 characters',
         },
       },
     },
