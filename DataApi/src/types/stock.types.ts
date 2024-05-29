@@ -1,5 +1,4 @@
 import { VariableProps } from '../interfaces/Variable.type';
-import { DreData } from './DRE.type';
 import { PassiveChartReturn } from './PassiveChart.type';
 import { Dividend, LastDividendPayment } from './dividends.type';
 import { FinancialIndicators } from './indicators.type';
@@ -47,8 +46,6 @@ export interface StockProps extends VariableProps {
   passiveChart: PassiveChartReturn[];
 
   // Other
-
-  dreData: DreData
 }
 
 export interface PriceHistory {

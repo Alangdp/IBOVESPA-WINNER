@@ -27,7 +27,6 @@ export class PontuationDataBase {
 
     if (props.type === 'BAZIN') {
       pontuation = new Bazin(stock).makePoints(stock);
-      console.log(pontuation);
       await model.create(pontuation);
       return pontuation
     }

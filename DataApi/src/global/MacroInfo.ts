@@ -53,15 +53,12 @@ export class MacroInfo {
     if (!MacroInfo.firstStart) return;
     MacroInfo.firstStart = false;
 
-    console.log('Version: ' + this.version + '\n');
     this.getCDI().then((result) => {
       this.CDI = result;
-      console.log(`CDI: ${this.CDI}`);
     });
 
     this.getIPCA().then((result) => {
       this.CDI = result;
-      console.log(`IPCA: ${this.CDI}`);
     });
 
     this.tickers = await TickerFetcher.getAllTickers();

@@ -76,7 +76,6 @@ export function Register({ children }: RegisterDialogProps) {
 
   useEffect(() => {
     if (userKeys.length > 1) {
-      console.log(userKeys)
       userKeys.forEach((item: keyof UserFilterSchema) => {
         toast.error(errors[item]?.message);
       });

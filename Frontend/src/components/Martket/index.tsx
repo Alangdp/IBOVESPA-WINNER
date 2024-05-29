@@ -130,7 +130,7 @@ export default function Market({ marketName }: MarketProps) {
                 <p className="font-light">Dividend yield</p>
                 <p className="text-2xl flex items-center gap-0.5">
                   <p className="font-bold text-3xl">
-                    {indicators.dy?.actual.toFixed(2) ?? 0}
+                    {indicators.dy?.actual.toFixed(4) ?? 0}
                   </p>
                   <p>%</p>
                 </p>

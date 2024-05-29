@@ -12,7 +12,6 @@ import { CashFlowHeader, NetLiquid, StockProps } from "../types/stock.types";
 import { Stock } from "../Entities/Stock.js";
 import TickerFetcher from "../utils/Fetcher.js";
 import { contains } from "cheerio";
-import { DreData } from "../types/DRE.type";
 import Json from "../utils/Json";
 
 
@@ -24,7 +23,6 @@ type instanceStockProps = {
   basicInfo: BasicInfoReturn | null,
   indicators: FinancialIndicators | null,
   cashFlow: Header[] | null,
-  dreData: DreData | null,
 }
 
 export class InstanceStock {
@@ -38,7 +36,6 @@ export class InstanceStock {
     indicators: null,
     cashFlow: null,
     passiveChart: null,
-    dreData: null
   };
 
   private constructor(tickerFetcher: TickerFetcher) {
@@ -73,7 +70,6 @@ export class InstanceStock {
     this.props.indicators = await this.tickerFetcher.getIndicatorsInfo();
     this.props.cashFlow = await this.tickerFetcher.getCashFlow();
     this.props.passiveChart = await this.tickerFetcher.getPassiveChart();
-    this.props.dreData = await this.tickerFetcher.getDreInfo();
   }
 
   private makeStockProps(): StockProps{
@@ -81,11 +77,9 @@ export class InstanceStock {
     const basicInfo = props.basicInfo!;
     const priceHistory = props.priceHistory!;
     const indicators = props.indicators!;
-    Json.saveJSONToFile(indicators, "indicators.json")
     const payout = props.payout!;
     const dividendInfo = props.dividendInfo!;
     const passiveChart = props.passiveChart!; 
-    const dreData = props.dreData!;
 
     // GET NET LIQUID
 
@@ -94,8 +88,6 @@ export class InstanceStock {
     // GET DIVIDENDS
 
     const {lastDividendsPerYear, lastDividendsYield} = this.getDividends();
-
-    console.log(basicInfo)
 
     const stockProp: StockProps = {
       ...basicInfo,
@@ -113,7 +105,6 @@ export class InstanceStock {
       lastDividendsYieldYear: lastDividendsYield,
       lastDividendsValueYear: lastDividendsPerYear,
       lastDividendsValue: dividendInfo.lastDividendPayments,
-      dreData: dreData,
       netLiquid: netLiquidArray,
       passiveChart: passiveChart,
       lpa: basicInfo.LPA,

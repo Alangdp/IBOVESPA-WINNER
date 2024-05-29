@@ -43,7 +43,6 @@ const PortifolioChart = ({ data }: PortifolioChart) => {
     if (active && payload && payload.length) {
       const { name, value } = payload[0].payload;
       const percentage = ((value / totalValue) * 100).toFixed(2);
-      console.log(percentage);
       return (
         <div
           className="custom-tooltip "

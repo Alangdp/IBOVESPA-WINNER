@@ -11,7 +11,6 @@ interface IndicatorsDataProps {
 
 export function IndicatorsData({ ticker, data }: IndicatorsDataProps) {
   type FinancialIndicatorKey = keyof FinancialIndicators;
-  console.log(data)
   return (
     <div className="info grid grid-cols-4 grid-rows-2 items-center justify-center gap-4 p-4">
       {data &&

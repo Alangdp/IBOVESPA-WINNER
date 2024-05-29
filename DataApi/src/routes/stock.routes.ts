@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { index, indexGet, indexDividends, indexIndicators, indexPrices, indexTickers, validTicker, indicatorData } from '../controllers/stock.controller.js';
+import { index, indexGet, indexDividends, indexIndicators, indexPrices, indexTickers, validTicker } from '../controllers/stock.controller.js';
 import { getRank } from '../controllers/ranking.controller.js';
 import { getHistory, getPortifolio } from '../controllers/history.controller.js';
 
@@ -13,7 +13,6 @@ router.get('/stock/get/:ticker', indexGet);
 router.post('/stock/price', indexPrices);
 router.post('/stock/dividend', indexDividends);
 router.post('/stock/indicators', indexIndicators);
-router.post('/stock/stockInfo', indicatorData);
 router.get('/stock/tickers', indexTickers);
 router.get('/stock/ranking', getRank);
 router.post('/stock/history', getHistory);

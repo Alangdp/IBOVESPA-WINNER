@@ -46,4 +46,4 @@ const teste = async () => {
   ranking.execute()
 }
 
-teste()
+// teste()

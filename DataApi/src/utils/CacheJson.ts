@@ -3,14 +3,9 @@ import Database from "./JsonDatabase";
 export default class CacheJSON<T, Y extends CacheProps<T>> extends Database<Y> {
   private duration: number; // Time in Minutes
 
-  private validTime() {
-    console.log(this.get())
-  }
-
   constructor({ duration, path }: CacheJSONProps) {
     super(path);
     this.duration = duration * 60 * 10 * 10 * 10;
-    this.validTime()
   }
 
   replaceData(data: T, key: string) {

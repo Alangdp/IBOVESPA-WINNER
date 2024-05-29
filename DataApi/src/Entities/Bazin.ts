@@ -33,7 +33,7 @@ export class Bazin extends BazinProtocol implements BazinMethods {
 
     this.actualDividends = actualPrice * dividendYield;
     this.actualPrice = actualPrice;
-    this.maxPrice = this.dividendYieldAverage/ 0.06;
+    this.maxPrice = MathUtils.makeAverage(this.lastDividendsValue) / 0.06;
     this.validate(stock);
   }
 
@@ -44,10 +44,6 @@ export class Bazin extends BazinProtocol implements BazinMethods {
       throw new Error('Invalid gross debt');
     if (patrimony === null || patrimony === undefined)
       throw new Error('Invalid patrimony');
-
-    // for (let i = 0; i < this.lastDividendsYield.length; i++) {
-    //   if (this.lastDividendsYield[i] < 0) this.lastDividendsValue.slice(i, 1);
-    // }
   }
 
   public constistentDividend() {

@@ -62,7 +62,6 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
     });
 
     try {
-      console.log(data, 123)
       await registerTransaction(data, token!, option as "BUY" | "SELL");
       setIsOpen(false)
     } catch (error: any) {
@@ -195,8 +194,7 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
                             title="Tickers"
                             {...register("ticker")}
                             onChange={(value) => {
-                              console.log(value?.toUpperCase()),
-                                setValue("ticker", value?.toUpperCase() || "");
+                              setValue("ticker", value?.toUpperCase() || "");
                             }}
                           />
                         </div>

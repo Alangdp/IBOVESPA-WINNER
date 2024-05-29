@@ -12,8 +12,6 @@ const getVariations: RequestHandler = async (req, res, next) => {
       path: "./json/HomeCache.json"
     });
 
-
-    console.log(cache.validDuration())    
     if(!cache.validDuration()) {
       const variations = await TickerFetcher.getHighsAndLows();
       if(!variations) throw new Error("Error Getting Variations");    

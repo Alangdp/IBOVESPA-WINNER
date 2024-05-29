@@ -9,7 +9,7 @@ import Cheerio from 'cheerio';
 import { AxiosUtils } from './Axios.Utils.js';
 import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
-import { IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
+import { FinancialIndicators, IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
 import apiGetter from './ApiGetter.js';
 import { PayoutReturn, RootPayout } from '../types/Payout.type.js';
 import {
@@ -336,12 +336,14 @@ export default class TickerFetcher {
       },
       'indicatorhistoricallist'
     );
+
+    console.log(data, ticker)
     if (!data) throw new Error('Error Getting Indicators Data');
 
-    const indicatorsData: IndicatorsData = {};
+    const indicatorsData = {} as FinancialIndicators;
     const tickerReference = Object.keys(data.data)[0];
     for (const item of data.data[tickerReference]) {
-      indicatorsData[item.key] = {
+      indicatorsData[item.key as keyof FinancialIndicators] = {
         actual: item.actual,
         avg: item.avg,
         olds: item.ranks.map((data) => {
@@ -353,7 +355,7 @@ export default class TickerFetcher {
       };
     }
 
-    return indicatorsData;
+    return indicatorsData
   }
 
   async getDreInfo() {

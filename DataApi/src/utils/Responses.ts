@@ -26,7 +26,6 @@ export function errorResponse(res: Response, error: any) {
   if(error instanceof AxiosError) {
     if(error.response) {
       const responseError: ResponseProps<any> = error.response.data;
-      console.log(responseError)
       return response(res, {
         data: {},
         status: responseError.status,

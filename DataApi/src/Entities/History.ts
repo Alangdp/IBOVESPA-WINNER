@@ -174,11 +174,10 @@ export class History {
       };
 
     }
-
-    Json.saveJSONToFile(this.historyData, 'history.json');
   }
 
   static async instanceHistory(transactions: TransactionsProps[]) {
+    const { getStock } = await StockDataBase.startDatabase();
     const dividends: Dividend[] = [];
     const stockInfo: StockInfo = {};
     const allTickers = transactions.map((transaction) =>
@@ -186,7 +185,7 @@ export class History {
     );
     const uniqueTickers = Utilities.uniqueElements(allTickers);
     for (const ticker of uniqueTickers) {
-      const stock = await StockDataBase.getStock(ticker);
+      const stock = await getStock(ticker);
 
       for (const dividend of stock.lastDividendsValue) {
         dividends.push(HistoryUtils.convertLastDividendToDividend(dividend));

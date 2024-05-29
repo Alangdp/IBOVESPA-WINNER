@@ -20,6 +20,7 @@ const teste: ComparatorProps = {
 export class Comparator {
 
   static async makeData(tickers: string[]) {
+    const {} = await StockDataBase.startDatabase();
     const toCompare: ComparatorProps = {
       arrayToCompare: []
     }
