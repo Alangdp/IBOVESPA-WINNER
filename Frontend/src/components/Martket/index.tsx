@@ -54,7 +54,7 @@ export default function Market({ marketName }: MarketProps) {
 
   return (
     <>
-      <div className="w-full h-14 drop-shadow-lg shadow bg-zinc-800 brightness-150 flex justify-center">
+      <div className="w-full h-14 drop-shadow-lg shadow bg-zinc-800 brightness-150 flex justify-center no-scrollbar">
         <div className="w-3/4 h-full p-4">
           <section className="flex gap-1 font-medium">
             {stockTicker?.toUpperCase()} -{" "}
@@ -64,7 +64,7 @@ export default function Market({ marketName }: MarketProps) {
           </section>
         </div>
       </div>
-      <div className="w-1/2">
+      <div className="w-full lg:w-3/4 p-2 ">
         <div className="w-full h-36 flex divide-x divide-gray-500 gap-0.5 mt-6 text-white">
           <div className="PRICE flex-[0.25] bg-bl rounded">
             <div className="flex flex-col items-center justify-center h-full">
@@ -124,7 +124,7 @@ export default function Market({ marketName }: MarketProps) {
             </div>
           </div>
 
-          <div className="DY flex-[0.25] bg-df brightness-150">
+          <div className="DY flex-[0.25] bg-df brightness-150 rounded-r">
             <div className="flex flex-col items-center justify-center h-full">
               <div className="">
                 <p className="font-light">Dividend yield</p>
@@ -169,7 +169,7 @@ export default function Market({ marketName }: MarketProps) {
 
               <div className="w-full">
                 <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Valuation</h3>
-                <div className="grid grid-cols-6 items-center w-full gap-1">
+                <div className="grid grid-cols-2 lg:grid-cols-5 items-center w-full gap-1">
                   {[
                     { label: "D.Y", value: indicators.dy?.actual.toFixed(2), unit: "%" },
                     { label: "P/L", value: indicators.p_l?.actual.toFixed(2) },
@@ -200,7 +200,7 @@ export default function Market({ marketName }: MarketProps) {
 
               <div className="w-full flex flex-col gap-2">
                 <h3 className="font-medium text-lg text-[#F46D22]">Indicadores de Endividamento</h3>
-                <div className="grid grid-cols-5 items-center w-full gap-1">
+                <div className="grid grid-cols-2 lg:grid-cols-5 items-center w-full gap-1">
                   {[
                     { label: "DIV. LIQ/PL", value: indicators.dividaliquida_patrimonioliquido?.actual.toFixed(2) },
                     { label: "DIV. LIQ/EBITDA", value: indicators.dividaliquida_ebitda?.actual.toFixed(2) },

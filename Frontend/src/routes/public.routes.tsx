@@ -42,8 +42,8 @@ const publicRoutes = [
     element: (
       <>
         <DefaultToast />
-        <NavBar />
         <div className="h-screen bg-[#1E1E1E] text-white flex flex-col items-center overflow-scroll no-scrollbar">
+          <NavBar />
           <Market marketName="Brasil" />
         </div>
       </>

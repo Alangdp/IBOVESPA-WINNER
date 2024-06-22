@@ -5,13 +5,18 @@ import { useAuth } from "@/contexts/AuthContext";
 import { cn } from "@/lib/utils";
 
 interface NavBarProps {
-  className?: string
+  className?: string;
 }
 
 export function NavBar({ className }: NavBarProps) {
-  const { token,logout } = useAuth();
+  const { token, logout } = useAuth();
   return (
-    <div className={cn("nav h-14 bg-df flex justify-around items-center p-4 text-white", className)}>
+    <div
+      className={cn(
+        "nav h-14 bg-df flex justify-around items-center p-4 text-white min-w-full",
+        className
+      )}
+    >
       <div className="company flex items-center justify-between w-fit gap-4 text-white">
         <a href="/" className="flex justify-center items-center gap-4">
           <img src={OficialLogo} alt="Logo" className=" " />
@@ -26,9 +31,22 @@ export function NavBar({ className }: NavBarProps) {
 
       <div className="sign flex gap-4 items-center">
         {token ? (
-          <div className="flex gap-4 items-center">
-            <p onClick={logout}>Sair</p>
-          </div>
+          <>
+            <div className="flex gap-4 items-center">
+              <a
+                href="/dashboard"
+                className="py-1 px-2 bg-bl rounded cursor-pointer hover:brightness-90 duration-100"
+              >
+                Dashboard
+              </a>
+              <p
+                className="py-1 px-2  rounded cursor-pointer hover:brightness-90 duration-100"
+                onClick={logout}
+              >
+                Sair
+              </p>
+            </div>
+          </>
         ) : (
           <>
             <Register>

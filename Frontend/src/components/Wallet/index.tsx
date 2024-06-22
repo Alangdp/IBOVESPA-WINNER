@@ -19,9 +19,6 @@ interface WalletProps {
 export default function Wallet({tickers, chart}: WalletProps) {
   const [stocks, setStocks] = useState<PriceData[]>()
   const tickersChart = chart ? Object.keys(chart.individualRentability) : []
-
-  console.log(chart)
-
   const fetchStocks = async () => {
     if(!stocks && tickersChart.length !== 0) {
       const pricePromises = tickersChart.map(ticker => getPrice(ticker));
@@ -52,7 +49,7 @@ export default function Wallet({tickers, chart}: WalletProps) {
 
             <div className="mt-[20px] h-full flex justify-between">
               <div className=""></div>
-              <div className="cards grid grid-cols-3 gap-8 mr-20">
+              <div className="cards grid grid-cols-3 gap-4 lg:mr-20">
                 <div className="card bg-bl w-[170px] h-24 rounded-df">
                   <span className="p-2 flex gap-2">
                     <img
@@ -97,8 +94,8 @@ export default function Wallet({tickers, chart}: WalletProps) {
           </div>
         </div>
 
-        <div className="w-full h-[620px] grid text-white grid-cols-4 gap-4">
-          <div className="col-span-1 h-[620px] bg-df rounded-df drop-shadow-lg p-4">
+        <div className="w-full h-[400px] grid text-white grid-cols-1 lg:grid-cols-4 gap-4">
+          <div className="col-span-1 h-full bg-df rounded-df drop-shadow-lg p-4">
             <h2 className="text-2xl font-bold">Patrimônio</h2>
             <div className="values flex flex-col">
               <p className="text-[#1ECB4F] font-medium text-xl">R$ {chart.globalTotalValue.toFixed(2)}</p>
@@ -111,21 +108,21 @@ export default function Wallet({tickers, chart}: WalletProps) {
             </div>
             <PortifolioChart data={[{name: 'Ações', value: Number(chart.globalTotalValue.toFixed(2))}]} />
           </div>
-          <div className="col-span-3 h-[620px] bg-df rounded-df drop-shadow-lg p-4 w-">
+          <div className="col-span-1 lg:col-span-3 h-full bg-df rounded-df drop-shadow-lg p-4 w-">
             <h2 className="text-2xl font-bold">Patrimônio</h2>
             <div className="h-[500px] w-full overflow-hidden">
               <div className="overflow-y-auto no-scrollbar h-full">
                 <table className="min-w-full divide-y divide-gray-200/20 divide-opacity-50">
                   <thead className="">
                     <tr>
-                      <th className="text-center px-6 py-3">Ticker/valor</th>
-                      <th className="text-center px-6 py-3">Quantidade</th>
-                      <th className="text-center px-6 py-3">P.Médio</th>
-                      <th className="text-center px-6 py-3">Preço</th>
-                      <th className="text-center px-6 py-3">Retorno</th>
-                      <th className="text-center px-6 py-3">% Ações</th>
-                      <th className="text-center px-6 py-3">% Carteira</th>
-                      <th className="text-center px-6 py-3"></th>
+                      <th className="text-center LG:px-6 py-3">Ticker/valor</th>
+                      <th className="text-center LG:px-6 py-3">Quantidade</th>
+                      <th className="text-center LG:px-6 py-3">P.Médio</th>
+                      <th className="text-center LG:px-6 py-3">Preço</th>
+                      <th className="text-center LG:px-6 py-3">Retorno</th>
+                      <th className="text-center LG:px-6 py-3">% Ações</th>
+                      <th className="text-center LG:px-6 py-3">% Carteira</th>
+                      <th className="text-center LG:px-6 py-3"></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200/20 divide-opacity-50">

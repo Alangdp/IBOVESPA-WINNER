@@ -24,7 +24,6 @@ export function DashBoard({ chart, history }: DashBoardProps) {
 
   const fetchHomeData = async () => {
     if (!variations) setVariations(await getVariations());
-    console.log(variations)
   };
 
   useEffect(() => {
@@ -67,9 +66,11 @@ export function DashBoard({ chart, history }: DashBoardProps) {
               return (
                 <VariationCard
                   className="p-2 md:w-full"
-                  variation={-Number(
-                    item.currentPrice.split("R$")[1].trim().replace(",", ".")
-                  )}
+                  variation={
+                    -Number(
+                      item.currentPrice.split("R$")[1].trim().replace(",", ".")
+                    )
+                  }
                   price={Number(
                     item.variation
                       .split("arrow_downward")[1]
@@ -83,8 +84,8 @@ export function DashBoard({ chart, history }: DashBoardProps) {
             })}
         </div>
 
-        <div className="w-full h-[64vh] grid grid-cols-6 gap-4">
-          <div className="col-span-2 grid grid-rows-6 h-[65vh] gap-4">
+        <div className="w-full h-[64vh] grid lg:grid-cols-6 lg:gap-4 grid-cols-1 gap-y-2 gap-x-0">
+          <div className="col-span-2 grid grid-rows-6 h-[65vh] gap-4 sm:grid-rows-4">
             <div className="row-span-1 h-full bg-blue-500 rounded-df shadow-lg">
               <h4 className="text-xl text-white pl-4 pt-2 font-semibold">
                 Carteira
@@ -106,24 +107,33 @@ export function DashBoard({ chart, history }: DashBoardProps) {
               </h4>
               <div className="cards p-4 flex flex-col gap-2 overflow-y-scroll h-[88%] no-scrollbar">
                 {chart &&
-                  Object.keys(chart.individualRentability).map((ticker) => (
-                    <PortifolioCard
-                      actualValue={
-                        chart.individualRentability[ticker].valueInvested
-                      }
-                      quantity={chart.individualRentability[ticker].quantity}
-                      totalValue={Number(
-                        chart.individualRentability[ticker].valueTotal.toFixed(
-                          2
-                        )
-                      )}
-                      ticker={ticker}
-                      variation={Number(
-                        (
-                          chart.individualRentability[ticker].rentability * 100
-                        ).toFixed(2)
-                      )}
-                    />
+                  (Object.keys(chart.individualRentability).length === 0 ? (
+                    <>
+                      <p className="text-2xl font-medium text-white text-center">
+                        Sem ações na carteira
+                      </p>
+                    </>
+                  ) : (
+                    Object.keys(chart.individualRentability).map((ticker) => (
+                      <PortifolioCard
+                        actualValue={
+                          chart.individualRentability[ticker].valueInvested
+                        }
+                        quantity={chart.individualRentability[ticker].quantity}
+                        totalValue={Number(
+                          chart.individualRentability[
+                            ticker
+                          ].valueTotal.toFixed(2)
+                        )}
+                        ticker={ticker}
+                        variation={Number(
+                          (
+                            chart.individualRentability[ticker].rentability *
+                            100
+                          ).toFixed(2)
+                        )}
+                      />
+                    ))
                   ))}
               </div>
             </div>
@@ -132,11 +142,19 @@ export function DashBoard({ chart, history }: DashBoardProps) {
             <div className="p-4 w-full flex items-center justify-between">
               <ChartHeader />
             </div>
-            <HistoryChart
-              history={history}
-              selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
-            />
+            {Object.keys(history.historyData).length === 0 ? (
+              <>
+                <p className="text-2xl font-medium text-white text-center">
+                  Sem histórico
+                </p>
+              </>
+            ) : (
+              <HistoryChart
+                history={history}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
+            )}
           </div>
         </div>
       </motion.main>

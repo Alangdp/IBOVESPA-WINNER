@@ -78,7 +78,7 @@ export default function PriceChart({ priceData }: PriceChartProps) {
             )}
           />
           <YAxis tickCount={10} domain={["auto", "auto"]} />
-          <Tooltip trigger="hover" />
+          <Tooltip trigger="hover"/>
           <Line
             type="monotone"
             dataKey="price"
