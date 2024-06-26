@@ -21,7 +21,7 @@ export function HomeDialog({ children, form, title }: RegisterDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[320px] bg-[rgb(27,32,40)]">
+      <DialogContent className="sm:max-w-[320px] bg-[rgb(27,32,40)] p-4">
         <div className="top absolute w-full h-6 rounded-t-lg bg-gradient-to-r from-blue-600 to-gray-900"></div>
         <DialogHeader className="mt-4">
           <DialogTitle>

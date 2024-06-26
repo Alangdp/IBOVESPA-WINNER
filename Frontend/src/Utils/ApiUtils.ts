@@ -10,6 +10,7 @@ import { FinancialIndicators } from "@/types/Indicators.type";
 import { SimplifiedDataHistory, SimplifiedHistoryData } from "@/types/History.type";
 import { PontuationProps, PontuationReturn } from "@/types/rank.type";
 import { StockProps } from "@/types/Stock.type";
+import { News } from "@/types/News.type";
 
 const dataAPI: string = import.meta.env.VITE_STOCK_API_URL;
 const tokenAPI: string = import.meta.env.VITE_TOKEN_API_URL;
@@ -228,6 +229,18 @@ export const getStock = async(ticker: string) => {
       ticker
     });
     const responseData: ResponseProps<StockProps> = response.data;
+    if(!responseData.data) throw new Error("Erro getting Data")
+    return responseData.data
+  } catch (error) {
+    console.log(error)
+    throw new Error("Invalid Token or internal Error")
+  }
+}
+
+export const getNews = async() => {
+  try {
+    const response = await axios.get(`http://${dataAPI}/stock/news`);
+    const responseData: ResponseProps<News[]> = response.data;
     if(!responseData.data) throw new Error("Erro getting Data")
     return responseData.data
   } catch (error) {

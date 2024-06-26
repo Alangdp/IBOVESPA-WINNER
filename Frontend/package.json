@@ -25,6 +25,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",
+    "dayjs": "^1.11.11",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.1.9",
     "react": "^18.2.0",
@@ -37,6 +38,7 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "validator": "^13.11.0",
+    "websocket": "^1.0.35",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -44,6 +46,7 @@
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/validator": "^13.11.9",
+    "@types/websocket": "^1.0.10",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.2.1",

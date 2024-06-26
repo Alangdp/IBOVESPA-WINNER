@@ -13,13 +13,14 @@ import { AnimatePresence } from "framer-motion";
 import { SimplifiedDataHistory } from "@/types/History.type";
 import { Ranking } from "../Ranking";
 import Wallet from "../Wallet";
+import NewsComponent from "../Noticias";
 
 export default function MainDashBoard() {
   const { selected } = useSelected();
   const { token } = useAuth();
   const [chart, setChart] = useState<ChartProps>()
   const [history, setHistory] = useState<SimplifiedDataHistory>()
-  const [tickers, setTickers] = useState<string[]>()
+  const [tickers, setTickers] = useState<string[]>([])
  
   const fetchData = async () => {
     if(!tickers) setTickers(await getTickers())
@@ -59,6 +60,7 @@ export default function MainDashBoard() {
           {selected === "Carteira" ? <Wallet tickers={tickers} chart={chart ? chart : getEmptyChart() }/> : <></>}
           {selected === "Transações" ? <TransactionTable chart={chart!}/> : <></>}
           {selected === "Ranking" ? <Ranking/> : <></>}
+          {selected === "Noticias" ? <NewsComponent/> : <></>}
         </AnimatePresence>
       </div>
     </div>

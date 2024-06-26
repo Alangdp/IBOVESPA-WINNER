@@ -1,58 +1,60 @@
 import { App } from "../App";
 import Home from "../components/Home";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NavBar } from "../components/Nav";
-import Market from "../components/Martket";
 import Private from "./private";
+import MotionWrapper from "@/components/Router/MotionWrapper";
+import Market from "@/components/Martket";
 
-const DefaultToast = () => (
-  <ToastContainer
-    limit={4}
-    stacked={true}
-    position="bottom-right"
-    pauseOnHover={false}
-    pauseOnFocusLoss={false}
-  />
-);
-
-const publicRoutes = [
+const routes = [
   {
     path: "/",
     element: (
-      <>
-        <DefaultToast/>
+      <MotionWrapper>
         <Home />
-      </>
+      </MotionWrapper>
     ),
   },
   {
     path: "/dashboard",
     element: (
-      <Private>
-        <>
-          <DefaultToast />
+      <MotionWrapper>
+        <Private>
           <App />
-        </>
-      </Private>
+        </Private>
+      </MotionWrapper>
     ),
   },
   {
     path: "/market/brasil/:stockTicker",
     element: (
-      <>
-        <DefaultToast />
+      <MotionWrapper>
         <div className="h-screen bg-[#1E1E1E] text-white flex flex-col items-center overflow-scroll no-scrollbar">
           <NavBar />
           <Market marketName="Brasil" />
         </div>
-      </>
+      </MotionWrapper>
+    ),
+  },
+  {
+    path: "/market/brasil/",
+    element: (
+      <MotionWrapper>
+        <div className="h-screen bg-[#1E1E1E] text-white flex flex-col items-center overflow-scroll no-scrollbar">
+          <NavBar />
+          <Market marketName="Brasil" />
+        </div>
+      </MotionWrapper>
     ),
   },
   {
     path: "*",
-    element: <h1>EITA QUE DEU MERDA</h1>,
+    element: (
+      <MotionWrapper>
+        <h1>EITA QUE DEU MERDA</h1>
+      </MotionWrapper>
+    ),
   },
 ];
 
-export { publicRoutes };
+export { routes };
