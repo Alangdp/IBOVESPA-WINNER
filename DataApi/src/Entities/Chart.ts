@@ -1,4 +1,3 @@
-import { ChartCoordinate } from 'recharts/types/util/types';
 import { ChartProtocol } from '../interfaces/ChartProtocol.type';
 import {
   ChartConstructor,

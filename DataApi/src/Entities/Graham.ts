@@ -70,9 +70,12 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     if (this.grossDebt === 0) this.grossDebt = 1;
 
     this.gb_p = this.grossDebt / this.patrimony;
+    this.actualPrice = stock.actualPrice;
+    this.ticker = stock.ticker;
+    this.dy = stock.actualDividendYield;
   }
 
-  async makePoints(stock: StockProtocol): Promise<Pontuation> {
+  async makePoints(stock: StockProtocol) {
     const { netLiquid, vpa, lpa, p_l, p_vp, roe } = this;
 
     const lpaAverage = MathUtils.makeAverage(lpa);
@@ -132,20 +135,27 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     ];
 
     const pontuation = new Pontuation({
+      infoData: {
+        actualPrice: this.actualPrice,
+        dy: this.dy,
+        maxPrice: Math.sqrt(22.5 * vpaAverage * lpaAverage),
+      },
+      id: this.ticker,
+      subId: "BAZIN",
       defaultIfFalse: 1,
       defaultIfTrue: 1,
-      id: stock.ticker,
-      subId: 'GRAHAM',
       totalPoints: 0,
-    });
+      totalEvaluate: []
+    })
 
-    rules.forEach(rule => {
+    rules.forEach( rule => {
       pontuation.addRule(rule);
-    });
+    })
 
-    pontuation.calculate()
+    pontuation.calculate();
 
     return pontuation
+
   }
 
   crescentNetLiquid(netLiquidOn10Years: NetLiquid[]): boolean {

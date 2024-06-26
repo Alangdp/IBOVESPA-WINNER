@@ -5,9 +5,7 @@ import { AxiosOptions } from '../types/AxiosOptions.type'
 // FIXME Revisar SOLID mais tarde
 export class AxiosUtils {
   static makeOptionsJson(
-    { headers: headersInput ,method ,url ,params}: AxiosOptions,
-    final: string
-  ) {
+p0: string, p1: string, p2: {}, p3: string, p4: string, { headers: headersInput, method, url, params }: AxiosOptions, final: string  ) {
     const options: AxiosOptions = {
       method: method,
       url: `https://statusinvest.com.br/${url ?? 'acao'}/${final}`,

@@ -1,68 +1,79 @@
-import axios from 'axios';
-import { SegmentProtocol } from '../interfaces/SegmentProtocol.js';
-import { DataToUse, Root, segmentBreaks } from '../types/Segment.type.js';
-import { AxiosUtils } from '../utils/Axios.Utils.js';
-import Json from '../utils/Json.js';
+// import axios from 'axios';
+// import { SegmentProtocol } from '../interfaces/SegmentProtocol.js';
+// import { DataToUse, Root, segmentBreaks } from '../types/Segment.type.js';
+// import { AxiosUtils } from '../utils/Axios.Utils.js';
+// import Json from '../utils/Json.js';
+// import apiGetter from '../utils/ApiGetter.js';
 
-// @ts-ignore
-export class Segment extends SegmentProtocol {
-  categoryType: number = 1 | 2 | 4;
+// // @ts-ignore
+// export class Segment extends SegmentProtocol {
+//   categoryType: number = 1 | 2 | 4;
 
-  private async getSegmentsList(
-    listNumber: number
-  ): Promise<DataToUse[] | undefined> {
-    try {
-      const response = await axios.request(
-        AxiosUtils.makeOptionsJson(
-          'GET',
-          `getcompanies?categoryType=${listNumber}`,
-          {},
-          'sector',
-          'application/json'
-        )
-      );
-      const responseData: Root = response.data;
 
-      const filteredData: DataToUse[] = responseData.data.map((item) => {
-        const { categoryId, companyId, ...dataToUse } = item;
-        return dataToUse;
-      });
+// ! DISCONTINUED NOT WORKING
+//   private async getSegmentsList(
+//     listNumber: number
+//   ): Promise<DataToUse[] | undefined> {
+//     try {
+//       const response = await axios.request(
+//         // AxiosUtils.makeOptionsJson(
+//         //   'GET',
+//         //   `getcompanies?categoryType=${listNumber}`,
+//         //   {},
+//         //   'sector',
+//         //   'application/json'
+//         // )
 
-      return filteredData;
-    } catch (error) {}
-  }
+//       );
+//       const data = apiGetter({
+//         method: 'GET',
+//         url: `getcompanies?categoryType=${listNumber}`,
+//         headers: {
+//           sector: 'application/json',
+//         },
+//       }, );
+//       const responseData: Root = response.data;
 
-  private formatData(segments: DataToUse[]) {
-    const filter: segmentBreaks = {};
+//       const filteredData: DataToUse[] = responseData.data.map((item) => {
+//         const { categoryId, companyId, ...dataToUse } = item;
+//         return dataToUse;
+//       });
 
-    segments.forEach((item) => {
-      if (!filter[item.sectorName]) filter[item.sectorName] = {};
-      if (!filter[item.sectorName][item.subSectorName])
-        filter[item.sectorName][item.subSectorName] = [];
+//       return filteredData;
+//     } catch (error) {}
+//   }
 
-      if (
-        !filter[item.sectorName][item.subSectorName].includes(item.segmentName)
-      )
-        filter[item.sectorName][item.subSectorName].push(item.segmentName);
-    });
+//   private formatData(segments: DataToUse[]) {
+//     const filter: segmentBreaks = {};
 
-    Json.saveJSONToFile(filter, 'segments.json');
+//     segments.forEach((item) => {
+//       if (!filter[item.sectorName]) filter[item.sectorName] = {};
+//       if (!filter[item.sectorName][item.subSectorName])
+//         filter[item.sectorName][item.subSectorName] = [];
 
-    return filter;
-  }
+//       if (
+//         !filter[item.sectorName][item.subSectorName].includes(item.segmentName)
+//       )
+//         filter[item.sectorName][item.subSectorName].push(item.segmentName);
+//     });
 
-  async execute() {
-    const categoryNumber = [1, 2, 4];
+//     Json.saveJSONToFile(filter, 'segments.json');
 
-    const data: DataToUse[] = [];
-    for (let i = 0; i < categoryNumber.length; i++) {
-      const segments = await this.getSegmentsList(categoryNumber[i]);
-      if (!segments) continue;
-      segments.forEach((item) => {
-        data.push(item);
-      });
-    }
+//     return filter;
+//   }
 
-    this.formatData(data);
-  }
-}
+//   async execute() {
+//     const categoryNumber = [1, 2, 4];
+
+//     const data: DataToUse[] = [];
+//     for (let i = 0; i < categoryNumber.length; i++) {
+//       const segments = await this.getSegmentsList(categoryNumber[i]);
+//       if (!segments) continue;
+//       segments.forEach((item) => {
+//         data.push(item);
+//       });
+//     }
+
+//     this.formatData(data);
+//   }
+// }

@@ -2,7 +2,7 @@
 
 import { BuyTransactionProcol } from '../interfaces/TransactionBuyProtocol.type';
 import { Transaction } from '../interfaces/TransactionProtocol.js';
-import { TransactionProps } from '../types/transaction.type';
+import { TransactionsProps } from '../types/transaction.type';
 import { TransactionHistory } from '../interfaces/Transaction';
 
 export default class BuyTransaction
@@ -12,7 +12,7 @@ export default class BuyTransaction
   ticker: string;
 
   private constructor(
-    requirements: TransactionProps,
+    requirements: TransactionsProps,
     buyData: {
       ticker: string;
     }
@@ -23,7 +23,7 @@ export default class BuyTransaction
   }
 
   static create(
-    requirements: TransactionProps ,
+    requirements: TransactionsProps ,
     sellData: {
       ticker: string;
     }

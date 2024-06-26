@@ -1,52 +1,86 @@
-export interface NewsProps {
-  newId: number;
+export interface NewsAPI {
+  [code: string]: {
+    context: {
+      request_context: {
+        user: User;
+        locale: string;
+        language_iso: string;
+      };
+    };
+    data: {
+      news: {
+        data: {
+          items: Item[];
+        };
+      };
+    };
+    meta: {
+      widgets: Widget[];
+      news_tabs: NewsTab[];
+      news_active_tab_id: string;
+    };
+    ssrTimeSeconds: number;
+  };
+}
+
+export interface News {
   title: string;
-  content: string;
-  pontuation?: string;
+  published: number;
+  sponsor: string;
+  symbols: string[];
+
+  // Optional
+
   link?: string;
-  author?: string;
-  source?: string;
-  influence?: string[]
+  secondary_link?: string;
+  content?: string[];
+
 
 }
 
-export interface NewsRoot {
-  success: boolean
-  data: Data
+export interface User {
+  is_authenticated: boolean;
+  is_moderator: boolean;
+  is_staff: boolean;
+  features: {
+    NO_SPONSORED_ADS: boolean;
+  };
+  settings: {
+    "News.displayMode": any;
+  };
 }
 
-export interface Data {
-  totalItens: number
-  content: Content[]
+export interface Item {
+  id: string;
+  title: string;
+  storyPath: string;
+  sourceLogoId: string;
+  published: number;
+  source: string;
+  urgency: number;
+  permission?: string;
+  provider: string;
+  relatedSymbols: RelatedSymbol[];
+  link?: string;
 }
 
-export interface Content {
-  contentId: number
-  providerConfigurationId: number
-  contentUrl: string
-  title: string
-  content: string
-  tags: string[]
-  assets: Asset[]
-  priority: number
-  imageUrl: string
-  contentType: number
-  resourceType: number
-  isSponsored: boolean
-  isInstitutional: boolean
-  assetsSerialized: string
-  tagsSerialized: string
-  publishDate: string
-  publishDate_F: string
+export interface RelatedSymbol {
+  symbol: string;
+  logoid?: string;
+  "currency-logoid"?: string;
+  "base-currency-logoid"?: string;
 }
 
-export interface Asset {
-  assetId: number
-  ticker: string
-  isMainContentAsset: boolean
-  categoryType: number
-  identificationType: number
-  normalizedTicker: string
-  assetUrl: string
-  assetMainId?: number
+export interface Widget {
+  data_path: string;
+  title: string;
+  id: string;
+  is_hidden_title: boolean;
+}
+
+export interface NewsTab {
+  data_path: string;
+  title: string;
+  id: string;
+  is_hidden_title: boolean;
 }

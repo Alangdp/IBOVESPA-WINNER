@@ -37,9 +37,10 @@ class DatabaseSeed {
   }
 
   async getData (ticker: string) {
+    const { getStock } = await StockDataBase.startDatabase()
 
     try {
-      const stock = await StockDataBase.getStock(ticker)
+      const stock = await getStock(ticker)
       this.rankingBazin.push(await PontuationDataBase.get({ticker: stock.ticker, type: "BAZIN"}));
       this.rankingGraham.push(await PontuationDataBase.get({ticker: stock.ticker, type: "GRAHAM"}));
       return true

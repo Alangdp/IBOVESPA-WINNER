@@ -43,6 +43,7 @@ export interface GranhamMethods {
 }
 
 export abstract class GranhamProtocol {
+  protected ticker: string;
   protected points: number;
   protected lpa: number[];
   protected vpa: number[];
@@ -54,8 +55,12 @@ export abstract class GranhamProtocol {
   protected patrimony: number;
   protected gb_p: number;
   protected netLiquid: NetLiquid[];
+  protected actualPrice: number;
+  protected dy: number;
 
   constructor() {
+    this.dy = 0;
+    this.ticker = '';
     this.points = 0;
     this.lpa = [];
     this.vpa = [];
@@ -67,5 +72,6 @@ export abstract class GranhamProtocol {
     this.patrimony = 0;
     this.gb_p = 0;
     this.netLiquid = [];
+    this.actualPrice = 0;
   }
 }

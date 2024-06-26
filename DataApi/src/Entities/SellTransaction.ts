@@ -2,7 +2,7 @@
 
 import { Transaction } from '../interfaces/TransactionProtocol';
 import { SellTransactionProcol } from '../interfaces/TransactionSellProtocol.type';
-import { TransactionProps } from '../types/transaction.type';
+import { TransactionsProps } from '../types/transaction.type';
 import { TransactionHistory } from '../interfaces/Transaction';
 
 export default class SellTransaction
@@ -12,7 +12,7 @@ export default class SellTransaction
   ticker: string;
 
   private constructor(
-    requirements: TransactionProps,
+    requirements: TransactionsProps,
     sellData: {
       ticker: string;
     }
@@ -23,7 +23,7 @@ export default class SellTransaction
   }
 
   create(
-    requirements: TransactionProps,
+    requirements: TransactionsProps,
     sellData: {
       ticker: string;
     }

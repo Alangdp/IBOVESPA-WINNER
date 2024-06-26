@@ -10,16 +10,8 @@ import './database/index.js';
 import stockRoutes from './routes/stock.routes.js';
 import variationRoutes from './routes/variation.routes.js';
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const corsOptions = {
-  origin: 'http://localhost:5173',
-  methods: 'GET, POST',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: false,
-};
 
 dotenv.config();
 
@@ -38,7 +30,8 @@ class App {
   middlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(cors(corsOptions));
+    this.app.use('*', cors())
+    this.app.options('*', cors());
 
     this.app.use(
       '/images/logos',

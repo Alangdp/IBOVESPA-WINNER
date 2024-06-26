@@ -2,6 +2,4 @@
 
 export interface SellTransactionProcol {
   ticker: string;
-
-  totalValue(quantity: number, value: number): number;
 }

@@ -9,7 +9,11 @@ import Cheerio from 'cheerio';
 import { AxiosUtils } from './Axios.Utils.js';
 import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
-import { FinancialIndicators, IndicatorRoot, IndicatorsData } from '../types/indicators.type.js';
+import {
+  FinancialIndicators,
+  IndicatorRoot,
+  IndicatorsData,
+} from '../types/indicators.type.js';
 import apiGetter from './ApiGetter.js';
 import { PayoutReturn, RootPayout } from '../types/Payout.type.js';
 import {
@@ -25,7 +29,7 @@ import { combineTableNames } from 'sequelize/types/utils.js';
 import { ConnectionStates } from 'mongoose';
 import { val } from 'cheerio/lib/api/attributes.js';
 import { HomeItens, ItemData } from '../types/HomeItens.type.js';
-import { NewsRoot } from '../types/News.type.js';
+import { News, NewsAPI } from '../types/News.type.js';
 
 // FIXME REFAZER TUDO AQUI
 // TODO - ROE INCORRETO CONSERTAR
@@ -337,7 +341,7 @@ export default class TickerFetcher {
       'indicatorhistoricallist'
     );
 
-    console.log(data, ticker)
+    console.log(data, ticker);
     if (!data) throw new Error('Error Getting Indicators Data');
 
     const indicatorsData = {} as FinancialIndicators;
@@ -355,7 +359,7 @@ export default class TickerFetcher {
       };
     }
 
-    return indicatorsData
+    return indicatorsData;
   }
 
   async getDreInfo() {
@@ -641,7 +645,7 @@ export default class TickerFetcher {
         throw new Error(err.message);
       }
     }
-    
+
     try {
       const $ = Cheerio;
       const html = await getHtmlPage();
@@ -700,13 +704,71 @@ export default class TickerFetcher {
     }
   }
 
-  static async getNews() {
+  static async getNews(): Promise<News[] | null> {
     try {
-      const data = await axios.get("https://statusinvest.com.br/admnews/get?page=1&quantityItens=6&providers%5B%5D=34&providers%5B%5D=35&contentType=2");
-      console.log(data.status, data.data)
-    } catch(error) {
-      console.log(error)
-      return null
+      const response = await axios.get(
+        'https://br.tradingview.com/markets/stocks-brazil/news/'
+      );
+      const $ = Cheerio.load(response.data);
+
+      const jsonData = $("script[type='application/prs.init-data+json']")
+        .eq(3)
+        .html();
+
+      let data: NewsAPI;
+      if (jsonData) {
+        data = JSON.parse(jsonData);
+      } else {
+        throw new Error('No JSON data found in the script tag.');
+      }
+
+      const news: News[] = [];
+      for (const item of data[Object.keys(data)[0]].data.news.data.items) {
+        const title = item.title;
+        const published = item.published;
+        const sponsor = item.provider;
+        const symbols = item.relatedSymbols.map((symbol: any) => symbol.symbol);
+        const link = item.storyPath;
+        const secondary_link = item.link;
+
+        news.push({
+          title,
+          published,
+          sponsor,
+          symbols,
+          link,
+          secondary_link,
+          content: [],
+        });
+      }
+
+      return await this.getNewContent(news);
+    } catch (error) {
+      console.log(error);
+      return null;
     }
+  }
+
+  private static async getNewContent(news: News[]) {
+    const updatedNews: News[] = [];
+    for (const item of news) {
+      if (!item.link || item.symbols.length === 0) continue;
+
+      const response = await axios.get(
+        `https://br.tradingview.com${item.link}`
+      );
+      const $ = Cheerio.load(response.data);
+      const content = $(
+        '#tv-content > div > div > div > article > div.body-KX2tCBZq.bodyPreview-pIO_GYwT.body-pIO_GYwT.content-pIO_GYwT.body-RYg5Gq3E > span'
+      );
+
+      content.children().each((i, element) => {
+        item.content?.push($(element).text());
+      })
+
+      updatedNews.push(item);
+    }
+
+    return updatedNews;
   }
 }

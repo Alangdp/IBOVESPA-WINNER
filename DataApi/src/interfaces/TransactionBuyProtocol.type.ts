@@ -3,5 +3,4 @@
 export interface BuyTransactionProcol {
   ticker: string;
 
-  totalValue(quantity: number, value: number): number;
 }

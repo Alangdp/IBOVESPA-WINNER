@@ -7,6 +7,8 @@ import { data } from "cheerio/lib/api/attributes.js";
 import { FinancialIndicators } from "../types/indicators.type.js";
 import { InstanceStock } from "../useCases/instanceStock.js";
 import MathUtils from "../utils/MathUtils.js";
+import { News } from "../types/News.type.js";
+import CacheJSON from "../utils/CacheJson.js";
 
 
 export const index: RequestHandler = async (req, res, next) => {
@@ -54,7 +56,7 @@ export const indexPrices: RequestHandler = async (req, res, next) => {
 }
 
 export const indexDividends: RequestHandler = async (req, res, next) => {
-  const {createStock, deleteStock,existsStock,findStock,getStock,updateStock} = await StockDataBase.startDatabase();
+  const {getStock} = await StockDataBase.startDatabase();
   
   try {
     const ticker: string = req.body.ticker;
@@ -74,7 +76,7 @@ export const indexDividends: RequestHandler = async (req, res, next) => {
 }
 
 export const indexIndicators: RequestHandler = async (req, res, next) => {
-  const {createStock, deleteStock,existsStock,findStock,getStock,updateStock} = await StockDataBase.startDatabase();
+  const { getStock } = await StockDataBase.startDatabase();
   
   try {
     const ticker: string = req.body.ticker;
@@ -87,8 +89,6 @@ export const indexIndicators: RequestHandler = async (req, res, next) => {
 }
 
 export const indexTickers: RequestHandler = async (req, res, next) => {
-  const {createStock, deleteStock,existsStock,findStock,getStock,updateStock} = await StockDataBase.startDatabase();
-  
   try {
     const tickers = await TickerFetcher.getAllTickers()
     return response(res, {status: 200, data: tickers})
@@ -98,8 +98,6 @@ export const indexTickers: RequestHandler = async (req, res, next) => {
 }
 
 export const validTicker: RequestHandler = async(req, res, next) => {
-  const {createStock, deleteStock,existsStock,findStock,getStock,updateStock} = await StockDataBase.startDatabase();
-  
   try {
     const { ticker } = req.params;
     const fetcher = new TickerFetcher(ticker);
@@ -107,5 +105,37 @@ export const validTicker: RequestHandler = async(req, res, next) => {
     return response(res, {status: 200})
   } catch (error: any) {
     return response(res, {status: 404})
+  }
+}
+
+export const indexNews: RequestHandler = async (req, res, next) => {
+  async function updateCache(cache: CacheJSON<News[], CacheProps<News[]>>) {
+    const news = await TickerFetcher.getNews();
+    if(!news) throw new Error("Error Getting Variations");    
+    cache.replaceData(news, "News");
+  }
+
+
+  try {
+    const cache = new CacheJSON<News[], CacheProps<News[]>>({
+      duration: 60,
+      path: "./json/NewsCache.json"
+    });
+
+    if(!cache.validDuration()) {
+      const cachedData = cache.get();
+      if(cachedData.length > 0 && cachedData[0].data && cachedData[0].data[0]) {
+        response(res, {status: 200, data: cachedData[0].data[0]});
+        await updateCache(cache);
+        return
+      }
+
+      await updateCache(cache);
+    }
+    
+    return response(res, {status: 200, data: cache.get()[0].data[0]});
+  } catch (error: any) {
+    console.log(error)
+    return errorResponse(res, error)
   }
 }
