@@ -3,7 +3,7 @@ import { DividendReturn, RootDividend } from '../types/dividends.type.js';
 import { Header } from '../types/get.type.js';
 import { MainPrices, PriceReturn } from '../types/prices.type.js';
 
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import Cheerio from 'cheerio';
 
 import { AxiosUtils } from './Axios.Utils.js';
@@ -330,36 +330,46 @@ export default class TickerFetcher {
   async getIndicatorsInfo() {
     const ticker = this.ticker;
 
-    const data = await apiGetter<IndicatorRoot>(
-      {
-        method: 'POST',
+    try {
+      const requestData = `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`;
+
+      const options: AxiosRequestConfig = {
+        method: 'post',
+        url: 'https://statusinvest.com.br/acao/indicatorhistoricallist',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
+          'user-agent': 'CPI/V1', // Adicionando o user-agent aqui
+          cookie: '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296', // Se necessário, ajuste o cookie conforme necessário
         },
-        params: `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
-      },
-      'indicatorhistoricallist'
-    );
+        data: requestData,
+      };
 
-    console.log(data, ticker);
-    if (!data) throw new Error('Error Getting Indicators Data');
+      const response = await axios(options);
 
-    const indicatorsData = {} as FinancialIndicators;
-    const tickerReference = Object.keys(data.data)[0];
-    for (const item of data.data[tickerReference]) {
-      indicatorsData[item.key as keyof FinancialIndicators] = {
-        actual: item.actual,
-        avg: item.avg,
-        olds: item.ranks.map((data) => {
-          return {
+      if (!response.data) {
+        throw new Error('Error Getting Indicators Data');
+      }
+
+      const data = response.data;
+      const indicatorsData = {} as FinancialIndicators;
+      const tickerReference = Object.keys(data.data)[0];
+
+      for (const item of data.data[tickerReference]) {
+        indicatorsData[item.key as keyof FinancialIndicators] = {
+          actual: item.actual,
+          avg: item.avg,
+          olds: item.ranks.map((data: any) => ({
             date: data.rank,
             value: data.value ?? 0,
-          };
-        }),
-      };
-    }
+          })),
+        };
+      }
 
-    return indicatorsData;
+      return indicatorsData;
+    } catch (error) {
+      console.error('Error fetching indicators data:', error);
+      throw error;
+    }
   }
 
   async getDreInfo() {
@@ -727,7 +737,8 @@ export default class TickerFetcher {
         const title = item.title;
         const published = item.published;
         const sponsor = item.provider;
-        const symbols = item.relatedSymbols.map((symbol: any) => symbol.symbol);
+        const symbols = item.relatedSymbols.map((symbol) => symbol.symbol);
+        const symbolsURL = item.relatedSymbols.map((symbol) => symbol.logoid);
         const link = item.storyPath;
         const secondary_link = item.link;
 
@@ -739,8 +750,11 @@ export default class TickerFetcher {
           link,
           secondary_link,
           content: [],
+          symbolsSVG: symbolsURL,
         });
       }
+
+      console.log(news[0]);
 
       return await this.getNewContent(news);
     } catch (error) {
@@ -764,7 +778,7 @@ export default class TickerFetcher {
 
       content.children().each((i, element) => {
         item.content?.push($(element).text());
-      })
+      });
 
       updatedNews.push(item);
     }

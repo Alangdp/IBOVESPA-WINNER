@@ -1,19 +1,22 @@
-import { AxiosOptions } from '../types/AxiosOptions.type'
+import { AxiosOptions } from '../types/AxiosOptions.type';
 
 // Não existe funções ou váriavies em interfaces Typescript
 // Logo torna inviável a criação de um Protocol para a classe de utilidades.
 // FIXME Revisar SOLID mais tarde
 export class AxiosUtils {
   static makeOptionsJson(
-p0: string, p1: string, p2: {}, p3: string, p4: string, { headers: headersInput, method, url, params }: AxiosOptions, final: string  ) {
+    { headers: headersInput, method, url, params }: AxiosOptions,
+    final: string
+  ) {
     const options: AxiosOptions = {
       method: method,
       url: `https://statusinvest.com.br/${url ?? 'acao'}/${final}`,
       headers: {
         'Content-Type': headersInput['Content-Type'] ?? 'application/json',
-        cookie: headersInput.cookie ?? '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296',
-        'user-agent': headersInput['user-agent'] ?? 'CPI/V1'
-      }
+        cookie:
+          headersInput.cookie ?? '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296',
+        'user-agent': headersInput['user-agent'] ?? 'CPI/V1',
+      },
     };
 
     if (headersInput['Content-Type'] === 'application/json') {

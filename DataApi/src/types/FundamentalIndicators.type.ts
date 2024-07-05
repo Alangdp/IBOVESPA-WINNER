@@ -25,4 +25,4 @@ interface FinancialMetrics {
   CAGREarnings5Years: string;
 }
 
-export { FinancialMetrics }
+export { FinancialMetrics };

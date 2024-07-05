@@ -28,14 +28,12 @@ export interface News {
   published: number;
   sponsor: string;
   symbols: string[];
+  symbolsSVG: (string|undefined)[];
 
   // Optional
-
   link?: string;
   secondary_link?: string;
   content?: string[];
-
-
 }
 
 export interface User {

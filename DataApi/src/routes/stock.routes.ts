@@ -20,5 +20,4 @@ router.post('/stock/chart', getPortifolio);
 router.get('/stock/validTicker/:ticker', validTicker);
 router.get('/stock/news/', indexNews);
 
-
 export default router;
