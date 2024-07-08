@@ -330,46 +330,34 @@ export default class TickerFetcher {
   async getIndicatorsInfo() {
     const ticker = this.ticker;
 
-    try {
-      const requestData = `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`;
-
-      const options: AxiosRequestConfig = {
-        method: 'post',
-        url: 'https://statusinvest.com.br/acao/indicatorhistoricallist',
+    const data = await apiGetter<IndicatorRoot>(
+      {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'user-agent': 'CPI/V1', // Adicionando o user-agent aqui
-          cookie: '_adasys=b848d786-bc93-43d6-96a6-01bb17cbc296', // Se necessário, ajuste o cookie conforme necessário
         },
-        data: requestData,
-      };
+        params: `codes%5B%5D=${ticker}&time=7&byQuarter=false&futureData=false`,
+      },
+      'indicatorhistoricallist'
+    );
+    if (!data) throw new Error('Error Getting Indicators Data');
 
-      const response = await axios(options);
-
-      if (!response.data) {
-        throw new Error('Error Getting Indicators Data');
-      }
-
-      const data = response.data;
-      const indicatorsData = {} as FinancialIndicators;
-      const tickerReference = Object.keys(data.data)[0];
-
-      for (const item of data.data[tickerReference]) {
-        indicatorsData[item.key as keyof FinancialIndicators] = {
-          actual: item.actual,
-          avg: item.avg,
-          olds: item.ranks.map((data: any) => ({
+    const indicatorsData: IndicatorsData = {};
+    const tickerReference = Object.keys(data.data)[0];
+    for (const item of data.data[tickerReference]) {
+      indicatorsData[item.key] = {
+        actual: item.actual,
+        avg: item.avg,
+        olds: item.ranks.map((data) => {
+          return {
             date: data.rank,
             value: data.value ?? 0,
-          })),
-        };
-      }
-
-      return indicatorsData;
-    } catch (error) {
-      console.error('Error fetching indicators data:', error);
-      throw error;
+          };
+        }),
+      };
     }
+
+    return indicatorsData;
   }
 
   async getDreInfo() {
@@ -754,7 +742,7 @@ export default class TickerFetcher {
         });
       }
 
-      console.log(news[0]);
+      // console.log(news[0]);
 
       return await this.getNewContent(news);
     } catch (error) {

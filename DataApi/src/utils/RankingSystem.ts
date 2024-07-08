@@ -14,8 +14,7 @@ type RankingSystyemProps = {
 };
 
 interface Ranking {
-  [ticker: string]: Pontuation
-  
+  [ticker: string]: Pontuation;
 }
 
 class RankingSystyem {
@@ -25,10 +24,9 @@ class RankingSystyem {
   async execute() {
     for (const ticker of this.tickers) {
       try {
-        await PontuationDataBase.get({ticker, type: 'BAZIN'})
-        console.log(ticker)
+        await PontuationDataBase.get({ ticker, type: 'BAZIN' });
       } catch (error) {
-        console.log(error)
+        error;
         continue;
       }
     }
@@ -39,11 +37,3 @@ class RankingSystyem {
     this.ranking = {};
   }
 }
-
-const teste = async () => {
-  const tickers = await TickerFetcher.getAllTickers()
-  const ranking = new RankingSystyem({tickers});
-  ranking.execute()
-}
-
-// teste()
