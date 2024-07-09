@@ -29,11 +29,41 @@ export function NavBar({ className }: NavBarProps) {
       </Link>
 
       <div className="grid grid-cols-3 gap-2">
-        <SideButton text="Overview" active={true} icon={Squares} activable={true} className="w-fit"/>
-        <SideButton text="Carteira" active={false} icon={PieChartIcon} activable={true} className="w-fit"/>
-        <SideButton text="Transações" active={false} icon={CardStackIcon} activable={true} className="w-fit"/>
-        <SideButton text="Noticias" active={false} icon={FileTextIcon} activable={true} className="w-fit"/>
-        <SideButton text="Configurações" active={false} icon={FileTextIcon} activable={true} className="w-fit"/>
+        <SideButton
+          text="Overview"
+          active={true}
+          icon={Squares}
+          activable={true}
+          className="w-fit"
+        />
+        <SideButton
+          text="Carteira"
+          active={false}
+          icon={PieChartIcon}
+          activable={true}
+          className="w-fit"
+        />
+        <SideButton
+          text="Transações"
+          active={false}
+          icon={CardStackIcon}
+          activable={true}
+          className="w-fit"
+        />
+        <SideButton
+          text="Noticias"
+          active={false}
+          icon={FileTextIcon}
+          activable={true}
+          className="w-fit"
+        />
+        <SideButton
+          text="Configurações"
+          active={false}
+          icon={FileTextIcon}
+          activable={true}
+          className="w-fit"
+        />
         <SideButton
           text="Sair"
           active={false}

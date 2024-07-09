@@ -24,10 +24,13 @@ export function SideBar({ className }: SideBarProps) {
         className
       )}
     >
-      <div className="title flex row-span-2 justify-center items-center gap-4 py-4 ">
+      <a
+        href="/"
+        className="title flex row-span-2 justify-center items-center gap-4 py-4 "
+      >
         <img src={OfficialLog} className="w-16 h-16" alt="" />
         <div className="text-2xl text-white font-bold">CPI</div>
-      </div>
+      </a>
 
       <div className="buttons flex flex-col justify-center items-center gap-4 row-span-6">
         <SideButton text="Overview" active={true} icon={Squares} />

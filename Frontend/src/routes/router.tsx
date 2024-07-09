@@ -4,7 +4,7 @@ import { NavBar } from "../components/Nav";
 import Private from "./private";
 import MotionWrapper from "@/components/Router/MotionWrapper";
 import Market from "@/components/Martket";
-import MainDashBoard from "@/components/MainDashboard";
+import MainDashBoard from "@/components/Main";
 import { SelectedProvider } from "@/components/SideBar/SideContext";
 
 const routes = [

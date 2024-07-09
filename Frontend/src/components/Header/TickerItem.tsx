@@ -5,10 +5,11 @@ interface TickerItemProps {
 }
 
 export function TickerItem({ index, ticker, onClick }: TickerItemProps) {
-  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
   return (
-    <span
+    <a
+      href={"/market/brasil/" + ticker}
       className="item flex gap-4 items-center p-2 bg-zinc-200 rounded-df hover:bg-zinc-400 transition-all duration-300 cursor-pointer z-20"
       onClick={onClick ? onClick : () => {}}
     >
@@ -24,6 +25,6 @@ export function TickerItem({ index, ticker, onClick }: TickerItemProps) {
       <h1 className="text-zinc-800" key={index}>
         {ticker}
       </h1>
-    </span>
+    </a>
   );
 }

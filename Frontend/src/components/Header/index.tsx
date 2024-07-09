@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 import {
@@ -14,17 +14,31 @@ interface headerProps {
 }
 
 export function Header({ title }: headerProps) {
-  const STOCK_API_URL = import.meta.env.VITE_STOCK_API_URL
+  const STOCK_API_URL = import.meta.env.VITE_STOCK_API_URL;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
   const [finded, setFinded] = useState<string[]>([]);
   const [tickers, setTickers] = useState<string[]>([]);
+  const timerRef = useRef<null | NodeJS.Timeout>(null);
+
+  const handleBlur = () => {
+    timerRef.current = setTimeout(() => {
+      setShowResults(false);
+    }, 3000);
+  };
+
+  const handleFocus = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    setShowResults(true);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`http://${STOCK_API_URL}/stock/tickers`);
-      const data:ResponseProps<string[]> = response.data;
+      const data: ResponseProps<string[]> = response.data;
 
       setTickers(data.data ?? []);
     };
@@ -54,8 +68,8 @@ export function Header({ title }: headerProps) {
             <input
               type="text"
               placeholder="Digite para buscar..."
-              onBlur={() => setShowResults(false)}
-              onFocus={() => setShowResults(true)}
+              onBlur={handleBlur}
+              onFocus={handleFocus}
               onChange={(e) => {
                 const value = e.target.value.toUpperCase();
                 setSearchTerm(value);

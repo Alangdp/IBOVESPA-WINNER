@@ -154,7 +154,7 @@ export function TransactionTable({ chart }: TransactionTableProps) {
                     {new Date(transaction.transactionDate).toLocaleDateString()}
                   </TableCell>
 
-                  <TableCell className="justify-center gap-4">
+                  <TableCell className="gap-4 ">
                     <Button
                       variant={"destructive"}
                       onClick={async () =>

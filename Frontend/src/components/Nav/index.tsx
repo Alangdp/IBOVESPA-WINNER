@@ -26,7 +26,7 @@ export function NavBar({ className }: NavBarProps) {
 
       <div className="main-buttons flex items-center gap-8">
         <a href="/">Home</a>
-        <a href="/market/brasil">Ações</a>
+        {/* <a href="/market/brasil">Ações</a> */}
       </div>
 
       <div className="sign flex gap-4 items-center">
