@@ -1,5 +1,5 @@
 import { SelectedProvider } from "./components/SideBar/SideContext";
-import MainDashBoard from "./components/Main";
+import MainDashBoard from "./components/MainDashboard";
 
 export function App() {
   return (

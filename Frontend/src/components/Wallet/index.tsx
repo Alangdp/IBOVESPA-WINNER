@@ -16,21 +16,21 @@ interface WalletProps {
   chart: ChartProps;
 }
 
-export default function Wallet({tickers, chart}: WalletProps) {
-  const [stocks, setStocks] = useState<PriceData[]>()
-  const tickersChart = chart ? Object.keys(chart.individualRentability) : []
+export default function Wallet({ tickers, chart }: WalletProps) {
+  const [stocks, setStocks] = useState<PriceData[]>();
+  const tickersChart = chart ? Object.keys(chart.individualRentability) : [];
   const fetchStocks = async () => {
-    if(!stocks && tickersChart.length !== 0) {
-      const pricePromises = tickersChart.map(ticker => getPrice(ticker));
+    if (!stocks && tickersChart.length !== 0) {
+      const pricePromises = tickersChart.map((ticker) => getPrice(ticker));
       const prices = await Promise.all(pricePromises);
-  
+
       setStocks(prices);
     }
-  }
+  };
 
-  useEffect( () => {
-    fetchStocks()
-  }, [tickersChart])
+  useEffect(() => {
+    fetchStocks();
+  }, [tickersChart]);
 
   return (
     <AnimatePresence>
@@ -71,10 +71,16 @@ export default function Wallet({tickers, chart}: WalletProps) {
                     />
                     <h3 className="font-medium">Retorno Total</h3>
                   </span>
-                  <p className="p-2 mt-4"> R$ 
-                    {chart.globalTotalValue > (chart.globalInvested ?? 0) 
-                    ? ((chart.globalTotalValue - (chart.globalInvested ?? 0)).toFixed(2))
-                    : (((chart.globalInvested ?? 0) - chart.globalTotalValue).toFixed(2))}
+                  <p className="p-2 mt-4">
+                    {" "}
+                    R$
+                    {chart.globalTotalValue > (chart.globalInvested ?? 0)
+                      ? (
+                          chart.globalTotalValue - (chart.globalInvested ?? 0)
+                        ).toFixed(2)
+                      : (
+                          (chart.globalInvested ?? 0) - chart.globalTotalValue
+                        ).toFixed(2)}
                   </p>
                 </div>
 
@@ -87,26 +93,46 @@ export default function Wallet({tickers, chart}: WalletProps) {
                     />
                     <h3 className="font-medium">Rentabilidade</h3>
                   </span>
-                  <p className="p-2 mt-4">{(chart.globalRentability * 100).toFixed(2)} %</p>
+                  <p className="p-2 mt-4">
+                    {(chart.globalRentability * 100).toFixed(2)} %
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="w-full h-[400px] grid text-white grid-cols-1 lg:grid-cols-4 gap-4">
+        <div className="w-full h-[400px] grid text-white grid-cols-1 xl:grid-cols-4 gap-4">
           <div className="col-span-1 h-full bg-df rounded-df drop-shadow-lg p-4">
             <h2 className="text-2xl font-bold">Patrimônio</h2>
             <div className="values flex flex-col">
-              <p className="text-[#1ECB4F] font-medium text-xl">R$ {chart.globalTotalValue.toFixed(2)}</p>
+              <p className="text-[#1ECB4F] font-medium text-xl">
+                R$ {chart.globalTotalValue.toFixed(2)}
+              </p>
               <p className="text-[16px] flex gap-2">
-                Aportado <p className="font-medium">{isNaN(chart.globalInvested) ? 0 : chart.globalInvested}</p>
+                Aportado{" "}
+                <p className="font-medium">
+                  {isNaN(chart.globalInvested) ? 0 : chart.globalInvested}
+                </p>
               </p>
               <p className="text-[16px] flex gap-2 font-bold text-lg items-center">
-                Variação <p className="font-medium text-base">{`${((chart.globalInvested ?? 0) * chart.globalRentability + (chart.globalInvested ?? 0)).toFixed((2))}R$ (${(chart.globalRentability * 100).toFixed(2)}%)`}</p>
+                Variação{" "}
+                <p className="font-medium text-base">{`${(
+                  (chart.globalInvested ?? 0) * chart.globalRentability +
+                  (chart.globalInvested ?? 0)
+                ).toFixed(2)}R$ (${(chart.globalRentability * 100).toFixed(
+                  2
+                )}%)`}</p>
               </p>
             </div>
-            <PortifolioChart data={[{name: 'Ações', value: Number(chart.globalTotalValue.toFixed(2))}]} />
+            <PortifolioChart
+              data={[
+                {
+                  name: "Ações",
+                  value: Number(chart.globalTotalValue.toFixed(2)),
+                },
+              ]}
+            />
           </div>
           <div className="col-span-1 lg:col-span-3 h-full bg-df rounded-df drop-shadow-lg p-4 w-">
             <h2 className="text-2xl font-bold">Patrimônio</h2>
@@ -126,30 +152,99 @@ export default function Wallet({tickers, chart}: WalletProps) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200/20 divide-opacity-50">
-                    {Object.keys(chart.individualRentability).map((ticker, index) => (
-                      <tr key={index}>
-                        <td className="text-center px-6 py-4">
-                          <div className="flex flex-col items-center justify-center text-center">
-                            <p className="font-medium text-lg">{ticker}</p>
-                            <p className="text-bl font-medium">{chart.individualRentability[ticker].valueTotal.toFixed(2)} R$</p>
-                          </div>
-                        </td>
-                        <td className="text-center px-6 py-4">{chart.individualRentability[ticker].quantity}</td>
-                        <td className="text-center px-6 py-4">{chart.individualRentability[ticker].medianPrice.toFixed(2)}</td>
-                        <td className="text-center px-6 py-4">{stocks ? stocks[tickersChart.findIndex(index => index === ticker)].actual : "-"} </td>
-                        <td className="text-center px-6 py-4">
-                          <div className="flex flex-col items-center justify-center">
-                            <p>{stocks ? (((stocks[tickersChart.findIndex(index => index === ticker)].actual - chart.individualRentability[ticker].medianPrice) / chart.individualRentability[ticker].medianPrice) * chart.individualRentability[ticker].quantity).toFixed(2) +"R$" : "-"} </p>
-                            <p>{stocks ? ((stocks[tickersChart.findIndex(index => index === ticker)].actual - chart.individualRentability[ticker].medianPrice) / chart.individualRentability[ticker].medianPrice * 100).toFixed(2) + "%" : "-"}</p>
-                          </div>
-                        </td>
-                        <td className="text-center px-6 py-4">{((chart.individualRentability[ticker].valueTotal / chart.globalTotalValue) * 100).toFixed(2) + "%"}</td>
-                        <td className="text-center px-6 py-4">100%</td>
-                        <td className="text-center px-6 py-4">
-                          <BuySellModal tickers={tickers} className="" ticker={ticker} Text={<img src={mathPlus} alt="Add" className="hover:opacity-50 duration-300"/>}/>
-                        </td>
-                      </tr>
-                    ))}
+                    {Object.keys(chart.individualRentability).map(
+                      (ticker, index) => (
+                        <tr key={index}>
+                          <td className="text-center px-6 py-4">
+                            <div className="flex flex-col items-center justify-center text-center">
+                              <p className="font-medium text-lg">{ticker}</p>
+                              <p className="text-bl font-medium">
+                                {chart.individualRentability[
+                                  ticker
+                                ].valueTotal.toFixed(2)}{" "}
+                                R$
+                              </p>
+                            </div>
+                          </td>
+                          <td className="text-center px-6 py-4">
+                            {chart.individualRentability[ticker].quantity}
+                          </td>
+                          <td className="text-center px-6 py-4">
+                            {chart.individualRentability[
+                              ticker
+                            ].medianPrice.toFixed(2)}
+                          </td>
+                          <td className="text-center px-6 py-4">
+                            {stocks
+                              ? stocks[
+                                  tickersChart.findIndex(
+                                    (index) => index === ticker
+                                  )
+                                ].actual
+                              : "-"}{" "}
+                          </td>
+                          <td className="text-center px-6 py-4">
+                            <div className="flex flex-col items-center justify-center">
+                              <p>
+                                {stocks
+                                  ? (
+                                      ((stocks[
+                                        tickersChart.findIndex(
+                                          (index) => index === ticker
+                                        )
+                                      ].actual -
+                                        chart.individualRentability[ticker]
+                                          .medianPrice) /
+                                        chart.individualRentability[ticker]
+                                          .medianPrice) *
+                                      chart.individualRentability[ticker]
+                                        .quantity
+                                    ).toFixed(2) + "R$"
+                                  : "-"}{" "}
+                              </p>
+                              <p>
+                                {stocks
+                                  ? (
+                                      ((stocks[
+                                        tickersChart.findIndex(
+                                          (index) => index === ticker
+                                        )
+                                      ].actual -
+                                        chart.individualRentability[ticker]
+                                          .medianPrice) /
+                                        chart.individualRentability[ticker]
+                                          .medianPrice) *
+                                      100
+                                    ).toFixed(2) + "%"
+                                  : "-"}
+                              </p>
+                            </div>
+                          </td>
+                          <td className="text-center px-6 py-4">
+                            {(
+                              (chart.individualRentability[ticker].valueTotal /
+                                chart.globalTotalValue) *
+                              100
+                            ).toFixed(2) + "%"}
+                          </td>
+                          <td className="text-center px-6 py-4">100%</td>
+                          <td className="text-center px-6 py-4">
+                            <BuySellModal
+                              tickers={tickers}
+                              className=""
+                              ticker={ticker}
+                              Text={
+                                <img
+                                  src={mathPlus}
+                                  alt="Add"
+                                  className="hover:opacity-50 duration-300"
+                                />
+                              }
+                            />
+                          </td>
+                        </tr>
+                      )
+                    )}
                   </tbody>
                 </table>
               </div>

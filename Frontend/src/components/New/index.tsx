@@ -11,14 +11,16 @@ import {
   TableRow,
 } from "../ui/table";
 
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import 'dayjs/locale/pt-br'
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/pt-br";
+import NewsModal from "./dialog";
 
-dayjs.extend(relativeTime)
-dayjs.locale('pt-br')
+dayjs.extend(relativeTime);
+dayjs.locale("pt-br");
 
 export default function NewsComponent() {
+  const [selectedNews, setSelectedNews] = useState<News>();
   const [news, setNews] = useState<News[]>();
 
   const fetchData = async () => {
@@ -37,7 +39,7 @@ export default function NewsComponent() {
         animate={{ x: 0 }}
         exit={{ x: 100 }}
       >
-        <div className="header h-16 bg-df w-full rounded-df my-4 shadow-[0_4px_6px_rgba(255,255,255,0.05)]"></div> 
+        <div className="header h-16 bg-df w-full rounded-df my-4 shadow-[0_4px_6px_rgba(255,255,255,0.05)]"></div>
         <Table className="min-w-full bg-df  rounded-df text-white shadow-[0_4px_6px_rgba(255,255,255,0.05)]">
           <TableHeader className="rounded-df">
             <TableRow>
@@ -45,7 +47,9 @@ export default function NewsComponent() {
               <TableHead className="py-2 px-4 border-b w-[6%] ">
                 Simbolos
               </TableHead>
-              <TableHead className="py-2 px-4 border-b w-2/6 ">Título</TableHead>
+              <TableHead className="py-2 px-4 border-b w-2/6 ">
+                Título
+              </TableHead>
               <TableHead className="py-2 px-4 border-b w-1/12 ">
                 Provedor
               </TableHead>
@@ -53,26 +57,31 @@ export default function NewsComponent() {
           </TableHeader>
           <TableBody>
             {news?.map((n) => (
-              <TableRow key={n.published} className="hover:bg-gray-100">
+              <TableRow
+                key={n.published}
+                className="hover:bg-zinc-600 cursor-pointer"
+                onClick={() => {
+                  setSelectedNews(n);
+                }}
+              >
                 <TableCell className="py-2 px-4 border-b w-1/6">
                   {dayjs().to(new Date().getTime() - n.published)}
                 </TableCell>
                 <TableCell className="py-2 px-4 border-b w-full flex items-center gap-1">
-                  {n.symbols
-                    .map((item, index) => {
-                      if(index > 3) return;
-                      return(
-                        <a href="#">
-                          <img
-                            key={index}
-                            src={`https://s3-symbol-logo.tradingview.com/${n.symbolsSVG?.[index]}.svg`}
-                            alt="Logo"
-                            className={`w-7 h-7 rounded-full`} 
-                            decoding="async"
-                          />
-                        </a>
-                      )
-                    })}
+                  {n.symbols.map((item, index) => {
+                    if (index > 3) return;
+                    return (
+                      <a href="#">
+                        <img
+                          key={index}
+                          src={`https://s3-symbol-logo.tradingview.com/${n.symbolsSVG?.[index]}.svg`}
+                          alt="Logo"
+                          className={`w-7 h-7 rounded-full`}
+                          decoding="async"
+                        />
+                      </a>
+                    );
+                  })}
                 </TableCell>
 
                 <TableCell className="py-2 px-4 border-b w-2/6">
@@ -87,6 +96,15 @@ export default function NewsComponent() {
           </TableBody>
         </Table>
       </motion.div>
+      {selectedNews && (
+        <NewsModal
+          news={selectedNews!}
+          open={selectedNews ? true : false}
+          onClose={() => {
+            setSelectedNews(undefined);
+          }}
+        />
+      )}
     </AnimatePresence>
   );
 }

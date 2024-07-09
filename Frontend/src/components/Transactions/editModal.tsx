@@ -26,7 +26,7 @@ interface TransactionModalProps {
   children: React.ReactNode;
   token: string;
   transactions: TransactionsProps[];
-  state: React.Dispatch<React.SetStateAction<any>>
+  state: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const transactionFilterSchema = z.object({
@@ -39,7 +39,13 @@ const transactionFilterSchema = z.object({
 
 type TransactionFilterSchema = z.infer<typeof transactionFilterSchema>;
 
-export function TransactionEdit({ props, children, token, transactions, state }: TransactionModalProps) {
+export function TransactionEdit({
+  props,
+  children,
+  token,
+  transactions,
+  state,
+}: TransactionModalProps) {
   const [open, setOpen] = useState(false);
 
   const {
@@ -62,10 +68,10 @@ export function TransactionEdit({ props, children, token, transactions, state }:
     });
 
     try {
-      props = {...props, ...data};
+      props = { ...props, ...data };
 
-      const newTransaction = await editTransaction(props.id, token, props)
-      
+      const newTransaction = await editTransaction(props.id, token, props);
+
       toast.update(status, {
         render: "Transação editada!",
         type: "success",
@@ -73,12 +79,14 @@ export function TransactionEdit({ props, children, token, transactions, state }:
         autoClose: 1000,
       });
 
-      state( transactions.map( transaction => {
-        if(transaction.id === newTransaction.data?.id) {
-          return newTransaction.data;
-        }
-        return transaction;
-      }))
+      state(
+        transactions.map((transaction) => {
+          if (transaction.id === newTransaction.data?.id) {
+            return newTransaction.data;
+          }
+          return transaction;
+        })
+      );
 
       setOpen(false);
     } catch (error: any) {
@@ -114,17 +122,14 @@ export function TransactionEdit({ props, children, token, transactions, state }:
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-df text-white">
+      <DialogContent className="sm:max-w-[425px] bg-df text-white p-4">
         <DialogHeader>
           <DialogTitle>Edição transação</DialogTitle>
           <DialogDescription>
             Faz alteração na transação {props.id}, ticker {props.ticker}
           </DialogDescription>
         </DialogHeader>
-        <form 
-          onSubmit={handleSubmit(handleUpdate)}
-          className="grid gap-4 py-4" 
-        >
+        <form onSubmit={handleSubmit(handleUpdate)} className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-start">
               Preço
@@ -133,7 +138,7 @@ export function TransactionEdit({ props, children, token, transactions, state }:
               id="price"
               type={"text"}
               defaultValue={props.price}
-              className="col-span-3 border-gray-300 border rounded p-2 outline-none text-white"
+              className="col-span-3 border-gray-300 border rounded p-2 outline-none text-black"
               {...register("price", {
                 setValueAs: (value: string) => Number(value),
               })}
@@ -147,14 +152,16 @@ export function TransactionEdit({ props, children, token, transactions, state }:
               id="quantity"
               type="number"
               defaultValue={props.quantity}
-              className="col-span-3 border-gray-300 border rounded p-2 outline-none text-white"
+              className="col-span-3 border-gray-300 border rounded p-2 outline-none text-black"
               {...register("quantity", {
                 setValueAs: (value: string) => Number(value),
               })}
             />
           </div>
           <DialogFooter>
-            <Button type="submit" className="bg-[#232a35] shadow-lg">Salvar altereção</Button>
+            <Button type="submit" className="bg-[#232a35] shadow-lg">
+              Salvar altereção
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

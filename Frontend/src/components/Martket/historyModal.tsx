@@ -25,15 +25,6 @@ interface HistoryModalProps {
   indicatorKey: keyof FinancialIndicators;
 }
 
-const mockData = Array.from({ length: 20 }, () =>
-  Math.floor(Math.random() * 100)
-);
-
-const calculateAverage = (data: { value: number }[]): number => {
-  const sum = data.reduce((acc, item) => acc + item.value, 0);
-  return sum / data.length;
-};
-
 const generateReferenceLines = (
   average: number,
   numLines: number
@@ -119,14 +110,16 @@ export default function HistoryModal({
   children,
   indicatorKey,
 }: HistoryModalProps) {
-  const data = mockData.map((value, index) => ({
-    value,
-    name: index.toString(),
-  }));
-
   const indicatorData = indicatorValues[indicatorKey] as FinancialData;
   if (!indicatorData) return null;
   const average = indicatorData.avg;
+
+  const dataToShowReversed = indicatorData.olds.reverse().map((old) => {
+    return {
+      valor: old.value.toFixed(2),
+      data: old.date,
+    };
+  });
 
   return (
     <Dialog>
@@ -175,15 +168,8 @@ export default function HistoryModal({
         </div>
         <div className="p-4 h-full">
           <ResponsiveContainer height={300}>
-            <LineChart
-              data={indicatorData.olds.reverse().map((old) => {
-                return {
-                  valor: old.value.toFixed(2),
-                  data: old.date,
-                };
-              })}
-            >
-              <XAxis dataKey="data" tickCount={data.length} />
+            <LineChart data={dataToShowReversed.reverse()}>
+              <XAxis dataKey="data" tickCount={indicatorData.olds.length} />
               <YAxis
                 tickCount={20}
                 domain={[
@@ -199,7 +185,7 @@ export default function HistoryModal({
                 stroke="#8884d8"
                 dot={false}
               />
-              {generateReferenceLines(average, 3)}
+              {generateReferenceLines(average, 10)}
             </LineChart>
           </ResponsiveContainer>
         </div>
