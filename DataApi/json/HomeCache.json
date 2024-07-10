@@ -7,38 +7,38 @@
           {
             "ticker": "AZUL4 AZUL",
             "companyName": "AZUL",
-            "variation": "arrow_downward\n-4,05%",
-            "currentPrice": "R$\n8,54"
-          },
-          {
-            "ticker": "VIVA3 VIVARA",
-            "companyName": "VIVARA",
-            "variation": "arrow_downward\n-2,11%",
-            "currentPrice": "R$\n22,27"
+            "variation": "arrow_downward\n-4,49%",
+            "currentPrice": "R$\n8,50"
           },
           {
             "ticker": "VALE3 VALE",
             "companyName": "VALE",
-            "variation": "arrow_downward\n-1,75%",
-            "currentPrice": "R$\n61,92"
+            "variation": "arrow_downward\n-1,62%",
+            "currentPrice": "R$\n62,00"
+          },
+          {
+            "ticker": "USIM5 USIMINAS",
+            "companyName": "USIMINAS",
+            "variation": "arrow_downward\n-1,50%",
+            "currentPrice": "R$\n7,90"
           },
           {
             "ticker": "NTCO3 NATURA &CO HOLDING S.A.",
             "companyName": "NATURA &CO HOLDING S.A.",
-            "variation": "arrow_downward\n-1,64%",
-            "currentPrice": "R$\n15,63"
+            "variation": "arrow_downward\n-1,45%",
+            "currentPrice": "R$\n15,66"
           },
           {
-            "ticker": "RAIZ4 RAIZEN S.A.",
-            "companyName": "RAIZEN S.A.",
-            "variation": "arrow_downward\n-1,32%",
-            "currentPrice": "R$\n2,99"
+            "ticker": "CVCB3 CVC BRASIL",
+            "companyName": "CVC BRASIL",
+            "variation": "arrow_downward\n-1,40%",
+            "currentPrice": "R$\n2,12"
           },
           {
-            "ticker": "WEGE3 WEG",
-            "companyName": "WEG",
-            "variation": "arrow_downward\n-1,24%",
-            "currentPrice": "R$\n44,00"
+            "ticker": "VIVA3 VIVARA",
+            "companyName": "VIVARA",
+            "variation": "arrow_downward\n-1,28%",
+            "currentPrice": "R$\n22,46"
           }
         ],
         "high": [
@@ -49,16 +49,16 @@
             "currentPrice": "R$\n4,65"
           },
           {
-            "ticker": "EZTC3 EZ TEC",
-            "companyName": "EZ TEC",
-            "variation": "arrow_upward\n3,11%",
-            "currentPrice": "R$\n14,24"
-          },
-          {
             "ticker": "SANB11 BANCO SANTANDER",
             "companyName": "BANCO SANTANDER",
-            "variation": "arrow_upward\n2,66%",
-            "currentPrice": "R$\n27,45"
+            "variation": "arrow_upward\n3,44%",
+            "currentPrice": "R$\n27,66"
+          },
+          {
+            "ticker": "EZTC3 EZ TEC",
+            "companyName": "EZ TEC",
+            "variation": "arrow_upward\n3,26%",
+            "currentPrice": "R$\n14,26"
           },
           {
             "ticker": "VAMO3 VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
@@ -69,14 +69,14 @@
           {
             "ticker": "CYRE3 CYRELA",
             "companyName": "CYRELA",
-            "variation": "arrow_upward\n2,40%",
-            "currentPrice": "R$\n20,52"
+            "variation": "arrow_upward\n2,35%",
+            "currentPrice": "R$\n20,51"
           },
           {
-            "ticker": "EMBR3 EMBRAER",
-            "companyName": "EMBRAER",
-            "variation": "arrow_upward\n2,17%",
-            "currentPrice": "R$\n39,64"
+            "ticker": "PETZ3 PETZ",
+            "companyName": "PETZ",
+            "variation": "arrow_upward\n2,29%",
+            "currentPrice": "R$\n4,02"
           }
         ],
         "dividends": [
@@ -157,6 +157,6 @@
         ]
       }
     ],
-    "instanceTime": 1720636353463
+    "instanceTime": 1720640148469
   }
 ]

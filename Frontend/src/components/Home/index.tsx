@@ -111,7 +111,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 xl:w-3/4 lg:w-full px-2 w-4/5 transition-all flex- flex-col justify-center">
+          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 xl:w-10/12 lg:w-full px-2 w-4/5 transition-all flex- flex-col justify-center">
             <div className="altas rounded-df inline w-full bg-blue-700">
               <div className="title">
                 <h3 className="font-bold text-2xl m-4">Altas</h3>

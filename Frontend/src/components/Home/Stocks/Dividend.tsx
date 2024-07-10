@@ -25,21 +25,21 @@ export function DividendItem({
             currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
           }}
           alt="Ticker Logo"
-          className="overflow-hidden rounded-df lg:h-16"
+          className="overflow-hidden rounded-df lg:h-16 min-w-min"
         />
       </a>
       <div className="info grid grid-row-[1fr,2fr] items-stretch w-full  ml-2">
-        <div className="name flex  items-center gap-3">
+        <div className="name flex  items-center gap-3 overflow-hidden">
           <h5 className="font-semibold">{ticker}</h5>
-          <p className="text-xs opacity-60">{name}</p>
+          <p className="text-xs opacity-60 text-nowrap text-ellipsis">{name}</p>
         </div>
         <div className="grid grid-cols-[1fr,2fr] items-stretch w-full  ml-2">
-          <div className="variation flex sm: ms: lg:gap-2 xl:gap-8 2xl:gap-24 items-center">
+          <div className="variation flex h-4 lg:gap-2 xl:gap-8 2xl:gap-24 items-center">
             <div className="porcent flex  items-center justify-center">
               <div className="text-md opacity-85">R${dividendValue}</div>
             </div>
           </div>
-          <div className="dividend flex flex-col items-center justify-center ">
+          <div className="dividend flex flex-col items-center justify-center w-[90%]">
             <div className="data-com text-xs">{dividendDate}</div>
             <div className="type px-2 bg-green-500 w-fi rounded-df lg:text-xs xl:text-sm">
               {dividendType}
