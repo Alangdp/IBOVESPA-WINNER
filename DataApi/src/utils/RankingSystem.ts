@@ -17,15 +17,20 @@ interface Ranking {
   [ticker: string]: Pontuation;
 }
 
+const notAvailable: string[] = [];
+
 class RankingSystyem {
   private tickers: string[];
-  private ranking: Ranking;
+  public ranking: Ranking;
 
   async execute() {
     for (const ticker of this.tickers) {
       try {
-        await PontuationDataBase.get({ ticker, type: 'BAZIN' });
+        console.log(ticker);
+        const points = await PontuationDataBase.get({ ticker, type: 'BAZIN' });
+        this.ranking[ticker] = points as Pontuation;
       } catch (error) {
+        notAvailable.push(ticker);
         error;
         continue;
       }
@@ -37,3 +42,13 @@ class RankingSystyem {
     this.ranking = {};
   }
 }
+
+async function updateRanking() {
+  const tickers = await TickerFetcher.getAllTickers();
+  const rankingSystyem = new RankingSystyem({ tickers });
+  await rankingSystyem.execute();
+
+  Json.saveJSONToFile(notAvailable, 'notAvailable.json');
+}
+
+updateRanking();

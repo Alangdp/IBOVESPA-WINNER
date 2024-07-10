@@ -5,6 +5,8 @@ import { InstanceStock } from './instanceStock.js';
 import { Bazin } from '../Entities/Bazin.js';
 import { Granham } from '../Entities/Graham.js';
 import { prop } from 'cheerio/lib/api/attributes.js';
+import { StockDataBase } from './stockDataBase.js';
+import { StockProps } from '../types/stock.types.js';
 
 configDotenv();
 
@@ -20,20 +22,22 @@ export class PontuationDataBase {
     .TOLERANCE_TIME_HOURS_RANKING as unknown as number;
 
   static async create(props: DatabaseProps) {
-    if(!props.ticker) throw new Error("To register pontuation is necessari ticker!")
+    const { getStock } = await StockDataBase.startDatabase();
+    if (!props.ticker)
+      throw new Error('To register pontuation is necessary ticker!');
     const model = await pontuationModel;
-    const stock = await InstanceStock.execute(props.ticker);
-    let pontuation: Pontuation | undefined = undefined;
+    const stock: StockProps = await getStock(props.ticker);
+    let pontuation: Pontuation | undefined;
 
     if (props.type === 'BAZIN') {
       pontuation = new Bazin(stock).makePoints(stock);
       await model.create(pontuation);
-      return pontuation
+      return pontuation;
     }
     if (props.type === 'GRAHAM') {
       pontuation = await new Granham(stock).makePoints(stock);
       await model.create(pontuation);
-      return pontuation
+      return pontuation;
     }
     throw new Error('Invalid Type');
   }
@@ -72,8 +76,8 @@ export class PontuationDataBase {
     if (!points) return PontuationDataBase.create(props);
 
     const time = points.get('createdAt') as Date;
-    const valid = PontuationDataBase.validTime(time.getTime())
-    if (!valid) {;
+    const valid = PontuationDataBase.validTime(time.getTime());
+    if (!valid) {
       await points.deleteOne({ ...props });
       return await PontuationDataBase.create(props);
     }
@@ -81,7 +85,7 @@ export class PontuationDataBase {
   }
 
   static async getAll(subID: 'BAZIN' | 'GRAHAM') {
-    const points = await (await pontuationModel).find({subId: "BAZIN"});
+    const points = await (await pontuationModel).find({ subId: 'BAZIN' });
     return points;
   }
 }

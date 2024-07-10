@@ -10,6 +10,7 @@ import { AxiosUtils } from './Axios.Utils.js';
 import Scrapper from './Fetcher.utils.js';
 import Utilities from './Utilities.js';
 import {
+  FinancialData,
   FinancialIndicators,
   IndicatorRoot,
   IndicatorsData,
@@ -357,7 +358,68 @@ export default class TickerFetcher {
       };
     }
 
-    return indicatorsData;
+    const formatFinancialData = (
+      key: string,
+      data: IndicatorsData
+    ): FinancialData => {
+      if (!data[key])
+        return {
+          actual: 0,
+          avg: 0,
+          olds: [],
+        };
+      return {
+        actual: data[key].actual,
+        avg: data[key].avg,
+        olds: data[key].olds,
+      };
+    };
+
+    const financialIndicators: FinancialIndicators = {
+      dy: formatFinancialData('dy', indicatorsData),
+      p_l: formatFinancialData('p_l', indicatorsData),
+      p_vp: formatFinancialData('p_vp', indicatorsData),
+      p_ebita: formatFinancialData('p_ebita', indicatorsData),
+      p_ebit: formatFinancialData('p_ebit', indicatorsData),
+      p_sr: formatFinancialData('p_sr', indicatorsData),
+      p_ativo: formatFinancialData('p_ativo', indicatorsData),
+      p_capitlgiro: formatFinancialData('p_capitlgiro', indicatorsData),
+      p_ativocirculante: formatFinancialData(
+        'p_ativocirculante',
+        indicatorsData
+      ),
+      ev_ebitda: formatFinancialData('ev_ebitda', indicatorsData),
+      ev_ebit: formatFinancialData('ev_ebit', indicatorsData),
+      lpa: formatFinancialData('lpa', indicatorsData),
+      vpa: formatFinancialData('vpa', indicatorsData),
+      peg_Ratio: formatFinancialData('peg_Ratio', indicatorsData),
+      dividaliquida_patrimonioliquido: formatFinancialData(
+        'dividaliquida_patrimonioliquido',
+        indicatorsData
+      ),
+      dividaliquida_ebitda: formatFinancialData(
+        'dividaliquida_ebitda',
+        indicatorsData
+      ),
+      dividaliquida_ebit: formatFinancialData(
+        'dividaliquida_ebit',
+        indicatorsData
+      ),
+      patrimonio_ativo: formatFinancialData('patrimonio_ativo', indicatorsData),
+      passivo_ativo: formatFinancialData('passivo_ativo', indicatorsData),
+      liquidezcorrente: formatFinancialData('liquidezcorrente', indicatorsData),
+      margembruta: formatFinancialData('margembruta', indicatorsData),
+      margemebitda: formatFinancialData('margemebitda', indicatorsData),
+      margemebit: formatFinancialData('margemebit', indicatorsData),
+      margemliquida: formatFinancialData('margemliquida', indicatorsData),
+      roe: formatFinancialData('roe', indicatorsData),
+      roa: formatFinancialData('roa', indicatorsData),
+      roic: formatFinancialData('roic', indicatorsData),
+      giro_ativos: formatFinancialData('giro_ativos', indicatorsData),
+      receitas_cagr5: formatFinancialData('receitas_cagr5', indicatorsData),
+    };
+
+    return financialIndicators;
   }
 
   async getDreInfo() {

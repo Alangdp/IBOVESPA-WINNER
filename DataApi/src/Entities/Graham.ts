@@ -5,7 +5,7 @@ import {
 import { StockProtocol } from '../interfaces/StockProtocol.type';
 import { Pontuation } from './Pontuation.js';
 import { oldIndicator } from '../types/indicators.type';
-import { NetLiquid } from '../types/stock.types';
+import { NetLiquid, StockProps } from '../types/stock.types';
 import { PontuationRule } from '../types/Pontuation.type';
 import MathUtils from '../utils/MathUtils.js';
 import { MacroInfo } from '../global/MacroInfo.js';
@@ -44,7 +44,7 @@ import { MacroInfo } from '../global/MacroInfo.js';
 
 // @ts-ignore
 export class Granham extends GranhamProtocol implements GranhamMethods {
-  constructor(stock: StockProtocol) {
+  constructor(stock: StockProps) {
     super();
     const { indicators, passiveChart } = stock;
     const { currentLiabilities, currentAssets } = passiveChart[0];
@@ -75,7 +75,7 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     this.dy = stock.actualDividendYield;
   }
 
-  async makePoints(stock: StockProtocol) {
+  async makePoints(stock: StockProps) {
     const { netLiquid, vpa, lpa, p_l, p_vp, roe } = this;
 
     const lpaAverage = MathUtils.makeAverage(lpa);
@@ -141,21 +141,20 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
         maxPrice: Math.sqrt(22.5 * vpaAverage * lpaAverage),
       },
       id: this.ticker,
-      subId: "BAZIN",
+      subId: 'BAZIN',
       defaultIfFalse: 1,
       defaultIfTrue: 1,
       totalPoints: 0,
-      totalEvaluate: []
-    })
+      totalEvaluate: [],
+    });
 
-    rules.forEach( rule => {
+    rules.forEach((rule) => {
       pontuation.addRule(rule);
-    })
+    });
 
     pontuation.calculate();
 
-    return pontuation
-
+    return pontuation;
   }
 
   crescentNetLiquid(netLiquidOn10Years: NetLiquid[]): boolean {
@@ -180,7 +179,7 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     return crescent;
   }
 
-  constantDividend(stock: StockProtocol): boolean {
+  constantDividend(stock: StockProps): boolean {
     const { lastDividendsValue } = stock;
     let crescent = true;
 
@@ -191,7 +190,7 @@ export class Granham extends GranhamProtocol implements GranhamMethods {
     return crescent;
   }
 
-  calculateYearGrowth(stock: StockProtocol, numberYears: number): boolean {
+  calculateYearGrowth(stock: StockProps, numberYears: number): boolean {
     try {
       const { netLiquid } = stock;
 

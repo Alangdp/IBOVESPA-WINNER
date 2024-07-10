@@ -5,117 +5,87 @@
       {
         "lows": [
           {
-            "ticker": "SUZB3 SUZANO S.A.",
-            "companyName": "SUZANO S.A.",
-            "variation": "arrow_downward\n-3,83%",
-            "currentPrice": "R$\n54,82"
+            "ticker": "AZUL4 AZUL",
+            "companyName": "AZUL",
+            "variation": "arrow_downward\n-4,05%",
+            "currentPrice": "R$\n8,54"
           },
           {
-            "ticker": "EMBR3 EMBRAER",
-            "companyName": "EMBRAER",
-            "variation": "arrow_downward\n-3,12%",
-            "currentPrice": "R$\n36,34"
+            "ticker": "VIVA3 VIVARA",
+            "companyName": "VIVARA",
+            "variation": "arrow_downward\n-2,11%",
+            "currentPrice": "R$\n22,27"
           },
           {
-            "ticker": "USIM5 USIMINAS",
-            "companyName": "USIMINAS",
-            "variation": "arrow_downward\n-2,33%",
-            "currentPrice": "R$\n7,96"
+            "ticker": "VALE3 VALE",
+            "companyName": "VALE",
+            "variation": "arrow_downward\n-1,75%",
+            "currentPrice": "R$\n61,92"
           },
           {
-            "ticker": "GGBR4 GERDAU",
-            "companyName": "GERDAU",
-            "variation": "arrow_downward\n-2,25%",
-            "currentPrice": "R$\n17,83"
+            "ticker": "NTCO3 NATURA &CO HOLDING S.A.",
+            "companyName": "NATURA &CO HOLDING S.A.",
+            "variation": "arrow_downward\n-1,64%",
+            "currentPrice": "R$\n15,63"
           },
           {
-            "ticker": "IRBR3 IRB",
-            "companyName": "IRB",
-            "variation": "arrow_downward\n-1,99%",
-            "currentPrice": "R$\n30,58"
+            "ticker": "RAIZ4 RAIZEN S.A.",
+            "companyName": "RAIZEN S.A.",
+            "variation": "arrow_downward\n-1,32%",
+            "currentPrice": "R$\n2,99"
           },
           {
-            "ticker": "CSNA3 CSN",
-            "companyName": "CSN",
-            "variation": "arrow_downward\n-1,96%",
-            "currentPrice": "R$\n13,03"
+            "ticker": "WEGE3 WEG",
+            "companyName": "WEG",
+            "variation": "arrow_downward\n-1,24%",
+            "currentPrice": "R$\n44,00"
           }
         ],
         "high": [
           {
-            "ticker": "PCAR3 CIA BRASILEIRA DE DISTRIBUIÇÃO",
-            "companyName": "CIA BRASILEIRA DE DISTRIBUIÇÃO",
-            "variation": "arrow_upward\n7,17%",
-            "currentPrice": "R$\n3,14"
-          },
-          {
             "ticker": "LWSA3 LOCAWEB SERVIÇOS DE INTERNET S.A.",
             "companyName": "LOCAWEB SERVIÇOS DE INTERNET S.A.",
-            "variation": "arrow_upward\n4,54%",
-            "currentPrice": "R$\n4,38"
+            "variation": "arrow_upward\n3,79%",
+            "currentPrice": "R$\n4,65"
           },
           {
-            "ticker": "CVCB3 CVC BRASIL",
-            "companyName": "CVC BRASIL",
-            "variation": "arrow_upward\n3,74%",
-            "currentPrice": "R$\n1,94"
-          },
-          {
-            "ticker": "ASAI3 SENDAS DISTRIBUIDORA S.A.",
-            "companyName": "SENDAS DISTRIBUIDORA S.A.",
-            "variation": "arrow_upward\n3,72%",
-            "currentPrice": "R$\n11,44"
-          },
-          {
-            "ticker": "AZUL4 AZUL",
-            "companyName": "AZUL",
-            "variation": "arrow_upward\n3,72%",
-            "currentPrice": "R$\n8,09"
-          },
-          {
-            "ticker": "MGLU3 MAGAZINE LUIZA",
-            "companyName": "MAGAZINE LUIZA",
+            "ticker": "EZTC3 EZ TEC",
+            "companyName": "EZ TEC",
             "variation": "arrow_upward\n3,11%",
-            "currentPrice": "R$\n13,59"
+            "currentPrice": "R$\n14,24"
           },
           {
-            "ticker": "VIUR11 VINCI IMÓVEIS URBANOS",
-            "companyName": "VINCI IMÓVEIS URBANOS",
-            "variation": "arrow_upward\n3,56%",
-            "currentPrice": "R$\n6,99"
+            "ticker": "SANB11 BANCO SANTANDER",
+            "companyName": "BANCO SANTANDER",
+            "variation": "arrow_upward\n2,66%",
+            "currentPrice": "R$\n27,45"
           },
           {
-            "ticker": "VILG11 VINCI LOGÍSTICA FDO INV IMOB",
-            "companyName": "VINCI LOGÍSTICA FDO INV IMOB",
-            "variation": "arrow_upward\n3,37%",
-            "currentPrice": "R$\n89,96"
+            "ticker": "VAMO3 VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
+            "companyName": "VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
+            "variation": "arrow_upward\n2,43%",
+            "currentPrice": "R$\n9,28"
           },
           {
-            "ticker": "KNHF11 KINEA HEDGE FUND FDO DE INV IMOB",
-            "companyName": "KINEA HEDGE FUND FDO DE INV IMOB",
-            "variation": "arrow_upward\n2,71%",
-            "currentPrice": "R$\n97,45"
+            "ticker": "CYRE3 CYRELA",
+            "companyName": "CYRELA",
+            "variation": "arrow_upward\n2,40%",
+            "currentPrice": "R$\n20,52"
           },
           {
-            "ticker": "RBRF11 RBR ALPHA MULTIESTRATÉGIA REAL ESTATE",
-            "companyName": "RBR ALPHA MULTIESTRATÉGIA REAL ESTATE",
-            "variation": "arrow_upward\n2,59%",
-            "currentPrice": "R$\n7,52"
-          },
-          {
-            "ticker": "PVBI11 FDO. INV. IMOB. VBI PRIME PROPERTIES",
-            "companyName": "FDO. INV. IMOB. VBI PRIME PROPERTIES",
-            "variation": "arrow_upward\n2,57%",
-            "currentPrice": "R$\n93,35"
-          },
-          {
-            "ticker": "RBRP11 RBR Properties",
-            "companyName": "RBR Properties",
-            "variation": "arrow_upward\n2,55%",
-            "currentPrice": "R$\n58,78"
+            "ticker": "EMBR3 EMBRAER",
+            "companyName": "EMBRAER",
+            "variation": "arrow_upward\n2,17%",
+            "currentPrice": "R$\n39,64"
           }
         ],
         "dividends": [
+          {
+            "ticker": "ARZZ3 AREZZO&CO",
+            "companyName": "AREZZO&CO",
+            "variation": "R$0,5407",
+            "currentPrice": "10/07/2024\n\n\nDividendo"
+          },
           {
             "ticker": "ITUB4 BANCO ITAU UNIBANCO",
             "companyName": "BANCO ITAU UNIBANCO",
@@ -145,17 +115,48 @@
             "companyName": "BANCO ITAU UNIBANCO",
             "variation": "R$0,0177",
             "currentPrice": "30/08/2024\n\n\nJCP"
-          },
-          {
-            "ticker": "BBDC3 BRADESCO",
-            "companyName": "BRADESCO",
-            "variation": "R$0,0172",
-            "currentPrice": "02/09/2024\n\n\nJCP"
           }
         ],
-        "Announcements": []
+        "Announcements": [
+          {
+            "ticker": "VALE3 VALE",
+            "companyName": "VALE",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "HAPV3 HAPVIDA",
+            "companyName": "HAPVIDA",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "CSAN3 COSAN",
+            "companyName": "COSAN",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "CCRO3 CCR",
+            "companyName": "CCR",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "CIEL3 CIELO",
+            "companyName": "CIELO",
+            "variation": "1\ncomunicado novo/atualizado",
+            "currentPrice": ""
+          },
+          {
+            "ticker": "COGN3 COGNA ON",
+            "companyName": "COGNA ON",
+            "variation": "2\ncomunicados novos/atualizados",
+            "currentPrice": ""
+          }
+        ]
       }
     ],
-    "instanceTime": 1720205647974
+    "instanceTime": 1720636353463
   }
 ]

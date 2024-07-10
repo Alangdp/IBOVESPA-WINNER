@@ -16,9 +16,11 @@ export const index: RequestHandler = async (req, res, next) => {
   try {
     const ticker: string = req.body.ticker;
     const stock: StockProps = await getStock(ticker);
+    console.log(ticker);
 
     return response(res, { status: 200, data: stock });
   } catch (error: any) {
+    console.log(error);
     const stock = await getStockWithoutTime(req.body.ticker);
     return response(res, { status: 200, data: stock });
   }
@@ -62,8 +64,6 @@ export const indexPrices: RequestHandler = async (req, res, next) => {
     });
   } catch (error: any) {
     const stock = await getStockWithoutTime(req.body.ticker);
-
-    console.log(stock, 'TENTANO ACHAR SEM TEMPO');
     if (stock) {
       return response(res, {
         status: 200,

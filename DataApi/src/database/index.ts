@@ -6,21 +6,29 @@ dotenv.config();
 // MONGO-DB
 
 export class MongooConnection {
+  static connectionPending = true;
   static mongoose = new Mongoose();
 
   static verifyConnection() {
-    MongooConnection.mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+    MongooConnection.mongoose.connection.on(
+      'error',
+      console.error.bind(console, 'connection error:')
+    );
     MongooConnection.mongoose.connection.once('open', () => {
-        console.log('Database connected');
+      console.log('Database connected');
     });
     return MongooConnection.mongoose.connection.readyState;
   }
 
   static async makeConnection() {
-    if (MongooConnection.verifyConnection() === 1)
-      return MongooConnection.mongoose
+    if (this.connectionPending) {
+      if (MongooConnection.verifyConnection() === 1)
+        return MongooConnection.mongoose;
 
-    await MongooConnection.mongoose.connect(process.env.MONGOOSE_URI as string);
-    return MongooConnection.mongoose
+      await MongooConnection.mongoose.connect(
+        process.env.MONGOOSE_URI as string
+      );
+      return MongooConnection.mongoose;
+    }
   }
 }

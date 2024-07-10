@@ -1,7 +1,6 @@
 import { VariationCard } from "./Card";
 
 import { useEffect, useState } from "react";
-import { useMock } from "../SideBar/SideContext";
 import { PortifolioCard } from "./Card/CardPortifolio";
 import { useAuth } from "@/contexts/AuthContext";
 import { ChartProps } from "@/types/Chart.type";
@@ -18,7 +17,6 @@ interface DashBoardProps {
 }
 
 export function DashBoard({ chart, history }: DashBoardProps) {
-  const { token } = useAuth();
   const [selectedOption, setSelectedOption] = useState<string>("1hr");
   const [variations, setVariations] = useState<HomeItens>();
 
@@ -43,7 +41,7 @@ export function DashBoard({ chart, history }: DashBoardProps) {
               if (index > 1) return <></>;
               return (
                 <VariationCard
-                  key={item.ticker}
+                  key={item.ticker + index}
                   className="p-2 md:w-full"
                   variation={Number(
                     item.currentPrice.split("R$")[1].trim().replace(",", ".")

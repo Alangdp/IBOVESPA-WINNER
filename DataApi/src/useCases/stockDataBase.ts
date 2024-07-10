@@ -33,7 +33,6 @@ export class StockDataBase {
 
     async function existsStock(ticker: string) {
       const stock = await findStock(ticker);
-      console.log(stock, 'STOCK');
       if (!stock) return null;
       return stock;
     }

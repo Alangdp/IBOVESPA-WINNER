@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
 import cors, { CorsOptions } from 'cors';
+import schedule from 'node-schedule';
 
 import './database/index.js';
 
@@ -24,13 +25,13 @@ class App {
   }
   routes() {
     this.app.use('/', stockRoutes);
-    this.app.use('/', variationRoutes)
+    this.app.use('/', variationRoutes);
   }
 
   middlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-    this.app.use('*', cors())
+    this.app.use('*', cors());
     this.app.options('*', cors());
 
     this.app.use(

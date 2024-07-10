@@ -19,15 +19,17 @@ export function VariationItem({
 
   return (
     <div className="item rounded-df grid grid-cols-[3fr,8fr] h-max m-2 p-2 bg-df overflow-ellipsis">
-      <img
-        src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null;
-          currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
-        }}
-        alt="Ticker Logo"
-        className="overflow-hidden rounded-df lg:h-16"
-      />
+      <a href={"/market/brasil/" + ticker}>
+        <img
+          src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+          }}
+          alt="Ticker Logo"
+          className="overflow-hidden rounded-df lg:h-16"
+        />
+      </a>
       <div className="info flex flex-col items-stretch w-full justify-around ml-2 overflow-hidden">
         <div className="name flex items-center gap-3 overflow">
           <h5 className="font-semibold">{ticker}</h5>

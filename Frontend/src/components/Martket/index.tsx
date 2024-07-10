@@ -161,7 +161,7 @@ export default function Market({ marketName }: MarketProps) {
                     <p>R$</p>
                     <p className="font-bold">
                       {(
-                        ((indicators.dy?.actual || 0) / 100 ?? 0) *
+                        ((indicators.dy?.actual || 0) / 100 || 0) *
                         (stock?.actualPrice ?? 0)
                       ).toFixed(2)}
                     </p>
@@ -265,7 +265,7 @@ export default function Market({ marketName }: MarketProps) {
                     },
                   ].map((indicator, index) => (
                     <div
-                      key={index}
+                      key={indicator.key + " " + index}
                       className="bg-df brightness-125 w-full h-full p-4 flex flex-col rounded"
                     >
                       <h4 className="hover:text-[#F46D22] duration-300 font-medium flex gap-1 items-center text-nowrap overflow-ellipsis">

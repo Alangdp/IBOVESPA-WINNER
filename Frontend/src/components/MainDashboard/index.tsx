@@ -2,7 +2,6 @@ import { DashBoard } from "../Dashboard";
 import { Header } from "../Header";
 import { NavBar } from "../Nav";
 import { TransactionTable } from "../Transactions";
-import { SideBar } from "../SideBar";
 import { useSelected } from "../SideBar/SideContext";
 import BuySellModal from "../Transactions/buySellModal";
 import { useAuth } from "@/contexts/AuthContext";
@@ -14,6 +13,7 @@ import { SimplifiedDataHistory } from "@/types/History.type";
 import { Ranking } from "../Ranking";
 import Wallet from "../Wallet";
 import NewsComponent from "../New";
+import SideBar from "../SideBar";
 
 export default function MainDashBoard() {
   const { selected } = useSelected();
@@ -51,8 +51,7 @@ export default function MainDashBoard() {
 
   return (
     <div className="content bg-[#1e1e1e] flex h-screen overflow-hidden w-screen flex-col lg:flex-row overflow-x-hidden">
-      <SideBar className="hidden lg:grid" />
-      <NavBar className="lg:hidden gap-4" />
+      <SideBar className="" />
       <div className="container w-full h-full p-4 overflow-y-scroll no-scrollbar">
         <Header title={selected} />
         <AnimatePresence mode="popLayout">

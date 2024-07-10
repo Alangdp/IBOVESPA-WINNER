@@ -31,8 +31,8 @@ export function VariationCard({
   variation,
   className,
 }: VariationCardProps) {
-  const STOCK_API_URL = import.meta.env.VITE_STOCK_API_URL
-  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+  const STOCK_API_URL = import.meta.env.VITE_STOCK_API_URL;
+  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
   const [lineData, setLineData] = useState<{
     prices: LineData[];
@@ -50,8 +50,8 @@ export function VariationCard({
         name: string;
       }> = response.data;
 
-      const data = responseProps.data
-      if(!data) toast.error("Error Getting Stocks Price")
+      const data = responseProps.data;
+      if (!data) toast.error("Error Getting Stocks Price");
 
       const prices = data!.price.reverse().slice(0, 180).reverse();
 
@@ -72,16 +72,11 @@ export function VariationCard({
   const type = variation < 0 ? "down" : "up";
   return (
     <div
-      className={cn(
-        "rounded-2xl p-4card w-[256px] bg-df h-44",
-        className
-      )}
+      key={ticker}
+      className={cn("rounded-2xl p-4card w-[256px] bg-df h-44", className)}
     >
       <div className="info flex gap-2">
-        {/* TODO FAZER HERENCA DA IMAGEM */}
-        <TickerIcon
-          img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
-        />
+        <TickerIcon img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`} />
         <span className="flex">
           <div className="grid grid-cols-3 overflow-hidden">
             <div className="name col-span-2">

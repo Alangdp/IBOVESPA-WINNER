@@ -15,12 +15,12 @@ export default function Home() {
   const [variations, setVariations] = useState<HomeItens>();
 
   const fetchData = async () => {
-    if(!variations) setVariations(await getVariations())
+    if (!variations) setVariations(await getVariations());
   };
 
   useEffect(() => {
     const message = location.state?.redirectMessage as string | undefined;
-    if(message) {
+    if (message) {
       toast.error(message);
       location.state = {};
     }
@@ -59,7 +59,7 @@ export default function Home() {
 
         <div className="selected-data flex flex-col items-center">
           {/* Stock */}
-          <div className="header flex items-center justify-center w-full h-40 gap-12">
+          <div className="header flex items-center justify-center w-[90vw] h-40 gap-12">
             <div className="title w-fit">
               <h2 className="text-3xl font-bold">Ações</h2>
               <div className="text-bl ml-8 text-lg">Ibovespa</div>
@@ -111,7 +111,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 w-4/5 transition-all flex- flex-col justify-center">
+          <div className="cards grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-4 xl:w-3/4 lg:w-full px-2 w-4/5 transition-all flex- flex-col justify-center">
             <div className="altas rounded-df inline w-full bg-blue-700">
               <div className="title">
                 <h3 className="font-bold text-2xl m-4">Altas</h3>
@@ -120,13 +120,14 @@ export default function Home() {
                 <div className="info flex flex-col">
                   {variations &&
                     variations.high.map((item, index) => {
-
-                      if(index >5 ) return (<></>)
-                      return((
-
+                      if (index > 5) return <></>;
+                      return (
                         <>
                           <VariationItem
-                            name={item.ticker.split(item.ticker.split(" ")[0])[1]}
+                            key={"high " + index}
+                            name={
+                              item.ticker.split(item.ticker.split(" ")[0])[1]
+                            }
                             ticker={item.ticker.split(" ")[0]}
                             type="up"
                             value={Number(
@@ -143,7 +144,7 @@ export default function Home() {
                             )}
                           />
                         </>
-                      ))
+                      );
                     })}
                 </div>
               </div>
@@ -157,6 +158,7 @@ export default function Home() {
                   variations.lows.map((item, index) => (
                     <>
                       <VariationItem
+                        key={"lows " + index}
                         name={item.ticker.split(item.ticker.split(" ")[0])[1]}
                         ticker={item.ticker.split(" ")[0]}
                         type="down"
@@ -186,9 +188,12 @@ export default function Home() {
                     variations.dividends.map((item, index) => (
                       <>
                         <DividendItem
+                          key={"dividends " + index}
                           name={item.ticker.split(item.ticker.split(" ")[0])[1]}
                           ticker={item.ticker.split(" ")[0]}
-                          dividendValue={Number(item.variation.split("R$")[1].replace(",", "."))}
+                          dividendValue={Number(
+                            item.variation.split("R$")[1].replace(",", ".")
+                          )}
                           dividendDate={item.currentPrice.split("\n")[0]}
                           dividendType={item.currentPrice.split("\n")[3]}
                         />
@@ -216,7 +221,6 @@ export default function Home() {
             </div>
           </div>
         </footer>
-
       </main>
     </div>
   );

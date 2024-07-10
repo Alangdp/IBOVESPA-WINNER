@@ -17,15 +17,17 @@ export function DividendItem({
 
   return (
     <div className="item rounded-df grid grid-cols-[3fr,8fr] h-max m-2 p-2 bg-df">
-      <img
-        src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null;
-          currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
-        }}
-        alt="Ticker Logo"
-        className="overflow-hidden rounded-df lg:h-16"
-      />
+      <a href={"/market/brasil/" + ticker}>
+        <img
+          src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+          }}
+          alt="Ticker Logo"
+          className="overflow-hidden rounded-df lg:h-16"
+        />
+      </a>
       <div className="info grid grid-row-[1fr,2fr] items-stretch w-full  ml-2">
         <div className="name flex  items-center gap-3">
           <h5 className="font-semibold">{ticker}</h5>
@@ -38,9 +40,7 @@ export function DividendItem({
             </div>
           </div>
           <div className="dividend flex flex-col items-center justify-center ">
-            <div className="data-com text-xs">
-              {dividendDate}
-            </div>
+            <div className="data-com text-xs">{dividendDate}</div>
             <div className="type px-2 bg-green-500 w-fi rounded-df lg:text-xs xl:text-sm">
               {dividendType}
             </div>
