@@ -71,16 +71,16 @@ export function VariationCard({
 
   const type = variation < 0 ? "down" : "up";
   return (
-    <div
-      key={ticker}
-      className={cn("rounded-2xl p-4card w-[256px] bg-df h-44", className)}
-    >
+    <div className={cn("rounded-2xl p-4card w-[256px] bg-df h-44", className)}>
       <div className="info flex gap-2">
-        <TickerIcon img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`} />
+        <TickerIcon
+          img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          className="min-w-12"
+        />
         <span className="flex">
           <div className="grid grid-cols-3 overflow-hidden">
-            <div className="name col-span-2">
-              <h4 className="text-white break-keep overflow-hidden text-nowrap">
+            <div className="name col-span-2 overflow-hidden">
+              <h4 className="text-white text-ellipsis text-nowrap">
                 {lineData.name !== ""
                   ? lineData.name.split("-")[1].split(":")[0]
                   : "Carregando..."}{" "}
