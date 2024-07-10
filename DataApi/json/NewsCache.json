@@ -4,6 +4,25 @@
     "data": [
       [
         {
+          "title": "COMPANHIA DE FIAÇÃO E TECIDOS CEDRO E CACHOEIRA-Documentos de Oferta de Distribuição Pública,Anúncio de Início de Distribuição Pública",
+          "published": 1720639091,
+          "sponsor": "reuters",
+          "symbols": [
+            "BMFBOVESPA:CEDO3"
+          ],
+          "link": "/news/reuters.com,2024-07-10:newsml_CVM45wHY:0/",
+          "content": [
+            "Documento:",
+            "newsfile.refinitiv.com/getnewsfile/v1/story",
+            "Assuntos:",
+            "OFERTA PÚBLICA DE DISTRIBUIÇÃO DE DEBÊNTURES SIMPLES, NÃO CONVERSÍVEIS EM AÇÕES, DA ESPÉCIE COM GARANTIA REAL, COM GARANTIA ADICIONAL FIDEJUSSÓRIA EM SÉRIE ÚNICA DA 3ª (TERCEIRA) EMISSÃO DA",
+            "Tempo de referência: 03/07/2024 Situação: Liberado"
+          ],
+          "symbolsSVG": [
+            null
+          ]
+        },
+        {
           "title": "WEG e Nova SMAR firmam parceria para desenvolver tecnologias abertas na automação industrial",
           "published": 1720632946,
           "sponsor": "reuters",
@@ -960,43 +979,9 @@
           "symbolsSVG": [
             "wlm-ind-com-pn"
           ]
-        },
-        {
-          "title": "S&P 500 e Nasdaq atingem recordes e fabricantes de chips sobem",
-          "published": 1720474315,
-          "sponsor": "reuters",
-          "symbols": [
-            "NASDAQ:NVDA",
-            "NASDAQ:INTC",
-            "NASDAQ:AMD",
-            "NASDAQ:SOX",
-            "SP:S5TELS",
-            "SP:SPN",
-            "CBOE:SPX",
-            "NASDAQ:IXIC",
-            "DJ:DJI"
-          ],
-          "link": "/news/reuters.com,2024:newsml_L1N3J010D:0/",
-          "content": [
-            "Os índices S&P 500 e Nasdaq registraram recordes nesta segunda-feira, com investidores aguardando novos dados de inflação dos Estados Unidos, comentários do chair do Federal Reserve, Jerome Powell, e o início da temporada de balanços trimestrais.",
-            "A Nvidia NVDA subiu quase 2%, a Intel INTC avançou mais de 6% e a Advanced Micro Devices AMD subiu 4%, impulsionando o índice Philadelphia de semicondutores SOX para alta de 1,9%.",
-            "",
-            "Thomson ReutersS&P 500 components so far in 2024"
-          ],
-          "symbolsSVG": [
-            "nvidia",
-            "intel",
-            "advanced-micro-devices",
-            "indices/philadelphia-semiconductor-index",
-            "sector/communication-services",
-            "sector/energy",
-            "indices/s-and-p-500",
-            "indices/nasdaq-composite",
-            "indices/dow-30"
-          ]
         }
       ]
     ],
-    "instanceTime": 1720637320343
+    "instanceTime": 1720641257898
   }
 ]

@@ -38,21 +38,17 @@ export default function PriceChart({ priceData }: PriceChartProps) {
     .reverse()
     .filter((_, index) => index <= timeLimits[interval]);
 
-  const growthOrDown = (priceData: PriceData | null) => {
-    if (!priceData || !priceData.price.length) return "#fff";
-    const price = priceData.price
-      .filter((_, index) => index <= timeLimits[interval])
-      .map((item: { date: string; price: number }) => ({
-        date: item.date.split(" ")[0],
-        price: item.price,
-      }));
+  const growthOrDown = (priceData: Price[] | null) => {
+    if (!priceData || priceData.length === 0) return "#fff";
 
-    if (price.length === 0) return "#fff";
-    if (price[price.length - 1].price - price[0].price < 0) {
-      return "#1ECB4F";
+    const startPrice = priceData[0].price;
+    const endPrice = priceData[priceData.length - 1].price;
+    const priceDifference = endPrice - startPrice;
+
+    if (priceDifference < 0) {
+      return "#F46D22"; // Queda
     }
-
-    return "#F46D22";
+    return "#1ECB4F"; // Crescimento
   };
 
   return (
@@ -78,11 +74,11 @@ export default function PriceChart({ priceData }: PriceChartProps) {
             )}
           />
           <YAxis tickCount={10} domain={["auto", "auto"]} />
-          <Tooltip trigger="hover"/>
+          <Tooltip trigger="hover" />
           <Line
             type="monotone"
             dataKey="price"
-            stroke={growthOrDown(priceData)}
+            stroke={growthOrDown(pricesFiltered)}
             dot={false}
           />
         </LineChart>
@@ -91,4 +87,3 @@ export default function PriceChart({ priceData }: PriceChartProps) {
     </div>
   );
 }
-

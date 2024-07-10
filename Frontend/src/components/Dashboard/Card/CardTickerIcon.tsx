@@ -3,13 +3,15 @@ import { cn } from "@/lib/utils";
 interface TickerIconProps {
   img: string;
   className?: string;
+  ticker: string;
 }
 
-export function TickerIcon({ img, className }: TickerIconProps) {
+export function TickerIcon({ img, className, ticker }: TickerIconProps) {
   const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
   return (
-    <div
+    <a
+      href={"/market/brasil/" + ticker}
       className={cn(
         "icon p-2 rounded-df bg-[#31353F] overflow-hidden h-fit w-fit",
         className
@@ -24,6 +26,6 @@ export function TickerIcon({ img, className }: TickerIconProps) {
           currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
         }}
       />
-    </div>
+    </a>
   );
 }

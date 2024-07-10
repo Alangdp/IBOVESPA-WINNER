@@ -74,6 +74,7 @@ export function VariationCard({
     <div className={cn("rounded-2xl p-4card w-[256px] bg-df h-44", className)}>
       <div className="info flex gap-2">
         <TickerIcon
+          ticker={ticker}
           img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
           className="min-w-12"
         />
