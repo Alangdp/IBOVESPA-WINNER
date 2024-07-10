@@ -29,7 +29,8 @@ class App {
   private middlewares(): void {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(cors(corsOptions));
+    this.app.use('*', cors());
+    this.app.options('*', cors());
   }
 }
 

@@ -82,7 +82,7 @@ export default function SideBar({ className }: SideBarProps) {
       <div
         className={`lg:flex-col justify-center flex-row ${
           menuOpen ? "flex" : "hidden"
-        } m-8 gap-4 md:row-span-2`}
+        } m-8 gap-4 md:row-span-2 lg:flex`}
       >
         <SideButton
           text="Configurações"
