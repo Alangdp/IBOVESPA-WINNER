@@ -55,7 +55,7 @@ export function Login({ children }: RegisterDialogProps) {
     });
 
     try {
-      const response = await axios.post(`http://${USER_API_URL}/users/login`, {
+      const response = await axios.post(`https://${USER_API_URL}/users/login`, {
         ...data,
       });
       const responseData: ResponseProps<TokenProps> = response.data;
@@ -111,7 +111,8 @@ export function Login({ children }: RegisterDialogProps) {
   }, [errors, userKeys]);
 
   return (
-    <HomeDialog title="Login"
+    <HomeDialog
+      title="Login"
       form={
         <form
           onSubmit={handleSubmit(handleLogin)}

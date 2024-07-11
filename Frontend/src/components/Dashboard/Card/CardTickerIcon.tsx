@@ -23,7 +23,7 @@ export function TickerIcon({ img, className, ticker }: TickerIconProps) {
         alt="STOCK ICON"
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+          currentTarget.src = `https://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
         }}
       />
     </a>

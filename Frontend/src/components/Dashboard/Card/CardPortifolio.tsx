@@ -15,13 +15,15 @@ export function PortifolioCard({
   totalValue,
   variation,
 }: PortifolioCardProps) {
-
-  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL
+  const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
   return (
     <div className="card grid grid-cols-5 items-center">
       <a href={`/market/brasil/${ticker}`}>
-        <TickerIcon img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`} />
+        <TickerIcon
+          img={`https://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          ticker={ticker}
+        />
       </a>
       <div className="grid grid-rows-2">
         <h4 className="text-white font-semibold text-lg">{ticker}</h4>
@@ -38,7 +40,13 @@ export function PortifolioCard({
         </div>
       </div>
       <div className="">
-        <p className={`${variation < 0 ? "text-[#F46D22]" : "text-[#1ECB4F]"} font-semibold flex gap-1`}>{variation} <p className="text-white">%</p></p>
+        <p
+          className={`${
+            variation < 0 ? "text-[#F46D22]" : "text-[#1ECB4F]"
+          } font-semibold flex gap-1`}
+        >
+          {variation} <p className="text-white">%</p>
+        </p>
       </div>
     </div>
   );

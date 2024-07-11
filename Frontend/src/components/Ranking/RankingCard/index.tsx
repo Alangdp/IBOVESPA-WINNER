@@ -1,6 +1,4 @@
-interface RankingCardProps {
-  
-}
+interface RankingCardProps {}
 
 export default function RankingCard() {
   return (

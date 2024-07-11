@@ -34,7 +34,7 @@ const userFilterSchema = z.object({
     .min(4)
     .toLowerCase(),
   password: z.string().trim().min(8, "Password must be a min 8 length"),
-  phone: z.string().regex(phoneRegex, "Invalid phone number")
+  phone: z.string().regex(phoneRegex, "Invalid phone number"),
 });
 
 type UserFilterSchema = z.infer<typeof userFilterSchema>;
@@ -53,23 +53,41 @@ export function Register({ children }: RegisterDialogProps) {
   const userKeys = Object.keys(errors) as (keyof UserFilterSchema)[];
 
   async function handleRegister(data: UserFilterSchema) {
-    const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ""
-    const status = toast.loading("Tentando criar conta!", {closeButton: Cross2Icon});
-  
+    const capitalize = (s: string) =>
+      (s && s[0].toUpperCase() + s.slice(1)) || "";
+    const status = toast.loading("Tentando criar conta!", {
+      closeButton: Cross2Icon,
+    });
+
     try {
-      await axios.post("http://localhost:3000/users/", {...data});
-      toast.update(status, {render: "Conta criada", type:"success", isLoading:false, autoClose: 1000 });
+      await axios.post("https://localhost:3000/users/", { ...data });
+      toast.update(status, {
+        render: "Conta criada",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.data) {
-        const errors: ResponseProps<any>  = error.response.data;
+        const errors: ResponseProps<any> = error.response.data;
 
-        errors.errors?.forEach( error => {
-          toast.update(status, {render: capitalize(error.message), type: "error", isLoading: false, autoClose: 1000});
-        })
+        errors.errors?.forEach((error) => {
+          toast.update(status, {
+            render: capitalize(error.message),
+            type: "error",
+            isLoading: false,
+            autoClose: 1000,
+          });
+        });
       } else {
         // Handle unexpected errors
         console.error("Error:", error);
-        toast.update(status, {render: "Erro ao criar conta", type: "error", isLoading: false, autoClose: 1000});
+        toast.update(status, {
+          render: "Erro ao criar conta",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
       }
     }
   }
@@ -83,7 +101,8 @@ export function Register({ children }: RegisterDialogProps) {
   }, [errors, userKeys]);
 
   return (
-    <HomeDialog title="Registro"
+    <HomeDialog
+      title="Registro"
       form={
         <form
           onSubmit={handleSubmit(handleRegister)}

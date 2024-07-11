@@ -37,7 +37,9 @@ export function Header({ title }: headerProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://${STOCK_API_URL}/stock/tickers`);
+      const response = await axios.get(
+        `https://${STOCK_API_URL}/stock/tickers`
+      );
       const data: ResponseProps<string[]> = response.data;
 
       setTickers(data.data ?? []);

@@ -9,7 +9,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { TransactionFilterSchema, transactionFilterSchema } from "@/types/Transaction.type";
+import {
+  TransactionFilterSchema,
+  transactionFilterSchema,
+} from "@/types/Transaction.type";
 import { ResponseProps } from "@/types/Response.type";
 import { capitalizeFirstLetter } from "@/Utils/String";
 import { getTickers, registerTransaction } from "@/Utils/ApiUtils";
@@ -18,10 +21,15 @@ interface BuySellModalProps {
   Text: React.ReactNode;
   className?: string;
   ticker?: string;
-  tickers: string[]
+  tickers: string[];
 }
 
-export default function BuySellModal({ tickers, Text, className, ticker}: BuySellModalProps) {
+export default function BuySellModal({
+  tickers,
+  Text,
+  className,
+  ticker,
+}: BuySellModalProps) {
   const { token } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState("BUY");
@@ -45,8 +53,8 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
 
   useEffect(() => {
     setValue("ticker", ticker || "");
-    if(errors.ticker) {
-      toast.error(errors['ticker']?.message);
+    if (errors.ticker) {
+      toast.error(errors["ticker"]?.message);
     }
 
     if (transactionKeys.length > 1) {
@@ -63,7 +71,7 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
 
     try {
       await registerTransaction(data, token!, option as "BUY" | "SELL");
-      setIsOpen(false)
+      setIsOpen(false);
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.data) {
         const errors: ResponseProps<any> = error.response.data;
@@ -101,7 +109,10 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, y: "100%", transition: { duration: 0.5 } }} // Animação de saída
               transition={{ duration: 0.5 }}
-              className={cn("fixed w-96 bg-white rounded-lg top-2 right-2 drop-shadow-lg shadow-lg divide-y ", className)}
+              className={cn(
+                "fixed w-96 bg-white rounded-lg top-2 right-2 drop-shadow-lg shadow-lg divide-y ",
+                className
+              )}
             >
               <nav className="w-full h-14 flex items-center justify-between p-4 text-black">
                 <ArrowLeftIcon
@@ -207,7 +218,7 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
                             <svg
                               className="w-4 h-4 text-gray-500 dark:text-gray-400"
                               aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns="https://www.w3.org/2000/svg"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
@@ -218,14 +229,12 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
                             id="dateInput"
                             onChange={(event) => {
                               const date = new Date(event.target.value);
-                              if([0, 6].includes(date.getUTCDay())) {
+                              if ([0, 6].includes(date.getUTCDay())) {
                                 toast.error("Não pode ser fim de semana!");
                                 return;
-                              } 
+                              }
 
-                              setValue("transactionDate", date)
-
-                              
+                              setValue("transactionDate", date);
                             }}
                             type="date"
                             className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block ps-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[205px]"
@@ -237,7 +246,12 @@ export default function BuySellModal({ tickers, Text, className, ticker}: BuySel
                     <div className="w-full">
                       <div className="total flex items-center justify-between p-4 text-black ml-1 w-full h-[56px]">
                         <p>Total</p>
-                        <p className="font-bold">R${isNaN(getValues().quantity * getValues().value) ? "0.00" : getValues().quantity * getValues().value}</p>
+                        <p className="font-bold">
+                          R$
+                          {isNaN(getValues().quantity * getValues().value)
+                            ? "0.00"
+                            : getValues().quantity * getValues().value}
+                        </p>
                       </div>
                       <div className="flex items-center justify-center w-full mt-2">
                         <Button

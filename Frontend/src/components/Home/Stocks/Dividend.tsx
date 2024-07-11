@@ -19,10 +19,10 @@ export function DividendItem({
     <div className="item rounded-df grid grid-cols-[3fr,8fr] h-max m-2 p-2 bg-df">
       <a href={"/market/brasil/" + ticker}>
         <img
-          src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          src={`https://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
           onError={({ currentTarget }) => {
             currentTarget.onerror = null;
-            currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+            currentTarget.src = `https://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
           }}
           alt="Ticker Logo"
           className="overflow-hidden rounded-df lg:h-16 min-w-min"

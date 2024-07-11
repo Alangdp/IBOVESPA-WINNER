@@ -14,10 +14,10 @@ export function TickerItem({ index, ticker, onClick }: TickerItemProps) {
       onClick={onClick ? onClick : () => {}}
     >
       <img
-        src={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+        src={`https://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+          currentTarget.src = `https://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
         }}
         alt="Ticker Logo"
         className="w-14 h-14 rounded-df"
