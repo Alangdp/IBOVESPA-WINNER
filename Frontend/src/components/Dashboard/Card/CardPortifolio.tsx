@@ -18,11 +18,15 @@ export function PortifolioCard({
   const AVATAR_IMAGES_URL = import.meta.env.VITE_AVATAR_IMAGES_URL;
 
   return (
-    <div className="card grid grid-cols-5 items-center">
-      <a href={`/market/brasil/${ticker}`}>
+    <div className="card grid grid-cols-5 items-center justify-ite">
+      <a
+        href={`/market/brasil/${ticker}`}
+        className="p-2 bg-zinc-700 w-fit rounded-lg h-fit "
+      >
         <TickerIcon
-          img={`https://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
           ticker={ticker}
+          className="p-0 h-fit w-fit"
         />
       </a>
       <div className="grid grid-rows-2">

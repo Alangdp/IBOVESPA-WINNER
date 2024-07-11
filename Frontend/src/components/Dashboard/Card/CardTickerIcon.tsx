@@ -13,7 +13,7 @@ export function TickerIcon({ img, className, ticker }: TickerIconProps) {
     <a
       href={"/market/brasil/" + ticker}
       className={cn(
-        "icon p-2 rounded-df bg-[#31353F] overflow-hidden h-fit w-fit",
+        "icon rounded-df bg-[#31353F] overflow-hidden h-fit w-fit p-2",
         className
       )}
     >
@@ -23,7 +23,7 @@ export function TickerIcon({ img, className, ticker }: TickerIconProps) {
         alt="STOCK ICON"
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
-          currentTarget.src = `https://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
+          currentTarget.src = `http://${AVATAR_IMAGES_URL}/NO-IMAGE.png`;
         }}
       />
     </a>

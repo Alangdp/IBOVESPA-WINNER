@@ -9,6 +9,8 @@ import { StockProps } from "@/types/Stock.type";
 import { FinancialIndicators } from "@/types/Indicators.type";
 import ShowGraph from "@/assets/ShowGraph.svg";
 import HistoryModal from "./historyModal";
+import BuySellModal from "../Transactions/buySellModal";
+import { Button } from "@/components/ui/button";
 
 interface MarketProps {
   marketName: string;
@@ -55,14 +57,18 @@ export default function Market({ marketName }: MarketProps) {
 
   return (
     <>
-      <div className="w-full h-14 drop-shadow-lg shadow bg-zinc-800 brightness-150 flex justify-center no-scrollbar">
-        <div className="w-3/4 h-full p-4">
+      <div className="w-full h-14 drop-shadow-lg shadow bg-zinc-700 flex justify-center no-scrollbar z-50">
+        <div className="w-3/4 h-full p-4 flex justify-between items-center">
           <section className="flex gap-1 font-medium">
             {stockTicker?.toUpperCase()} -{" "}
             <p className="font-light">
               {stock?.name.split("-")[1].split("ON")[0].split("PM")[0].trim()}
             </p>
           </section>
+          <BuySellModal
+            text={<Button>Comprar</Button>}
+            ticker={upperStockTicker}
+          />
         </div>
       </div>
       <div className="w-full lg:w-3/4 p-2 ">

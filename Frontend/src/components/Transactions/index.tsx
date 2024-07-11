@@ -129,7 +129,7 @@ export function TransactionTable({ chart }: TransactionTableProps) {
                 <TableRow key={index} className="">
                   <TableCell className="flex justify-start items-center gap-2 ml-4">
                     <img
-                      src={`https://${AVATAR_URL}/${transaction.ticker}-logo.jpg`}
+                      src={`http://${AVATAR_URL}/${transaction.ticker}-logo.jpg`}
                       alt=""
                       className="rounded w-14 h-14"
                     />

@@ -26,7 +26,7 @@ const secretToken: string = import.meta.env.VITE_SECRET_TOKEN;
 export const validateTicker = async (ticker: string) => {
   try {
     const response = await axios.get(
-      `https://${dataAPI}/stock/validticker/${ticker}`
+      `http://${dataAPI}/stock/validticker/${ticker}`
     );
     const status = response.status;
     if (status === 200) return true;
@@ -39,8 +39,8 @@ export const validateTicker = async (ticker: string) => {
 export const validateToken = async (token: string | undefined) => {
   try {
     if (!token) return false;
-    console.log(`https://${tokenAPI}/token/user`, token);
-    const response = await axios.post(`https://${tokenAPI}/token/user`, {
+    console.log(`http://${tokenAPI}/token/user`, token);
+    const response = await axios.post(`http://${tokenAPI}/token/user`, {
       token: token,
       authorization: secretToken,
     });
@@ -56,7 +56,7 @@ export const validateToken = async (token: string | undefined) => {
 
 export const getVariations = async () => {
   try {
-    const response = await axios.get(`https://${dataAPI}/stock/variations`);
+    const response = await axios.get(`http://${dataAPI}/stock/variations`);
     const data: ResponseProps<HomeItens> = response.data;
     return data.data;
   } catch (error) {
@@ -66,7 +66,7 @@ export const getVariations = async () => {
 
 export const getDre = async (ticker: string) => {
   try {
-    const response = await axios.post(`https://${dataAPI}/stock/stockInfo/`, {
+    const response = await axios.post(`http://${dataAPI}/stock/stockInfo/`, {
       ticker,
     });
     const data: ResponseProps<DreData> = response.data;
@@ -80,7 +80,7 @@ export const getPrice = async (ticker: string) => {
   try {
     const validTicker = await validateTicker(ticker);
     if (!validTicker) throw new Error("Invalid Ticker");
-    const response = await axios.post(`https://${dataAPI}/stock/price`, {
+    const response = await axios.post(`http://${dataAPI}/stock/price`, {
       ticker,
     });
 
@@ -96,12 +96,9 @@ export const getPrice = async (ticker: string) => {
 
 export const getTransaction = async (token: string) => {
   try {
-    const response = await axios.post(
-      `https://${transactionAPI}/transactions`,
-      {
-        token,
-      }
-    );
+    const response = await axios.post(`http://${transactionAPI}/transactions`, {
+      token,
+    });
 
     const transactions: ResponseProps<TransactionsProps[]> = response.data;
 
@@ -117,7 +114,7 @@ export const deleteTransaction = async (
 ) => {
   try {
     const response = await axios.delete(
-      `https://${transactionAPI}/stock/${transactionId}`,
+      `http://${transactionAPI}/stock/${transactionId}`,
       {
         data: {
           token,
@@ -145,7 +142,7 @@ export const editTransaction = async (
 ) => {
   try {
     const response = await axios.post(
-      `https://${transactionAPI}/stock/${transactionId}`,
+      `http://${transactionAPI}/stock/${transactionId}`,
       {
         transaction: transactionData,
         token,
@@ -166,7 +163,7 @@ export const registerTransaction = async (
   type: "BUY" | "SELL"
 ) => {
   try {
-    const response = await axios.post(`https://${transactionAPI}/stock/`, {
+    const response = await axios.post(`http://${transactionAPI}/stock/`, {
       transaction: {
         ticker: transactionData.ticker,
         transactionDate: transactionData.transactionDate,
@@ -187,7 +184,7 @@ export const registerTransaction = async (
 
 export const getChart = async (token: string) => {
   try {
-    const response = await axios.post(`https://${dataAPI}/stock/chart`, {
+    const response = await axios.post(`http://${dataAPI}/stock/chart`, {
       token,
     });
 
@@ -202,7 +199,7 @@ export const getChart = async (token: string) => {
 
 export const getHistory = async (token: string) => {
   try {
-    const response = await axios.post(`https://${dataAPI}/stock/history`, {
+    const response = await axios.post(`http://${dataAPI}/stock/history`, {
       token,
     });
 
@@ -216,7 +213,7 @@ export const getHistory = async (token: string) => {
 
 export const getIndicators = async (ticker: string) => {
   try {
-    const response = await axios.post(`https://${dataAPI}/stock/indicators`, {
+    const response = await axios.post(`http://${dataAPI}/stock/indicators`, {
       ticker,
     });
 
@@ -230,7 +227,7 @@ export const getIndicators = async (ticker: string) => {
 
 export const getTickers = async () => {
   try {
-    const response = await axios.get(`https://${dataAPI}/stock/tickers`);
+    const response = await axios.get(`http://${dataAPI}/stock/tickers`);
     const responseData: ResponseProps<string[]> = response.data;
     if (!responseData.data) throw new Error("Erro getting Data");
     return responseData.data;
@@ -241,7 +238,7 @@ export const getTickers = async () => {
 
 export const getRanking = async () => {
   try {
-    const response = await axios.get(`https://${dataAPI}/stock/ranking`);
+    const response = await axios.get(`http://${dataAPI}/stock/ranking`);
     const responseData: ResponseProps<PontuationReturn> = response.data;
     if (!responseData.data) throw new Error("Erro getting Data");
     return responseData.data;
@@ -253,7 +250,7 @@ export const getRanking = async () => {
 
 export const getStock = async (ticker: string) => {
   try {
-    const response = await axios.post(`https://${dataAPI}/stock/`, {
+    const response = await axios.post(`http://${dataAPI}/stock/`, {
       ticker,
     });
     const responseData: ResponseProps<StockProps> = response.data;
@@ -267,7 +264,7 @@ export const getStock = async (ticker: string) => {
 
 export const getNews = async () => {
   try {
-    const response = await axios.get(`https://${dataAPI}/stock/news`);
+    const response = await axios.get(`http://${dataAPI}/stock/news`);
     const responseData: ResponseProps<News[]> = response.data;
     if (!responseData.data) throw new Error("Erro getting Data");
     return responseData.data;

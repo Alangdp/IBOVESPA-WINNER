@@ -1,16 +1,16 @@
 import { z } from "zod";
 
-export type TransactionType  = "BUY" | "SELL";
+export type TransactionType = "BUY" | "SELL";
 
 export interface TransactionsProps {
-  id: number
-  ticker: string
-  transactionDate: string
-  price: number
-  quantity: number
-  totalValue: number
-  type: string
-  userId: number
+  id: number;
+  ticker: string;
+  transactionDate: string;
+  price: number;
+  quantity: number;
+  totalValue: number;
+  type: string;
+  userId: number;
 }
 
 export const transactionFilterSchema = z.object({
@@ -18,7 +18,7 @@ export const transactionFilterSchema = z.object({
   value: z.number().min(1, "Valor mínimo é 1"),
   ticker: z
     .string()
-    .regex(new RegExp(/^[A-Z]{4}\d{1,2}$/i), "Ticker inválido")
+    .regex(new RegExp(/^[A-Z0-9]{5,6}$/i), "Ticker inválido")
     .default("A"),
   transactionDate: z.date({
     errorMap: ({ code }, { defaultError }) => {
@@ -29,4 +29,3 @@ export const transactionFilterSchema = z.object({
 });
 
 export type TransactionFilterSchema = z.infer<typeof transactionFilterSchema>;
-

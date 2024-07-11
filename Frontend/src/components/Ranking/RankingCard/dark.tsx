@@ -33,7 +33,7 @@ export default function RankingCardDark({
             href={`/market/brasil/${ticker}`}
             className="w-20 h-20 rounded-full bg-cover bg-center border-2 border-gray-400 bg-white cursor-pointer hover:opacity-60 duration-300"
             style={{
-              backgroundImage: `url('https://${logoURL}/${ticker}-logo.jpg')`,
+              backgroundImage: `url('http://${logoURL}/${ticker}-logo.jpg')`,
             }}
           ></a>
           <div className="flex flex-col justify-center items-start p-2 gap-1">

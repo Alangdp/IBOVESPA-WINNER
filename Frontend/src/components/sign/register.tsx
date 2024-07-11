@@ -60,7 +60,7 @@ export function Register({ children }: RegisterDialogProps) {
     });
 
     try {
-      await axios.post("https://localhost:3000/users/", { ...data });
+      await axios.post("http://localhost:3000/users/", { ...data });
       toast.update(status, {
         render: "Conta criada",
         type: "success",

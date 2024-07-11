@@ -74,7 +74,7 @@ export default function NewsComponent() {
                       <a href="#">
                         <img
                           key={index}
-                          src={`https://s3-symbol-logo.tradingview.com/${n.symbolsSVG?.[index]}.svg`}
+                          src={`http://s3-symbol-logo.tradingview.com/${n.symbolsSVG?.[index]}.svg`}
                           alt="Logo"
                           className={`w-7 h-7 rounded-full`}
                           decoding="async"

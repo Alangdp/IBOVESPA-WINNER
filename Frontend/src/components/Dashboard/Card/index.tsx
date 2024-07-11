@@ -75,7 +75,7 @@ export function VariationCard({
       <div className="info flex gap-2">
         <TickerIcon
           ticker={ticker}
-          img={`https://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
+          img={`http://${AVATAR_IMAGES_URL}/${ticker}-logo.jpg`}
           className="min-w-12"
         />
         <span className="flex">
@@ -94,7 +94,7 @@ export function VariationCard({
                 height="6"
                 viewBox="0 0 12 6"
                 fill="none"
-                xmlns="https://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"
                 className={type === "up" ? "rotate-0" : "rotate-180"}
               >
                 <Upper fill={type === "up" ? "#1ECB4F" : "#F46D22"} />

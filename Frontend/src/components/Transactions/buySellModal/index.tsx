@@ -18,15 +18,15 @@ import { capitalizeFirstLetter } from "@/Utils/String";
 import { getTickers, registerTransaction } from "@/Utils/ApiUtils";
 
 interface BuySellModalProps {
-  Text: React.ReactNode;
+  text: React.ReactNode;
   className?: string;
   ticker?: string;
-  tickers: string[];
+  tickers?: string[];
 }
 
 export default function BuySellModal({
   tickers,
-  Text,
+  text,
   className,
   ticker,
 }: BuySellModalProps) {
@@ -65,7 +65,7 @@ export default function BuySellModal({
   }, [errors, transactionKeys]);
 
   const handleRegister = async (data: TransactionFilterSchema) => {
-    const status = toast.loading("Registradno transação", {
+    const status = toast.loading("Registrando transação", {
       closeButton: Cross2Icon,
     });
 
@@ -98,11 +98,11 @@ export default function BuySellModal({
   return (
     <>
       <div className="cursor-pointer" onClick={toggleStatus}>
-        {Text}
+        {text}
       </div>
       <AnimatePresence>
         {isOpen && (
-          <div className={cn("fixed top-2 right-2")}>
+          <div className={cn("fixed top-2 right-2 z-50")}>
             <motion.div
               key={"buysell"}
               initial={{ opacity: 0, x: "100%" }}
@@ -193,22 +193,24 @@ export default function BuySellModal({
                     </div>
                     <div className="flex flex-wrap mt-2  pt-4 mb-6 w-full">
                       <div className="w-full flex gap-3">
-                        <div className="">
-                          <label className="block uppercase  text-black tracking-wide  text-xs font-bold mb-1">
-                            Ativo
-                          </label>
-                          <ComboOptions
-                            className="p-2"
-                            placeholder="Tickers"
-                            defaultValue={ticker || ""}
-                            options={tickers}
-                            title="Tickers"
-                            {...register("ticker")}
-                            onChange={(value) => {
-                              setValue("ticker", value?.toUpperCase() || "");
-                            }}
-                          />
-                        </div>
+                        {tickers && (
+                          <div className="">
+                            <label className="block uppercase  text-black tracking-wide  text-xs font-bold mb-1">
+                              Ativo
+                            </label>
+                            <ComboOptions
+                              className="p-2"
+                              placeholder="Tickers"
+                              defaultValue={ticker || ""}
+                              options={tickers}
+                              title="Tickers"
+                              {...register("ticker")}
+                              onChange={(value) => {
+                                setValue("ticker", value?.toUpperCase() || "");
+                              }}
+                            />
+                          </div>
+                        )}
 
                         <div className="relative max-w-sm">
                           <label className="block uppercase  text-black tracking-wide  text-xs font-bold mb-1">
@@ -218,7 +220,7 @@ export default function BuySellModal({
                             <svg
                               className="w-4 h-4 text-gray-500 dark:text-gray-400"
                               aria-hidden="true"
-                              xmlns="https://www.w3.org/2000/svg"
+                              xmlns="http://www.w3.org/2000/svg"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >

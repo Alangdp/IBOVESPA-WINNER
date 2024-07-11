@@ -84,12 +84,12 @@ export default function SideBar({ className }: SideBarProps) {
           menuOpen ? "flex" : "hidden"
         } m-8 gap-4 md:row-span-2 lg:flex`}
       >
-        <SideButton
+        {/* <SideButton
           text="Configurações"
           active={false}
           icon={FileTextIcon}
           className="flex-[0.5]"
-        />
+        /> */}
         <SideButton
           text="Sair"
           active={false}
