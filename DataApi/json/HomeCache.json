@@ -5,86 +5,122 @@
       {
         "lows": [
           {
-            "ticker": "AZUL4 AZUL",
-            "companyName": "AZUL",
-            "variation": "arrow_downward\n-4,49%",
-            "currentPrice": "R$\n8,50"
+            "ticker": "TRPL4 ISA CTEEP",
+            "companyName": "ISA CTEEP",
+            "variation": "arrow_downward\n-4,24%",
+            "currentPrice": "R$\n26,00"
           },
           {
-            "ticker": "VALE3 VALE",
-            "companyName": "VALE",
-            "variation": "arrow_downward\n-1,62%",
-            "currentPrice": "R$\n62,00"
-          },
-          {
-            "ticker": "USIM5 USIMINAS",
-            "companyName": "USIMINAS",
-            "variation": "arrow_downward\n-1,50%",
-            "currentPrice": "R$\n7,90"
-          },
-          {
-            "ticker": "NTCO3 NATURA &CO HOLDING S.A.",
-            "companyName": "NATURA &CO HOLDING S.A.",
-            "variation": "arrow_downward\n-1,45%",
-            "currentPrice": "R$\n15,66"
-          },
-          {
-            "ticker": "CVCB3 CVC BRASIL",
-            "companyName": "CVC BRASIL",
-            "variation": "arrow_downward\n-1,40%",
-            "currentPrice": "R$\n2,12"
-          },
-          {
-            "ticker": "VIVA3 VIVARA",
-            "companyName": "VIVARA",
-            "variation": "arrow_downward\n-1,28%",
-            "currentPrice": "R$\n22,46"
-          }
-        ],
-        "high": [
-          {
-            "ticker": "LWSA3 LOCAWEB SERVIÇOS DE INTERNET S.A.",
-            "companyName": "LOCAWEB SERVIÇOS DE INTERNET S.A.",
-            "variation": "arrow_upward\n3,79%",
-            "currentPrice": "R$\n4,65"
-          },
-          {
-            "ticker": "SANB11 BANCO SANTANDER",
-            "companyName": "BANCO SANTANDER",
-            "variation": "arrow_upward\n3,44%",
-            "currentPrice": "R$\n27,66"
-          },
-          {
-            "ticker": "EZTC3 EZ TEC",
-            "companyName": "EZ TEC",
-            "variation": "arrow_upward\n3,26%",
-            "currentPrice": "R$\n14,26"
-          },
-          {
-            "ticker": "VAMO3 VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
-            "companyName": "VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
-            "variation": "arrow_upward\n2,43%",
-            "currentPrice": "R$\n9,28"
+            "ticker": "MRVE3 MRV ENGENHARIA E PARTICIPAÇÕES",
+            "companyName": "MRV ENGENHARIA E PARTICIPAÇÕES",
+            "variation": "arrow_downward\n-4,13%",
+            "currentPrice": "R$\n6,96"
           },
           {
             "ticker": "CYRE3 CYRELA",
             "companyName": "CYRELA",
-            "variation": "arrow_upward\n2,35%",
-            "currentPrice": "R$\n20,51"
+            "variation": "arrow_downward\n-3,71%",
+            "currentPrice": "R$\n20,27"
           },
           {
-            "ticker": "PETZ3 PETZ",
-            "companyName": "PETZ",
-            "variation": "arrow_upward\n2,29%",
-            "currentPrice": "R$\n4,02"
+            "ticker": "CVCB3 CVC BRASIL",
+            "companyName": "CVC BRASIL",
+            "variation": "arrow_downward\n-2,79%",
+            "currentPrice": "R$\n2,09"
+          },
+          {
+            "ticker": "VAMO3 VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
+            "companyName": "VAMOS LOCAÇÃO DE CAMINHÕES. MÁQUINAS E EQUIP.",
+            "variation": "arrow_downward\n-2,56%",
+            "currentPrice": "R$\n9,14"
+          },
+          {
+            "ticker": "LWSA3 LOCAWEB SERVIÇOS DE INTERNET S.A.",
+            "companyName": "LOCAWEB SERVIÇOS DE INTERNET S.A.",
+            "variation": "arrow_downward\n-2,55%",
+            "currentPrice": "R$\n4,59"
+          }
+        ],
+        "high": [
+          {
+            "ticker": "B3SA3 B3",
+            "companyName": "B3",
+            "variation": "arrow_upward\n4,26%",
+            "currentPrice": "R$\n11,50"
+          },
+          {
+            "ticker": "BRFS3 BRF",
+            "companyName": "BRF",
+            "variation": "arrow_upward\n2,42%",
+            "currentPrice": "R$\n22,47"
+          },
+          {
+            "ticker": "BPAC11 BTG",
+            "companyName": "BTG",
+            "variation": "arrow_upward\n2,30%",
+            "currentPrice": "R$\n32,53"
+          },
+          {
+            "ticker": "AZUL4 AZUL",
+            "companyName": "AZUL",
+            "variation": "arrow_upward\n2,20%",
+            "currentPrice": "R$\n8,83"
+          },
+          {
+            "ticker": "CMIN3 CSN MINERAÇÃO S.A.",
+            "companyName": "CSN MINERAÇÃO S.A.",
+            "variation": "arrow_upward\n2,06%",
+            "currentPrice": "R$\n5,46"
+          },
+          {
+            "ticker": "HYPE3 HYPERA",
+            "companyName": "HYPERA",
+            "variation": "arrow_upward\n2,02%",
+            "currentPrice": "R$\n29,33"
+          },
+          {
+            "ticker": "RCRB11 FDO INV IMOB RIO BRAVO RENDA CORPORATIVA",
+            "companyName": "FDO INV IMOB RIO BRAVO RENDA CORPORATIVA",
+            "variation": "arrow_upward\n5,45%",
+            "currentPrice": "R$\n146,54"
+          },
+          {
+            "ticker": "XPPR11 XP PROPERTIES FDO. INV. IMOB.",
+            "companyName": "XP PROPERTIES FDO. INV. IMOB.",
+            "variation": "arrow_upward\n4,75%",
+            "currentPrice": "R$\n18,75"
+          },
+          {
+            "ticker": "AJFI11 AJ MALLS FDO DE INV IMOB",
+            "companyName": "AJ MALLS FDO DE INV IMOB",
+            "variation": "arrow_upward\n3,61%",
+            "currentPrice": "R$\n8,60"
+          },
+          {
+            "ticker": "BCFF11 BTG Fundo de Fundos",
+            "companyName": "BTG Fundo de Fundos",
+            "variation": "arrow_upward\n3,47%",
+            "currentPrice": "R$\n8,65"
+          },
+          {
+            "ticker": "PVBI11 FDO. INV. IMOB. VBI PRIME PROPERTIES",
+            "companyName": "FDO. INV. IMOB. VBI PRIME PROPERTIES",
+            "variation": "arrow_upward\n2,18%",
+            "currentPrice": "R$\n95,33"
+          },
+          {
+            "ticker": "HCTR11 HECTARE CE - FDO INV IMOB",
+            "companyName": "HECTARE CE - FDO INV IMOB",
+            "variation": "arrow_upward\n2,05%",
+            "currentPrice": "R$\n31,92"
           }
         ],
         "dividends": [
           {
-            "ticker": "ARZZ3 AREZZO&CO",
-            "companyName": "AREZZO&CO",
-            "variation": "R$0,5407",
-            "currentPrice": "10/07/2024\n\n\nDividendo"
+            "ticker": "SANB11 BANCO SANTANDER",
+            "companyName": "BANCO SANTANDER",
+            "variation": "R$0,4025",
+            "currentPrice": "19/07/2024\n\n\nJCP"
           },
           {
             "ticker": "ITUB4 BANCO ITAU UNIBANCO",
@@ -117,46 +153,9 @@
             "currentPrice": "30/08/2024\n\n\nJCP"
           }
         ],
-        "Announcements": [
-          {
-            "ticker": "VALE3 VALE",
-            "companyName": "VALE",
-            "variation": "1\ncomunicado novo/atualizado",
-            "currentPrice": ""
-          },
-          {
-            "ticker": "HAPV3 HAPVIDA",
-            "companyName": "HAPVIDA",
-            "variation": "1\ncomunicado novo/atualizado",
-            "currentPrice": ""
-          },
-          {
-            "ticker": "CSAN3 COSAN",
-            "companyName": "COSAN",
-            "variation": "1\ncomunicado novo/atualizado",
-            "currentPrice": ""
-          },
-          {
-            "ticker": "CCRO3 CCR",
-            "companyName": "CCR",
-            "variation": "1\ncomunicado novo/atualizado",
-            "currentPrice": ""
-          },
-          {
-            "ticker": "CIEL3 CIELO",
-            "companyName": "CIELO",
-            "variation": "1\ncomunicado novo/atualizado",
-            "currentPrice": ""
-          },
-          {
-            "ticker": "COGN3 COGNA ON",
-            "companyName": "COGNA ON",
-            "variation": "2\ncomunicados novos/atualizados",
-            "currentPrice": ""
-          }
-        ]
+        "Announcements": []
       }
     ],
-    "instanceTime": 1720640148469
+    "instanceTime": 1720912758063
   }
 ]

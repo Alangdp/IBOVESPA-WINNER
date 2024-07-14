@@ -1,5 +1,4 @@
 import { RequestHandler } from 'express';
-import { Comparator } from '../Entities/Comparator.js';
 import Database from '../utils/JsonDatabase.js';
 import { Pontuation } from '../Entities/Pontuation.js';
 import { errorResponse, response } from '../utils/Responses.js';

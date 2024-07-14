@@ -3,12 +3,11 @@ import { errorResponse, response } from '../utils/Responses';
 import TickerFetcher from '../utils/Fetcher';
 import { HomeItens } from '../types/HomeItens.type';
 import CacheJSON from '../utils/CacheJson';
-import { downloadImage } from 'plotly.js';
 
 const getVariations: RequestHandler = async (req, res, next) => {
   async function updateCache(cache: CacheJSON<HomeItens, CacheProps<HomeItens>>) {
     const variations = await TickerFetcher.getHighsAndLows();
-    if(!variations) throw new Error("Error Getting Variations");    
+    if(!variations) throw new Error("Error Getting Variations");
     cache.replaceData(variations, "HomeItems");
   }
 

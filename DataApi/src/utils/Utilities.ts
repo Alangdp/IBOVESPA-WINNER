@@ -1,9 +1,5 @@
 // Alter import type
 
-// Não existe funções ou váriavies em interfaces Typescript
-// Logo torna inviável a criação de um Protocol para a classe de utilidades.
-// FIXME Revisar SOLID mais tarde
-
 export default class Utilities {
   static formateNumber(stringToFormat: string): number {
     const stringToFormatArray = stringToFormat.split('.');
@@ -17,6 +13,16 @@ export default class Utilities {
     } catch (err: any) {
       throw new Error('Invalid String');
     }
+  }
+
+  static generateToken(n: number): string {
+    var chars =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var token = '';
+    for (var i = 0; i < n; i++) {
+      token += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return token;
   }
 
   static msToHours(ms: number): number {

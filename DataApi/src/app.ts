@@ -1,15 +1,19 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from 'path';
-import cors, { CorsOptions } from 'cors';
-import schedule from 'node-schedule';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 import './database/index.js';
+import './database/sequelize.js';
 
 import stockRoutes from './routes/stock.routes.js';
 import variationRoutes from './routes/variation.routes.js';
+import userRoutes from './routes/user.routes.js';
+import tokenRoutes from './routes/token.routes.js';
+import transactionRouter from './routes/transaction.routes.js';
+import transactionStocksRouter from './routes/transactionStock.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -26,6 +30,10 @@ class App {
   routes() {
     this.app.use('/', stockRoutes);
     this.app.use('/', variationRoutes);
+    this.app.use('/users', userRoutes);
+    this.app.use('/token', tokenRoutes);
+    this.app.use('/transactions', transactionRouter);
+    this.app.use('/transactions/stock', transactionStocksRouter);
   }
 
   middlewares() {

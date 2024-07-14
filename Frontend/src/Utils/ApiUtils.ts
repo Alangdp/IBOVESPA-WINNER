@@ -114,7 +114,7 @@ export const deleteTransaction = async (
 ) => {
   try {
     const response = await axios.delete(
-      `http://${transactionAPI}/stock/${transactionId}`,
+      `http://${transactionAPI}/transactions/stock/${transactionId}`,
       {
         data: {
           token,
@@ -142,7 +142,7 @@ export const editTransaction = async (
 ) => {
   try {
     const response = await axios.post(
-      `http://${transactionAPI}/stock/${transactionId}`,
+      `http://${transactionAPI}/transactions/stock/${transactionId}`,
       {
         transaction: transactionData,
         token,
@@ -163,16 +163,19 @@ export const registerTransaction = async (
   type: "BUY" | "SELL"
 ) => {
   try {
-    const response = await axios.post(`http://${transactionAPI}/stock/`, {
-      transaction: {
-        ticker: transactionData.ticker,
-        transactionDate: transactionData.transactionDate,
-        quantity: transactionData.quantity,
-        price: transactionData.value,
-        type: type,
-      },
-      token,
-    });
+    const response = await axios.post(
+      `http://${transactionAPI}/transactions/stock`,
+      {
+        transaction: {
+          ticker: transactionData.ticker,
+          transactionDate: transactionData.transactionDate,
+          quantity: transactionData.quantity,
+          price: transactionData.value,
+          type: type,
+        },
+        token,
+      }
+    );
     const responseData: ResponseProps<TransactionsProps> = response.data;
     console.log(responseData);
     toast.success("Transação Registrada com sucesso");
