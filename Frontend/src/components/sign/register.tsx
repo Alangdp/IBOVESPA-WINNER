@@ -11,6 +11,8 @@ interface RegisterDialogProps {
   children: React.ReactNode;
 }
 
+const USER_API = import.meta.env.VITE_USER_API_URL as unknown as string;
+
 import {
   Cross2Icon,
   EnvelopeClosedIcon,
@@ -60,7 +62,7 @@ export function Register({ children }: RegisterDialogProps) {
     });
 
     try {
-      await axios.post("http://localhost:3000/users/", { ...data });
+      await axios.post(`http://${USER_API}/users/`, { ...data });
       toast.update(status, {
         render: "Conta criada",
         type: "success",
